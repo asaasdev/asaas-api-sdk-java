@@ -1,0 +1,138 @@
+# FinanceService
+
+A list of all methods in the `FinanceService` service. Click on the method name to view detailed information about that method.
+
+| Methods                                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| :------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [retrieveAccountBalance](#retrieveaccountbalance) |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [billingStatistics](#billingstatistics)           | Return total values of charges from your Asaas account according to the provided filters. ### Examples of filters: Total amount to receive: `GET https://api.asaas.com/v3/finance/payment/statistics?status=PENDING` Total amount to receive with charges by bank slip: `GET https://api.asaas.com/v3/finance/payment/statistics?billingType=BOLETO&status=PENDING` Total amount received for charges by credit card: `GET https://api.asaas.com/v3/finance/payment/statistics?billingType=CREDIT_CARD&status=RECEIVED` |
+| [retrieveSplitValues](#retrievesplitvalues)       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+
+## retrieveAccountBalance
+
+- HTTP Method: `GET`
+- Endpoint: `/v3/finance/balance`
+
+**Return Type**
+
+`RetrieveAccountBalanceOkResponse`
+
+**Example Usage Code Snippet**
+
+```java
+import com.asaas.sdk.asaasjavasdk.AsaasSdk;
+import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
+import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
+import com.asaas.sdk.asaasjavasdk.models.RetrieveAccountBalanceOkResponse;
+
+public class Main {
+
+  public static void main(String[] args) {
+    AsaasSdkConfig config = AsaasSdkConfig.builder()
+      .apiKeyAuthConfig(ApiKeyAuthConfig.builder().apiKey("YOUR_API_KEY").build())
+      .build();
+
+    AsaasSdk asaasSdk = new AsaasSdk(config);
+
+    RetrieveAccountBalanceOkResponse response = asaasSdk.finance.retrieveAccountBalance();
+
+    System.out.println(response);
+  }
+}
+
+```
+
+## billingStatistics
+
+Return total values of charges from your Asaas account according to the provided filters. ### Examples of filters: Total amount to receive: `GET https://api.asaas.com/v3/finance/payment/statistics?status=PENDING` Total amount to receive with charges by bank slip: `GET https://api.asaas.com/v3/finance/payment/statistics?billingType=BOLETO&status=PENDING` Total amount received for charges by credit card: `GET https://api.asaas.com/v3/finance/payment/statistics?billingType=CREDIT_CARD&status=RECEIVED`
+
+- HTTP Method: `GET`
+- Endpoint: `/v3/finance/payment/statistics`
+
+**Parameters**
+
+| Name              | Type                                                                    | Required | Description               |
+| :---------------- | :---------------------------------------------------------------------- | :------- | :------------------------ |
+| requestParameters | [BillingStatisticsParameters](../models/BillingStatisticsParameters.md) | ❌       | Request Parameters Object |
+
+**Return Type**
+
+`BillingStatisticsOkResponse`
+
+**Example Usage Code Snippet**
+
+```java
+import com.asaas.sdk.asaasjavasdk.AsaasSdk;
+import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
+import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
+import com.asaas.sdk.asaasjavasdk.models.ApiFinanceGetPaymentStatisticsRequestBillingType;
+import com.asaas.sdk.asaasjavasdk.models.ApiFinanceGetPaymentStatisticsRequestPaymentStatus;
+import com.asaas.sdk.asaasjavasdk.models.BillingStatisticsOkResponse;
+import com.asaas.sdk.asaasjavasdk.models.BillingStatisticsParameters;
+
+public class Main {
+
+  public static void main(String[] args) {
+    AsaasSdkConfig config = AsaasSdkConfig.builder()
+      .apiKeyAuthConfig(ApiKeyAuthConfig.builder().apiKey("YOUR_API_KEY").build())
+      .build();
+
+    AsaasSdk asaasSdk = new AsaasSdk(config);
+
+    BillingStatisticsParameters requestParameters = BillingStatisticsParameters.builder()
+      .customer("cus_3EZfkUThUMAt")
+      .billingType(ApiFinanceGetPaymentStatisticsRequestBillingType.BOLETO)
+      .status(ApiFinanceGetPaymentStatisticsRequestPaymentStatus.PENDING)
+      .anticipated(false)
+      .dateCreatedGe("2023-01-01")
+      .dateCreatedLe("2023-01-01")
+      .dueDateGe("2023-01-01")
+      .dueDateLe("2023-01-01")
+      .estimatedCreditDateGe("2023-01-01")
+      .estimatedCreditDateLe("2023-01-01")
+      .externalReference("056984")
+      .build();
+
+    BillingStatisticsOkResponse response = asaasSdk.finance.billingStatistics(requestParameters);
+
+    System.out.println(response);
+  }
+}
+
+```
+
+## retrieveSplitValues
+
+- HTTP Method: `GET`
+- Endpoint: `/v3/finance/split/statistics`
+
+**Return Type**
+
+`RetrieveSplitValuesOkResponse`
+
+**Example Usage Code Snippet**
+
+```java
+import com.asaas.sdk.asaasjavasdk.AsaasSdk;
+import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
+import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
+import com.asaas.sdk.asaasjavasdk.models.RetrieveSplitValuesOkResponse;
+
+public class Main {
+
+  public static void main(String[] args) {
+    AsaasSdkConfig config = AsaasSdkConfig.builder()
+      .apiKeyAuthConfig(ApiKeyAuthConfig.builder().apiKey("YOUR_API_KEY").build())
+      .build();
+
+    AsaasSdk asaasSdk = new AsaasSdk(config);
+
+    RetrieveSplitValuesOkResponse response = asaasSdk.finance.retrieveSplitValues();
+
+    System.out.println(response);
+  }
+}
+
+```
+
+<!-- This file was generated by liblab | https://liblab.com/ -->
