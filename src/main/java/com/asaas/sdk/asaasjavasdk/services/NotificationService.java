@@ -4,12 +4,12 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiNotificationBatchUpdateRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiNotificationBatchUpdateResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiNotificationGetResponseDto;
@@ -42,7 +42,7 @@ public class NotificationService extends BaseService {
     @NonNull String id,
     @NonNull ApiNotificationUpdateRequestDto apiNotificationUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateExistingNotificationRequest(id, apiNotificationUpdateRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiNotificationGetResponseDto>() {});
@@ -59,7 +59,7 @@ public class NotificationService extends BaseService {
     @NonNull String id,
     @NonNull ApiNotificationUpdateRequestDto apiNotificationUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateExistingNotificationRequest(id, apiNotificationUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -100,7 +100,7 @@ public class NotificationService extends BaseService {
   public ApiNotificationBatchUpdateResponseDto updateExistingNotificationsInBatch(
     @NonNull ApiNotificationBatchUpdateRequestDto apiNotificationBatchUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateExistingNotificationsInBatchRequest(apiNotificationBatchUpdateRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiNotificationBatchUpdateResponseDto>() {});
@@ -125,7 +125,7 @@ public class NotificationService extends BaseService {
   public CompletableFuture<ApiNotificationBatchUpdateResponseDto> updateExistingNotificationsInBatchAsync(
     @NonNull ApiNotificationBatchUpdateRequestDto apiNotificationBatchUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateExistingNotificationsInBatchRequest(apiNotificationBatchUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->

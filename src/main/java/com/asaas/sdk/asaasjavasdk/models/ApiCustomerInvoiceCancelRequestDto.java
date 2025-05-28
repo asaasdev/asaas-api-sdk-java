@@ -18,11 +18,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiCustomerInvoiceCancelRequestDto {
 
   /**
-   * Unique invoice identifier in Asaas
-   */
-  private String id;
-
-  /**
    * Cancel invoice only on Asaas
    */
   private Boolean cancelOnlyOnAsaas;

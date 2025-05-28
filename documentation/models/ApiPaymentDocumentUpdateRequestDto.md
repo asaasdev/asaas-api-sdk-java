@@ -4,8 +4,6 @@
 
 | Name                  | Type                                               | Required | Description                                                       |
 | :-------------------- | :------------------------------------------------- | :------- | :---------------------------------------------------------------- |
-| id                    | String                                             | ✅       | Unique payment identifier in Asaas                                |
-| documentId            | String                                             | ✅       | Unique document identifier                                        |
 | availableAfterPayment | Boolean                                            | ✅       | true to make the file available only after receipt of the payment |
 | type                  | ApiPaymentDocumentUpdateRequestPaymentDocumentType | ✅       | Document type                                                     |
 

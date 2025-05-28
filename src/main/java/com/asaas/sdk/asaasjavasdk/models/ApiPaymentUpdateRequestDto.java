@@ -38,11 +38,6 @@ public class ApiPaymentUpdateRequestDto {
   private String dueDate;
 
   /**
-   * Unique payment identifier in Asaas
-   */
-  private String id;
-
-  /**
    * Payment description (max. 500 characters)
    */
   private String description;

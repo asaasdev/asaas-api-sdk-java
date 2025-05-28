@@ -19,11 +19,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiSubscriptionUpdateRequestDto {
 
   /**
-   * Unique subscription identifier in Asaas
-   */
-  private String id;
-
-  /**
    * Billing type
    */
   private ApiSubscriptionUpdateRequestBillingType billingType;

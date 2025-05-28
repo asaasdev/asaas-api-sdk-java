@@ -13,10 +13,10 @@ A list of all methods in the `EscrowAccountService` service. Click on the method
 
 **Parameters**
 
-| Name                              | Type                                                                                | Required | Description                               |
-| :-------------------------------- | :---------------------------------------------------------------------------------- | :------- | :---------------------------------------- |
-| id                                | String                                                                              | ✅       | Unique payment escrow identifier in Asaas |
-| apiPaymentCustodyPathIdRequestDto | [ApiPaymentCustodyPathIdRequestDto](../models/ApiPaymentCustodyPathIdRequestDto.md) | ❌       | Request Body                              |
+| Name  | Type   | Required | Description                               |
+| :---- | :----- | :------- | :---------------------------------------- |
+| id    | String | ✅       | Unique payment escrow identifier in Asaas |
+| input | Object | ❌       | Request Body                              |
 
 **Return Type**
 
@@ -28,7 +28,6 @@ A list of all methods in the `EscrowAccountService` service. Click on the method
 import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCustodyPathIdRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentGetResponseDto;
 
 public class Main {
@@ -40,13 +39,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCustodyPathIdRequestDto apiPaymentCustodyPathIdRequestDto = ApiPaymentCustodyPathIdRequestDto.builder()
-      .id("4f468235-cec3-482f-b3d0-348af4c7194")
-      .build();
-
     ApiPaymentGetResponseDto response = asaasSdk.escrowAccount.finishPaymentEscrowInTheEscrowAccount(
       "4f468235-cec3-482f-b3d0-348af4c7194",
-      apiPaymentCustodyPathIdRequestDto
+      new Object()
     );
 
     System.out.println(response);

@@ -19,18 +19,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiPaymentDocumentUpdateRequestDto {
 
   /**
-   * Unique payment identifier in Asaas
-   */
-  @NonNull
-  private String id;
-
-  /**
-   * Unique document identifier
-   */
-  @NonNull
-  private String documentId;
-
-  /**
    * true to make the file available only after receipt of the payment
    */
   @NonNull

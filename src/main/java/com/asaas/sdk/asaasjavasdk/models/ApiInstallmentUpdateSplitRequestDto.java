@@ -19,11 +19,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiInstallmentUpdateSplitRequestDto {
 
   /**
-   * Installment ID
-   */
-  private String id;
-
-  /**
    * Split data to update
    */
   private List<ApiInstallmentSplitRequestDto> splits;

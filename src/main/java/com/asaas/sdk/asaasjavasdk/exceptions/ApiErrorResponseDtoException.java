@@ -2,7 +2,7 @@
 
 package com.asaas.sdk.asaasjavasdk.exceptions;
 
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import lombok.Getter;
 import okhttp3.Response;
 
@@ -10,11 +10,11 @@ import okhttp3.Response;
  * Exception class for ApiErrorResponseDto errors.
  */
 @Getter
-public class ApiErrorResponseDto extends ApiError {
+public class ApiErrorResponseDtoException extends ApiError {
 
-  private final ApiErrorResponseDtoModel error;
+  private final ApiErrorResponseDto error;
 
-  public ApiErrorResponseDto(ApiErrorResponseDtoModel error, String message, int code, Response response) {
+  public ApiErrorResponseDtoException(ApiErrorResponseDto error, String message, int code, Response response) {
     super(message, code, response);
     this.error = error;
   }

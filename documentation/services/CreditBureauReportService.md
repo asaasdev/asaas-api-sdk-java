@@ -42,7 +42,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListCreditBureauReportsParameters requestParameters = ListCreditBureauReportsParameters.builder()
-      .offset(1L)
+      .offset(3L)
       .limit(10L)
       .startDate("startDate")
       .endDate("endDate")

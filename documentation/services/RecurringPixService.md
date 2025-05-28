@@ -113,10 +113,10 @@ public class Main {
 
 **Parameters**
 
-| Name                                                       | Type                                                                                                                                  | Required | Description                           |
-| :--------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------ | :------- | :------------------------------------ |
-| id                                                         | String                                                                                                                                | ✅       | Unique recurrence identifier in Asaas |
-| apiPixTransactionRecurringCheckoutSchedulePathIdRequestDto | [ApiPixTransactionRecurringCheckoutSchedulePathIdRequestDto](../models/ApiPixTransactionRecurringCheckoutSchedulePathIdRequestDto.md) | ❌       | Request Body                          |
+| Name  | Type   | Required | Description                           |
+| :---- | :----- | :------- | :------------------------------------ |
+| id    | String | ✅       | Unique recurrence identifier in Asaas |
+| input | Object | ❌       | Request Body                          |
 
 **Return Type**
 
@@ -129,7 +129,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionRecurringCheckoutScheduleGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionRecurringCheckoutSchedulePathIdRequestDto;
 
 public class Main {
 
@@ -140,14 +139,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixTransactionRecurringCheckoutSchedulePathIdRequestDto apiPixTransactionRecurringCheckoutSchedulePathIdRequestDto =
-      ApiPixTransactionRecurringCheckoutSchedulePathIdRequestDto.builder()
-        .id("35363f6e-93e2-11ec-b9d9-96f4053b1bd4")
-        .build();
-
     ApiPixTransactionRecurringCheckoutScheduleGetResponseDto response = asaasSdk.recurringPix.cancelARecurrence(
       "35363f6e-93e2-11ec-b9d9-96f4053b1bd4",
-      apiPixTransactionRecurringCheckoutSchedulePathIdRequestDto
+      new Object()
     );
 
     System.out.println(response);
@@ -213,10 +207,10 @@ public class Main {
 
 **Parameters**
 
-| Name                                                           | Type                                                                                                                                          | Required | Description                                |
-| :------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :----------------------------------------- |
-| id                                                             | String                                                                                                                                        | ✅       | Unique recurrence item identifier in Asaas |
-| apiPixTransactionRecurringCheckoutScheduleCancelItemRequestDto | [ApiPixTransactionRecurringCheckoutScheduleCancelItemRequestDto](../models/ApiPixTransactionRecurringCheckoutScheduleCancelItemRequestDto.md) | ❌       | Request Body                               |
+| Name  | Type   | Required | Description                                |
+| :---- | :----- | :------- | :----------------------------------------- |
+| id    | String | ✅       | Unique recurrence item identifier in Asaas |
+| input | Object | ❌       | Request Body                               |
 
 **Return Type**
 
@@ -228,7 +222,6 @@ public class Main {
 import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionRecurringCheckoutScheduleCancelItemRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto;
 
 public class Main {
@@ -240,14 +233,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixTransactionRecurringCheckoutScheduleCancelItemRequestDto apiPixTransactionRecurringCheckoutScheduleCancelItemRequestDto =
-      ApiPixTransactionRecurringCheckoutScheduleCancelItemRequestDto.builder()
-        .id("71ae9d73-468f-4d04-8b87-a541128f9c46")
-        .build();
-
     ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto response = asaasSdk.recurringPix.cancelARecurrenceItem(
       "71ae9d73-468f-4d04-8b87-a541128f9c46",
-      apiPixTransactionRecurringCheckoutScheduleCancelItemRequestDto
+      new Object()
     );
 
     System.out.println(response);

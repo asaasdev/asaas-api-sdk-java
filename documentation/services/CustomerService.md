@@ -201,7 +201,6 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ApiCustomerAccountUpdateRequestDto apiCustomerAccountUpdateRequestDto = ApiCustomerAccountUpdateRequestDto.builder()
-      .id("cus_000005401844")
       .name("John Doe")
       .cpfCnpj("24971563792")
       .email("john.doe@asaas.com.br")
@@ -281,10 +280,10 @@ public class Main {
 
 **Parameters**
 
-| Name                                | Type                                                                                    | Required | Description                                     |
-| :---------------------------------- | :-------------------------------------------------------------------------------------- | :------- | :---------------------------------------------- |
-| id                                  | String                                                                                  | ✅       | Unique identifier of the client to be restored. |
-| apiCustomerAccountRestoreRequestDto | [ApiCustomerAccountRestoreRequestDto](../models/ApiCustomerAccountRestoreRequestDto.md) | ❌       | Request Body                                    |
+| Name  | Type   | Required | Description                                     |
+| :---- | :----- | :------- | :---------------------------------------------- |
+| id    | String | ✅       | Unique identifier of the client to be restored. |
+| input | Object | ❌       | Request Body                                    |
 
 **Return Type**
 
@@ -297,7 +296,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerAccountGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerAccountRestoreRequestDto;
 
 public class Main {
 
@@ -308,12 +306,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerAccountRestoreRequestDto apiCustomerAccountRestoreRequestDto =
-      ApiCustomerAccountRestoreRequestDto.builder().id("cus_000005401844").build();
-
     ApiCustomerAccountGetResponseDto response = asaasSdk.customer.restoreRemovedCustomer(
       "cus_000005401844",
-      apiCustomerAccountRestoreRequestDto
+      new Object()
     );
 
     System.out.println(response);

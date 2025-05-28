@@ -18,6 +18,7 @@ public class ApiCheckoutSessionItemsDtoValidator extends AbstractModelValidator<
   @Override
   protected Violation[] validateModel(ApiCheckoutSessionItemsDto apiCheckoutSessionItemsDto) {
     return new ViolationAggregator()
+      .add(new StringValidator("name").maxLength(30).required().validate(apiCheckoutSessionItemsDto.getName()))
       .add(
         new StringValidator("description")
           .maxLength(150)

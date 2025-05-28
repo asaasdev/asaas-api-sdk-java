@@ -4,14 +4,13 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentBankSlipRefundResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPathIdRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentRefundListResponseDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
@@ -37,7 +36,7 @@ public class PaymentRefundService extends BaseService {
    * @return response of {@code ApiPaymentRefundListResponseDto}
    */
   public ApiPaymentRefundListResponseDto retrieveRefundsOfASinglePayment(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveRefundsOfASinglePaymentRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentRefundListResponseDto>() {});
@@ -51,7 +50,7 @@ public class PaymentRefundService extends BaseService {
    */
   public CompletableFuture<ApiPaymentRefundListResponseDto> retrieveRefundsOfASinglePaymentAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveRefundsOfASinglePaymentRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -74,15 +73,12 @@ public class PaymentRefundService extends BaseService {
    * Refund Bank Slip
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code ApiPaymentBankSlipRefundResponseDto}
    */
-  public ApiPaymentBankSlipRefundResponseDto refundBankSlip(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildRefundBankSlipRequest(id, apiPaymentPathIdRequestDto);
+  public ApiPaymentBankSlipRefundResponseDto refundBankSlip(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildRefundBankSlipRequest(id, input);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentBankSlipRefundResponseDto>() {});
   }
@@ -91,25 +87,22 @@ public class PaymentRefundService extends BaseService {
    * Refund Bank Slip
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code CompletableFuture<ApiPaymentBankSlipRefundResponseDto>}
    */
   public CompletableFuture<ApiPaymentBankSlipRefundResponseDto> refundBankSlipAsync(
     @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
+    @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildRefundBankSlipRequest(id, apiPaymentPathIdRequestDto);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildRefundBankSlipRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
       ModelConverter.convert(response, new TypeReference<ApiPaymentBankSlipRefundResponseDto>() {})
     );
   }
 
-  private Request buildRefundBankSlipRequest(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) {
+  private Request buildRefundBankSlipRequest(@NonNull String id, @NonNull Object input) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
@@ -117,7 +110,7 @@ public class PaymentRefundService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiPaymentPathIdRequestDto)
+      .setJsonContent(input)
       .build();
   }
 }

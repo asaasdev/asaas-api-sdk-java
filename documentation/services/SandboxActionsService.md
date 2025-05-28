@@ -16,10 +16,10 @@ This endpoint confirms the payment of a charge in the sandbox environment.
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description                        |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :--------------------------------- |
-| id                         | String                                                                | ✅       | Unique payment identifier in Asaas |
-| apiPaymentPathIdRequestDto | [ApiPaymentPathIdRequestDto](../models/ApiPaymentPathIdRequestDto.md) | ❌       | Request Body                       |
+| Name  | Type   | Required | Description                        |
+| :---- | :----- | :------- | :--------------------------------- |
+| id    | String | ✅       | Unique payment identifier in Asaas |
+| input | Object | ❌       | Request Body                       |
 
 **Return Type**
 
@@ -32,7 +32,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPathIdRequestDto;
 
 public class Main {
 
@@ -43,9 +42,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto = ApiPaymentPathIdRequestDto.builder().id("id").build();
-
-    ApiPaymentGetResponseDto response = asaasSdk.sandboxActions.confirmPayment("id", apiPaymentPathIdRequestDto);
+    ApiPaymentGetResponseDto response = asaasSdk.sandboxActions.confirmPayment("id", new Object());
 
     System.out.println(response);
   }
@@ -62,10 +59,10 @@ This endpoint forces a charge to become overdue in the sandbox environment.
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description                        |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :--------------------------------- |
-| id                         | String                                                                | ✅       | Unique payment identifier in Asaas |
-| apiPaymentPathIdRequestDto | [ApiPaymentPathIdRequestDto](../models/ApiPaymentPathIdRequestDto.md) | ❌       | Request Body                       |
+| Name  | Type   | Required | Description                        |
+| :---- | :----- | :------- | :--------------------------------- |
+| id    | String | ✅       | Unique payment identifier in Asaas |
+| input | Object | ❌       | Request Body                       |
 
 **Return Type**
 
@@ -78,7 +75,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPathIdRequestDto;
 
 public class Main {
 
@@ -89,9 +85,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto = ApiPaymentPathIdRequestDto.builder().id("id").build();
-
-    ApiPaymentGetResponseDto response = asaasSdk.sandboxActions.forceExpire("id", apiPaymentPathIdRequestDto);
+    ApiPaymentGetResponseDto response = asaasSdk.sandboxActions.forceExpire("id", new Object());
 
     System.out.println(response);
   }

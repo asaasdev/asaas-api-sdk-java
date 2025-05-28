@@ -19,7 +19,7 @@ A list of all methods in the `ChargebackService` service. Click on the method na
 | :--------------------------------- | :------------------------------------------------------------------------------------ | :------- | :--------------------------------------------------------------------- |
 | id                                 | String                                                                                | ✅       | Unique identifier of chargeback for which the dispute will be created. |
 | apiChargebackSaveDisputeRequestDto | [ApiChargebackSaveDisputeRequestDto](../models/ApiChargebackSaveDisputeRequestDto.md) | ❌       | Request Body                                                           |
-| \_filename                         | [String](../models/String.md)                                                         | ❌       | Filename for the uploaded file                                         |
+| \_filename                         | [String](../models/String.md)                                                         | ✅       | Filename for the uploaded file                                         |
 
 **Return Type**
 
@@ -44,11 +44,9 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ApiChargebackSaveDisputeRequestDto apiChargebackSaveDisputeRequestDto = ApiChargebackSaveDisputeRequestDto.builder()
-      .id("8e784c3e-afe8-4844-bb93-6b445763")
       .files(files)
       .build();
     ApiChargebackSaveDisputeRequestDto apiChargebackSaveDisputeRequestDto = ApiChargebackSaveDisputeRequestDto.builder()
-      .id("8e784c3e-afe8-4844-bb93-6b445763")
       .files(files)
       .build();
 
@@ -102,7 +100,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListChargebacksParameters requestParameters = ListChargebacksParameters.builder()
-      .offset(9L)
+      .offset(4L)
       .limit(10L)
       .creditCardBrand(ApiChargebackListRequestCreditCardBrand.VISA)
       .originDisputeDateLe("2024-12-05")

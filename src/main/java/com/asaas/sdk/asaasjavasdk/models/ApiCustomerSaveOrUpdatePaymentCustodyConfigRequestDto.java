@@ -33,9 +33,4 @@ public class ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto {
    * Indicates whether the subaccount is responsible for paying the Escrow Account fee. If not informed, the main account will be responsible for the fee
    */
   private Boolean isFeePayer;
-
-  /**
-   * Unique subaccount identifier in Asaas
-   */
-  private String id;
 }

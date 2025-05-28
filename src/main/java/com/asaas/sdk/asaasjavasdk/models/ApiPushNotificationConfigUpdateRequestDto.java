@@ -52,9 +52,4 @@ public class ApiPushNotificationConfigUpdateRequestDto {
    * List of events this Webhook will observe
    */
   private List<String> events;
-
-  /**
-   * Unique Webhook Identifier
-   */
-  private String id;
 }

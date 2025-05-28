@@ -18,11 +18,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiCustomerInvoiceUpdateRequestDto {
 
   /**
-   * Unique invoice identifier in Asaas
-   */
-  private String id;
-
-  /**
    * Description of invoice services
    */
   private String serviceDescription;

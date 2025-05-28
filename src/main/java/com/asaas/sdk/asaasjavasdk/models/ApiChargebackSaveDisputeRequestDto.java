@@ -19,12 +19,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiChargebackSaveDisputeRequestDto {
 
   /**
-   * Unique identifier of chargeback for which the dispute will be created.
-   */
-  @NonNull
-  private String id;
-
-  /**
    * Files to create the dispute (Maximum: 11).
    */
   @NonNull

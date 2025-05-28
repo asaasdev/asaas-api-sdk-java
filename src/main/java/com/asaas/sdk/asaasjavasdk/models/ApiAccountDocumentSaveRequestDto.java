@@ -18,11 +18,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiAccountDocumentSaveRequestDto {
 
   /**
-   * Unique document identifier in Asaas
-   */
-  private String id;
-
-  /**
    * File
    */
   private byte[] documentFile;

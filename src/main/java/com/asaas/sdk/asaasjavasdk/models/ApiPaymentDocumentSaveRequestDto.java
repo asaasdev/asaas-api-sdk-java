@@ -35,9 +35,4 @@ public class ApiPaymentDocumentSaveRequestDto {
    */
   @NonNull
   private byte[] file;
-
-  /**
-   * Unique payment identifier in Asaas
-   */
-  private String id;
 }

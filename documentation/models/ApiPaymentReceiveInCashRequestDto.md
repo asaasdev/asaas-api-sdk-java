@@ -4,7 +4,6 @@
 
 | Name           | Type    | Required | Description                                                        |
 | :------------- | :------ | :------- | :----------------------------------------------------------------- |
-| id             | String  | ❌       | Unique payment identifier in Asaas                                 |
 | paymentDate    | String  | ❌       | Date the customer made the payment                                 |
 | value          | Double  | ❌       | Amount paid by the customer                                        |
 | notifyCustomer | Boolean | ❌       | Send or not send notification of confirmed payment to the customer |

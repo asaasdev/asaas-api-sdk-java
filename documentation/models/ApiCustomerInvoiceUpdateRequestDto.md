@@ -4,7 +4,6 @@
 
 | Name               | Type                       | Required | Description                                                                                                        |
 | :----------------- | :------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------- |
-| id                 | String                     | ❌       | Unique invoice identifier in Asaas                                                                                 |
 | serviceDescription | String                     | ❌       | Description of invoice services                                                                                    |
 | observations       | String                     | ❌       | Additional observations                                                                                            |
 | externalReference  | String                     | ❌       | Invoice identifier in your system                                                                                  |

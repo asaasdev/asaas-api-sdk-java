@@ -44,7 +44,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListSubaccountsParameters requestParameters = ListSubaccountsParameters.builder()
-      .offset(9L)
+      .offset(0L)
       .limit(10L)
       .cpfCnpj("cpfCnpj")
       .email("email")
@@ -265,7 +265,6 @@ public class Main {
         .daysToExpire(30L)
         .enabled(true)
         .isFeePayer(false)
-        .id("4f468235-cec3-482f-b3d0-348af4c7194")
         .build();
 
     ApiCustomerPaymentCustodyConfigDto response =

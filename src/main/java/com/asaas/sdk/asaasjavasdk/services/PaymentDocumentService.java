@@ -4,12 +4,12 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentDeleteResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentGetResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentListResponseDto;
@@ -18,7 +18,6 @@ import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentSaveRequestPaymentDoc
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentUpdateRequestDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import lombok.NonNull;
 import okhttp3.MediaType;
@@ -44,7 +43,7 @@ public class PaymentDocumentService extends BaseService {
    * @return response of {@code ApiPaymentDocumentListResponseDto}
    */
   public ApiPaymentDocumentListResponseDto listDocumentsOfAPayment(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListDocumentsOfAPaymentRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentDocumentListResponseDto>() {});
@@ -58,7 +57,7 @@ public class PaymentDocumentService extends BaseService {
    */
   public CompletableFuture<ApiPaymentDocumentListResponseDto> listDocumentsOfAPaymentAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListDocumentsOfAPaymentRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -82,29 +81,15 @@ public class PaymentDocumentService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param apiPaymentDocumentSaveRequestDto {@link ApiPaymentDocumentSaveRequestDto} Request Body
-   * @return response of {@code ApiPaymentDocumentGetResponseDto}
-   */
-  public ApiPaymentDocumentGetResponseDto uploadPaymentDocuments(
-    @NonNull String id,
-    @NonNull ApiPaymentDocumentSaveRequestDto apiPaymentDocumentSaveRequestDto
-  ) throws ApiError {
-    return this.uploadPaymentDocuments(id, apiPaymentDocumentSaveRequestDto, null);
-  }
-
-  /**
-   * Upload payment documents
-   *
-   * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentDocumentSaveRequestDto {@link ApiPaymentDocumentSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
    * @return response of {@code ApiPaymentDocumentGetResponseDto}
    */
   public ApiPaymentDocumentGetResponseDto uploadPaymentDocuments(
     @NonNull String id,
     @NonNull ApiPaymentDocumentSaveRequestDto apiPaymentDocumentSaveRequestDto,
-    String _filename
+    @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUploadPaymentDocumentsRequest(id, apiPaymentDocumentSaveRequestDto, _filename);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentDocumentGetResponseDto>() {});
@@ -115,29 +100,15 @@ public class PaymentDocumentService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param apiPaymentDocumentSaveRequestDto {@link ApiPaymentDocumentSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentDocumentGetResponseDto>}
-   */
-  public CompletableFuture<ApiPaymentDocumentGetResponseDto> uploadPaymentDocumentsAsync(
-    @NonNull String id,
-    @NonNull ApiPaymentDocumentSaveRequestDto apiPaymentDocumentSaveRequestDto
-  ) throws ApiError {
-    return this.uploadPaymentDocumentsAsync(id, apiPaymentDocumentSaveRequestDto, null);
-  }
-
-  /**
-   * Upload payment documents
-   *
-   * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentDocumentSaveRequestDto {@link ApiPaymentDocumentSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
    * @return response of {@code CompletableFuture<ApiPaymentDocumentGetResponseDto>}
    */
   public CompletableFuture<ApiPaymentDocumentGetResponseDto> uploadPaymentDocumentsAsync(
     @NonNull String id,
     @NonNull ApiPaymentDocumentSaveRequestDto apiPaymentDocumentSaveRequestDto,
-    String _filename
+    @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUploadPaymentDocumentsRequest(id, apiPaymentDocumentSaveRequestDto, _filename);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -148,7 +119,7 @@ public class PaymentDocumentService extends BaseService {
   private Request buildUploadPaymentDocumentsRequest(
     @NonNull String id,
     @NonNull ApiPaymentDocumentSaveRequestDto apiPaymentDocumentSaveRequestDto,
-    String _filename
+    @NonNull String _filename
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -160,7 +131,6 @@ public class PaymentDocumentService extends BaseService {
       .setBody(
         new MultipartBody.Builder()
           .setType(MultipartBody.FORM)
-          .addFormDataPart("id", apiPaymentDocumentSaveRequestDto.getId())
           .addFormDataPart(
             "availableAfterPayment",
             apiPaymentDocumentSaveRequestDto.getAvailableAfterPayment().toString()
@@ -168,7 +138,7 @@ public class PaymentDocumentService extends BaseService {
           .addFormDataPart("type", apiPaymentDocumentSaveRequestDto.getType().getValue())
           .addFormDataPart(
             "file",
-            _filename != null ? _filename : String.format("file_%s", UUID.randomUUID()),
+            _filename,
             RequestBody.create(apiPaymentDocumentSaveRequestDto.getFile(), MediaType.parse("application/octet-stream"))
           )
           .build()
@@ -187,7 +157,7 @@ public class PaymentDocumentService extends BaseService {
     @NonNull String id,
     @NonNull String documentId
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleDocumentOfAPaymentRequest(id, documentId);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentDocumentGetResponseDto>() {});
@@ -204,7 +174,7 @@ public class PaymentDocumentService extends BaseService {
     @NonNull String id,
     @NonNull String documentId
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleDocumentOfAPaymentRequest(id, documentId);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -237,7 +207,7 @@ public class PaymentDocumentService extends BaseService {
     @NonNull String documentId,
     @NonNull ApiPaymentDocumentUpdateRequestDto apiPaymentDocumentUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request =
       this.buildUpdateSettingsOfADocumentOfAPaymentRequest(id, documentId, apiPaymentDocumentUpdateRequestDto);
     Response response = this.execute(request);
@@ -257,7 +227,7 @@ public class PaymentDocumentService extends BaseService {
     @NonNull String documentId,
     @NonNull ApiPaymentDocumentUpdateRequestDto apiPaymentDocumentUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request =
       this.buildUpdateSettingsOfADocumentOfAPaymentRequest(id, documentId, apiPaymentDocumentUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
@@ -292,7 +262,7 @@ public class PaymentDocumentService extends BaseService {
    */
   public ApiPaymentDocumentDeleteResponseDto deleteDocumentFromAPayment(@NonNull String id, @NonNull String documentId)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildDeleteDocumentFromAPaymentRequest(id, documentId);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentDocumentDeleteResponseDto>() {});
@@ -309,7 +279,7 @@ public class PaymentDocumentService extends BaseService {
     @NonNull String id,
     @NonNull String documentId
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildDeleteDocumentFromAPaymentRequest(id, documentId);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->

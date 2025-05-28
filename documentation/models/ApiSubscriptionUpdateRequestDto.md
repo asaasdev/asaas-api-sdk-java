@@ -4,7 +4,6 @@
 
 | Name                  | Type                                           | Required | Description                                                                 |
 | :-------------------- | :--------------------------------------------- | :------- | :-------------------------------------------------------------------------- |
-| id                    | String                                         | ❌       | Unique subscription identifier in Asaas                                     |
 | billingType           | ApiSubscriptionUpdateRequestBillingType        | ❌       | Billing type                                                                |
 | status                | ApiSubscriptionUpdateRequestSubscriptionStatus | ❌       | Subscription status                                                         |
 | nextDueDate           | String                                         | ❌       | First payment due                                                           |

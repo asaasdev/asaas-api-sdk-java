@@ -44,7 +44,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListMobileRechargesParameters requestParameters = ListMobileRechargesParameters.builder()
-      .offset(5L)
+      .offset(2L)
       .limit(10L)
       .build();
 
@@ -155,10 +155,10 @@ Allows canceling the cell phone top-up. Use the canBeCancelled property to verif
 
 **Parameters**
 
-| Name                                | Type                                                                                    | Required | Description                                        |
-| :---------------------------------- | :-------------------------------------------------------------------------------------- | :------- | :------------------------------------------------- |
-| id                                  | String                                                                                  | ✅       | Unique identifier for cell phone recharge on Asaas |
-| apiMobilePhoneRechargeGetRequestDto | [ApiMobilePhoneRechargeGetRequestDto](../models/ApiMobilePhoneRechargeGetRequestDto.md) | ❌       | Request Body                                       |
+| Name  | Type   | Required | Description                                        |
+| :---- | :----- | :------- | :------------------------------------------------- |
+| id    | String | ✅       | Unique identifier for cell phone recharge on Asaas |
+| input | Object | ❌       | Request Body                                       |
 
 **Return Type**
 
@@ -170,7 +170,6 @@ Allows canceling the cell phone top-up. Use the canBeCancelled property to verif
 import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiMobilePhoneRechargeGetRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiMobilePhoneRechargeGetResponseDto;
 
 public class Main {
@@ -182,12 +181,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiMobilePhoneRechargeGetRequestDto apiMobilePhoneRechargeGetRequestDto =
-      ApiMobilePhoneRechargeGetRequestDto.builder().id("37c22147-4194-11ec-8061-0242ac120002").build();
-
     ApiMobilePhoneRechargeGetResponseDto response = asaasSdk.mobilePhoneRecharge.cancelACellphoneRecharge(
       "37c22147-4194-11ec-8061-0242ac120002",
-      apiMobilePhoneRechargeGetRequestDto
+      new Object()
     );
 
     System.out.println(response);

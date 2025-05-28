@@ -4,14 +4,14 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
 import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardTokenizeRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardTokenizeResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -47,7 +47,7 @@ public class CreditCardService extends BaseService {
   public ApiCreditCardTokenizeResponseDto creditCardTokenization(
     @NonNull ApiCreditCardTokenizeRequestDto apiCreditCardTokenizeRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreditCardTokenizationRequest(apiCreditCardTokenizeRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCreditCardTokenizeResponseDto>() {});
@@ -71,7 +71,7 @@ public class CreditCardService extends BaseService {
   public CompletableFuture<ApiCreditCardTokenizeResponseDto> creditCardTokenizationAsync(
     @NonNull ApiCreditCardTokenizeRequestDto apiCreditCardTokenizeRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreditCardTokenizationRequest(apiCreditCardTokenizeRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->

@@ -4,7 +4,7 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
@@ -15,7 +15,7 @@ import com.asaas.sdk.asaasjavasdk.models.ApiCustomerPaymentCustodyConfigDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerSaveRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerSaveResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ListSubaccountsParameters;
 import com.asaas.sdk.asaasjavasdk.validation.ViolationAggregator;
 import com.asaas.sdk.asaasjavasdk.validation.exceptions.ValidationException;
@@ -54,7 +54,7 @@ public class SubaccountService extends BaseService {
    */
   public ApiCustomerListResponseDto listSubaccounts(@NonNull ListSubaccountsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListSubaccountsRequest(requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerListResponseDto>() {});
@@ -78,7 +78,7 @@ public class SubaccountService extends BaseService {
   public CompletableFuture<ApiCustomerListResponseDto> listSubaccountsAsync(
     @NonNull ListSubaccountsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListSubaccountsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -123,7 +123,7 @@ public class SubaccountService extends BaseService {
    */
   public ApiCustomerSaveResponseDto createSubaccount(@NonNull ApiCustomerSaveRequestDto apiCustomerSaveRequestDto)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateSubaccountRequest(apiCustomerSaveRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerSaveResponseDto>() {});
@@ -147,7 +147,7 @@ public class SubaccountService extends BaseService {
   public CompletableFuture<ApiCustomerSaveResponseDto> createSubaccountAsync(
     @NonNull ApiCustomerSaveRequestDto apiCustomerSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateSubaccountRequest(apiCustomerSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -173,7 +173,7 @@ public class SubaccountService extends BaseService {
    * @return response of {@code ApiCustomerGetResponseDto}
    */
   public ApiCustomerGetResponseDto retrieveASingleSubaccount(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleSubaccountRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerGetResponseDto>() {});
@@ -187,7 +187,7 @@ public class SubaccountService extends BaseService {
    */
   public CompletableFuture<ApiCustomerGetResponseDto> retrieveASingleSubaccountAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleSubaccountRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -214,7 +214,7 @@ public class SubaccountService extends BaseService {
    */
   public ApiCustomerPaymentCustodyConfigDto reteriveEscrowAccountConfigurationForSubaccount(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildReteriveEscrowAccountConfigurationForSubaccountRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerPaymentCustodyConfigDto>() {});
@@ -229,7 +229,7 @@ public class SubaccountService extends BaseService {
   public CompletableFuture<ApiCustomerPaymentCustodyConfigDto> reteriveEscrowAccountConfigurationForSubaccountAsync(
     @NonNull String id
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildReteriveEscrowAccountConfigurationForSubaccountRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -259,7 +259,7 @@ public class SubaccountService extends BaseService {
     @NonNull String id,
     @NonNull ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request =
       this.buildSaveOrUpdateEscrowAccountConfigurationForSubaccountRequest(
           id,
@@ -280,7 +280,7 @@ public class SubaccountService extends BaseService {
     @NonNull String id,
     @NonNull ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request =
       this.buildSaveOrUpdateEscrowAccountConfigurationForSubaccountRequest(
           id,

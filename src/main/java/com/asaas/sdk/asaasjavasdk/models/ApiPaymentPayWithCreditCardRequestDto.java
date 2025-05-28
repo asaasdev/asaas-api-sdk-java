@@ -25,11 +25,6 @@ public class ApiPaymentPayWithCreditCardRequestDto {
   private ApiCreditCardHolderInfoRequestDto creditCardHolderInfo;
 
   /**
-   * Unique payment identifier in Asaas
-   */
-  private String id;
-
-  /**
    * Credit card token for using the credit card tokenization functionality. If informed, the fields above are not mandatory.
    */
   private String creditCardToken;

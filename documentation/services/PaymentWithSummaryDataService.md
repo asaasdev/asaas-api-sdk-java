@@ -330,10 +330,10 @@ public class Main {
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description                        |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :--------------------------------- |
-| id                         | String                                                                | ✅       | Unique payment identifier in Asaas |
-| apiPaymentPathIdRequestDto | [ApiPaymentPathIdRequestDto](../models/ApiPaymentPathIdRequestDto.md) | ❌       | Request Body                       |
+| Name  | Type   | Required | Description                        |
+| :---- | :----- | :------- | :--------------------------------- |
+| id    | String | ✅       | Unique payment identifier in Asaas |
+| input | Object | ❌       | Request Body                       |
 
 **Return Type**
 
@@ -346,7 +346,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentLeanGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPathIdRequestDto;
 
 public class Main {
 
@@ -357,13 +356,8 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto = ApiPaymentPathIdRequestDto.builder().id("id").build();
-
     ApiPaymentLeanGetResponseDto response =
-      asaasSdk.paymentWithSummaryData.capturePaymentWithPreAuthorizationWithSummaryDataInResponse(
-        "id",
-        apiPaymentPathIdRequestDto
-      );
+      asaasSdk.paymentWithSummaryData.capturePaymentWithPreAuthorizationWithSummaryDataInResponse("id", new Object());
 
     System.out.println(response);
   }
@@ -418,10 +412,10 @@ public class Main {
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description                        |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :--------------------------------- |
-| id                         | String                                                                | ✅       | Unique payment identifier in Asaas |
-| apiPaymentPathIdRequestDto | [ApiPaymentPathIdRequestDto](../models/ApiPaymentPathIdRequestDto.md) | ❌       | Request Body                       |
+| Name  | Type   | Required | Description                        |
+| :---- | :----- | :------- | :--------------------------------- |
+| id    | String | ✅       | Unique payment identifier in Asaas |
+| input | Object | ❌       | Request Body                       |
 
 **Return Type**
 
@@ -434,7 +428,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentLeanGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPathIdRequestDto;
 
 public class Main {
 
@@ -445,10 +438,8 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto = ApiPaymentPathIdRequestDto.builder().id("id").build();
-
     ApiPaymentLeanGetResponseDto response =
-      asaasSdk.paymentWithSummaryData.updateExistingPaymentWithSummaryDataInResponse("id", apiPaymentPathIdRequestDto);
+      asaasSdk.paymentWithSummaryData.updateExistingPaymentWithSummaryDataInResponse("id", new Object());
 
     System.out.println(response);
   }
@@ -503,10 +494,10 @@ public class Main {
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description                        |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :--------------------------------- |
-| id                         | String                                                                | ✅       | Unique payment identifier in Asaas |
-| apiPaymentPathIdRequestDto | [ApiPaymentPathIdRequestDto](../models/ApiPaymentPathIdRequestDto.md) | ❌       | Request Body                       |
+| Name  | Type   | Required | Description                        |
+| :---- | :----- | :------- | :--------------------------------- |
+| id    | String | ✅       | Unique payment identifier in Asaas |
+| input | Object | ❌       | Request Body                       |
 
 **Return Type**
 
@@ -519,7 +510,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentLeanGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPathIdRequestDto;
 
 public class Main {
 
@@ -530,10 +520,8 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto = ApiPaymentPathIdRequestDto.builder().id("id").build();
-
     ApiPaymentLeanGetResponseDto response =
-      asaasSdk.paymentWithSummaryData.restoreRemovedPaymentWithSummaryDataInResponse("id", apiPaymentPathIdRequestDto);
+      asaasSdk.paymentWithSummaryData.restoreRemovedPaymentWithSummaryDataInResponse("id", new Object());
 
     System.out.println(response);
   }
@@ -576,7 +564,6 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ApiPaymentRefundRequestDto apiPaymentRefundRequestDto = ApiPaymentRefundRequestDto.builder()
-      .id("id")
       .value(5D)
       .description("Valor a mais")
       .build();
@@ -627,8 +614,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ApiPaymentReceiveInCashRequestDto apiPaymentReceiveInCashRequestDto = ApiPaymentReceiveInCashRequestDto.builder()
-      .id("id")
-      .paymentDate("23/05/2025")
+      .paymentDate("28/05/2025")
       .value(129.9D)
       .notifyCustomer(true)
       .build();
@@ -651,10 +637,10 @@ public class Main {
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description                        |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :--------------------------------- |
-| id                         | String                                                                | ✅       | Unique payment identifier in Asaas |
-| apiPaymentPathIdRequestDto | [ApiPaymentPathIdRequestDto](../models/ApiPaymentPathIdRequestDto.md) | ❌       | Request Body                       |
+| Name  | Type   | Required | Description                        |
+| :---- | :----- | :------- | :--------------------------------- |
+| id    | String | ✅       | Unique payment identifier in Asaas |
+| input | Object | ❌       | Request Body                       |
 
 **Return Type**
 
@@ -667,7 +653,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentLeanGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPathIdRequestDto;
 
 public class Main {
 
@@ -678,13 +663,8 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto = ApiPaymentPathIdRequestDto.builder().id("id").build();
-
     ApiPaymentLeanGetResponseDto response =
-      asaasSdk.paymentWithSummaryData.undoCashReceiptConfirmationWithSummaryDataInResponse(
-        "id",
-        apiPaymentPathIdRequestDto
-      );
+      asaasSdk.paymentWithSummaryData.undoCashReceiptConfirmationWithSummaryDataInResponse("id", new Object());
 
     System.out.println(response);
   }

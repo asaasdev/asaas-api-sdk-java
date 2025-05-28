@@ -18,11 +18,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiCustomerAccountUpdateRequestDto {
 
   /**
-   * Unique identifier of the customer to be updated.
-   */
-  private String id;
-
-  /**
    * Client name
    */
   private String name;

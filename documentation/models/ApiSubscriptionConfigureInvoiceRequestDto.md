@@ -4,7 +4,6 @@
 
 | Name                 | Type                                                         | Required | Description                                                                                                        |
 | :------------------- | :----------------------------------------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------- |
-| id                   | String                                                       | ❌       | Unique subscription identifier in Asaas                                                                            |
 | municipalServiceId   | String                                                       | ❌       | Unique municipal service identifier                                                                                |
 | municipalServiceCode | String                                                       | ❌       | Municipal Service Code                                                                                             |
 | municipalServiceName | String                                                       | ❌       | Name of municipal service                                                                                          |

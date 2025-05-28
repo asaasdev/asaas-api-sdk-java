@@ -43,7 +43,6 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ApiNotificationUpdateRequestDto apiNotificationUpdateRequestDto = ApiNotificationUpdateRequestDto.builder()
-      .id("not_wuGp97JeCr7G")
       .enabled(true)
       .emailEnabledForProvider(true)
       .smsEnabledForProvider(true)
@@ -105,7 +104,6 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ApiNotificationUpdateRequestDto apiNotificationUpdateRequestDto = ApiNotificationUpdateRequestDto.builder()
-      .id("not_wuGp97JeCr7G")
       .enabled(true)
       .emailEnabledForProvider(true)
       .smsEnabledForProvider(true)

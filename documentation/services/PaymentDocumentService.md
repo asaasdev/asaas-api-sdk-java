@@ -61,7 +61,7 @@ public class Main {
 | :------------------------------- | :-------------------------------------------------------------------------------- | :------- | :--------------------------------- |
 | id                               | String                                                                            | ✅       | Unique payment identifier in Asaas |
 | apiPaymentDocumentSaveRequestDto | [ApiPaymentDocumentSaveRequestDto](../models/ApiPaymentDocumentSaveRequestDto.md) | ❌       | Request Body                       |
-| \_filename                       | [String](../models/String.md)                                                     | ❌       | Filename for the uploaded file     |
+| \_filename                       | [String](../models/String.md)                                                     | ✅       | Filename for the uploaded file     |
 
 **Return Type**
 
@@ -90,13 +90,11 @@ public class Main {
 		AsaasSdk asaasSdk = new AsaasSdk(config);
 
 		ApiPaymentDocumentSaveRequestDto apiPaymentDocumentSaveRequestDto = ApiPaymentDocumentSaveRequestDto.builder()
-			.id("id")
 			.availableAfterPayment(true)
 			.type(ApiPaymentDocumentSaveRequestPaymentDocumentType.INVOICE)
 			.file(tempor Ut)
 			.build();
 		ApiPaymentDocumentSaveRequestDto apiPaymentDocumentSaveRequestDto = ApiPaymentDocumentSaveRequestDto.builder()
-			.id("id")
 			.availableAfterPayment(true)
 			.type(ApiPaymentDocumentSaveRequestPaymentDocumentType.INVOICE)
 			.file(tempor Ut)
@@ -190,8 +188,6 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ApiPaymentDocumentUpdateRequestDto apiPaymentDocumentUpdateRequestDto = ApiPaymentDocumentUpdateRequestDto.builder()
-      .id("id")
-      .documentId("documentId")
       .availableAfterPayment(true)
       .type(ApiPaymentDocumentUpdateRequestPaymentDocumentType.INVOICE)
       .build();

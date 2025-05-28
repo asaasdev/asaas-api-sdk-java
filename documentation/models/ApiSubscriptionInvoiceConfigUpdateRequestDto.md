@@ -4,7 +4,6 @@
 
 | Name                | Type                                                            | Required | Description                                                                                                        |
 | :------------------ | :-------------------------------------------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------- |
-| id                  | String                                                          | ❌       | Unique subscription identifier in Asaas                                                                            |
 | deductions          | Double                                                          | ❌       | Deductions. Deductions do not change the total value of the invoice, but they do change the ISS calculation basis. |
 | effectiveDatePeriod | ApiSubscriptionInvoiceConfigUpdateRequestDtoEffectiveDatePeriod | ❌       | When the invoice will be issued                                                                                    |
 | receivedOnly        | Boolean                                                         | ❌       | Issue only for paid charges                                                                                        |

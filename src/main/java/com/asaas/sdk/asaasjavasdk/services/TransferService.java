@@ -4,12 +4,12 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiTransferGetResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiTransferListResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiTransferSaveInternalTransferRequestDto;
@@ -52,7 +52,7 @@ public class TransferService extends BaseService {
    * @return response of {@code ApiTransferListResponseDto}
    */
   public ApiTransferListResponseDto listTransfers(@NonNull ListTransfersParameters requestParameters) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListTransfersRequest(requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiTransferListResponseDto>() {});
@@ -76,7 +76,7 @@ public class TransferService extends BaseService {
   public CompletableFuture<ApiTransferListResponseDto> listTransfersAsync(
     @NonNull ListTransfersParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListTransfersRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -117,7 +117,7 @@ public class TransferService extends BaseService {
   public ApiTransferGetResponseDto transferToAnotherInstitutionAccountOrPixKey(
     @NonNull ApiTransferSaveRequestDto apiTransferSaveRequestDto
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildTransferToAnotherInstitutionAccountOrPixKeyRequest(apiTransferSaveRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiTransferGetResponseDto>() {});
@@ -142,7 +142,7 @@ public class TransferService extends BaseService {
   public CompletableFuture<ApiTransferGetResponseDto> transferToAnotherInstitutionAccountOrPixKeyAsync(
     @NonNull ApiTransferSaveRequestDto apiTransferSaveRequestDto
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildTransferToAnotherInstitutionAccountOrPixKeyRequest(apiTransferSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -188,7 +188,7 @@ public class TransferService extends BaseService {
   public ApiTransferSaveInternalTransferResponseDto transferToAsaasAccount(
     @NonNull ApiTransferSaveInternalTransferRequestDto apiTransferSaveInternalTransferRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildTransferToAsaasAccountRequest(apiTransferSaveInternalTransferRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiTransferSaveInternalTransferResponseDto>() {});
@@ -212,7 +212,7 @@ public class TransferService extends BaseService {
   public CompletableFuture<ApiTransferSaveInternalTransferResponseDto> transferToAsaasAccountAsync(
     @NonNull ApiTransferSaveInternalTransferRequestDto apiTransferSaveInternalTransferRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildTransferToAsaasAccountRequest(apiTransferSaveInternalTransferRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -240,7 +240,7 @@ public class TransferService extends BaseService {
    * @return response of {@code ApiTransferGetResponseDto}
    */
   public ApiTransferGetResponseDto retrieveASingleTransfer(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleTransferRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiTransferGetResponseDto>() {});
@@ -253,7 +253,7 @@ public class TransferService extends BaseService {
    * @return response of {@code CompletableFuture<ApiTransferGetResponseDto>}
    */
   public CompletableFuture<ApiTransferGetResponseDto> retrieveASingleTransferAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleTransferRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -279,7 +279,7 @@ public class TransferService extends BaseService {
    * @return response of {@code ApiTransferGetResponseDto}
    */
   public ApiTransferGetResponseDto cancelATransfer(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCancelATransferRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiTransferGetResponseDto>() {});
@@ -292,7 +292,7 @@ public class TransferService extends BaseService {
    * @return response of {@code CompletableFuture<ApiTransferGetResponseDto>}
    */
   public CompletableFuture<ApiTransferGetResponseDto> cancelATransferAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCancelATransferRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->

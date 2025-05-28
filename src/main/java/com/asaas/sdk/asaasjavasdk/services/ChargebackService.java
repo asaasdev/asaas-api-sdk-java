@@ -4,7 +4,7 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
@@ -12,7 +12,7 @@ import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
 import com.asaas.sdk.asaasjavasdk.models.ApiChargebackListResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiChargebackSaveDisputeRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiChargebackSaveDisputeResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentChargebackResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ListChargebacksParameters;
 import com.asaas.sdk.asaasjavasdk.validation.ViolationAggregator;
@@ -20,7 +20,6 @@ import com.asaas.sdk.asaasjavasdk.validation.exceptions.ValidationException;
 import com.asaas.sdk.asaasjavasdk.validation.validators.modelValidators.ListChargebacksParametersValidator;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import lombok.NonNull;
 import okhttp3.MediaType;
@@ -44,29 +43,15 @@ public class ChargebackService extends BaseService {
    *
    * @param id String Unique identifier of chargeback for which the dispute will be created.
    * @param apiChargebackSaveDisputeRequestDto {@link ApiChargebackSaveDisputeRequestDto} Request Body
-   * @return response of {@code ApiChargebackSaveDisputeResponseDto}
-   */
-  public ApiChargebackSaveDisputeResponseDto createAChargebackDispute(
-    @NonNull String id,
-    @NonNull ApiChargebackSaveDisputeRequestDto apiChargebackSaveDisputeRequestDto
-  ) throws ApiError {
-    return this.createAChargebackDispute(id, apiChargebackSaveDisputeRequestDto, null);
-  }
-
-  /**
-   * Create a chargeback dispute
-   *
-   * @param id String Unique identifier of chargeback for which the dispute will be created.
-   * @param apiChargebackSaveDisputeRequestDto {@link ApiChargebackSaveDisputeRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
    * @return response of {@code ApiChargebackSaveDisputeResponseDto}
    */
   public ApiChargebackSaveDisputeResponseDto createAChargebackDispute(
     @NonNull String id,
     @NonNull ApiChargebackSaveDisputeRequestDto apiChargebackSaveDisputeRequestDto,
-    String _filename
+    @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateAChargebackDisputeRequest(id, apiChargebackSaveDisputeRequestDto, _filename);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiChargebackSaveDisputeResponseDto>() {});
@@ -77,29 +62,15 @@ public class ChargebackService extends BaseService {
    *
    * @param id String Unique identifier of chargeback for which the dispute will be created.
    * @param apiChargebackSaveDisputeRequestDto {@link ApiChargebackSaveDisputeRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiChargebackSaveDisputeResponseDto>}
-   */
-  public CompletableFuture<ApiChargebackSaveDisputeResponseDto> createAChargebackDisputeAsync(
-    @NonNull String id,
-    @NonNull ApiChargebackSaveDisputeRequestDto apiChargebackSaveDisputeRequestDto
-  ) throws ApiError {
-    return this.createAChargebackDisputeAsync(id, apiChargebackSaveDisputeRequestDto, null);
-  }
-
-  /**
-   * Create a chargeback dispute
-   *
-   * @param id String Unique identifier of chargeback for which the dispute will be created.
-   * @param apiChargebackSaveDisputeRequestDto {@link ApiChargebackSaveDisputeRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
    * @return response of {@code CompletableFuture<ApiChargebackSaveDisputeResponseDto>}
    */
   public CompletableFuture<ApiChargebackSaveDisputeResponseDto> createAChargebackDisputeAsync(
     @NonNull String id,
     @NonNull ApiChargebackSaveDisputeRequestDto apiChargebackSaveDisputeRequestDto,
-    String _filename
+    @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateAChargebackDisputeRequest(id, apiChargebackSaveDisputeRequestDto, _filename);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -110,7 +81,7 @@ public class ChargebackService extends BaseService {
   private Request buildCreateAChargebackDisputeRequest(
     @NonNull String id,
     @NonNull ApiChargebackSaveDisputeRequestDto apiChargebackSaveDisputeRequestDto,
-    String _filename
+    @NonNull String _filename
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -122,10 +93,9 @@ public class ChargebackService extends BaseService {
       .setBody(
         new MultipartBody.Builder()
           .setType(MultipartBody.FORM)
-          .addFormDataPart("id", apiChargebackSaveDisputeRequestDto.getId())
           .addFormDataPart(
             "files",
-            _filename != null ? _filename : String.format("file_%s", UUID.randomUUID()),
+            _filename,
             RequestBody.create(
               apiChargebackSaveDisputeRequestDto.getFiles(),
               MediaType.parse("application/octet-stream")
@@ -153,7 +123,7 @@ public class ChargebackService extends BaseService {
    */
   public ApiChargebackListResponseDto listChargebacks(@NonNull ListChargebacksParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListChargebacksRequest(requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiChargebackListResponseDto>() {});
@@ -177,7 +147,7 @@ public class ChargebackService extends BaseService {
   public CompletableFuture<ApiChargebackListResponseDto> listChargebacksAsync(
     @NonNull ListChargebacksParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListChargebacksRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -218,7 +188,7 @@ public class ChargebackService extends BaseService {
    * @return response of {@code ApiPaymentChargebackResponseDto}
    */
   public ApiPaymentChargebackResponseDto retrieveASingleChargeback(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleChargebackRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentChargebackResponseDto>() {});
@@ -232,7 +202,7 @@ public class ChargebackService extends BaseService {
    */
   public CompletableFuture<ApiPaymentChargebackResponseDto> retrieveASingleChargebackAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleChargebackRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
