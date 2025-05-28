@@ -212,10 +212,10 @@ public class Main {
 
 **Parameters**
 
-| Name                              | Type                                                                                | Required | Description                                                        |
-| :-------------------------------- | :---------------------------------------------------------------------------------- | :------- | :----------------------------------------------------------------- |
-| id                                | String                                                                              | ✅       | Unique identifier of the Pix transaction scheduled to be canceled. |
-| apiPixTransactionCancelRequestDto | [ApiPixTransactionCancelRequestDto](../models/ApiPixTransactionCancelRequestDto.md) | ❌       | Request Body                                                       |
+| Name  | Type   | Required | Description                                                        |
+| :---- | :----- | :------- | :----------------------------------------------------------------- |
+| id    | String | ✅       | Unique identifier of the Pix transaction scheduled to be canceled. |
+| input | Object | ❌       | Request Body                                                       |
 
 **Return Type**
 
@@ -227,7 +227,6 @@ public class Main {
 import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionCancelRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionGetResponseDto;
 
 public class Main {
@@ -239,14 +238,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixTransactionCancelRequestDto apiPixTransactionCancelRequestDto = ApiPixTransactionCancelRequestDto.builder()
-      .id("id")
-      .build();
-
-    ApiPixTransactionGetResponseDto response = asaasSdk.pixTransaction.cancelAScheduledTransaction(
-      "id",
-      apiPixTransactionCancelRequestDto
-    );
+    ApiPixTransactionGetResponseDto response = asaasSdk.pixTransaction.cancelAScheduledTransaction("id", new Object());
 
     System.out.println(response);
   }

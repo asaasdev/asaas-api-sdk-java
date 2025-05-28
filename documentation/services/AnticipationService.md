@@ -88,7 +88,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListAnticipationsParameters requestParameters = ListAnticipationsParameters.builder()
-      .offset(6L)
+      .offset(1L)
       .limit(10L)
       .payment("payment")
       .installment("installment")
@@ -113,7 +113,7 @@ public class Main {
 | Name                                    | Type                                                                                            | Required | Description                    |
 | :-------------------------------------- | :---------------------------------------------------------------------------------------------- | :------- | :----------------------------- |
 | apiReceivableAnticipationSaveRequestDto | [ApiReceivableAnticipationSaveRequestDto](../models/ApiReceivableAnticipationSaveRequestDto.md) | ❌       | Request Body                   |
-| \_filename                              | [String](../models/String.md)                                                                   | ❌       | Filename for the uploaded file |
+| \_filename                              | [String](../models/String.md)                                                                   | ✅       | Filename for the uploaded file |
 
 **Return Type**
 
@@ -129,33 +129,36 @@ import com.asaas.sdk.asaasjavasdk.models.ApiReceivableAnticipationGetResponseDto
 import com.asaas.sdk.asaasjavasdk.models.ApiReceivableAnticipationSaveRequestDto;
 
 public class Main {
-    public static void main(String[] args) {
-		AsaasSdkConfig config = AsaasSdkConfig.builder()
-			.apiKeyAuthConfig(
-				ApiKeyAuthConfig.builder()
-					.apiKey("YOUR_API_KEY")
-					.build()
-			)
-			.build();
 
-		AsaasSdk asaasSdk = new AsaasSdk(config);
+  public static void main(String[] args) {
+    AsaasSdkConfig config = AsaasSdkConfig.builder()
+      .apiKeyAuthConfig(ApiKeyAuthConfig.builder().apiKey("YOUR_API_KEY").build())
+      .build();
 
-		ApiReceivableAnticipationSaveRequestDto apiReceivableAnticipationSaveRequestDto = ApiReceivableAnticipationSaveRequestDto.builder()
-			.installment("installment")
-			.payment("pay_626366773834")
-			.documents(veniam in)
-			.build();
-		ApiReceivableAnticipationSaveRequestDto apiReceivableAnticipationSaveRequestDto = ApiReceivableAnticipationSaveRequestDto.builder()
-			.installment("installment")
-			.payment("pay_626366773834")
-			.documents(veniam in)
-			.build();
+    AsaasSdk asaasSdk = new AsaasSdk(config);
 
-		ApiReceivableAnticipationGetResponseDto response = asaasSdk.anticipation.requestAnticipation(apiReceivableAnticipationSaveRequestDto, apiReceivableAnticipationSaveRequestDto);
+    ApiReceivableAnticipationSaveRequestDto apiReceivableAnticipationSaveRequestDto =
+      ApiReceivableAnticipationSaveRequestDto.builder()
+        .installment("installment")
+        .payment("pay_626366773834")
+        .documents(occaec)
+        .build();
+    ApiReceivableAnticipationSaveRequestDto apiReceivableAnticipationSaveRequestDto =
+      ApiReceivableAnticipationSaveRequestDto.builder()
+        .installment("installment")
+        .payment("pay_626366773834")
+        .documents(occaec)
+        .build();
 
-		System.out.println(response);
-    }
+    ApiReceivableAnticipationGetResponseDto response = asaasSdk.anticipation.requestAnticipation(
+      apiReceivableAnticipationSaveRequestDto,
+      apiReceivableAnticipationSaveRequestDto
+    );
+
+    System.out.println(response);
+  }
 }
+
 ```
 
 ## simulateAnticipation
@@ -328,10 +331,10 @@ public class Main {
 
 **Parameters**
 
-| Name                                      | Type                                                                                                | Required | Description                                |
-| :---------------------------------------- | :-------------------------------------------------------------------------------------------------- | :------- | :----------------------------------------- |
-| id                                        | String                                                                                              | ✅       | Unique identifier of anticipation in Asaas |
-| apiReceivableAnticipationPathIdRequestDto | [ApiReceivableAnticipationPathIdRequestDto](../models/ApiReceivableAnticipationPathIdRequestDto.md) | ❌       | Request Body                               |
+| Name  | Type   | Required | Description                                |
+| :---- | :----- | :------- | :----------------------------------------- |
+| id    | String | ✅       | Unique identifier of anticipation in Asaas |
+| input | Object | ❌       | Request Body                               |
 
 **Return Type**
 
@@ -344,7 +347,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiReceivableAnticipationGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiReceivableAnticipationPathIdRequestDto;
 
 public class Main {
 
@@ -355,13 +357,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiReceivableAnticipationPathIdRequestDto apiReceivableAnticipationPathIdRequestDto =
-      ApiReceivableAnticipationPathIdRequestDto.builder().id("id").build();
-
-    ApiReceivableAnticipationGetResponseDto response = asaasSdk.anticipation.cancelAnticipation(
-      "id",
-      apiReceivableAnticipationPathIdRequestDto
-    );
+    ApiReceivableAnticipationGetResponseDto response = asaasSdk.anticipation.cancelAnticipation("id", new Object());
 
     System.out.println(response);
   }

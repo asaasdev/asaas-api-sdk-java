@@ -18,11 +18,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiPaymentReceiveInCashRequestDto {
 
   /**
-   * Unique payment identifier in Asaas
-   */
-  private String id;
-
-  /**
    * Date the customer made the payment
    */
   private String paymentDate;

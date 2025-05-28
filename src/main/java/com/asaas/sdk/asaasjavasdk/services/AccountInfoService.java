@@ -4,14 +4,14 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerUpdateRequestGetResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerUpdateRequestSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiMyAccountDisableAccountResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiMyAccountGetAccountFeesResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiMyAccountGetAccountNumberResponseDto;
@@ -22,7 +22,6 @@ import com.asaas.sdk.asaasjavasdk.models.ApiWalletShowResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.DeleteWhiteLabelSubaccountParameters;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import lombok.NonNull;
 import okhttp3.MediaType;
@@ -47,7 +46,7 @@ public class AccountInfoService extends BaseService {
    * @return response of {@code ApiCustomerUpdateRequestGetResponseDto}
    */
   public ApiCustomerUpdateRequestGetResponseDto retrieveBusinessData() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveBusinessDataRequest();
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerUpdateRequestGetResponseDto>() {});
@@ -59,7 +58,7 @@ public class AccountInfoService extends BaseService {
    * @return response of {@code CompletableFuture<ApiCustomerUpdateRequestGetResponseDto>}
    */
   public CompletableFuture<ApiCustomerUpdateRequestGetResponseDto> retrieveBusinessDataAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveBusinessDataRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -95,7 +94,7 @@ public class AccountInfoService extends BaseService {
   public ApiCustomerUpdateRequestGetResponseDto updateBusinessData(
     @NonNull ApiCustomerUpdateRequestSaveRequestDto apiCustomerUpdateRequestSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateBusinessDataRequest(apiCustomerUpdateRequestSaveRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerUpdateRequestGetResponseDto>() {});
@@ -119,7 +118,7 @@ public class AccountInfoService extends BaseService {
   public CompletableFuture<ApiCustomerUpdateRequestGetResponseDto> updateBusinessDataAsync(
     @NonNull ApiCustomerUpdateRequestSaveRequestDto apiCustomerUpdateRequestSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateBusinessDataRequest(apiCustomerUpdateRequestSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -146,7 +145,7 @@ public class AccountInfoService extends BaseService {
    * @return response of {@code ApiPaymentCheckoutConfigGetResponseDto}
    */
   public ApiPaymentCheckoutConfigGetResponseDto retrievePersonalizationSettings() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrievePersonalizationSettingsRequest();
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentCheckoutConfigGetResponseDto>() {});
@@ -159,7 +158,7 @@ public class AccountInfoService extends BaseService {
    */
   public CompletableFuture<ApiPaymentCheckoutConfigGetResponseDto> retrievePersonalizationSettingsAsync()
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrievePersonalizationSettingsRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -180,36 +179,15 @@ public class AccountInfoService extends BaseService {
   /**
    * Save payment checkout customization
    *
-   * @return response of {@code ApiPaymentCheckoutConfigGetResponseDto}
-   */
-  public ApiPaymentCheckoutConfigGetResponseDto savePaymentCheckoutPersonalization() throws ApiError {
-    return this.savePaymentCheckoutPersonalization(ApiPaymentCheckoutConfigSaveRequestDto.builder().build(), null);
-  }
-
-  /**
-   * Save payment checkout customization
-   *
-   * @param apiPaymentCheckoutConfigSaveRequestDto {@link ApiPaymentCheckoutConfigSaveRequestDto} Request Body
-   * @return response of {@code ApiPaymentCheckoutConfigGetResponseDto}
-   */
-  public ApiPaymentCheckoutConfigGetResponseDto savePaymentCheckoutPersonalization(
-    @NonNull ApiPaymentCheckoutConfigSaveRequestDto apiPaymentCheckoutConfigSaveRequestDto
-  ) throws ApiError {
-    return this.savePaymentCheckoutPersonalization(apiPaymentCheckoutConfigSaveRequestDto, null);
-  }
-
-  /**
-   * Save payment checkout customization
-   *
    * @param apiPaymentCheckoutConfigSaveRequestDto {@link ApiPaymentCheckoutConfigSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
    * @return response of {@code ApiPaymentCheckoutConfigGetResponseDto}
    */
   public ApiPaymentCheckoutConfigGetResponseDto savePaymentCheckoutPersonalization(
     @NonNull ApiPaymentCheckoutConfigSaveRequestDto apiPaymentCheckoutConfigSaveRequestDto,
-    String _filename
+    @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request =
       this.buildSavePaymentCheckoutPersonalizationRequest(apiPaymentCheckoutConfigSaveRequestDto, _filename);
     Response response = this.execute(request);
@@ -219,37 +197,15 @@ public class AccountInfoService extends BaseService {
   /**
    * Save payment checkout customization
    *
-   * @return response of {@code CompletableFuture<ApiPaymentCheckoutConfigGetResponseDto>}
-   */
-  public CompletableFuture<ApiPaymentCheckoutConfigGetResponseDto> savePaymentCheckoutPersonalizationAsync()
-    throws ApiError {
-    return this.savePaymentCheckoutPersonalizationAsync(ApiPaymentCheckoutConfigSaveRequestDto.builder().build(), null);
-  }
-
-  /**
-   * Save payment checkout customization
-   *
-   * @param apiPaymentCheckoutConfigSaveRequestDto {@link ApiPaymentCheckoutConfigSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentCheckoutConfigGetResponseDto>}
-   */
-  public CompletableFuture<ApiPaymentCheckoutConfigGetResponseDto> savePaymentCheckoutPersonalizationAsync(
-    @NonNull ApiPaymentCheckoutConfigSaveRequestDto apiPaymentCheckoutConfigSaveRequestDto
-  ) throws ApiError {
-    return this.savePaymentCheckoutPersonalizationAsync(apiPaymentCheckoutConfigSaveRequestDto, null);
-  }
-
-  /**
-   * Save payment checkout customization
-   *
    * @param apiPaymentCheckoutConfigSaveRequestDto {@link ApiPaymentCheckoutConfigSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
    * @return response of {@code CompletableFuture<ApiPaymentCheckoutConfigGetResponseDto>}
    */
   public CompletableFuture<ApiPaymentCheckoutConfigGetResponseDto> savePaymentCheckoutPersonalizationAsync(
     @NonNull ApiPaymentCheckoutConfigSaveRequestDto apiPaymentCheckoutConfigSaveRequestDto,
-    String _filename
+    @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request =
       this.buildSavePaymentCheckoutPersonalizationRequest(apiPaymentCheckoutConfigSaveRequestDto, _filename);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
@@ -260,7 +216,7 @@ public class AccountInfoService extends BaseService {
 
   private Request buildSavePaymentCheckoutPersonalizationRequest(
     @NonNull ApiPaymentCheckoutConfigSaveRequestDto apiPaymentCheckoutConfigSaveRequestDto,
-    String _filename
+    @NonNull String _filename
   ) {
     MultipartBody.Builder multipartBodyBuilder = new MultipartBody.Builder()
       .setType(MultipartBody.FORM)
@@ -273,7 +229,7 @@ public class AccountInfoService extends BaseService {
     if (apiPaymentCheckoutConfigSaveRequestDto.getLogoFile() != null) {
       multipartBodyBuilder.addFormDataPart(
         "logoFile",
-        _filename != null ? _filename : String.format("file_%s", UUID.randomUUID()),
+        _filename,
         RequestBody.create(
           apiPaymentCheckoutConfigSaveRequestDto.getLogoFile(),
           MediaType.parse("application/octet-stream")
@@ -296,7 +252,7 @@ public class AccountInfoService extends BaseService {
    * @return response of {@code ApiMyAccountGetAccountNumberResponseDto}
    */
   public ApiMyAccountGetAccountNumberResponseDto retrieveAsaasAccountNumber() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveAsaasAccountNumberRequest();
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiMyAccountGetAccountNumberResponseDto>() {});
@@ -308,7 +264,7 @@ public class AccountInfoService extends BaseService {
    * @return response of {@code CompletableFuture<ApiMyAccountGetAccountNumberResponseDto>}
    */
   public CompletableFuture<ApiMyAccountGetAccountNumberResponseDto> retrieveAsaasAccountNumberAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveAsaasAccountNumberRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -332,7 +288,7 @@ public class AccountInfoService extends BaseService {
    * @return response of {@code ApiMyAccountGetAccountFeesResponseDto}
    */
   public ApiMyAccountGetAccountFeesResponseDto retrieveAccountFees() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveAccountFeesRequest();
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiMyAccountGetAccountFeesResponseDto>() {});
@@ -344,7 +300,7 @@ public class AccountInfoService extends BaseService {
    * @return response of {@code CompletableFuture<ApiMyAccountGetAccountFeesResponseDto>}
    */
   public CompletableFuture<ApiMyAccountGetAccountFeesResponseDto> retrieveAccountFeesAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveAccountFeesRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -368,7 +324,7 @@ public class AccountInfoService extends BaseService {
    * @return response of {@code ApiMyAccountGetStatusResponseDto}
    */
   public ApiMyAccountGetStatusResponseDto checkAccountRegistrationStatus() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCheckAccountRegistrationStatusRequest();
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiMyAccountGetStatusResponseDto>() {});
@@ -380,7 +336,7 @@ public class AccountInfoService extends BaseService {
    * @return response of {@code CompletableFuture<ApiMyAccountGetStatusResponseDto>}
    */
   public CompletableFuture<ApiMyAccountGetStatusResponseDto> checkAccountRegistrationStatusAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCheckAccountRegistrationStatusRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -404,7 +360,7 @@ public class AccountInfoService extends BaseService {
    * @return response of {@code ApiWalletShowResponseDto}
    */
   public ApiWalletShowResponseDto retrieveWalletid() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveWalletidRequest();
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiWalletShowResponseDto>() {});
@@ -416,7 +372,7 @@ public class AccountInfoService extends BaseService {
    * @return response of {@code CompletableFuture<ApiWalletShowResponseDto>}
    */
   public CompletableFuture<ApiWalletShowResponseDto> retrieveWalletidAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveWalletidRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -452,7 +408,7 @@ public class AccountInfoService extends BaseService {
   public ApiMyAccountDisableAccountResponseDto deleteWhiteLabelSubaccount(
     @NonNull DeleteWhiteLabelSubaccountParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildDeleteWhiteLabelSubaccountRequest(requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiMyAccountDisableAccountResponseDto>() {});
@@ -476,7 +432,7 @@ public class AccountInfoService extends BaseService {
   public CompletableFuture<ApiMyAccountDisableAccountResponseDto> deleteWhiteLabelSubaccountAsync(
     @NonNull DeleteWhiteLabelSubaccountParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildDeleteWhiteLabelSubaccountRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->

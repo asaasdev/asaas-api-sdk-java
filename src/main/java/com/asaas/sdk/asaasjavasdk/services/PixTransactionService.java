@@ -4,15 +4,14 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPixQrCodeDecodeRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPixQrCodeDecodeResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionCancelRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionGetResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionListResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionSaveRequestDto;
@@ -55,7 +54,7 @@ public class PixTransactionService extends BaseService {
   public ApiPixTransactionGetResponseDto payAQrcode(
     @NonNull ApiPixTransactionSaveRequestDto apiPixTransactionSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildPayAQrcodeRequest(apiPixTransactionSaveRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPixTransactionGetResponseDto>() {});
@@ -79,7 +78,7 @@ public class PixTransactionService extends BaseService {
   public CompletableFuture<ApiPixTransactionGetResponseDto> payAQrcodeAsync(
     @NonNull ApiPixTransactionSaveRequestDto apiPixTransactionSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildPayAQrcodeRequest(apiPixTransactionSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -116,7 +115,7 @@ public class PixTransactionService extends BaseService {
   public ApiPixQrCodeDecodeResponseDto decodeAQrcodeForPayment(
     @NonNull ApiPixQrCodeDecodeRequestDto apiPixQrCodeDecodeRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildDecodeAQrcodeForPaymentRequest(apiPixQrCodeDecodeRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPixQrCodeDecodeResponseDto>() {});
@@ -140,7 +139,7 @@ public class PixTransactionService extends BaseService {
   public CompletableFuture<ApiPixQrCodeDecodeResponseDto> decodeAQrcodeForPaymentAsync(
     @NonNull ApiPixQrCodeDecodeRequestDto apiPixQrCodeDecodeRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildDecodeAQrcodeForPaymentRequest(apiPixQrCodeDecodeRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -168,7 +167,7 @@ public class PixTransactionService extends BaseService {
    * @return response of {@code ApiPixTransactionGetResponseDto}
    */
   public ApiPixTransactionGetResponseDto retrieveASingleTransaction(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleTransactionRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPixTransactionGetResponseDto>() {});
@@ -182,7 +181,7 @@ public class PixTransactionService extends BaseService {
    */
   public CompletableFuture<ApiPixTransactionGetResponseDto> retrieveASingleTransactionAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleTransactionRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -218,7 +217,7 @@ public class PixTransactionService extends BaseService {
    */
   public ApiPixTransactionListResponseDto listTransactions(@NonNull ListTransactionsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListTransactionsRequest(requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPixTransactionListResponseDto>() {});
@@ -243,7 +242,7 @@ public class PixTransactionService extends BaseService {
   public CompletableFuture<ApiPixTransactionListResponseDto> listTransactionsAsync(
     @NonNull ListTransactionsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListTransactionsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -278,15 +277,13 @@ public class PixTransactionService extends BaseService {
    * Cancel a scheduled transaction
    *
    * @param id String Unique identifier of the Pix transaction scheduled to be canceled.
-   * @param apiPixTransactionCancelRequestDto {@link ApiPixTransactionCancelRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code ApiPixTransactionGetResponseDto}
    */
-  public ApiPixTransactionGetResponseDto cancelAScheduledTransaction(
-    @NonNull String id,
-    @NonNull ApiPixTransactionCancelRequestDto apiPixTransactionCancelRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildCancelAScheduledTransactionRequest(id, apiPixTransactionCancelRequestDto);
+  public ApiPixTransactionGetResponseDto cancelAScheduledTransaction(@NonNull String id, @NonNull Object input)
+    throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildCancelAScheduledTransactionRequest(id, input);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPixTransactionGetResponseDto>() {});
   }
@@ -295,25 +292,22 @@ public class PixTransactionService extends BaseService {
    * Cancel a scheduled transaction
    *
    * @param id String Unique identifier of the Pix transaction scheduled to be canceled.
-   * @param apiPixTransactionCancelRequestDto {@link ApiPixTransactionCancelRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code CompletableFuture<ApiPixTransactionGetResponseDto>}
    */
   public CompletableFuture<ApiPixTransactionGetResponseDto> cancelAScheduledTransactionAsync(
     @NonNull String id,
-    @NonNull ApiPixTransactionCancelRequestDto apiPixTransactionCancelRequestDto
+    @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildCancelAScheduledTransactionRequest(id, apiPixTransactionCancelRequestDto);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildCancelAScheduledTransactionRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
       ModelConverter.convert(response, new TypeReference<ApiPixTransactionGetResponseDto>() {})
     );
   }
 
-  private Request buildCancelAScheduledTransactionRequest(
-    @NonNull String id,
-    @NonNull ApiPixTransactionCancelRequestDto apiPixTransactionCancelRequestDto
-  ) {
+  private Request buildCancelAScheduledTransactionRequest(@NonNull String id, @NonNull Object input) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
@@ -321,7 +315,7 @@ public class PixTransactionService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiPixTransactionCancelRequestDto)
+      .setJsonContent(input)
       .build();
   }
 }

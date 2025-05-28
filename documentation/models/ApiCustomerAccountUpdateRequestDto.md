@@ -4,7 +4,6 @@
 
 | Name                 | Type    | Required | Description                                                          |
 | :------------------- | :------ | :------- | :------------------------------------------------------------------- |
-| id                   | String  | ❌       | Unique identifier of the customer to be updated.                     |
 | name                 | String  | ❌       | Client name                                                          |
 | cpfCnpj              | String  | ❌       | Customer CPF or CNPJ                                                 |
 | email                | String  | ❌       | Customer email                                                       |

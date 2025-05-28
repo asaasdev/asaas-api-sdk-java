@@ -130,10 +130,10 @@ public class Main {
 
 **Parameters**
 
-| Name                               | Type                                                                                  | Required | Description                            |
-| :--------------------------------- | :------------------------------------------------------------------------------------ | :------- | :------------------------------------- |
-| id                                 | String                                                                                | ✅       | Unique identifier of checkout in Asaas |
-| apiCheckoutSessionCancelRequestDto | [ApiCheckoutSessionCancelRequestDto](../models/ApiCheckoutSessionCancelRequestDto.md) | ❌       | Request Body                           |
+| Name  | Type   | Required | Description                            |
+| :---- | :----- | :------- | :------------------------------------- |
+| id    | String | ✅       | Unique identifier of checkout in Asaas |
+| input | Object | ❌       | Request Body                           |
 
 **Return Type**
 
@@ -145,7 +145,6 @@ public class Main {
 import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionCancelRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionResponseDto;
 
 public class Main {
@@ -157,13 +156,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCheckoutSessionCancelRequestDto apiCheckoutSessionCancelRequestDto = ApiCheckoutSessionCancelRequestDto.builder()
-      .id("131ca662-56c8-4479-b5b3-fd61a413fce7")
-      .build();
-
     ApiCheckoutSessionResponseDto response = asaasSdk.checkout.cancelACheckout(
       "131ca662-56c8-4479-b5b3-fd61a413fce7",
-      apiCheckoutSessionCancelRequestDto
+      new Object()
     );
 
     System.out.println(response);

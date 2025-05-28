@@ -4,13 +4,13 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionConfigureInvoiceRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionDeleteInvoiceConfigResponseDto;
@@ -66,7 +66,7 @@ public class SubscriptionService extends BaseService {
    */
   public ApiSubscriptionListResponseDto listSubscriptions(@NonNull ListSubscriptionsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListSubscriptionsRequest(requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiSubscriptionListResponseDto>() {});
@@ -91,7 +91,7 @@ public class SubscriptionService extends BaseService {
   public CompletableFuture<ApiSubscriptionListResponseDto> listSubscriptionsAsync(
     @NonNull ListSubscriptionsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListSubscriptionsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -146,7 +146,7 @@ public class SubscriptionService extends BaseService {
   public ApiSubscriptionGetResponseDto createNewSubscription(
     @NonNull ApiSubscriptionSaveRequestDto apiSubscriptionSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateNewSubscriptionRequest(apiSubscriptionSaveRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {});
@@ -170,7 +170,7 @@ public class SubscriptionService extends BaseService {
   public CompletableFuture<ApiSubscriptionGetResponseDto> createNewSubscriptionAsync(
     @NonNull ApiSubscriptionSaveRequestDto apiSubscriptionSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateNewSubscriptionRequest(apiSubscriptionSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -209,7 +209,7 @@ public class SubscriptionService extends BaseService {
   public ApiSubscriptionSaveWithCreditCardResponseDto createSubscriptionWithCreditCard(
     @NonNull ApiSubscriptionSaveWithCreditCardRequestDto apiSubscriptionSaveWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateSubscriptionWithCreditCardRequest(apiSubscriptionSaveWithCreditCardRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiSubscriptionSaveWithCreditCardResponseDto>() {});
@@ -234,7 +234,7 @@ public class SubscriptionService extends BaseService {
   public CompletableFuture<ApiSubscriptionSaveWithCreditCardResponseDto> createSubscriptionWithCreditCardAsync(
     @NonNull ApiSubscriptionSaveWithCreditCardRequestDto apiSubscriptionSaveWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateSubscriptionWithCreditCardRequest(apiSubscriptionSaveWithCreditCardRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -262,7 +262,7 @@ public class SubscriptionService extends BaseService {
    * @return response of {@code ApiSubscriptionGetResponseDto}
    */
   public ApiSubscriptionGetResponseDto retrieveASingleSubscription(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleSubscriptionRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {});
@@ -276,7 +276,7 @@ public class SubscriptionService extends BaseService {
    */
   public CompletableFuture<ApiSubscriptionGetResponseDto> retrieveASingleSubscriptionAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleSubscriptionRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -306,7 +306,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ApiSubscriptionUpdateRequestDto apiSubscriptionUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateExistingSubscriptionRequest(id, apiSubscriptionUpdateRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {});
@@ -323,7 +323,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ApiSubscriptionUpdateRequestDto apiSubscriptionUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateExistingSubscriptionRequest(id, apiSubscriptionUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -353,7 +353,7 @@ public class SubscriptionService extends BaseService {
    * @return response of {@code ApiSubscriptionDeleteResponseDto}
    */
   public ApiSubscriptionDeleteResponseDto removeSubscription(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRemoveSubscriptionRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiSubscriptionDeleteResponseDto>() {});
@@ -367,7 +367,7 @@ public class SubscriptionService extends BaseService {
    */
   public CompletableFuture<ApiSubscriptionDeleteResponseDto> removeSubscriptionAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRemoveSubscriptionRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -397,7 +397,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ApiSubscriptionUpdateCreditCardRequestDto apiSubscriptionUpdateCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateSubscriptionCreditCardRequest(id, apiSubscriptionUpdateCreditCardRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {});
@@ -414,7 +414,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ApiSubscriptionUpdateCreditCardRequestDto apiSubscriptionUpdateCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateSubscriptionCreditCardRequest(id, apiSubscriptionUpdateCreditCardRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -448,7 +448,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ListPaymentsOfASubscriptionParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListPaymentsOfASubscriptionRequest(id, requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentListResponseDto>() {});
@@ -465,7 +465,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ListPaymentsOfASubscriptionParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListPaymentsOfASubscriptionRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -501,7 +501,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull GenerateSignatureBookletParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildGenerateSignatureBookletRequest(id, requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<Object>() {});
@@ -518,7 +518,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull GenerateSignatureBookletParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildGenerateSignatureBookletRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Object>() {}));
@@ -550,7 +550,7 @@ public class SubscriptionService extends BaseService {
    */
   public ApiSubscriptionInvoiceConfigGetResponseDto retrieveConfigurationForIssuanceOfInvoices(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveConfigurationForIssuanceOfInvoicesRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiSubscriptionInvoiceConfigGetResponseDto>() {});
@@ -565,7 +565,7 @@ public class SubscriptionService extends BaseService {
   public CompletableFuture<ApiSubscriptionInvoiceConfigGetResponseDto> retrieveConfigurationForIssuanceOfInvoicesAsync(
     @NonNull String id
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveConfigurationForIssuanceOfInvoicesRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -595,7 +595,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ApiSubscriptionConfigureInvoiceRequestDto apiSubscriptionConfigureInvoiceRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request =
       this.buildCreateConfigurationForIssuanceOfInvoicesRequest(id, apiSubscriptionConfigureInvoiceRequestDto);
     Response response = this.execute(request);
@@ -613,7 +613,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ApiSubscriptionConfigureInvoiceRequestDto apiSubscriptionConfigureInvoiceRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request =
       this.buildCreateConfigurationForIssuanceOfInvoicesRequest(id, apiSubscriptionConfigureInvoiceRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
@@ -648,7 +648,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ApiSubscriptionInvoiceConfigUpdateRequestDto apiSubscriptionInvoiceConfigUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request =
       this.buildUpdateConfigurationForIssuanceOfInvoicesRequest(id, apiSubscriptionInvoiceConfigUpdateRequestDto);
     Response response = this.execute(request);
@@ -666,7 +666,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ApiSubscriptionInvoiceConfigUpdateRequestDto apiSubscriptionInvoiceConfigUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request =
       this.buildUpdateConfigurationForIssuanceOfInvoicesRequest(id, apiSubscriptionInvoiceConfigUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
@@ -698,7 +698,7 @@ public class SubscriptionService extends BaseService {
    */
   public ApiSubscriptionDeleteInvoiceConfigResponseDto removeConfigurationForIssuanceOfInvoices(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRemoveConfigurationForIssuanceOfInvoicesRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiSubscriptionDeleteInvoiceConfigResponseDto>() {});
@@ -713,7 +713,7 @@ public class SubscriptionService extends BaseService {
   public CompletableFuture<ApiSubscriptionDeleteInvoiceConfigResponseDto> removeConfigurationForIssuanceOfInvoicesAsync(
     @NonNull String id
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRemoveConfigurationForIssuanceOfInvoicesRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -743,7 +743,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ListInvoicesForSubscriptionChargesParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListInvoicesForSubscriptionChargesRequest(id, requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerInvoiceListResponseDto>() {});
@@ -760,7 +760,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull ListInvoicesForSubscriptionChargesParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListInvoicesForSubscriptionChargesRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->

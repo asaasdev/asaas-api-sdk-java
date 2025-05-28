@@ -2,7 +2,6 @@
 
 package com.asaas.sdk.asaasjavasdk.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,6 +22,5 @@ public class SimulateAPaymentDunningParameters {
    */
   private String payment;
 
-  @JsonProperty("ApiPaymentDunningSimulateRequestDTO")
-  private ApiPaymentDunningSimulateRequestDto apiPaymentDunningSimulateRequestDto;
+  private Object requestBody;
 }

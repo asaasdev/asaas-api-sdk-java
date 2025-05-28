@@ -43,7 +43,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ListBillPaymentsParameters requestParameters = ListBillPaymentsParameters.builder().offset(9L).limit(10L).build();
+    ListBillPaymentsParameters requestParameters = ListBillPaymentsParameters.builder().offset(4L).limit(10L).build();
 
     ApiBillListResponseDto response = asaasSdk.bill.listBillPayments(requestParameters);
 
@@ -90,9 +90,9 @@ public class Main {
       .identificationField("03399.77779 29900.000000 04751.101017 1 81510000002990")
       .scheduleDate("2020-03-15")
       .description("Celular 03/12")
-      .discount(4.04D)
-      .interest(0.74D)
-      .fine(6.82D)
+      .discount(2.88D)
+      .interest(4.04D)
+      .fine(0.74D)
       .dueDate("2020-03-30")
       .value(29D)
       .externalReference("056984")
@@ -201,10 +201,10 @@ Allows canceling the bill payment. Use the `canBeCancelled` property of the `bil
 
 **Parameters**
 
-| Name                    | Type                                                            | Required | Description                                           |
-| :---------------------- | :-------------------------------------------------------------- | :------- | :---------------------------------------------------- |
-| id                      | String                                                          | ✅       | Unique identifier of the bill payment to be cancelled |
-| apiBillCancelRequestDto | [ApiBillCancelRequestDto](../models/ApiBillCancelRequestDto.md) | ❌       | Request Body                                          |
+| Name  | Type   | Required | Description                                           |
+| :---- | :----- | :------- | :---------------------------------------------------- |
+| id    | String | ✅       | Unique identifier of the bill payment to be cancelled |
+| input | Object | ❌       | Request Body                                          |
 
 **Return Type**
 
@@ -216,7 +216,6 @@ Allows canceling the bill payment. Use the `canBeCancelled` property of the `bil
 import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiBillCancelRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiBillGetResponseDto;
 
 public class Main {
@@ -228,13 +227,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiBillCancelRequestDto apiBillCancelRequestDto = ApiBillCancelRequestDto.builder()
-      .id("1bce822-6f37-4905-8de8-f1af9f2f4bab")
-      .build();
-
     ApiBillGetResponseDto response = asaasSdk.bill.cancelBillPayment(
       "1bce822-6f37-4905-8de8-f1af9f2f4bab",
-      apiBillCancelRequestDto
+      new Object()
     );
 
     System.out.println(response);

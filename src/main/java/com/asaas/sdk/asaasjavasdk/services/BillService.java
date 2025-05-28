@@ -4,18 +4,17 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
-import com.asaas.sdk.asaasjavasdk.models.ApiBillCancelRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiBillGetResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiBillListResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiBillSaveRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiBillSimulateRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiBillSimulateResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ListBillPaymentsParameters;
 import com.asaas.sdk.asaasjavasdk.validation.ViolationAggregator;
 import com.asaas.sdk.asaasjavasdk.validation.exceptions.ValidationException;
@@ -54,7 +53,7 @@ public class BillService extends BaseService {
    */
   public ApiBillListResponseDto listBillPayments(@NonNull ListBillPaymentsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListBillPaymentsRequest(requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiBillListResponseDto>() {});
@@ -78,7 +77,7 @@ public class BillService extends BaseService {
   public CompletableFuture<ApiBillListResponseDto> listBillPaymentsAsync(
     @NonNull ListBillPaymentsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListBillPaymentsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -119,7 +118,7 @@ public class BillService extends BaseService {
    */
   public ApiBillGetResponseDto createABillPayment(@NonNull ApiBillSaveRequestDto apiBillSaveRequestDto)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateABillPaymentRequest(apiBillSaveRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiBillGetResponseDto>() {});
@@ -143,7 +142,7 @@ public class BillService extends BaseService {
   public CompletableFuture<ApiBillGetResponseDto> createABillPaymentAsync(
     @NonNull ApiBillSaveRequestDto apiBillSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateABillPaymentRequest(apiBillSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -179,7 +178,7 @@ public class BillService extends BaseService {
    */
   public ApiBillSimulateResponseDto simulateABillPayment(@NonNull ApiBillSimulateRequestDto apiBillSimulateRequestDto)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildSimulateABillPaymentRequest(apiBillSimulateRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiBillSimulateResponseDto>() {});
@@ -203,7 +202,7 @@ public class BillService extends BaseService {
   public CompletableFuture<ApiBillSimulateResponseDto> simulateABillPaymentAsync(
     @NonNull ApiBillSimulateRequestDto apiBillSimulateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildSimulateABillPaymentRequest(apiBillSimulateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -229,7 +228,7 @@ public class BillService extends BaseService {
    * @return response of {@code ApiBillGetResponseDto}
    */
   public ApiBillGetResponseDto retrieveASingleBillPayment(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleBillPaymentRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiBillGetResponseDto>() {});
@@ -242,7 +241,7 @@ public class BillService extends BaseService {
    * @return response of {@code CompletableFuture<ApiBillGetResponseDto>}
    */
   public CompletableFuture<ApiBillGetResponseDto> retrieveASingleBillPaymentAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleBillPaymentRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -265,15 +264,12 @@ public class BillService extends BaseService {
    * Cancel bill payments
    *
    * @param id String Unique identifier of the bill payment to be cancelled
-   * @param apiBillCancelRequestDto {@link ApiBillCancelRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code ApiBillGetResponseDto}
    */
-  public ApiBillGetResponseDto cancelBillPayment(
-    @NonNull String id,
-    @NonNull ApiBillCancelRequestDto apiBillCancelRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildCancelBillPaymentRequest(id, apiBillCancelRequestDto);
+  public ApiBillGetResponseDto cancelBillPayment(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildCancelBillPaymentRequest(id, input);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiBillGetResponseDto>() {});
   }
@@ -282,25 +278,20 @@ public class BillService extends BaseService {
    * Cancel bill payments
    *
    * @param id String Unique identifier of the bill payment to be cancelled
-   * @param apiBillCancelRequestDto {@link ApiBillCancelRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code CompletableFuture<ApiBillGetResponseDto>}
    */
-  public CompletableFuture<ApiBillGetResponseDto> cancelBillPaymentAsync(
-    @NonNull String id,
-    @NonNull ApiBillCancelRequestDto apiBillCancelRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildCancelBillPaymentRequest(id, apiBillCancelRequestDto);
+  public CompletableFuture<ApiBillGetResponseDto> cancelBillPaymentAsync(@NonNull String id, @NonNull Object input)
+    throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildCancelBillPaymentRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
       ModelConverter.convert(response, new TypeReference<ApiBillGetResponseDto>() {})
     );
   }
 
-  private Request buildCancelBillPaymentRequest(
-    @NonNull String id,
-    @NonNull ApiBillCancelRequestDto apiBillCancelRequestDto
-  ) {
+  private Request buildCancelBillPaymentRequest(@NonNull String id, @NonNull Object input) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
@@ -308,7 +299,7 @@ public class BillService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiBillCancelRequestDto)
+      .setJsonContent(input)
       .build();
   }
 }

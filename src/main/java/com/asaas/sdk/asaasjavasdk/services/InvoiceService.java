@@ -4,7 +4,7 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
@@ -12,10 +12,9 @@ import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceCancelRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceGetResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoicePathIdRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceSaveRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceUpdateRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ListInvoicesParameters;
 import com.asaas.sdk.asaasjavasdk.validation.ViolationAggregator;
 import com.asaas.sdk.asaasjavasdk.validation.exceptions.ValidationException;
@@ -54,7 +53,7 @@ public class InvoiceService extends BaseService {
    */
   public ApiCustomerInvoiceListResponseDto listInvoices(@NonNull ListInvoicesParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListInvoicesRequest(requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerInvoiceListResponseDto>() {});
@@ -78,7 +77,7 @@ public class InvoiceService extends BaseService {
   public CompletableFuture<ApiCustomerInvoiceListResponseDto> listInvoicesAsync(
     @NonNull ListInvoicesParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListInvoicesRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -129,7 +128,7 @@ public class InvoiceService extends BaseService {
   public ApiCustomerInvoiceGetResponseDto scheduleInvoice(
     @NonNull ApiCustomerInvoiceSaveRequestDto apiCustomerInvoiceSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildScheduleInvoiceRequest(apiCustomerInvoiceSaveRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerInvoiceGetResponseDto>() {});
@@ -153,7 +152,7 @@ public class InvoiceService extends BaseService {
   public CompletableFuture<ApiCustomerInvoiceGetResponseDto> scheduleInvoiceAsync(
     @NonNull ApiCustomerInvoiceSaveRequestDto apiCustomerInvoiceSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildScheduleInvoiceRequest(apiCustomerInvoiceSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -181,7 +180,7 @@ public class InvoiceService extends BaseService {
    * @return response of {@code ApiCustomerInvoiceGetResponseDto}
    */
   public ApiCustomerInvoiceGetResponseDto retrieveASingleInvoice(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleInvoiceRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerInvoiceGetResponseDto>() {});
@@ -195,7 +194,7 @@ public class InvoiceService extends BaseService {
    */
   public CompletableFuture<ApiCustomerInvoiceGetResponseDto> retrieveASingleInvoiceAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleInvoiceRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -225,7 +224,7 @@ public class InvoiceService extends BaseService {
     @NonNull String id,
     @NonNull ApiCustomerInvoiceUpdateRequestDto apiCustomerInvoiceUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateInvoiceRequest(id, apiCustomerInvoiceUpdateRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerInvoiceGetResponseDto>() {});
@@ -242,7 +241,7 @@ public class InvoiceService extends BaseService {
     @NonNull String id,
     @NonNull ApiCustomerInvoiceUpdateRequestDto apiCustomerInvoiceUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateInvoiceRequest(id, apiCustomerInvoiceUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -269,15 +268,12 @@ public class InvoiceService extends BaseService {
    * Issue an invoice
    *
    * @param id String Unique invoice identifier in Asaas
-   * @param apiCustomerInvoicePathIdRequestDto {@link ApiCustomerInvoicePathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code ApiCustomerInvoiceGetResponseDto}
    */
-  public ApiCustomerInvoiceGetResponseDto issueAnInvoice(
-    @NonNull String id,
-    @NonNull ApiCustomerInvoicePathIdRequestDto apiCustomerInvoicePathIdRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildIssueAnInvoiceRequest(id, apiCustomerInvoicePathIdRequestDto);
+  public ApiCustomerInvoiceGetResponseDto issueAnInvoice(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildIssueAnInvoiceRequest(id, input);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerInvoiceGetResponseDto>() {});
   }
@@ -286,25 +282,22 @@ public class InvoiceService extends BaseService {
    * Issue an invoice
    *
    * @param id String Unique invoice identifier in Asaas
-   * @param apiCustomerInvoicePathIdRequestDto {@link ApiCustomerInvoicePathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code CompletableFuture<ApiCustomerInvoiceGetResponseDto>}
    */
   public CompletableFuture<ApiCustomerInvoiceGetResponseDto> issueAnInvoiceAsync(
     @NonNull String id,
-    @NonNull ApiCustomerInvoicePathIdRequestDto apiCustomerInvoicePathIdRequestDto
+    @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildIssueAnInvoiceRequest(id, apiCustomerInvoicePathIdRequestDto);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildIssueAnInvoiceRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
       ModelConverter.convert(response, new TypeReference<ApiCustomerInvoiceGetResponseDto>() {})
     );
   }
 
-  private Request buildIssueAnInvoiceRequest(
-    @NonNull String id,
-    @NonNull ApiCustomerInvoicePathIdRequestDto apiCustomerInvoicePathIdRequestDto
-  ) {
+  private Request buildIssueAnInvoiceRequest(@NonNull String id, @NonNull Object input) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
@@ -312,7 +305,7 @@ public class InvoiceService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiCustomerInvoicePathIdRequestDto)
+      .setJsonContent(input)
       .build();
   }
 
@@ -327,7 +320,7 @@ public class InvoiceService extends BaseService {
     @NonNull String id,
     @NonNull ApiCustomerInvoiceCancelRequestDto apiCustomerInvoiceCancelRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCancelAnInvoiceRequest(id, apiCustomerInvoiceCancelRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCustomerInvoiceGetResponseDto>() {});
@@ -344,7 +337,7 @@ public class InvoiceService extends BaseService {
     @NonNull String id,
     @NonNull ApiCustomerInvoiceCancelRequestDto apiCustomerInvoiceCancelRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCancelAnInvoiceRequest(id, apiCustomerInvoiceCancelRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->

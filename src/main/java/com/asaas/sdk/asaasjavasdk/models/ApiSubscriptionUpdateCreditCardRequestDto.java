@@ -31,11 +31,6 @@ public class ApiSubscriptionUpdateCreditCardRequestDto {
   private String remoteIp;
 
   /**
-   * Unique subscription identifier in Asaas
-   */
-  private String id;
-
-  /**
    * Credit card token for using the credit card tokenization functionality. If informed, the fields above are not mandatory.
    */
   private String creditCardToken;

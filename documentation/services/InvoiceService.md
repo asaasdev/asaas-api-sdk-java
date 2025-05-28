@@ -46,7 +46,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListInvoicesParameters requestParameters = ListInvoicesParameters.builder()
-      .offset(4L)
+      .offset(10L)
       .limit(10L)
       .effectiveDateGe("2024-08-03")
       .effectiveDateLe("2024-09-03")
@@ -122,7 +122,7 @@ public class Main {
       .municipalServiceId("municipalServiceId")
       .municipalServiceCode("1.01")
       .municipalServiceName("Systems analysis and development")
-      .updatePayment(true)
+      .updatePayment(false)
       .taxes(apiCustomerInvoiceTaxesDto)
       .build();
 
@@ -220,14 +220,13 @@ public class Main {
       .build();
 
     ApiCustomerInvoiceUpdateRequestDto apiCustomerInvoiceUpdateRequestDto = ApiCustomerInvoiceUpdateRequestDto.builder()
-      .id("inv_000000000232")
       .serviceDescription("serviceDescription")
       .observations("Monthly for June work.")
       .externalReference("externalReference")
       .value(300D)
       .deductions(10D)
       .effectiveDate("2024-08-20")
-      .updatePayment(false)
+      .updatePayment(true)
       .taxes(apiCustomerInvoiceTaxesDto)
       .build();
 
@@ -249,10 +248,10 @@ public class Main {
 
 **Parameters**
 
-| Name                               | Type                                                                                  | Required | Description                        |
-| :--------------------------------- | :------------------------------------------------------------------------------------ | :------- | :--------------------------------- |
-| id                                 | String                                                                                | ✅       | Unique invoice identifier in Asaas |
-| apiCustomerInvoicePathIdRequestDto | [ApiCustomerInvoicePathIdRequestDto](../models/ApiCustomerInvoicePathIdRequestDto.md) | ❌       | Request Body                       |
+| Name  | Type   | Required | Description                        |
+| :---- | :----- | :------- | :--------------------------------- |
+| id    | String | ✅       | Unique invoice identifier in Asaas |
+| input | Object | ❌       | Request Body                       |
 
 **Return Type**
 
@@ -265,7 +264,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoicePathIdRequestDto;
 
 public class Main {
 
@@ -276,14 +274,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerInvoicePathIdRequestDto apiCustomerInvoicePathIdRequestDto = ApiCustomerInvoicePathIdRequestDto.builder()
-      .id("inv_000000000232")
-      .build();
-
-    ApiCustomerInvoiceGetResponseDto response = asaasSdk.invoice.issueAnInvoice(
-      "inv_000000000232",
-      apiCustomerInvoicePathIdRequestDto
-    );
+    ApiCustomerInvoiceGetResponseDto response = asaasSdk.invoice.issueAnInvoice("inv_000000000232", new Object());
 
     System.out.println(response);
   }
@@ -326,7 +317,6 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ApiCustomerInvoiceCancelRequestDto apiCustomerInvoiceCancelRequestDto = ApiCustomerInvoiceCancelRequestDto.builder()
-      .id("inv_000000000232")
       .cancelOnlyOnAsaas(false)
       .build();
 

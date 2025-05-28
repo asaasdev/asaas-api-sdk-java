@@ -18,11 +18,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiPaymentCampaignUpdateRequestDto {
 
   /**
-   * Unique identifier for your payments link in Asaas
-   */
-  private String id;
-
-  /**
    * Payment link name
    */
   private String name;

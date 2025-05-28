@@ -2,9 +2,12 @@
 
 package com.asaas.sdk.asaasjavasdk.models;
 
+import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
@@ -15,10 +18,12 @@ import lombok.extern.jackson.Jacksonized;
 @ToString
 @EqualsAndHashCode
 @Jacksonized
-public class ApiReceivableAnticipationPathIdRequestDto {
+@NoArgsConstructor
+@AllArgsConstructor
+public class ApiErrorResponseDto {
 
   /**
-   * Unique identifier of anticipation in Asaas
+   * List of objects
    */
-  private String id;
+  private List<ApiErrorResponseItemDto> errors;
 }

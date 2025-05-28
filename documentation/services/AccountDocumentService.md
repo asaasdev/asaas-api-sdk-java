@@ -55,7 +55,7 @@ public class Main {
 | :------------------------------- | :-------------------------------------------------------------------------------- | :------- | :---------------------------------- |
 | id                               | String                                                                            | ✅       | Unique document identifier in Asaas |
 | apiAccountDocumentSaveRequestDto | [ApiAccountDocumentSaveRequestDto](../models/ApiAccountDocumentSaveRequestDto.md) | ❌       | Request Body                        |
-| \_filename                       | [String](../models/String.md)                                                     | ❌       | Filename for the uploaded file      |
+| \_filename                       | [String](../models/String.md)                                                     | ✅       | Filename for the uploaded file      |
 
 **Return Type**
 
@@ -72,35 +72,31 @@ import com.asaas.sdk.asaasjavasdk.models.ApiAccountDocumentSaveRequestCustomerDo
 import com.asaas.sdk.asaasjavasdk.models.ApiAccountDocumentSaveRequestDto;
 
 public class Main {
+    public static void main(String[] args) {
+		AsaasSdkConfig config = AsaasSdkConfig.builder()
+			.apiKeyAuthConfig(
+				ApiKeyAuthConfig.builder()
+					.apiKey("YOUR_API_KEY")
+					.build()
+			)
+			.build();
 
-  public static void main(String[] args) {
-    AsaasSdkConfig config = AsaasSdkConfig.builder()
-      .apiKeyAuthConfig(ApiKeyAuthConfig.builder().apiKey("YOUR_API_KEY").build())
-      .build();
+		AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    AsaasSdk asaasSdk = new AsaasSdk(config);
+		ApiAccountDocumentSaveRequestDto apiAccountDocumentSaveRequestDto = ApiAccountDocumentSaveRequestDto.builder()
+			.documentFile(ut Ut )
+			.type(ApiAccountDocumentSaveRequestCustomerDocumentType.IDENTIFICATION)
+			.build();
+		ApiAccountDocumentSaveRequestDto apiAccountDocumentSaveRequestDto = ApiAccountDocumentSaveRequestDto.builder()
+			.documentFile(ut Ut )
+			.type(ApiAccountDocumentSaveRequestCustomerDocumentType.IDENTIFICATION)
+			.build();
 
-    ApiAccountDocumentSaveRequestDto apiAccountDocumentSaveRequestDto = ApiAccountDocumentSaveRequestDto.builder()
-      .id("8d257732-2220-11ec-b695-b6af4a64184d")
-      .documentFile(animsint)
-      .type(ApiAccountDocumentSaveRequestCustomerDocumentType.IDENTIFICATION)
-      .build();
-    ApiAccountDocumentSaveRequestDto apiAccountDocumentSaveRequestDto = ApiAccountDocumentSaveRequestDto.builder()
-      .id("8d257732-2220-11ec-b695-b6af4a64184d")
-      .documentFile(animsint)
-      .type(ApiAccountDocumentSaveRequestCustomerDocumentType.IDENTIFICATION)
-      .build();
+		ApiAccountDocumentGetResponseDto response = asaasSdk.accountDocument.sendDocumentsViaApi("8d257732-2220-11ec-b695-b6af4a64184d", apiAccountDocumentSaveRequestDto, apiAccountDocumentSaveRequestDto);
 
-    ApiAccountDocumentGetResponseDto response = asaasSdk.accountDocument.sendDocumentsViaApi(
-      "8d257732-2220-11ec-b695-b6af4a64184d",
-      apiAccountDocumentSaveRequestDto,
-      apiAccountDocumentSaveRequestDto
-    );
-
-    System.out.println(response);
-  }
+		System.out.println(response);
+    }
 }
-
 ```
 
 ## viewDocumentSent
@@ -156,7 +152,7 @@ public class Main {
 | :--------------------------------- | :------------------------------------------------------------------------------------ | :------- | :---------------------------------- |
 | id                                 | String                                                                                | ✅       | Unique document identifier in Asaas |
 | apiAccountDocumentUpdateRequestDto | [ApiAccountDocumentUpdateRequestDto](../models/ApiAccountDocumentUpdateRequestDto.md) | ❌       | Request Body                        |
-| \_filename                         | [String](../models/String.md)                                                         | ❌       | Filename for the uploaded file      |
+| \_filename                         | [String](../models/String.md)                                                         | ✅       | Filename for the uploaded file      |
 
 **Return Type**
 
@@ -172,31 +168,31 @@ import com.asaas.sdk.asaasjavasdk.models.ApiAccountDocumentGetResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiAccountDocumentUpdateRequestDto;
 
 public class Main {
-    public static void main(String[] args) {
-		AsaasSdkConfig config = AsaasSdkConfig.builder()
-			.apiKeyAuthConfig(
-				ApiKeyAuthConfig.builder()
-					.apiKey("YOUR_API_KEY")
-					.build()
-			)
-			.build();
 
-		AsaasSdk asaasSdk = new AsaasSdk(config);
+  public static void main(String[] args) {
+    AsaasSdkConfig config = AsaasSdkConfig.builder()
+      .apiKeyAuthConfig(ApiKeyAuthConfig.builder().apiKey("YOUR_API_KEY").build())
+      .build();
 
-		ApiAccountDocumentUpdateRequestDto apiAccountDocumentUpdateRequestDto = ApiAccountDocumentUpdateRequestDto.builder()
-			.id("8d257732-2220-11ec-b695-b6af4a64184d")
-			.documentFile(qui adip)
-			.build();
-		ApiAccountDocumentUpdateRequestDto apiAccountDocumentUpdateRequestDto = ApiAccountDocumentUpdateRequestDto.builder()
-			.id("8d257732-2220-11ec-b695-b6af4a64184d")
-			.documentFile(qui adip)
-			.build();
+    AsaasSdk asaasSdk = new AsaasSdk(config);
 
-		ApiAccountDocumentGetResponseDto response = asaasSdk.accountDocument.updateSentDocument("8d257732-2220-11ec-b695-b6af4a64184d", apiAccountDocumentUpdateRequestDto, apiAccountDocumentUpdateRequestDto);
+    ApiAccountDocumentUpdateRequestDto apiAccountDocumentUpdateRequestDto = ApiAccountDocumentUpdateRequestDto.builder()
+      .documentFile(sintl)
+      .build();
+    ApiAccountDocumentUpdateRequestDto apiAccountDocumentUpdateRequestDto = ApiAccountDocumentUpdateRequestDto.builder()
+      .documentFile(sintl)
+      .build();
 
-		System.out.println(response);
-    }
+    ApiAccountDocumentGetResponseDto response = asaasSdk.accountDocument.updateSentDocument(
+      "8d257732-2220-11ec-b695-b6af4a64184d",
+      apiAccountDocumentUpdateRequestDto,
+      apiAccountDocumentUpdateRequestDto
+    );
+
+    System.out.println(response);
+  }
 }
+
 ```
 
 ## removeSentDocument

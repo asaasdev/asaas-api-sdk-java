@@ -4,14 +4,13 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPathIdRequestDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -33,15 +32,12 @@ public class SandboxActionsService extends BaseService {
    * (Sandbox only) Confirm payment
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code ApiPaymentGetResponseDto}
    */
-  public ApiPaymentGetResponseDto confirmPayment(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildConfirmPaymentRequest(id, apiPaymentPathIdRequestDto);
+  public ApiPaymentGetResponseDto confirmPayment(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildConfirmPaymentRequest(id, input);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
   }
@@ -50,25 +46,20 @@ public class SandboxActionsService extends BaseService {
    * (Sandbox only) Confirm payment
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code CompletableFuture<ApiPaymentGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentGetResponseDto> confirmPaymentAsync(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildConfirmPaymentRequest(id, apiPaymentPathIdRequestDto);
+  public CompletableFuture<ApiPaymentGetResponseDto> confirmPaymentAsync(@NonNull String id, @NonNull Object input)
+    throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildConfirmPaymentRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
       ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {})
     );
   }
 
-  private Request buildConfirmPaymentRequest(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) {
+  private Request buildConfirmPaymentRequest(@NonNull String id, @NonNull Object input) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
@@ -76,7 +67,7 @@ public class SandboxActionsService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiPaymentPathIdRequestDto)
+      .setJsonContent(input)
       .build();
   }
 
@@ -84,15 +75,12 @@ public class SandboxActionsService extends BaseService {
    * (Sandbox only) Force charge overdue
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code ApiPaymentGetResponseDto}
    */
-  public ApiPaymentGetResponseDto forceExpire(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildForceExpireRequest(id, apiPaymentPathIdRequestDto);
+  public ApiPaymentGetResponseDto forceExpire(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildForceExpireRequest(id, input);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
   }
@@ -101,25 +89,20 @@ public class SandboxActionsService extends BaseService {
    * (Sandbox only) Force charge overdue
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code CompletableFuture<ApiPaymentGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentGetResponseDto> forceExpireAsync(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildForceExpireRequest(id, apiPaymentPathIdRequestDto);
+  public CompletableFuture<ApiPaymentGetResponseDto> forceExpireAsync(@NonNull String id, @NonNull Object input)
+    throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildForceExpireRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
       ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {})
     );
   }
 
-  private Request buildForceExpireRequest(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) {
+  private Request buildForceExpireRequest(@NonNull String id, @NonNull Object input) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
@@ -127,7 +110,7 @@ public class SandboxActionsService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiPaymentPathIdRequestDto)
+      .setJsonContent(input)
       .build();
   }
 }

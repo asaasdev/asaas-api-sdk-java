@@ -4,14 +4,13 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiMobilePhoneRechargeFindProviderResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiMobilePhoneRechargeGetRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiMobilePhoneRechargeGetResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiMobilePhoneRechargeListResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiMobilePhoneRechargeSaveRequestDto;
@@ -54,7 +53,7 @@ public class MobilePhoneRechargeService extends BaseService {
   public ApiMobilePhoneRechargeListResponseDto listMobileRecharges(
     @NonNull ListMobileRechargesParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListMobileRechargesRequest(requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiMobilePhoneRechargeListResponseDto>() {});
@@ -79,7 +78,7 @@ public class MobilePhoneRechargeService extends BaseService {
   public CompletableFuture<ApiMobilePhoneRechargeListResponseDto> listMobileRechargesAsync(
     @NonNull ListMobileRechargesParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListMobileRechargesRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -121,7 +120,7 @@ public class MobilePhoneRechargeService extends BaseService {
   public ApiMobilePhoneRechargeGetResponseDto requestRecharge(
     @NonNull ApiMobilePhoneRechargeSaveRequestDto apiMobilePhoneRechargeSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRequestRechargeRequest(apiMobilePhoneRechargeSaveRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiMobilePhoneRechargeGetResponseDto>() {});
@@ -145,7 +144,7 @@ public class MobilePhoneRechargeService extends BaseService {
   public CompletableFuture<ApiMobilePhoneRechargeGetResponseDto> requestRechargeAsync(
     @NonNull ApiMobilePhoneRechargeSaveRequestDto apiMobilePhoneRechargeSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRequestRechargeRequest(apiMobilePhoneRechargeSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -173,7 +172,7 @@ public class MobilePhoneRechargeService extends BaseService {
    * @return response of {@code ApiMobilePhoneRechargeGetResponseDto}
    */
   public ApiMobilePhoneRechargeGetResponseDto recoverASingleCellphoneRecharge(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRecoverASingleCellphoneRechargeRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiMobilePhoneRechargeGetResponseDto>() {});
@@ -188,7 +187,7 @@ public class MobilePhoneRechargeService extends BaseService {
   public CompletableFuture<ApiMobilePhoneRechargeGetResponseDto> recoverASingleCellphoneRechargeAsync(
     @NonNull String id
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRecoverASingleCellphoneRechargeRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -211,15 +210,13 @@ public class MobilePhoneRechargeService extends BaseService {
    * Cancel a cell phone recharge
    *
    * @param id String Unique identifier for cell phone recharge on Asaas
-   * @param apiMobilePhoneRechargeGetRequestDto {@link ApiMobilePhoneRechargeGetRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code ApiMobilePhoneRechargeGetResponseDto}
    */
-  public ApiMobilePhoneRechargeGetResponseDto cancelACellphoneRecharge(
-    @NonNull String id,
-    @NonNull ApiMobilePhoneRechargeGetRequestDto apiMobilePhoneRechargeGetRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildCancelACellphoneRechargeRequest(id, apiMobilePhoneRechargeGetRequestDto);
+  public ApiMobilePhoneRechargeGetResponseDto cancelACellphoneRecharge(@NonNull String id, @NonNull Object input)
+    throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildCancelACellphoneRechargeRequest(id, input);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiMobilePhoneRechargeGetResponseDto>() {});
   }
@@ -228,25 +225,22 @@ public class MobilePhoneRechargeService extends BaseService {
    * Cancel a cell phone recharge
    *
    * @param id String Unique identifier for cell phone recharge on Asaas
-   * @param apiMobilePhoneRechargeGetRequestDto {@link ApiMobilePhoneRechargeGetRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code CompletableFuture<ApiMobilePhoneRechargeGetResponseDto>}
    */
   public CompletableFuture<ApiMobilePhoneRechargeGetResponseDto> cancelACellphoneRechargeAsync(
     @NonNull String id,
-    @NonNull ApiMobilePhoneRechargeGetRequestDto apiMobilePhoneRechargeGetRequestDto
+    @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildCancelACellphoneRechargeRequest(id, apiMobilePhoneRechargeGetRequestDto);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildCancelACellphoneRechargeRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
       ModelConverter.convert(response, new TypeReference<ApiMobilePhoneRechargeGetResponseDto>() {})
     );
   }
 
-  private Request buildCancelACellphoneRechargeRequest(
-    @NonNull String id,
-    @NonNull ApiMobilePhoneRechargeGetRequestDto apiMobilePhoneRechargeGetRequestDto
-  ) {
+  private Request buildCancelACellphoneRechargeRequest(@NonNull String id, @NonNull Object input) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
@@ -254,7 +248,7 @@ public class MobilePhoneRechargeService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiMobilePhoneRechargeGetRequestDto)
+      .setJsonContent(input)
       .build();
   }
 
@@ -266,7 +260,7 @@ public class MobilePhoneRechargeService extends BaseService {
    */
   public ApiMobilePhoneRechargeFindProviderResponseDto searchForCellPhoneProvider(@NonNull String phoneNumber)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildSearchForCellPhoneProviderRequest(phoneNumber);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiMobilePhoneRechargeFindProviderResponseDto>() {});
@@ -281,7 +275,7 @@ public class MobilePhoneRechargeService extends BaseService {
   public CompletableFuture<ApiMobilePhoneRechargeFindProviderResponseDto> searchForCellPhoneProviderAsync(
     @NonNull String phoneNumber
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildSearchForCellPhoneProviderRequest(phoneNumber);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->

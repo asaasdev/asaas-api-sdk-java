@@ -7,7 +7,6 @@
 | billingType                                | ApiPaymentUpdateRequestBillingType | ✅       | Payment billing type                                               |
 | value                                      | Double                             | ✅       | Payment amount                                                     |
 | dueDate                                    | String                             | ✅       | Payment due date                                                   |
-| id                                         | String                             | ❌       | Unique payment identifier in Asaas                                 |
 | description                                | String                             | ❌       | Payment description (max. 500 characters)                          |
 | daysAfterDueDateToRegistrationCancellation | Long                               | ❌       | Days after registration cancellation deadline (only for bank slip) |
 | externalReference                          | String                             | ❌       | Free search field                                                  |

@@ -54,10 +54,10 @@ public class Main {
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description                        |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :--------------------------------- |
-| id                         | String                                                                | ✅       | Unique payment identifier in Asaas |
-| apiPaymentPathIdRequestDto | [ApiPaymentPathIdRequestDto](../models/ApiPaymentPathIdRequestDto.md) | ❌       | Request Body                       |
+| Name  | Type   | Required | Description                        |
+| :---- | :----- | :------- | :--------------------------------- |
+| id    | String | ✅       | Unique payment identifier in Asaas |
+| input | Object | ❌       | Request Body                       |
 
 **Return Type**
 
@@ -70,7 +70,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentBankSlipRefundResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPathIdRequestDto;
 
 public class Main {
 
@@ -81,12 +80,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto = ApiPaymentPathIdRequestDto.builder().id("id").build();
-
-    ApiPaymentBankSlipRefundResponseDto response = asaasSdk.paymentRefund.refundBankSlip(
-      "id",
-      apiPaymentPathIdRequestDto
-    );
+    ApiPaymentBankSlipRefundResponseDto response = asaasSdk.paymentRefund.refundBankSlip("id", new Object());
 
     System.out.println(response);
   }

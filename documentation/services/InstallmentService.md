@@ -466,10 +466,10 @@ It is possible to refund an installment received or confirmed via credit card. J
 
 **Parameters**
 
-| Name                           | Type                                                                          | Required | Description                                          |
-| :----------------------------- | :---------------------------------------------------------------------------- | :------- | :--------------------------------------------------- |
-| id                             | String                                                                        | ✅       | Unique identifier of the installment to be refunded. |
-| apiInstallmentRefundRequestDto | [ApiInstallmentRefundRequestDto](../models/ApiInstallmentRefundRequestDto.md) | ❌       | Request Body                                         |
+| Name  | Type   | Required | Description                                          |
+| :---- | :----- | :------- | :--------------------------------------------------- |
+| id    | String | ✅       | Unique identifier of the installment to be refunded. |
+| input | Object | ❌       | Request Body                                         |
 
 **Return Type**
 
@@ -482,7 +482,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentRefundRequestDto;
 
 public class Main {
 
@@ -493,13 +492,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiInstallmentRefundRequestDto apiInstallmentRefundRequestDto = ApiInstallmentRefundRequestDto.builder()
-      .id("2765d086-c7c5-5cca-898a-4262d212587c")
-      .build();
-
     ApiInstallmentGetResponseDto response = asaasSdk.installment.refundInstallment(
       "2765d086-c7c5-5cca-898a-4262d212587c",
-      apiInstallmentRefundRequestDto
+      new Object()
     );
 
     System.out.println(response);
@@ -558,10 +553,7 @@ public class Main {
     List<ApiInstallmentSplitRequestDto> splitsList = Arrays.asList(apiInstallmentSplitRequestDto);
 
     ApiInstallmentUpdateSplitRequestDto apiInstallmentUpdateSplitRequestDto =
-      ApiInstallmentUpdateSplitRequestDto.builder()
-        .id("2765d086-c7c5-5cca-898a-4262d212587c")
-        .splits(splitsList)
-        .build();
+      ApiInstallmentUpdateSplitRequestDto.builder().splits(splitsList).build();
 
     ApiInstallmentUpdateSplitResponseDto response = asaasSdk.installment.updateInstallmentSplits(
       "2765d086-c7c5-5cca-898a-4262d212587c",

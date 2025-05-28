@@ -45,7 +45,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ListWebhooksParameters requestParameters = ListWebhooksParameters.builder().offset(7L).limit(10L).build();
+    ListWebhooksParameters requestParameters = ListWebhooksParameters.builder().offset(5L).limit(10L).build();
 
     ApiPushNotificationConfigListResponseDto response = asaasSdk.webhook.listWebhooks(requestParameters);
 
@@ -207,10 +207,9 @@ public class Main {
         .url("https://www.example.com/webhook/asaas")
         .sendType(ApiPushNotificationConfigUpdateRequestPushNotificationSendType.NON_SEQUENTIALLY)
         .enabled(true)
-        .interrupted(false)
+        .interrupted(true)
         .authToken("5tLxsL6uoN")
         .events(eventsList)
-        .id("bbf67496-1379-4b6d-a348-fd5fa229f1c")
         .build();
 
     ApiPushNotificationConfigGetResponseDto response = asaasSdk.webhook.updateExistingWebhook(

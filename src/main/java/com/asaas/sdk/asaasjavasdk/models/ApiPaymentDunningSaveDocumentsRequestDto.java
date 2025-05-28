@@ -19,12 +19,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiPaymentDunningSaveDocumentsRequestDto {
 
   /**
-   * Unique identifier of the payment dunning in Asaas
-   */
-  @NonNull
-  private String id;
-
-  /**
    * Invoice and/or contract notarized
    */
   @NonNull

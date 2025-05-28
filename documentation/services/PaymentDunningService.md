@@ -50,7 +50,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentDunningsParameters requestParameters = ListPaymentDunningsParameters.builder()
-      .offset(4L)
+      .offset(6L)
       .limit(10L)
       .status(ApiPaymentDunningListRequestPaymentDunningStatus.PENDING)
       .type(ApiPaymentDunningListRequestPaymentDunningType.CREDIT_BUREAU)
@@ -77,7 +77,7 @@ public class Main {
 | Name                            | Type                                                                            | Required | Description                    |
 | :------------------------------ | :------------------------------------------------------------------------------ | :------- | :----------------------------- |
 | apiPaymentDunningSaveRequestDto | [ApiPaymentDunningSaveRequestDto](../models/ApiPaymentDunningSaveRequestDto.md) | ❌       | Request Body                   |
-| \_filename                      | [String](../models/String.md)                                                   | ❌       | Filename for the uploaded file |
+| \_filename                      | [String](../models/String.md)                                                   | ✅       | Filename for the uploaded file |
 
 **Return Type**
 
@@ -165,7 +165,6 @@ public class Main {
 import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningSimulateRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningSimulateResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.SimulateAPaymentDunningParameters;
 
@@ -178,12 +177,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDunningSimulateRequestDto apiPaymentDunningSimulateRequestDto =
-      ApiPaymentDunningSimulateRequestDto.builder().payment("pay_080225913252").build();
-
     SimulateAPaymentDunningParameters requestParameters = SimulateAPaymentDunningParameters.builder()
       .payment("pay_080225913252")
-      .apiPaymentDunningSimulateRequestDto(apiPaymentDunningSimulateRequestDto)
+      .requestBody(new Object())
       .build();
 
     ApiPaymentDunningSimulateResponseDto response = asaasSdk.paymentDunning.simulateAPaymentDunning(requestParameters);
@@ -272,7 +268,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    EventHistoryListsParameters requestParameters = EventHistoryListsParameters.builder().offset(1L).limit(10L).build();
+    EventHistoryListsParameters requestParameters = EventHistoryListsParameters.builder().offset(8L).limit(10L).build();
 
     ApiPaymentDunningListHistoryResponseDto response = asaasSdk.paymentDunning.eventHistoryLists(
       "ce35702d-0d9f-475a-ba46-e251ad265c91",
@@ -373,7 +369,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentsAvailableForPaymentDunningParameters requestParameters =
-      ListPaymentsAvailableForPaymentDunningParameters.builder().offset(9L).limit(10L).build();
+      ListPaymentsAvailableForPaymentDunningParameters.builder().offset(0L).limit(10L).build();
 
     ApiPaymentDunningPaymentsAvailableForDunningResponseDto response =
       asaasSdk.paymentDunning.listPaymentsAvailableForPaymentDunning(requestParameters);
@@ -397,7 +393,7 @@ Use the `isNecessaryResendDocumentation` property returned in the delinquency ob
 | :--------------------------------------- | :------------------------------------------------------------------------------------------------ | :------- | :------------------------------------------------ |
 | id                                       | String                                                                                            | ✅       | Unique identifier of the payment dunning in Asaas |
 | apiPaymentDunningSaveDocumentsRequestDto | [ApiPaymentDunningSaveDocumentsRequestDto](../models/ApiPaymentDunningSaveDocumentsRequestDto.md) | ❌       | Request Body                                      |
-| \_filename                               | [String](../models/String.md)                                                                     | ❌       | Filename for the uploaded file                    |
+| \_filename                               | [String](../models/String.md)                                                                     | ✅       | Filename for the uploaded file                    |
 
 **Return Type**
 
@@ -422,15 +418,9 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ApiPaymentDunningSaveDocumentsRequestDto apiPaymentDunningSaveDocumentsRequestDto =
-      ApiPaymentDunningSaveDocumentsRequestDto.builder()
-        .id("ce35702d-0d9f-475a-ba46-e251ad265c91")
-        .documents(documents)
-        .build();
+      ApiPaymentDunningSaveDocumentsRequestDto.builder().documents(documents).build();
     ApiPaymentDunningSaveDocumentsRequestDto apiPaymentDunningSaveDocumentsRequestDto =
-      ApiPaymentDunningSaveDocumentsRequestDto.builder()
-        .id("ce35702d-0d9f-475a-ba46-e251ad265c91")
-        .documents(documents)
-        .build();
+      ApiPaymentDunningSaveDocumentsRequestDto.builder().documents(documents).build();
 
     ApiPaymentDunningSaveDocumentsResponseDto response = asaasSdk.paymentDunning.resendDocuments(
       "ce35702d-0d9f-475a-ba46-e251ad265c91",
@@ -453,10 +443,10 @@ Allows the cancellation of a delinquency. Use the `canBeCancelled` property retu
 
 **Parameters**
 
-| Name                              | Type                                                                                | Required | Description                                               |
-| :-------------------------------- | :---------------------------------------------------------------------------------- | :------- | :-------------------------------------------------------- |
-| id                                | String                                                                              | ✅       | Unique identifier of the payment dunning to be cancelled. |
-| apiPaymentDunningCancelRequestDto | [ApiPaymentDunningCancelRequestDto](../models/ApiPaymentDunningCancelRequestDto.md) | ❌       | Request Body                                              |
+| Name  | Type   | Required | Description                                               |
+| :---- | :----- | :------- | :-------------------------------------------------------- |
+| id    | String | ✅       | Unique identifier of the payment dunning to be cancelled. |
+| input | Object | ❌       | Request Body                                              |
 
 **Return Type**
 
@@ -468,7 +458,6 @@ Allows the cancellation of a delinquency. Use the `canBeCancelled` property retu
 import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningCancelRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningCancelResponseDto;
 
 public class Main {
@@ -480,13 +469,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDunningCancelRequestDto apiPaymentDunningCancelRequestDto = ApiPaymentDunningCancelRequestDto.builder()
-      .id("ce35702d-0d9f-475a-ba46-e251ad265c91")
-      .build();
-
     ApiPaymentDunningCancelResponseDto response = asaasSdk.paymentDunning.cancelPaymentDunning(
       "ce35702d-0d9f-475a-ba46-e251ad265c91",
-      apiPaymentDunningCancelRequestDto
+      new Object()
     );
 
     System.out.println(response);

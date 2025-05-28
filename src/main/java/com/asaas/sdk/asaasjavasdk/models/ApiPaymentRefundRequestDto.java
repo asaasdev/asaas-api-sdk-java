@@ -18,11 +18,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiPaymentRefundRequestDto {
 
   /**
-   * Unique payment identifier in Asaas
-   */
-  private String id;
-
-  /**
    * Amount to be refunded
    */
   private Double value;

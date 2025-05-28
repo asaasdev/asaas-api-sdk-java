@@ -19,16 +19,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto {
 
   /**
-   * List starting element
-   */
-  private Long offset;
-
-  /**
-   * Number of list elements (max: 100)
-   */
-  private Long limit;
-
-  /**
    * List of objects
    */
   private List<ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto> data;

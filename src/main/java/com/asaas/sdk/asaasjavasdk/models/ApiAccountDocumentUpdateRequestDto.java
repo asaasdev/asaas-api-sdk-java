@@ -23,9 +23,4 @@ public class ApiAccountDocumentUpdateRequestDto {
    */
   @NonNull
   private byte[] documentFile;
-
-  /**
-   * Unique document identifier in Asaas
-   */
-  private String id;
 }

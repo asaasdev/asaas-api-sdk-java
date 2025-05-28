@@ -18,11 +18,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiSubscriptionInvoiceConfigUpdateRequestDto {
 
   /**
-   * Unique subscription identifier in Asaas
-   */
-  private String id;
-
-  /**
    * Deductions. Deductions do not change the total value of the invoice, but they do change the ISS calculation basis.
    */
   private Double deductions;

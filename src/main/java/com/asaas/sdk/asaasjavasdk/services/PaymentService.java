@@ -4,12 +4,12 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentBillingInfoResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCustodyGetResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDeleteResponseDto;
@@ -17,7 +17,6 @@ import com.asaas.sdk.asaasjavasdk.models.ApiPaymentGetResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentIdentificationFieldResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentLimitsResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPathIdRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPayWithCreditCardRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentPixQrCodeResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentReceiveInCashRequestDto;
@@ -67,7 +66,7 @@ public class PaymentService extends BaseService {
    */
   public ApiPaymentListResponseDto listPayments(@NonNull ListPaymentsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListPaymentsRequest(requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentListResponseDto>() {});
@@ -91,7 +90,7 @@ public class PaymentService extends BaseService {
   public CompletableFuture<ApiPaymentListResponseDto> listPaymentsAsync(
     @NonNull ListPaymentsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildListPaymentsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -160,7 +159,7 @@ public class PaymentService extends BaseService {
    */
   public ApiPaymentGetResponseDto createNewPayment(@NonNull ApiPaymentSaveRequestDto apiPaymentSaveRequestDto)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateNewPaymentRequest(apiPaymentSaveRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
@@ -184,7 +183,7 @@ public class PaymentService extends BaseService {
   public CompletableFuture<ApiPaymentGetResponseDto> createNewPaymentAsync(
     @NonNull ApiPaymentSaveRequestDto apiPaymentSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateNewPaymentRequest(apiPaymentSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -221,7 +220,7 @@ public class PaymentService extends BaseService {
   public ApiPaymentGetResponseDto createNewPaymentWithCreditCard(
     @NonNull ApiPaymentSaveWithCreditCardRequestDto apiPaymentSaveWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateNewPaymentWithCreditCardRequest(apiPaymentSaveWithCreditCardRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
@@ -245,7 +244,7 @@ public class PaymentService extends BaseService {
   public CompletableFuture<ApiPaymentGetResponseDto> createNewPaymentWithCreditCardAsync(
     @NonNull ApiPaymentSaveWithCreditCardRequestDto apiPaymentSaveWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateNewPaymentWithCreditCardRequest(apiPaymentSaveWithCreditCardRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -270,15 +269,13 @@ public class PaymentService extends BaseService {
    * Capture payment with Pre-Authorization
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code ApiPaymentGetResponseDto}
    */
-  public ApiPaymentGetResponseDto capturePaymentWithPreAuthorization(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildCapturePaymentWithPreAuthorizationRequest(id, apiPaymentPathIdRequestDto);
+  public ApiPaymentGetResponseDto capturePaymentWithPreAuthorization(@NonNull String id, @NonNull Object input)
+    throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildCapturePaymentWithPreAuthorizationRequest(id, input);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
   }
@@ -287,25 +284,22 @@ public class PaymentService extends BaseService {
    * Capture payment with Pre-Authorization
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code CompletableFuture<ApiPaymentGetResponseDto>}
    */
   public CompletableFuture<ApiPaymentGetResponseDto> capturePaymentWithPreAuthorizationAsync(
     @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
+    @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildCapturePaymentWithPreAuthorizationRequest(id, apiPaymentPathIdRequestDto);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildCapturePaymentWithPreAuthorizationRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
       ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {})
     );
   }
 
-  private Request buildCapturePaymentWithPreAuthorizationRequest(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) {
+  private Request buildCapturePaymentWithPreAuthorizationRequest(@NonNull String id, @NonNull Object input) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
@@ -313,7 +307,7 @@ public class PaymentService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiPaymentPathIdRequestDto)
+      .setJsonContent(input)
       .build();
   }
 
@@ -328,7 +322,7 @@ public class PaymentService extends BaseService {
     @NonNull String id,
     @NonNull ApiPaymentPayWithCreditCardRequestDto apiPaymentPayWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildPayAChargeWithCreditCardRequest(id, apiPaymentPayWithCreditCardRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
@@ -345,7 +339,7 @@ public class PaymentService extends BaseService {
     @NonNull String id,
     @NonNull ApiPaymentPayWithCreditCardRequestDto apiPaymentPayWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildPayAChargeWithCreditCardRequest(id, apiPaymentPayWithCreditCardRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -375,7 +369,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code ApiPaymentBillingInfoResponseDto}
    */
   public ApiPaymentBillingInfoResponseDto retrievePaymentBillingInformation(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrievePaymentBillingInformationRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentBillingInfoResponseDto>() {});
@@ -389,7 +383,7 @@ public class PaymentService extends BaseService {
    */
   public CompletableFuture<ApiPaymentBillingInfoResponseDto> retrievePaymentBillingInformationAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrievePaymentBillingInformationRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -415,7 +409,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code ApiPaymentViewingInfoResponseDto}
    */
   public ApiPaymentViewingInfoResponseDto paymentViewingInformation(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildPaymentViewingInformationRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentViewingInfoResponseDto>() {});
@@ -429,7 +423,7 @@ public class PaymentService extends BaseService {
    */
   public CompletableFuture<ApiPaymentViewingInfoResponseDto> paymentViewingInformationAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildPaymentViewingInformationRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -455,7 +449,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code ApiPaymentGetResponseDto}
    */
   public ApiPaymentGetResponseDto retrieveASinglePayment(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASinglePaymentRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
@@ -468,7 +462,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code CompletableFuture<ApiPaymentGetResponseDto>}
    */
   public CompletableFuture<ApiPaymentGetResponseDto> retrieveASinglePaymentAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveASinglePaymentRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -498,7 +492,7 @@ public class PaymentService extends BaseService {
     @NonNull String id,
     @NonNull ApiPaymentUpdateRequestDto apiPaymentUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateExistingPaymentRequest(id, apiPaymentUpdateRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
@@ -515,7 +509,7 @@ public class PaymentService extends BaseService {
     @NonNull String id,
     @NonNull ApiPaymentUpdateRequestDto apiPaymentUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildUpdateExistingPaymentRequest(id, apiPaymentUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -545,7 +539,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code ApiPaymentDeleteResponseDto}
    */
   public ApiPaymentDeleteResponseDto deletePayment(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildDeletePaymentRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentDeleteResponseDto>() {});
@@ -558,7 +552,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code CompletableFuture<ApiPaymentDeleteResponseDto>}
    */
   public CompletableFuture<ApiPaymentDeleteResponseDto> deletePaymentAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildDeletePaymentRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -581,15 +575,12 @@ public class PaymentService extends BaseService {
    * Restore removed payment
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code ApiPaymentGetResponseDto}
    */
-  public ApiPaymentGetResponseDto restoreRemovedPayment(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildRestoreRemovedPaymentRequest(id, apiPaymentPathIdRequestDto);
+  public ApiPaymentGetResponseDto restoreRemovedPayment(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildRestoreRemovedPaymentRequest(id, input);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
   }
@@ -598,25 +589,22 @@ public class PaymentService extends BaseService {
    * Restore removed payment
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code CompletableFuture<ApiPaymentGetResponseDto>}
    */
   public CompletableFuture<ApiPaymentGetResponseDto> restoreRemovedPaymentAsync(
     @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
+    @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildRestoreRemovedPaymentRequest(id, apiPaymentPathIdRequestDto);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildRestoreRemovedPaymentRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
       ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {})
     );
   }
 
-  private Request buildRestoreRemovedPaymentRequest(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) {
+  private Request buildRestoreRemovedPaymentRequest(@NonNull String id, @NonNull Object input) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
@@ -624,7 +612,7 @@ public class PaymentService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiPaymentPathIdRequestDto)
+      .setJsonContent(input)
       .build();
   }
 
@@ -635,7 +623,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code ApiPaymentStatusResponseDto}
    */
   public ApiPaymentStatusResponseDto retrieveStatusOfAPayment(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveStatusOfAPaymentRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentStatusResponseDto>() {});
@@ -649,7 +637,7 @@ public class PaymentService extends BaseService {
    */
   public CompletableFuture<ApiPaymentStatusResponseDto> retrieveStatusOfAPaymentAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrieveStatusOfAPaymentRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -679,7 +667,7 @@ public class PaymentService extends BaseService {
     @NonNull String id,
     @NonNull ApiPaymentRefundRequestDto apiPaymentRefundRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRefundPaymentRequest(id, apiPaymentRefundRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
@@ -696,7 +684,7 @@ public class PaymentService extends BaseService {
     @NonNull String id,
     @NonNull ApiPaymentRefundRequestDto apiPaymentRefundRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRefundPaymentRequest(id, apiPaymentRefundRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -726,7 +714,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code ApiPaymentIdentificationFieldResponseDto}
    */
   public ApiPaymentIdentificationFieldResponseDto getDigitableBillLine(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildGetDigitableBillLineRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentIdentificationFieldResponseDto>() {});
@@ -740,7 +728,7 @@ public class PaymentService extends BaseService {
    */
   public CompletableFuture<ApiPaymentIdentificationFieldResponseDto> getDigitableBillLineAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildGetDigitableBillLineRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -766,7 +754,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code ApiPaymentPixQrCodeResponseDto}
    */
   public ApiPaymentPixQrCodeResponseDto getQrCodeForPixPayments(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildGetQrCodeForPixPaymentsRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentPixQrCodeResponseDto>() {});
@@ -780,7 +768,7 @@ public class PaymentService extends BaseService {
    */
   public CompletableFuture<ApiPaymentPixQrCodeResponseDto> getQrCodeForPixPaymentsAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildGetQrCodeForPixPaymentsRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -810,7 +798,7 @@ public class PaymentService extends BaseService {
     @NonNull String id,
     @NonNull ApiPaymentReceiveInCashRequestDto apiPaymentReceiveInCashRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildConfirmCashReceiptRequest(id, apiPaymentReceiveInCashRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
@@ -827,7 +815,7 @@ public class PaymentService extends BaseService {
     @NonNull String id,
     @NonNull ApiPaymentReceiveInCashRequestDto apiPaymentReceiveInCashRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildConfirmCashReceiptRequest(id, apiPaymentReceiveInCashRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -854,15 +842,13 @@ public class PaymentService extends BaseService {
    * Undo cash receipt confirmation
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code ApiPaymentGetResponseDto}
    */
-  public ApiPaymentGetResponseDto undoCashReceiptConfirmation(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildUndoCashReceiptConfirmationRequest(id, apiPaymentPathIdRequestDto);
+  public ApiPaymentGetResponseDto undoCashReceiptConfirmation(@NonNull String id, @NonNull Object input)
+    throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildUndoCashReceiptConfirmationRequest(id, input);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
   }
@@ -871,25 +857,22 @@ public class PaymentService extends BaseService {
    * Undo cash receipt confirmation
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentPathIdRequestDto {@link ApiPaymentPathIdRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code CompletableFuture<ApiPaymentGetResponseDto>}
    */
   public CompletableFuture<ApiPaymentGetResponseDto> undoCashReceiptConfirmationAsync(
     @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
+    @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildUndoCashReceiptConfirmationRequest(id, apiPaymentPathIdRequestDto);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildUndoCashReceiptConfirmationRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
       ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {})
     );
   }
 
-  private Request buildUndoCashReceiptConfirmationRequest(
-    @NonNull String id,
-    @NonNull ApiPaymentPathIdRequestDto apiPaymentPathIdRequestDto
-  ) {
+  private Request buildUndoCashReceiptConfirmationRequest(@NonNull String id, @NonNull Object input) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
@@ -897,7 +880,7 @@ public class PaymentService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiPaymentPathIdRequestDto)
+      .setJsonContent(input)
       .build();
   }
 
@@ -919,7 +902,7 @@ public class PaymentService extends BaseService {
   public ApiPaymentSimulateResponseDto salesSimulator(
     @NonNull ApiPaymentSimulateRequestDto apiPaymentSimulateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildSalesSimulatorRequest(apiPaymentSimulateRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentSimulateResponseDto>() {});
@@ -943,7 +926,7 @@ public class PaymentService extends BaseService {
   public CompletableFuture<ApiPaymentSimulateResponseDto> salesSimulatorAsync(
     @NonNull ApiPaymentSimulateRequestDto apiPaymentSimulateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildSalesSimulatorRequest(apiPaymentSimulateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -969,7 +952,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code ApiPaymentCustodyGetResponseDto}
    */
   public ApiPaymentCustodyGetResponseDto retrievePaymentEscrowInTheEscrowAccount(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrievePaymentEscrowInTheEscrowAccountRequest(id);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentCustodyGetResponseDto>() {});
@@ -984,7 +967,7 @@ public class PaymentService extends BaseService {
   public CompletableFuture<ApiPaymentCustodyGetResponseDto> retrievePaymentEscrowInTheEscrowAccountAsync(
     @NonNull String id
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRetrievePaymentEscrowInTheEscrowAccountRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -1009,7 +992,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code ApiPaymentLimitsResponseDto}
    */
   public ApiPaymentLimitsResponseDto recoveringPaymentLimits() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRecoveringPaymentLimitsRequest();
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiPaymentLimitsResponseDto>() {});
@@ -1021,7 +1004,7 @@ public class PaymentService extends BaseService {
    * @return response of {@code CompletableFuture<ApiPaymentLimitsResponseDto>}
    */
   public CompletableFuture<ApiPaymentLimitsResponseDto> recoveringPaymentLimitsAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildRecoveringPaymentLimitsRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->

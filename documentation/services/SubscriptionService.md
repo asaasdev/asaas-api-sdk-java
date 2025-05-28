@@ -419,7 +419,6 @@ public class Main {
       .build();
 
     ApiSubscriptionUpdateRequestDto apiSubscriptionUpdateRequestDto = ApiSubscriptionUpdateRequestDto.builder()
-      .id("sub_VXJBYgP2u0eO")
       .billingType(ApiSubscriptionUpdateRequestBillingType.UNDEFINED)
       .status(ApiSubscriptionUpdateRequestSubscriptionStatus.ACTIVE)
       .nextDueDate("2017-05-15")
@@ -545,7 +544,6 @@ public class Main {
 
     ApiSubscriptionUpdateCreditCardRequestDto apiSubscriptionUpdateCreditCardRequestDto =
       ApiSubscriptionUpdateCreditCardRequestDto.builder()
-        .id("sub_VXJBYgP2u0eO")
         .creditCard(apiCreditCardRequestDto)
         .creditCardHolderInfo(apiCreditCardHolderInfoRequestDto)
         .creditCardToken("a75a1d98-c52d-4a6b-a413-71e00b193c99")
@@ -750,7 +748,6 @@ public class Main {
 
     ApiSubscriptionConfigureInvoiceRequestDto apiSubscriptionConfigureInvoiceRequestDto =
       ApiSubscriptionConfigureInvoiceRequestDto.builder()
-        .id("sub_VXJBYgP2u0eO")
         .municipalServiceId("municipalServiceId")
         .municipalServiceCode("1.01")
         .municipalServiceName("municipalServiceName")
@@ -823,7 +820,6 @@ public class Main {
 
     ApiSubscriptionInvoiceConfigUpdateRequestDto apiSubscriptionInvoiceConfigUpdateRequestDto =
       ApiSubscriptionInvoiceConfigUpdateRequestDto.builder()
-        .id("sub_VXJBYgP2u0eO")
         .deductions(55D)
         .effectiveDatePeriod(ApiSubscriptionInvoiceConfigUpdateRequestDtoEffectiveDatePeriod.ON_PAYMENT_CONFIRMATION)
         .receivedOnly(true)

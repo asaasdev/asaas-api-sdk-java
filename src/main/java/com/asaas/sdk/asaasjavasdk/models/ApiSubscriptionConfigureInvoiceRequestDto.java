@@ -18,11 +18,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiSubscriptionConfigureInvoiceRequestDto {
 
   /**
-   * Unique subscription identifier in Asaas
-   */
-  private String id;
-
-  /**
    * Unique municipal service identifier
    */
   private String municipalServiceId;

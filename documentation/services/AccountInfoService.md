@@ -155,7 +155,7 @@ public class Main {
 | Name                                   | Type                                                                                          | Required | Description                    |
 | :------------------------------------- | :-------------------------------------------------------------------------------------------- | :------- | :----------------------------- |
 | apiPaymentCheckoutConfigSaveRequestDto | [ApiPaymentCheckoutConfigSaveRequestDto](../models/ApiPaymentCheckoutConfigSaveRequestDto.md) | ❌       | Request Body                   |
-| \_filename                             | [String](../models/String.md)                                                                 | ❌       | Filename for the uploaded file |
+| \_filename                             | [String](../models/String.md)                                                                 | ✅       | Filename for the uploaded file |
 
 **Return Type**
 
@@ -185,7 +185,7 @@ public class Main {
         .infoBackgroundColor("#000fff")
         .fontColor("#00ff0")
         .enabled(true)
-        .logoFile(nostrud)
+        .logoFile(repre)
         .build();
     ApiPaymentCheckoutConfigSaveRequestDto apiPaymentCheckoutConfigSaveRequestDto =
       ApiPaymentCheckoutConfigSaveRequestDto.builder()
@@ -193,7 +193,7 @@ public class Main {
         .infoBackgroundColor("#000fff")
         .fontColor("#00ff0")
         .enabled(true)
-        .logoFile(nostrud)
+        .logoFile(repre)
         .build();
 
     ApiPaymentCheckoutConfigGetResponseDto response = asaasSdk.accountInfo.savePaymentCheckoutPersonalization(

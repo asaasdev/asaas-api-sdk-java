@@ -18,11 +18,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ApiPaymentCampaignFileSaveRequestDto {
 
   /**
-   * Unique identifier for your payments link in Asaas
-   */
-  private String id;
-
-  /**
    * true to set as the main image
    */
   private Boolean main;

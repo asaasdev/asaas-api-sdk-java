@@ -4,15 +4,14 @@ package com.asaas.sdk.asaasjavasdk.services;
 
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDto;
+import com.asaas.sdk.asaasjavasdk.exceptions.ApiErrorResponseDtoException;
 import com.asaas.sdk.asaasjavasdk.http.Environment;
 import com.asaas.sdk.asaasjavasdk.http.HttpMethod;
 import com.asaas.sdk.asaasjavasdk.http.ModelConverter;
 import com.asaas.sdk.asaasjavasdk.http.util.RequestBuilder;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionCancelRequestDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionResponseDto;
 import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDtoModel;
+import com.asaas.sdk.asaasjavasdk.models.ApiErrorResponseDto;
 import com.asaas.sdk.asaasjavasdk.validation.ViolationAggregator;
 import com.asaas.sdk.asaasjavasdk.validation.exceptions.ValidationException;
 import com.asaas.sdk.asaasjavasdk.validation.validators.modelValidators.ApiCheckoutSessionSaveRequestDtoValidator;
@@ -51,7 +50,7 @@ public class CheckoutService extends BaseService {
   public ApiCheckoutSessionResponseDto createNewCheckout(
     @NonNull ApiCheckoutSessionSaveRequestDto apiCheckoutSessionSaveRequestDto
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateNewCheckoutRequest(apiCheckoutSessionSaveRequestDto);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCheckoutSessionResponseDto>() {});
@@ -76,7 +75,7 @@ public class CheckoutService extends BaseService {
   public CompletableFuture<ApiCheckoutSessionResponseDto> createNewCheckoutAsync(
     @NonNull ApiCheckoutSessionSaveRequestDto apiCheckoutSessionSaveRequestDto
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
     Request request = this.buildCreateNewCheckoutRequest(apiCheckoutSessionSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
@@ -108,15 +107,12 @@ public class CheckoutService extends BaseService {
    * Cancel a checkout
    *
    * @param id String Unique identifier of checkout in Asaas
-   * @param apiCheckoutSessionCancelRequestDto {@link ApiCheckoutSessionCancelRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code ApiCheckoutSessionResponseDto}
    */
-  public ApiCheckoutSessionResponseDto cancelACheckout(
-    @NonNull String id,
-    @NonNull ApiCheckoutSessionCancelRequestDto apiCheckoutSessionCancelRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildCancelACheckoutRequest(id, apiCheckoutSessionCancelRequestDto);
+  public ApiCheckoutSessionResponseDto cancelACheckout(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildCancelACheckoutRequest(id, input);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<ApiCheckoutSessionResponseDto>() {});
   }
@@ -125,25 +121,22 @@ public class CheckoutService extends BaseService {
    * Cancel a checkout
    *
    * @param id String Unique identifier of checkout in Asaas
-   * @param apiCheckoutSessionCancelRequestDto {@link ApiCheckoutSessionCancelRequestDto} Request Body
+   * @param input Object Request Body
    * @return response of {@code CompletableFuture<ApiCheckoutSessionResponseDto>}
    */
   public CompletableFuture<ApiCheckoutSessionResponseDto> cancelACheckoutAsync(
     @NonNull String id,
-    @NonNull ApiCheckoutSessionCancelRequestDto apiCheckoutSessionCancelRequestDto
+    @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDtoModel.class, ApiErrorResponseDto.class);
-    Request request = this.buildCancelACheckoutRequest(id, apiCheckoutSessionCancelRequestDto);
+    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    Request request = this.buildCancelACheckoutRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
       ModelConverter.convert(response, new TypeReference<ApiCheckoutSessionResponseDto>() {})
     );
   }
 
-  private Request buildCancelACheckoutRequest(
-    @NonNull String id,
-    @NonNull ApiCheckoutSessionCancelRequestDto apiCheckoutSessionCancelRequestDto
-  ) {
+  private Request buildCancelACheckoutRequest(@NonNull String id, @NonNull Object input) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
@@ -151,7 +144,7 @@ public class CheckoutService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiCheckoutSessionCancelRequestDto)
+      .setJsonContent(input)
       .build();
   }
 }

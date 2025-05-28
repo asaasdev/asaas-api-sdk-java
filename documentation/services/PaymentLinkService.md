@@ -50,10 +50,10 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentsLinksParameters requestParameters = ListPaymentsLinksParameters.builder()
-      .offset(5L)
+      .offset(2L)
       .limit(10L)
-      .active(false)
-      .includeDeleted(true)
+      .active(true)
+      .includeDeleted(false)
       .name("name")
       .externalReference("externalReference")
       .build();
@@ -218,7 +218,6 @@ public class Main {
       .build();
 
     ApiPaymentCampaignUpdateRequestDto apiPaymentCampaignUpdateRequestDto = ApiPaymentCampaignUpdateRequestDto.builder()
-      .id("725104409743")
       .name("Book sales")
       .description("Any book for just R$: 50.00")
       .endDate("2024-09-05")
@@ -292,10 +291,10 @@ public class Main {
 
 **Parameters**
 
-| Name                               | Type                                                                                  | Required | Description                                       |
-| :--------------------------------- | :------------------------------------------------------------------------------------ | :------- | :------------------------------------------------ |
-| id                                 | String                                                                                | ✅       | Unique identifier for your payments link in Asaas |
-| apiPaymentCampaignPathIdRequestDto | [ApiPaymentCampaignPathIdRequestDto](../models/ApiPaymentCampaignPathIdRequestDto.md) | ❌       | Request Body                                      |
+| Name  | Type   | Required | Description                                       |
+| :---- | :----- | :------- | :------------------------------------------------ |
+| id    | String | ✅       | Unique identifier for your payments link in Asaas |
+| input | Object | ❌       | Request Body                                      |
 
 **Return Type**
 
@@ -308,7 +307,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignPathIdRequestDto;
 
 public class Main {
 
@@ -319,14 +317,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCampaignPathIdRequestDto apiPaymentCampaignPathIdRequestDto = ApiPaymentCampaignPathIdRequestDto.builder()
-      .id("725104409743")
-      .build();
-
-    ApiPaymentCampaignGetResponseDto response = asaasSdk.paymentLink.restoreAPaymentsLink(
-      "725104409743",
-      apiPaymentCampaignPathIdRequestDto
-    );
+    ApiPaymentCampaignGetResponseDto response = asaasSdk.paymentLink.restoreAPaymentsLink("725104409743", new Object());
 
     System.out.println(response);
   }
@@ -385,7 +376,7 @@ public class Main {
 | :----------------------------------- | :---------------------------------------------------------------------------------------- | :------- | :------------------------------------------------ |
 | id                                   | String                                                                                    | ✅       | Unique identifier for your payments link in Asaas |
 | apiPaymentCampaignFileSaveRequestDto | [ApiPaymentCampaignFileSaveRequestDto](../models/ApiPaymentCampaignFileSaveRequestDto.md) | ❌       | Request Body                                      |
-| \_filename                           | [String](../models/String.md)                                                             | ❌       | Filename for the uploaded file                    |
+| \_filename                           | [String](../models/String.md)                                                             | ✅       | Filename for the uploaded file                    |
 
 **Return Type**
 
@@ -413,14 +404,12 @@ public class Main {
 		AsaasSdk asaasSdk = new AsaasSdk(config);
 
 		ApiPaymentCampaignFileSaveRequestDto apiPaymentCampaignFileSaveRequestDto = ApiPaymentCampaignFileSaveRequestDto.builder()
-			.id("725104409743")
 			.main(true)
-			.image(voluptate do)
+			.image(ipsum nulla m)
 			.build();
 		ApiPaymentCampaignFileSaveRequestDto apiPaymentCampaignFileSaveRequestDto = ApiPaymentCampaignFileSaveRequestDto.builder()
-			.id("725104409743")
 			.main(true)
-			.image(voluptate do)
+			.image(ipsum nulla m)
 			.build();
 
 		ApiPaymentCampaignFileGetResponseDto response = asaasSdk.paymentLink.addAnImageToAPaymentsLink("725104409743", apiPaymentCampaignFileSaveRequestDto, apiPaymentCampaignFileSaveRequestDto);
@@ -525,11 +514,11 @@ public class Main {
 
 **Parameters**
 
-| Name                                   | Type                                                                                          | Required | Description                                       |
-| :------------------------------------- | :-------------------------------------------------------------------------------------------- | :------- | :------------------------------------------------ |
-| paymentLinkId                          | String                                                                                        | ✅       | Unique identifier for your payments link in Asaas |
-| imageId                                | String                                                                                        | ✅       | Unique payment link image identifier in Asaas     |
-| apiPaymentCampaignFilePathIdRequestDto | [ApiPaymentCampaignFilePathIdRequestDto](../models/ApiPaymentCampaignFilePathIdRequestDto.md) | ❌       | Request Body                                      |
+| Name          | Type   | Required | Description                                       |
+| :------------ | :----- | :------- | :------------------------------------------------ |
+| paymentLinkId | String | ✅       | Unique identifier for your payments link in Asaas |
+| imageId       | String | ✅       | Unique payment link image identifier in Asaas     |
+| input         | Object | ❌       | Request Body                                      |
 
 **Return Type**
 
@@ -542,7 +531,6 @@ import com.asaas.sdk.asaasjavasdk.AsaasSdk;
 import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
 import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
 import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignFileGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignFilePathIdRequestDto;
 
 public class Main {
 
@@ -553,16 +541,10 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCampaignFilePathIdRequestDto apiPaymentCampaignFilePathIdRequestDto =
-      ApiPaymentCampaignFilePathIdRequestDto.builder()
-        .paymentLinkId("725104409743")
-        .imageId("417d1fe7-f530-4368-935f-699045f2bf5d")
-        .build();
-
     ApiPaymentCampaignFileGetResponseDto response = asaasSdk.paymentLink.setPaymentsLinkMainImage(
       "725104409743",
       "417d1fe7-f530-4368-935f-699045f2bf5d",
-      apiPaymentCampaignFilePathIdRequestDto
+      new Object()
     );
 
     System.out.println(response);
