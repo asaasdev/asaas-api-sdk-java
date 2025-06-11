@@ -1,7 +1,7 @@
 name: publish_maven_central_repo.yml
 on:
   release:
-    types: [published]
+    types: [created, published]
 
 jobs:
   publish:
