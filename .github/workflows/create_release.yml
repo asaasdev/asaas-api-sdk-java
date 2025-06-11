@@ -3,7 +3,8 @@ name: Build and Release from Merged PR
 on:
   pull_request:
     types: [closed]
-    branches: [main]
+    branches: [master]
+  workflow_dispatch:
 
 jobs:
   create-release:
