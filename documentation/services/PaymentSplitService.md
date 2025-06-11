@@ -27,10 +27,10 @@ A list of all methods in the `PaymentSplitService` service. Click on the method 
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentSplitGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentSplitGetResponseDto;
 
 public class Main {
 
@@ -67,12 +67,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentSplitListPaidRequestPaymentSplitStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentSplitListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListPaidSplitsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentSplitListPaidRequestPaymentSplitStatus;
+import com.asaas.apisdk.models.ApiPaymentSplitListResponseDto;
+import com.asaas.apisdk.models.ListPaidSplitsParameters;
 
 public class Main {
 
@@ -120,10 +120,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentSplitGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentSplitGetResponseDto;
 
 public class Main {
 
@@ -160,12 +160,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentSplitListReceivedRequestPaymentSplitStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentSplitListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListReceivedSplitsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentSplitListReceivedRequestPaymentSplitStatus;
+import com.asaas.apisdk.models.ApiPaymentSplitListResponseDto;
+import com.asaas.apisdk.models.ListReceivedSplitsParameters;
 
 public class Main {
 

@@ -28,11 +28,11 @@ A list of all methods in the `BillService` service. Click on the method name to 
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiBillListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListBillPaymentsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiBillListResponseDto;
+import com.asaas.apisdk.models.ListBillPaymentsParameters;
 
 public class Main {
 
@@ -71,11 +71,11 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiBillGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiBillSaveRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiBillGetResponseDto;
+import com.asaas.apisdk.models.ApiBillSaveRequestDto;
 
 public class Main {
 
@@ -124,11 +124,11 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiBillSimulateRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiBillSimulateResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiBillSimulateRequestDto;
+import com.asaas.apisdk.models.ApiBillSimulateResponseDto;
 
 public class Main {
 
@@ -170,10 +170,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiBillGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiBillGetResponseDto;
 
 public class Main {
 
@@ -213,10 +213,10 @@ Allows canceling the bill payment. Use the `canBeCancelled` property of the `bil
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiBillGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiBillGetResponseDto;
 
 public class Main {
 

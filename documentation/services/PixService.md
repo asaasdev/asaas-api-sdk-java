@@ -30,12 +30,12 @@ A list of all methods in the `PixService` service. Click on the method name to v
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixAddressKeyListRequestPixAddressKeyStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixAddressKeyListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListKeysParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixAddressKeyListRequestPixAddressKeyStatus;
+import com.asaas.apisdk.models.ApiPixAddressKeyListResponseDto;
+import com.asaas.apisdk.models.ListKeysParameters;
 
 public class Main {
 
@@ -79,12 +79,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixAddressKeyGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixAddressKeySaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixAddressKeySaveRequestPixAddressKeyType;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixAddressKeyGetResponseDto;
+import com.asaas.apisdk.models.ApiPixAddressKeySaveRequestDto;
+import com.asaas.apisdk.models.ApiPixAddressKeySaveRequestPixAddressKeyType;
 
 public class Main {
 
@@ -125,10 +125,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixAddressKeyGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixAddressKeyGetResponseDto;
 
 public class Main {
 
@@ -165,10 +165,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixAddressKeyGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixAddressKeyGetResponseDto;
 
 public class Main {
 
@@ -205,12 +205,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixQrCodeSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixQrCodeSaveResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.Format;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixQrCodeSaveRequestDto;
+import com.asaas.apisdk.models.ApiPixQrCodeSaveResponseDto;
+import com.asaas.apisdk.models.Format;
 
 public class Main {
 
@@ -258,10 +258,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixQrCodeDeleteResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixQrCodeDeleteResponseDto;
 
 public class Main {
 
@@ -292,10 +292,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTokenBucketGetAddressKeyResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixTokenBucketGetAddressKeyResponseDto;
 
 public class Main {
 

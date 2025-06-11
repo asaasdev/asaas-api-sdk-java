@@ -20,8 +20,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.asaas.sdk</groupId>
-            <artifactId>asaas-java-sdk</artifactId>
+            <groupId>com.asaas</groupId>
+            <artifactId>api-sdk</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

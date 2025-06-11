@@ -28,10 +28,10 @@ A list of all methods in the `PaymentDocumentService` service. Click on the meth
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentListResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDocumentListResponseDto;
 
 public class Main {
 
@@ -70,12 +70,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentSaveRequestPaymentDocumentType;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDocumentGetResponseDto;
+import com.asaas.apisdk.models.ApiPaymentDocumentSaveRequestDto;
+import com.asaas.apisdk.models.ApiPaymentDocumentSaveRequestPaymentDocumentType;
 
 public class Main {
     public static void main(String[] args) {
@@ -126,10 +126,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDocumentGetResponseDto;
 
 public class Main {
 
@@ -171,12 +171,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentUpdateRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentUpdateRequestPaymentDocumentType;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDocumentGetResponseDto;
+import com.asaas.apisdk.models.ApiPaymentDocumentUpdateRequestDto;
+import com.asaas.apisdk.models.ApiPaymentDocumentUpdateRequestPaymentDocumentType;
 
 public class Main {
 
@@ -223,10 +223,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDocumentDeleteResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDocumentDeleteResponseDto;
 
 public class Main {
 

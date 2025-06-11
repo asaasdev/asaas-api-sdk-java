@@ -37,13 +37,13 @@ A list of all methods in the `SubscriptionService` service. Click on the method 
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionListRequestBillingType;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionListRequestSubscriptionStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListSubscriptionsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiSubscriptionListRequestBillingType;
+import com.asaas.apisdk.models.ApiSubscriptionListRequestSubscriptionStatus;
+import com.asaas.apisdk.models.ApiSubscriptionListResponseDto;
+import com.asaas.apisdk.models.ListSubscriptionsParameters;
 
 public class Main {
 
@@ -94,20 +94,20 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDiscountDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentFineRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentInterestRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionSaveRequestBillingType;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionSaveRequestCycle;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionSplitRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
+import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
+import com.asaas.apisdk.models.ApiPaymentDiscountDto;
+import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
+import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
+import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
+import com.asaas.apisdk.models.ApiSubscriptionGetResponseDto;
+import com.asaas.apisdk.models.ApiSubscriptionSaveRequestBillingType;
+import com.asaas.apisdk.models.ApiSubscriptionSaveRequestCycle;
+import com.asaas.apisdk.models.ApiSubscriptionSaveRequestDto;
+import com.asaas.apisdk.models.ApiSubscriptionSplitRequestDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -193,22 +193,22 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardHolderInfoRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDiscountDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentFineRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentInterestRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionSaveWithCreditCardRequestBillingType;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionSaveWithCreditCardRequestCycle;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionSaveWithCreditCardRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionSaveWithCreditCardResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionSplitRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCreditCardHolderInfoRequestDto;
+import com.asaas.apisdk.models.ApiCreditCardRequestDto;
+import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
+import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
+import com.asaas.apisdk.models.ApiPaymentDiscountDto;
+import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
+import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
+import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
+import com.asaas.apisdk.models.ApiSubscriptionSaveWithCreditCardRequestBillingType;
+import com.asaas.apisdk.models.ApiSubscriptionSaveWithCreditCardRequestCycle;
+import com.asaas.apisdk.models.ApiSubscriptionSaveWithCreditCardRequestDto;
+import com.asaas.apisdk.models.ApiSubscriptionSaveWithCreditCardResponseDto;
+import com.asaas.apisdk.models.ApiSubscriptionSplitRequestDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -254,7 +254,7 @@ public class Main {
     ApiCreditCardRequestDto apiCreditCardRequestDto = ApiCreditCardRequestDto.builder()
       .holderName("John Doe")
       .number("1234567890123456")
-      .expiryMonth("5")
+      .expiryMonth("6")
       .expiryYear("2025")
       .ccv("123")
       .build();
@@ -320,10 +320,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiSubscriptionGetResponseDto;
 
 public class Main {
 
@@ -361,21 +361,21 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDiscountDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentFineRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentInterestRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionSplitRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionUpdateRequestBillingType;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionUpdateRequestCycle;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionUpdateRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionUpdateRequestSubscriptionStatus;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
+import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
+import com.asaas.apisdk.models.ApiPaymentDiscountDto;
+import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
+import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
+import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
+import com.asaas.apisdk.models.ApiSubscriptionGetResponseDto;
+import com.asaas.apisdk.models.ApiSubscriptionSplitRequestDto;
+import com.asaas.apisdk.models.ApiSubscriptionUpdateRequestBillingType;
+import com.asaas.apisdk.models.ApiSubscriptionUpdateRequestCycle;
+import com.asaas.apisdk.models.ApiSubscriptionUpdateRequestDto;
+import com.asaas.apisdk.models.ApiSubscriptionUpdateRequestSubscriptionStatus;
 import java.util.Arrays;
 import java.util.List;
 
@@ -463,10 +463,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionDeleteResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiSubscriptionDeleteResponseDto;
 
 public class Main {
 
@@ -506,13 +506,13 @@ This endpoint updates the subscription's credit card without triggering an immed
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardHolderInfoRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionUpdateCreditCardRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCreditCardHolderInfoRequestDto;
+import com.asaas.apisdk.models.ApiCreditCardRequestDto;
+import com.asaas.apisdk.models.ApiSubscriptionGetResponseDto;
+import com.asaas.apisdk.models.ApiSubscriptionUpdateCreditCardRequestDto;
 
 public class Main {
 
@@ -526,7 +526,7 @@ public class Main {
     ApiCreditCardRequestDto apiCreditCardRequestDto = ApiCreditCardRequestDto.builder()
       .holderName("John Doe")
       .number("1234567890123456")
-      .expiryMonth("5")
+      .expiryMonth("6")
       .expiryYear("2025")
       .ccv("123")
       .build();
@@ -580,12 +580,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionListPaymentsRequestPaymentStatus;
-import com.asaas.sdk.asaasjavasdk.models.ListPaymentsOfASubscriptionParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentListResponseDto;
+import com.asaas.apisdk.models.ApiSubscriptionListPaymentsRequestPaymentStatus;
+import com.asaas.apisdk.models.ListPaymentsOfASubscriptionParameters;
 
 public class Main {
 
@@ -630,10 +630,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.GenerateSignatureBookletParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.GenerateSignatureBookletParameters;
 
 public class Main {
 
@@ -677,10 +677,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionInvoiceConfigGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigGetResponseDto;
 
 public class Main {
 
@@ -719,13 +719,13 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceTaxesDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionConfigureInvoiceRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionConfigureInvoiceRequestDtoEffectiveDatePeriod;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionInvoiceConfigGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerInvoiceTaxesDto;
+import com.asaas.apisdk.models.ApiSubscriptionConfigureInvoiceRequestDto;
+import com.asaas.apisdk.models.ApiSubscriptionConfigureInvoiceRequestDtoEffectiveDatePeriod;
+import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigGetResponseDto;
 
 public class Main {
 
@@ -791,13 +791,13 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceTaxesDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionInvoiceConfigGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionInvoiceConfigUpdateRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionInvoiceConfigUpdateRequestDtoEffectiveDatePeriod;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerInvoiceTaxesDto;
+import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigGetResponseDto;
+import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigUpdateRequestDto;
+import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigUpdateRequestDtoEffectiveDatePeriod;
 
 public class Main {
 
@@ -858,10 +858,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionDeleteInvoiceConfigResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiSubscriptionDeleteInvoiceConfigResponseDto;
 
 public class Main {
 
@@ -900,12 +900,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiSubscriptionGetInvoicesRequestInvoiceStatus;
-import com.asaas.sdk.asaasjavasdk.models.ListInvoicesForSubscriptionChargesParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerInvoiceListResponseDto;
+import com.asaas.apisdk.models.ApiSubscriptionGetInvoicesRequestInvoiceStatus;
+import com.asaas.apisdk.models.ListInvoicesForSubscriptionChargesParameters;
 
 public class Main {
 

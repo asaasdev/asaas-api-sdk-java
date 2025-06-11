@@ -24,13 +24,13 @@ A list of all methods in the `CreditCardService` service. Click on the method na
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardHolderInfoRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardTokenizeRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardTokenizeResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCreditCardHolderInfoRequestDto;
+import com.asaas.apisdk.models.ApiCreditCardRequestDto;
+import com.asaas.apisdk.models.ApiCreditCardTokenizeRequestDto;
+import com.asaas.apisdk.models.ApiCreditCardTokenizeResponseDto;
 
 public class Main {
 
@@ -44,7 +44,7 @@ public class Main {
     ApiCreditCardRequestDto apiCreditCardRequestDto = ApiCreditCardRequestDto.builder()
       .holderName("John Doe")
       .number("1234567890123456")
-      .expiryMonth("5")
+      .expiryMonth("6")
       .expiryYear("2025")
       .ccv("123")
       .build();

@@ -20,10 +20,10 @@ A list of all methods in the `FinanceService` service. Click on the method name 
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiFinanceBalanceResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiFinanceBalanceResponseDto;
 
 public class Main {
 
@@ -62,13 +62,13 @@ Return total values of charges from your Asaas account according to the provided
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiFinanceGetPaymentStatisticsRequestBillingType;
-import com.asaas.sdk.asaasjavasdk.models.ApiFinanceGetPaymentStatisticsRequestPaymentStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiFinanceGetPaymentStatisticsResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.BillingStatisticsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiFinanceGetPaymentStatisticsRequestBillingType;
+import com.asaas.apisdk.models.ApiFinanceGetPaymentStatisticsRequestPaymentStatus;
+import com.asaas.apisdk.models.ApiFinanceGetPaymentStatisticsResponseDto;
+import com.asaas.apisdk.models.BillingStatisticsParameters;
 
 public class Main {
 
@@ -113,10 +113,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiFinanceGetSplitStatisticsResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiFinanceGetSplitStatisticsResponseDto;
 
 public class Main {
 

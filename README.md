@@ -40,8 +40,8 @@ If you use Maven, place the following within the _dependency_ tag in your `pom.x
 
 ```XML
 <dependency>
-    <groupId>com.asaas.sdk</groupId>
-    <artifactId>asaas-java-sdk</artifactId>
+    <groupId>com.asaas</groupId>
+    <artifactId>api-sdk</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
@@ -49,7 +49,7 @@ If you use Maven, place the following within the _dependency_ tag in your `pom.x
 If you use Gradle, paste the next line inside the _dependencies_ block of your `build.gradle` file:
 
 ```Gradle
-implementation group: com.asaas.sdk, name: asaas-java-sdk, version: 1.0.0
+implementation group: com.asaas, name: api-sdk, version: 1.0.0
 ```
 
 If you use JAR files, package the SDK by running the following command:
@@ -71,9 +71,9 @@ The AsaasSdk API uses API keys as a form of authentication. An API key is a uniq
 When you initialize the SDK, you can set the API key as follows:
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
 
 public class Main {
 
@@ -115,9 +115,9 @@ SANDBOX("https://api-sandbox.asaas.com/");
 To configure the SDK to use a specific environment, you can set the base URL as follows:
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.http.Environment;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.http.Environment;
 
 public class Main {
 
@@ -136,8 +136,8 @@ public class Main {
 You can set a custom timeout for the SDK's HTTP requests as follows:
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.AsaasSdkConfig;
 
 public class Main {
 
@@ -154,15 +154,15 @@ public class Main {
 Below is a comprehensive example demonstrating how to authenticate and call a simple endpoint:
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListRequestBillingType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListRequestInvoiceStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListRequestPaymentStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListPaymentsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.exceptions.ApiError;
+import com.asaas.apisdk.models.ApiPaymentListRequestBillingType;
+import com.asaas.apisdk.models.ApiPaymentListRequestInvoiceStatus;
+import com.asaas.apisdk.models.ApiPaymentListRequestPaymentStatus;
+import com.asaas.apisdk.models.ApiPaymentListResponseDto;
+import com.asaas.apisdk.models.ListPaymentsParameters;
 
 public class Main {
 

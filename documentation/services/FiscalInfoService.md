@@ -23,10 +23,10 @@ A list of all methods in the `FiscalInfoService` service. Click on the method na
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto;
 
 public class Main {
 
@@ -57,10 +57,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerFiscalInfoGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerFiscalInfoGetResponseDto;
 
 public class Main {
 
@@ -98,11 +98,11 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerFiscalInfoGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerFiscalInfoSaveRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerFiscalInfoGetResponseDto;
+import com.asaas.apisdk.models.ApiCustomerFiscalInfoSaveRequestDto;
 
 public class Main {
     public static void main(String[] args) {
@@ -180,11 +180,11 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerFiscalInfoListMunicipalServicesResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListMunicipalServicesParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerFiscalInfoListMunicipalServicesResponseDto;
+import com.asaas.apisdk.models.ListMunicipalServicesParameters;
 
 public class Main {
 
@@ -231,11 +231,11 @@ List of possible NBS Codes (Brazilian Nomenclature of Services)
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListNbsCodesParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto;
+import com.asaas.apisdk.models.ListNbsCodesParameters;
 
 public class Main {
 
@@ -280,11 +280,11 @@ Here you can enable or disable the use of the national portal as an invoice issu
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerFiscalInfoUpdateUseNationalPortalRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerFiscalInfoUpdateUseNationalPortalRequestDto;
+import com.asaas.apisdk.models.ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto;
 
 public class Main {
 

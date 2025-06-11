@@ -6,8 +6,8 @@
 >
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.asaas.sdk</groupId>
-    <artifactId>asaas-java-sdk</artifactId>
+    <groupId>com.asaas</groupId>
+    <artifactId>api-sdk</artifactId>
     <version>1.0.0</version>
 
     <!-- See https://central.sonatype.org/publish/requirements/#project-name-description-and-url -->
@@ -51,6 +51,11 @@
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>4.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>0.2.6</version>
         </dependency>
     </dependencies>
 
