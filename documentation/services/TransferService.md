@@ -30,11 +30,11 @@ This method returns a paginated list of all transfers for the specified filter.
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListTransfersParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiTransferListResponseDto;
+import com.asaas.apisdk.models.ListTransfersParameters;
 
 public class Main {
 
@@ -79,18 +79,18 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferBankAccountSaveRequestBankAccountType;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferBankAccountSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferBankSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferRecurringSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferRecurringSaveRequestRecurringCheckoutScheduleFrequency;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferSaveRequestPixAddressKeyType;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferSaveRequestTransferType;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiTransferBankAccountSaveRequestBankAccountType;
+import com.asaas.apisdk.models.ApiTransferBankAccountSaveRequestDto;
+import com.asaas.apisdk.models.ApiTransferBankSaveRequestDto;
+import com.asaas.apisdk.models.ApiTransferGetResponseDto;
+import com.asaas.apisdk.models.ApiTransferRecurringSaveRequestDto;
+import com.asaas.apisdk.models.ApiTransferRecurringSaveRequestRecurringCheckoutScheduleFrequency;
+import com.asaas.apisdk.models.ApiTransferSaveRequestDto;
+import com.asaas.apisdk.models.ApiTransferSaveRequestPixAddressKeyType;
+import com.asaas.apisdk.models.ApiTransferSaveRequestTransferType;
 
 public class Main {
 
@@ -164,11 +164,11 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferSaveInternalTransferRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferSaveInternalTransferResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiTransferSaveInternalTransferRequestDto;
+import com.asaas.apisdk.models.ApiTransferSaveInternalTransferResponseDto;
 
 public class Main {
 
@@ -214,10 +214,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiTransferGetResponseDto;
 
 public class Main {
 
@@ -256,10 +256,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiTransferGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiTransferGetResponseDto;
 
 public class Main {
 

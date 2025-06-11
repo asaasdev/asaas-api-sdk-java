@@ -28,12 +28,12 @@ A list of all methods in the `PixTransactionService` service. Click on the metho
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionQrCodeSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionSaveRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixTransactionGetResponseDto;
+import com.asaas.apisdk.models.ApiPixTransactionQrCodeSaveRequestDto;
+import com.asaas.apisdk.models.ApiPixTransactionSaveRequestDto;
 
 public class Main {
 
@@ -80,11 +80,11 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixQrCodeDecodeRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixQrCodeDecodeResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixQrCodeDecodeRequestDto;
+import com.asaas.apisdk.models.ApiPixQrCodeDecodeResponseDto;
 
 public class Main {
 
@@ -130,10 +130,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixTransactionGetResponseDto;
 
 public class Main {
 
@@ -172,13 +172,13 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionListRequestPixTransactionStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionListRequestPixTransactionType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListTransactionsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixTransactionListRequestPixTransactionStatus;
+import com.asaas.apisdk.models.ApiPixTransactionListRequestPixTransactionType;
+import com.asaas.apisdk.models.ApiPixTransactionListResponseDto;
+import com.asaas.apisdk.models.ListTransactionsParameters;
 
 public class Main {
 
@@ -224,10 +224,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixTransactionGetResponseDto;
 
 public class Main {
 

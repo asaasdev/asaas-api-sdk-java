@@ -32,13 +32,13 @@ A list of all methods in the `PaymentDunningService` service. Click on the metho
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningListRequestPaymentDunningStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningListRequestPaymentDunningType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListPaymentDunningsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDunningListRequestPaymentDunningStatus;
+import com.asaas.apisdk.models.ApiPaymentDunningListRequestPaymentDunningType;
+import com.asaas.apisdk.models.ApiPaymentDunningListResponseDto;
+import com.asaas.apisdk.models.ListPaymentDunningsParameters;
 
 public class Main {
 
@@ -86,12 +86,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningSaveRequestPaymentDunningType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningShowResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDunningSaveRequestDto;
+import com.asaas.apisdk.models.ApiPaymentDunningSaveRequestPaymentDunningType;
+import com.asaas.apisdk.models.ApiPaymentDunningShowResponseDto;
 
 public class Main {
 
@@ -162,11 +162,11 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningSimulateResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.SimulateAPaymentDunningParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDunningSimulateResponseDto;
+import com.asaas.apisdk.models.SimulateAPaymentDunningParameters;
 
 public class Main {
 
@@ -208,10 +208,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningShowResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDunningShowResponseDto;
 
 public class Main {
 
@@ -253,11 +253,11 @@ Returns a paginated list of events that have occurred since the charge was denie
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningListHistoryResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.EventHistoryListsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDunningListHistoryResponseDto;
+import com.asaas.apisdk.models.EventHistoryListsParameters;
 
 public class Main {
 
@@ -302,11 +302,11 @@ Returns a paginated list of payments received through debt renegotiation.
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningListPartialPaymentsResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListPaymentsReceivedParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDunningListPartialPaymentsResponseDto;
+import com.asaas.apisdk.models.ListPaymentsReceivedParameters;
 
 public class Main {
 
@@ -353,11 +353,11 @@ Returns a paginated list of possible negative charges together with a simulation
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningPaymentsAvailableForDunningResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListPaymentsAvailableForPaymentDunningParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDunningPaymentsAvailableForDunningResponseDto;
+import com.asaas.apisdk.models.ListPaymentsAvailableForPaymentDunningParameters;
 
 public class Main {
 
@@ -402,11 +402,11 @@ Use the `isNecessaryResendDocumentation` property returned in the delinquency ob
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningSaveDocumentsRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningSaveDocumentsResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDunningSaveDocumentsRequestDto;
+import com.asaas.apisdk.models.ApiPaymentDunningSaveDocumentsResponseDto;
 
 public class Main {
 
@@ -455,10 +455,10 @@ Allows the cancellation of a delinquency. Use the `canBeCancelled` property retu
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDunningCancelResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentDunningCancelResponseDto;
 
 public class Main {
 

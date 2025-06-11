@@ -28,12 +28,12 @@ A list of all methods in the `RecurringPixService` service. Click on the method 
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionRecurringCheckoutScheduleListRequestRecurringCheckoutScheduleStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionRecurringCheckoutScheduleListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListRecurrencesParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleListRequestRecurringCheckoutScheduleStatus;
+import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleListResponseDto;
+import com.asaas.apisdk.models.ListRecurrencesParameters;
 
 public class Main {
 
@@ -82,10 +82,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionRecurringCheckoutScheduleGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleGetResponseDto;
 
 public class Main {
 
@@ -125,10 +125,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionRecurringCheckoutScheduleGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleGetResponseDto;
 
 public class Main {
 
@@ -169,11 +169,11 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListRecurrenceItemsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto;
+import com.asaas.apisdk.models.ListRecurrenceItemsParameters;
 
 public class Main {
 
@@ -219,10 +219,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto;
 
 public class Main {
 

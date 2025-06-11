@@ -28,11 +28,11 @@ A list of all methods in the `ChargebackService` service. Click on the method na
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiChargebackSaveDisputeRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiChargebackSaveDisputeResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiChargebackSaveDisputeRequestDto;
+import com.asaas.apisdk.models.ApiChargebackSaveDisputeResponseDto;
 
 public class Main {
 
@@ -82,13 +82,13 @@ This method returns a paginated list of all chargebacks for the specified filter
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiChargebackListRequestChargebackStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiChargebackListRequestCreditCardBrand;
-import com.asaas.sdk.asaasjavasdk.models.ApiChargebackListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListChargebacksParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiChargebackListRequestChargebackStatus;
+import com.asaas.apisdk.models.ApiChargebackListRequestCreditCardBrand;
+import com.asaas.apisdk.models.ApiChargebackListResponseDto;
+import com.asaas.apisdk.models.ListChargebacksParameters;
 
 public class Main {
 
@@ -138,10 +138,10 @@ This endpoint retrieves a specific chargeback based on the payment or installmen
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentChargebackResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentChargebackResponseDto;
 
 public class Main {
 

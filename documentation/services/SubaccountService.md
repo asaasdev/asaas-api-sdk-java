@@ -28,11 +28,11 @@ A list of all methods in the `SubaccountService` service. Click on the method na
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListSubaccountsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerListResponseDto;
+import com.asaas.apisdk.models.ListSubaccountsParameters;
 
 public class Main {
 
@@ -78,14 +78,14 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerSaveRequestCompanyType;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerSaveResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPushNotificationConfigSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPushNotificationConfigSaveRequestPushNotificationSendType;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerSaveRequestCompanyType;
+import com.asaas.apisdk.models.ApiCustomerSaveRequestDto;
+import com.asaas.apisdk.models.ApiCustomerSaveResponseDto;
+import com.asaas.apisdk.models.ApiPushNotificationConfigSaveRequestDto;
+import com.asaas.apisdk.models.ApiPushNotificationConfigSaveRequestPushNotificationSendType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -160,10 +160,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerGetResponseDto;
 
 public class Main {
 
@@ -202,10 +202,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerPaymentCustodyConfigDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerPaymentCustodyConfigDto;
 
 public class Main {
 
@@ -245,11 +245,11 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerPaymentCustodyConfigDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerPaymentCustodyConfigDto;
+import com.asaas.apisdk.models.ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto;
 
 public class Main {
 

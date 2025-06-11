@@ -32,11 +32,11 @@ A list of all methods in the `InstallmentService` service. Click on the method n
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListInstallmentsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiInstallmentListResponseDto;
+import com.asaas.apisdk.models.ListInstallmentsParameters;
 
 public class Main {
 
@@ -75,18 +75,18 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentSaveRequestBillingType;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentSplitRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDiscountDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentFineRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentInterestRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiInstallmentGetResponseDto;
+import com.asaas.apisdk.models.ApiInstallmentSaveRequestBillingType;
+import com.asaas.apisdk.models.ApiInstallmentSaveRequestDto;
+import com.asaas.apisdk.models.ApiInstallmentSplitRequestDto;
+import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
+import com.asaas.apisdk.models.ApiPaymentDiscountDto;
+import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
+import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
+import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -169,20 +169,20 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardHolderInfoRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCreditCardRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentSaveWithCreditCardRequestBillingType;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentSaveWithCreditCardRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentSplitRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentDiscountDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentFineRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentInterestRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCreditCardHolderInfoRequestDto;
+import com.asaas.apisdk.models.ApiCreditCardRequestDto;
+import com.asaas.apisdk.models.ApiInstallmentGetResponseDto;
+import com.asaas.apisdk.models.ApiInstallmentSaveWithCreditCardRequestBillingType;
+import com.asaas.apisdk.models.ApiInstallmentSaveWithCreditCardRequestDto;
+import com.asaas.apisdk.models.ApiInstallmentSplitRequestDto;
+import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
+import com.asaas.apisdk.models.ApiPaymentDiscountDto;
+import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
+import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
+import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -225,7 +225,7 @@ public class Main {
     ApiCreditCardRequestDto apiCreditCardRequestDto = ApiCreditCardRequestDto.builder()
       .holderName("John Doe")
       .number("1234567890123456")
-      .expiryMonth("5")
+      .expiryMonth("6")
       .expiryYear("2025")
       .ccv("123")
       .build();
@@ -292,10 +292,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiInstallmentGetResponseDto;
 
 public class Main {
 
@@ -334,10 +334,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentDeleteResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiInstallmentDeleteResponseDto;
 
 public class Main {
 
@@ -377,12 +377,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentListPaymentsRequestPaymentStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListPaymentsOfAInstallmentParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiInstallmentListPaymentsRequestPaymentStatus;
+import com.asaas.apisdk.models.ApiPaymentListResponseDto;
+import com.asaas.apisdk.models.ListPaymentsOfAInstallmentParameters;
 
 public class Main {
 
@@ -427,10 +427,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.GenerateInstallmentBookletParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.GenerateInstallmentBookletParameters;
 
 public class Main {
 
@@ -478,10 +478,10 @@ It is possible to refund an installment received or confirmed via credit card. J
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiInstallmentGetResponseDto;
 
 public class Main {
 
@@ -522,12 +522,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentSplitRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentUpdateSplitRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiInstallmentUpdateSplitResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiInstallmentSplitRequestDto;
+import com.asaas.apisdk.models.ApiInstallmentUpdateSplitRequestDto;
+import com.asaas.apisdk.models.ApiInstallmentUpdateSplitResponseDto;
 import java.util.Arrays;
 import java.util.List;
 

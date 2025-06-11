@@ -24,11 +24,11 @@ A list of all methods in the `FinancialTransactionService` service. Click on the
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiFinancialTransactionListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.RetrieveExtractParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiFinancialTransactionListResponseDto;
+import com.asaas.apisdk.models.RetrieveExtractParameters;
 
 public class Main {
 

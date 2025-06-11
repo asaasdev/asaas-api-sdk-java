@@ -30,11 +30,11 @@ Endpoint to list all Webhooks registered in your account.
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPushNotificationConfigListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListWebhooksParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPushNotificationConfigListResponseDto;
+import com.asaas.apisdk.models.ListWebhooksParameters;
 
 public class Main {
 
@@ -73,12 +73,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPushNotificationConfigGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPushNotificationConfigSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPushNotificationConfigSaveRequestPushNotificationSendType;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPushNotificationConfigGetResponseDto;
+import com.asaas.apisdk.models.ApiPushNotificationConfigSaveRequestDto;
+import com.asaas.apisdk.models.ApiPushNotificationConfigSaveRequestPushNotificationSendType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -136,10 +136,10 @@ This endpoint retrieves a single webhook according to the provided ID.
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPushNotificationConfigGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPushNotificationConfigGetResponseDto;
 
 public class Main {
 
@@ -181,12 +181,12 @@ Use this endpoint to update information about an already registered webhook.
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPushNotificationConfigGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPushNotificationConfigUpdateRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPushNotificationConfigUpdateRequestPushNotificationSendType;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPushNotificationConfigGetResponseDto;
+import com.asaas.apisdk.models.ApiPushNotificationConfigUpdateRequestDto;
+import com.asaas.apisdk.models.ApiPushNotificationConfigUpdateRequestPushNotificationSendType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -243,10 +243,10 @@ This endpoint removes a webhook.
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPushNotificationConfigDeleteResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPushNotificationConfigDeleteResponseDto;
 
 public class Main {
 

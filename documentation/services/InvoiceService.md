@@ -29,12 +29,12 @@ A list of all methods in the `InvoiceService` service. Click on the method name 
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceListRequestInvoiceStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListInvoicesParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerInvoiceListRequestInvoiceStatus;
+import com.asaas.apisdk.models.ApiCustomerInvoiceListResponseDto;
+import com.asaas.apisdk.models.ListInvoicesParameters;
 
 public class Main {
 
@@ -83,12 +83,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceTaxesDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerInvoiceGetResponseDto;
+import com.asaas.apisdk.models.ApiCustomerInvoiceSaveRequestDto;
+import com.asaas.apisdk.models.ApiCustomerInvoiceTaxesDto;
 
 public class Main {
 
@@ -152,10 +152,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerInvoiceGetResponseDto;
 
 public class Main {
 
@@ -193,12 +193,12 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceTaxesDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceUpdateRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerInvoiceGetResponseDto;
+import com.asaas.apisdk.models.ApiCustomerInvoiceTaxesDto;
+import com.asaas.apisdk.models.ApiCustomerInvoiceUpdateRequestDto;
 
 public class Main {
 
@@ -260,10 +260,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerInvoiceGetResponseDto;
 
 public class Main {
 
@@ -301,11 +301,11 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceCancelRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCustomerInvoiceGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCustomerInvoiceCancelRequestDto;
+import com.asaas.apisdk.models.ApiCustomerInvoiceGetResponseDto;
 
 public class Main {
 

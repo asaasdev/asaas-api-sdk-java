@@ -26,12 +26,12 @@ A list of all methods in the `NotificationService` service. Click on the method 
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiNotificationGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiNotificationUpdateRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiNotificationUpdateRequestDtoScheduleOffset;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiNotificationGetResponseDto;
+import com.asaas.apisdk.models.ApiNotificationUpdateRequestDto;
+import com.asaas.apisdk.models.ApiNotificationUpdateRequestDtoScheduleOffset;
 
 public class Main {
 
@@ -84,13 +84,13 @@ It is possible to customize various notifications, regardless of the communicati
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiNotificationBatchUpdateRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiNotificationBatchUpdateResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiNotificationUpdateRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiNotificationUpdateRequestDtoScheduleOffset;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiNotificationBatchUpdateRequestDto;
+import com.asaas.apisdk.models.ApiNotificationBatchUpdateResponseDto;
+import com.asaas.apisdk.models.ApiNotificationUpdateRequestDto;
+import com.asaas.apisdk.models.ApiNotificationUpdateRequestDtoScheduleOffset;
 import java.util.Arrays;
 import java.util.List;
 

@@ -1,6 +1,6 @@
-# asaasjavasdk
+# apisdk
 
-A basic example of how to use the asaasjavasdk package.
+A basic example of how to use the apisdk package.
 
 ## Build and Run
 

@@ -25,18 +25,18 @@ A list of all methods in the `CheckoutService` service. Click on the method name
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionCallbackDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionCustomerDataDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionInstallmentDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionItemsDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionSaveRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionSplitDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionSubscriptionCycle;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionSubscriptionDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCheckoutSessionCallbackDto;
+import com.asaas.apisdk.models.ApiCheckoutSessionCustomerDataDto;
+import com.asaas.apisdk.models.ApiCheckoutSessionInstallmentDto;
+import com.asaas.apisdk.models.ApiCheckoutSessionItemsDto;
+import com.asaas.apisdk.models.ApiCheckoutSessionResponseDto;
+import com.asaas.apisdk.models.ApiCheckoutSessionSaveRequestDto;
+import com.asaas.apisdk.models.ApiCheckoutSessionSplitDto;
+import com.asaas.apisdk.models.ApiCheckoutSessionSubscriptionCycle;
+import com.asaas.apisdk.models.ApiCheckoutSessionSubscriptionDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -102,7 +102,7 @@ public class Main {
 			.totalFixedValue(15D)
 			.build();
 
-		List<ApiCheckoutSessionSplitDto> splitList = Arrays.asList(apiCheckoutSessionSplitDto);
+		List<ApiCheckoutSessionSplitDto> splitsList = Arrays.asList(apiCheckoutSessionSplitDto);
 
 		ApiCheckoutSessionSaveRequestDto apiCheckoutSessionSaveRequestDto = ApiCheckoutSessionSaveRequestDto.builder()
 			.billingTypes(billingTypesList)
@@ -113,7 +113,7 @@ public class Main {
 			.customerData(apiCheckoutSessionCustomerDataDto)
 			.subscription(apiCheckoutSessionSubscriptionDto)
 			.installment(apiCheckoutSessionInstallmentDto)
-			.split(splitList)
+			.splits(splitsList)
 			.build();
 
 		ApiCheckoutSessionResponseDto response = asaasSdk.checkout.createNewCheckout(apiCheckoutSessionSaveRequestDto);
@@ -142,10 +142,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiCheckoutSessionResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiCheckoutSessionResponseDto;
 
 public class Main {
 

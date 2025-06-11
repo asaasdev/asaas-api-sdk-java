@@ -2,15 +2,15 @@
 
 package com.example;
 
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.exceptions.ApiError;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListRequestBillingType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListRequestInvoiceStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListRequestPaymentStatus;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListPaymentsParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.exceptions.ApiError;
+import com.asaas.apisdk.models.ApiPaymentListRequestBillingType;
+import com.asaas.apisdk.models.ApiPaymentListRequestInvoiceStatus;
+import com.asaas.apisdk.models.ApiPaymentListRequestPaymentStatus;
+import com.asaas.apisdk.models.ApiPaymentListResponseDto;
+import com.asaas.apisdk.models.ListPaymentsParameters;
 
 public class Main {
 

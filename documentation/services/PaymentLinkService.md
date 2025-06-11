@@ -34,11 +34,11 @@ A list of all methods in the `PaymentLinkService` service. Click on the method n
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignListResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ListPaymentsLinksParameters;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCampaignListResponseDto;
+import com.asaas.apisdk.models.ListPaymentsLinksParameters;
 
 public class Main {
 
@@ -84,15 +84,15 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignSaveRequestBillingType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignSaveRequestChargeType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignSaveRequestCycle;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignSaveRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
+import com.asaas.apisdk.models.ApiPaymentCampaignGetResponseDto;
+import com.asaas.apisdk.models.ApiPaymentCampaignSaveRequestBillingType;
+import com.asaas.apisdk.models.ApiPaymentCampaignSaveRequestChargeType;
+import com.asaas.apisdk.models.ApiPaymentCampaignSaveRequestCycle;
+import com.asaas.apisdk.models.ApiPaymentCampaignSaveRequestDto;
 
 public class Main {
 
@@ -152,10 +152,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCampaignGetResponseDto;
 
 public class Main {
 
@@ -193,15 +193,15 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignUpdateRequestBillingType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignUpdateRequestChargeType;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignUpdateRequestCycle;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignUpdateRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
+import com.asaas.apisdk.models.ApiPaymentCampaignGetResponseDto;
+import com.asaas.apisdk.models.ApiPaymentCampaignUpdateRequestBillingType;
+import com.asaas.apisdk.models.ApiPaymentCampaignUpdateRequestChargeType;
+import com.asaas.apisdk.models.ApiPaymentCampaignUpdateRequestCycle;
+import com.asaas.apisdk.models.ApiPaymentCampaignUpdateRequestDto;
 
 public class Main {
 
@@ -262,10 +262,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignDeleteResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCampaignDeleteResponseDto;
 
 public class Main {
 
@@ -303,10 +303,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCampaignGetResponseDto;
 
 public class Main {
 
@@ -343,10 +343,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignFileListResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCampaignFileListResponseDto;
 
 public class Main {
 
@@ -385,11 +385,11 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignFileGetResponseDto;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignFileSaveRequestDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCampaignFileGetResponseDto;
+import com.asaas.apisdk.models.ApiPaymentCampaignFileSaveRequestDto;
 
 public class Main {
     public static void main(String[] args) {
@@ -438,10 +438,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignFileGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCampaignFileGetResponseDto;
 
 public class Main {
 
@@ -482,10 +482,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignFileDeleteResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCampaignFileDeleteResponseDto;
 
 public class Main {
 
@@ -527,10 +527,10 @@ public class Main {
 **Example Usage Code Snippet**
 
 ```java
-import com.asaas.sdk.asaasjavasdk.AsaasSdk;
-import com.asaas.sdk.asaasjavasdk.config.ApiKeyAuthConfig;
-import com.asaas.sdk.asaasjavasdk.config.AsaasSdkConfig;
-import com.asaas.sdk.asaasjavasdk.models.ApiPaymentCampaignFileGetResponseDto;
+import com.asaas.apisdk.AsaasSdk;
+import com.asaas.apisdk.config.ApiKeyAuthConfig;
+import com.asaas.apisdk.config.AsaasSdkConfig;
+import com.asaas.apisdk.models.ApiPaymentCampaignFileGetResponseDto;
 
 public class Main {
 
