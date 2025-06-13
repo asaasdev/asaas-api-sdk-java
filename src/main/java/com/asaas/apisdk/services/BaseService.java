@@ -71,11 +71,11 @@ public class BaseService {
       }
     }
 
-    if (Objects.isNull(message) || message.isBlank()) {
+    if (Objects.isNull(message) || message.trim().isEmpty()) {
       message = response.message();
     }
 
-    if (Objects.isNull(message) || message.isBlank()) {
+    if (Objects.isNull(message) || message.trim().isEmpty()) {
       message = String.format("%d error in request to: %s", response.code(), response.request().url());
     }
 

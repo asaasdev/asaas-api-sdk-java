@@ -1,6 +1,6 @@
 {
-  "liblabVersion": "2.25.25",
-  "date": "2025-06-11T19:29:46.125Z",
+  "liblabVersion": "2.25.26",
+  "date": "2025-06-13T10:59:17.053Z",
   "config": {
     "apiId": 2190,
     "baseUrl": "https://api.asaas.com/",
@@ -161,7 +161,7 @@
     },
     "multiTenant": true,
     "hooksLocation": {
-      "bucketKey": "11934/hooks.zip",
+      "bucketKey": "11973/hooks.zip",
       "bucketName": "prod-liblab-api-stack-hooks"
     },
     "includeWatermark": true,
