@@ -1,6 +1,6 @@
 {
   "liblabVersion": "2.25.26",
-  "date": "2025-06-13T10:59:17.053Z",
+  "date": "2025-06-13T15:12:47.401Z",
   "config": {
     "apiId": 2190,
     "baseUrl": "https://api.asaas.com/",
@@ -74,7 +74,15 @@
           "githubRepoName": "asaas-api-sdk-java",
           "targetBranch": "master",
           "sdkVersion": "1.0.0",
-          "homepage": "https://asaas.com"
+          "homepage": "https://asaas.com",
+          "developers": [
+            {
+              "name": "Integrações Asaas",
+              "email": "integracoes@asaas.com.br",
+              "organization": "Asaas",
+              "organizationUrl": "https://github.com/asaasdev/"
+            }
+          ]
         }
       },
       "publishing": {
@@ -97,7 +105,15 @@
         "targetBranch": "master",
         "groupId": "com.asaas",
         "artifactId": "api-sdk",
-        "includeKotlinSnippets": false
+        "includeKotlinSnippets": false,
+        "developers": [
+          {
+            "name": "Integrações Asaas",
+            "email": "integracoes@asaas.com.br",
+            "organization": "Asaas",
+            "organizationUrl": "https://github.com/asaasdev/"
+          }
+        ]
       },
       "typescript": {
         "githubRepoName": "",
@@ -161,7 +177,7 @@
     },
     "multiTenant": true,
     "hooksLocation": {
-      "bucketKey": "11973/hooks.zip",
+      "bucketKey": "11976/hooks.zip",
       "bucketName": "prod-liblab-api-stack-hooks"
     },
     "includeWatermark": true,
@@ -173,6 +189,14 @@
     "groupId": "com.asaas",
     "artifactId": "api-sdk",
     "includeKotlinSnippets": false,
+    "developers": [
+      {
+        "name": "Integrações Asaas",
+        "email": "integracoes@asaas.com.br",
+        "organization": "Asaas",
+        "organizationUrl": "https://github.com/asaasdev/"
+      }
+    ],
     "language": "java",
     "deliveryMethod": "zip",
     "hooks": {
