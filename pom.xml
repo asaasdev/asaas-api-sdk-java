@@ -22,6 +22,16 @@
         <url>https://github.com/asaasdev/asaas-api-sdk-java/tree/master</url>
     </scm>
 
+    <!-- See https://central.sonatype.org/publish/requirements/#developer-information -->
+    <developers>
+        <developer>
+            <name>Integrações Asaas</name>
+            <email>integracoes@asaas.com.br</email>
+            <organization>Asaas</organization>
+            <organizationUrl>https://github.com/asaasdev/</organizationUrl>
+        </developer>
+    </developers>
+
     <licenses>
         <license>
             <name>MIT</name>
