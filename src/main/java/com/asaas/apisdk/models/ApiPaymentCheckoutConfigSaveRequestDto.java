@@ -68,9 +68,6 @@ public class ApiPaymentCheckoutConfigSaveRequestDto {
 
     @JsonProperty("enabled")
     public ApiPaymentCheckoutConfigSaveRequestDtoBuilder enabled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("enabled cannot be null");
-      }
       this.enabled = JsonNullable.of(value);
       return this;
     }

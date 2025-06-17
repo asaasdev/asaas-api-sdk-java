@@ -123,9 +123,6 @@ public class ApiTransferBankAccountGetResponseDto {
 
     @JsonProperty("bank")
     public ApiTransferBankAccountGetResponseDtoBuilder bank(ApiTransferBankGetResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("bank cannot be null");
-      }
       this.bank = JsonNullable.of(value);
       return this;
     }
@@ -134,9 +131,6 @@ public class ApiTransferBankAccountGetResponseDto {
 
     @JsonProperty("accountName")
     public ApiTransferBankAccountGetResponseDtoBuilder accountName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("accountName cannot be null");
-      }
       this.accountName = JsonNullable.of(value);
       return this;
     }
@@ -145,9 +139,6 @@ public class ApiTransferBankAccountGetResponseDto {
 
     @JsonProperty("ownerName")
     public ApiTransferBankAccountGetResponseDtoBuilder ownerName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("ownerName cannot be null");
-      }
       this.ownerName = JsonNullable.of(value);
       return this;
     }
@@ -156,9 +147,6 @@ public class ApiTransferBankAccountGetResponseDto {
 
     @JsonProperty("cpfCnpj")
     public ApiTransferBankAccountGetResponseDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }
@@ -167,9 +155,6 @@ public class ApiTransferBankAccountGetResponseDto {
 
     @JsonProperty("agency")
     public ApiTransferBankAccountGetResponseDtoBuilder agency(String value) {
-      if (value == null) {
-        throw new IllegalStateException("agency cannot be null");
-      }
       this.agency = JsonNullable.of(value);
       return this;
     }
@@ -178,9 +163,6 @@ public class ApiTransferBankAccountGetResponseDto {
 
     @JsonProperty("agencyDigit")
     public ApiTransferBankAccountGetResponseDtoBuilder agencyDigit(String value) {
-      if (value == null) {
-        throw new IllegalStateException("agencyDigit cannot be null");
-      }
       this.agencyDigit = JsonNullable.of(value);
       return this;
     }
@@ -189,9 +171,6 @@ public class ApiTransferBankAccountGetResponseDto {
 
     @JsonProperty("account")
     public ApiTransferBankAccountGetResponseDtoBuilder account(String value) {
-      if (value == null) {
-        throw new IllegalStateException("account cannot be null");
-      }
       this.account = JsonNullable.of(value);
       return this;
     }
@@ -200,9 +179,6 @@ public class ApiTransferBankAccountGetResponseDto {
 
     @JsonProperty("accountDigit")
     public ApiTransferBankAccountGetResponseDtoBuilder accountDigit(String value) {
-      if (value == null) {
-        throw new IllegalStateException("accountDigit cannot be null");
-      }
       this.accountDigit = JsonNullable.of(value);
       return this;
     }
@@ -211,9 +187,6 @@ public class ApiTransferBankAccountGetResponseDto {
 
     @JsonProperty("pixAddressKey")
     public ApiTransferBankAccountGetResponseDtoBuilder pixAddressKey(String value) {
-      if (value == null) {
-        throw new IllegalStateException("pixAddressKey cannot be null");
-      }
       this.pixAddressKey = JsonNullable.of(value);
       return this;
     }

@@ -46,9 +46,6 @@ public class ApiNotificationBatchUpdateRequestDto {
 
     @JsonProperty("notifications")
     public ApiNotificationBatchUpdateRequestDtoBuilder notifications(List<ApiNotificationUpdateRequestDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("notifications cannot be null");
-      }
       this.notifications = JsonNullable.of(value);
       return this;
     }

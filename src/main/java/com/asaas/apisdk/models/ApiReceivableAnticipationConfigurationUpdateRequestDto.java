@@ -38,9 +38,6 @@ public class ApiReceivableAnticipationConfigurationUpdateRequestDto {
 
     @JsonProperty("creditCardAutomaticEnabled")
     public ApiReceivableAnticipationConfigurationUpdateRequestDtoBuilder creditCardAutomaticEnabled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCardAutomaticEnabled cannot be null");
-      }
       this.creditCardAutomaticEnabled = JsonNullable.of(value);
       return this;
     }

@@ -63,9 +63,6 @@ public class ApiCheckoutSessionItemsDto {
 
     @JsonProperty("description")
     public ApiCheckoutSessionItemsDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }

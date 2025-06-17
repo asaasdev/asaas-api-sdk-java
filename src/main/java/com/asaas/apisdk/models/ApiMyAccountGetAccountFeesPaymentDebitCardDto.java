@@ -60,9 +60,6 @@ public class ApiMyAccountGetAccountFeesPaymentDebitCardDto {
 
     @JsonProperty("operationValue")
     public ApiMyAccountGetAccountFeesPaymentDebitCardDtoBuilder operationValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("operationValue cannot be null");
-      }
       this.operationValue = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiMyAccountGetAccountFeesPaymentDebitCardDto {
 
     @JsonProperty("defaultPercentage")
     public ApiMyAccountGetAccountFeesPaymentDebitCardDtoBuilder defaultPercentage(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("defaultPercentage cannot be null");
-      }
       this.defaultPercentage = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiMyAccountGetAccountFeesPaymentDebitCardDto {
 
     @JsonProperty("daysToReceive")
     public ApiMyAccountGetAccountFeesPaymentDebitCardDtoBuilder daysToReceive(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("daysToReceive cannot be null");
-      }
       this.daysToReceive = JsonNullable.of(value);
       return this;
     }

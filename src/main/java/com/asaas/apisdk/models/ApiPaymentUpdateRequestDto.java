@@ -134,9 +134,6 @@ public class ApiPaymentUpdateRequestDto {
 
     @JsonProperty("description")
     public ApiPaymentUpdateRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -145,9 +142,6 @@ public class ApiPaymentUpdateRequestDto {
 
     @JsonProperty("daysAfterDueDateToRegistrationCancellation")
     public ApiPaymentUpdateRequestDtoBuilder daysAfterDueDateToRegistrationCancellation(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("daysAfterDueDateToRegistrationCancellation cannot be null");
-      }
       this.daysAfterDueDateToRegistrationCancellation = JsonNullable.of(value);
       return this;
     }
@@ -156,9 +150,6 @@ public class ApiPaymentUpdateRequestDto {
 
     @JsonProperty("externalReference")
     public ApiPaymentUpdateRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -167,9 +158,6 @@ public class ApiPaymentUpdateRequestDto {
 
     @JsonProperty("discount")
     public ApiPaymentUpdateRequestDtoBuilder discount(ApiPaymentDiscountDto value) {
-      if (value == null) {
-        throw new IllegalStateException("discount cannot be null");
-      }
       this.discount = JsonNullable.of(value);
       return this;
     }
@@ -178,9 +166,6 @@ public class ApiPaymentUpdateRequestDto {
 
     @JsonProperty("interest")
     public ApiPaymentUpdateRequestDtoBuilder interest(ApiPaymentInterestRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("interest cannot be null");
-      }
       this.interest = JsonNullable.of(value);
       return this;
     }
@@ -189,9 +174,6 @@ public class ApiPaymentUpdateRequestDto {
 
     @JsonProperty("fine")
     public ApiPaymentUpdateRequestDtoBuilder fine(ApiPaymentFineRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("fine cannot be null");
-      }
       this.fine = JsonNullable.of(value);
       return this;
     }
@@ -200,9 +182,6 @@ public class ApiPaymentUpdateRequestDto {
 
     @JsonProperty("postalService")
     public ApiPaymentUpdateRequestDtoBuilder postalService(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("postalService cannot be null");
-      }
       this.postalService = JsonNullable.of(value);
       return this;
     }
@@ -211,9 +190,6 @@ public class ApiPaymentUpdateRequestDto {
 
     @JsonProperty("split")
     public ApiPaymentUpdateRequestDtoBuilder split(List<ApiPaymentSplitRequestDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("split cannot be null");
-      }
       this.split = JsonNullable.of(value);
       return this;
     }
@@ -222,9 +198,6 @@ public class ApiPaymentUpdateRequestDto {
 
     @JsonProperty("callback")
     public ApiPaymentUpdateRequestDtoBuilder callback(ApiPaymentCallbackRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("callback cannot be null");
-      }
       this.callback = JsonNullable.of(value);
       return this;
     }

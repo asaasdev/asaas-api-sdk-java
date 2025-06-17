@@ -99,9 +99,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulat
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulationItemDtoBuilder type(
       ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulationItemPaymentDunningType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }
@@ -112,9 +109,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulat
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulationItemDtoBuilder isAllowed(
       Boolean value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("isAllowed cannot be null");
-      }
       this.isAllowed = JsonNullable.of(value);
       return this;
     }
@@ -125,9 +119,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulat
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulationItemDtoBuilder notAllowedReason(
       String value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("notAllowedReason cannot be null");
-      }
       this.notAllowedReason = JsonNullable.of(value);
       return this;
     }
@@ -136,9 +127,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulat
 
     @JsonProperty("feeValue")
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulationItemDtoBuilder feeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("feeValue cannot be null");
-      }
       this.feeValue = JsonNullable.of(value);
       return this;
     }
@@ -147,9 +135,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulat
 
     @JsonProperty("netValue")
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulationItemDtoBuilder netValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("netValue cannot be null");
-      }
       this.netValue = JsonNullable.of(value);
       return this;
     }
@@ -160,9 +145,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulat
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulationItemDtoBuilder startDate(
       String value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("startDate cannot be null");
-      }
       this.startDate = JsonNullable.of(value);
       return this;
     }

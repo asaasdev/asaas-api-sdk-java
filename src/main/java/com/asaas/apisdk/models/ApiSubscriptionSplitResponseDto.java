@@ -104,9 +104,6 @@ public class ApiSubscriptionSplitResponseDto {
 
     @JsonProperty("walletId")
     public ApiSubscriptionSplitResponseDtoBuilder walletId(String value) {
-      if (value == null) {
-        throw new IllegalStateException("walletId cannot be null");
-      }
       this.walletId = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +112,6 @@ public class ApiSubscriptionSplitResponseDto {
 
     @JsonProperty("fixedValue")
     public ApiSubscriptionSplitResponseDtoBuilder fixedValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fixedValue cannot be null");
-      }
       this.fixedValue = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +120,6 @@ public class ApiSubscriptionSplitResponseDto {
 
     @JsonProperty("percentualValue")
     public ApiSubscriptionSplitResponseDtoBuilder percentualValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("percentualValue cannot be null");
-      }
       this.percentualValue = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +128,6 @@ public class ApiSubscriptionSplitResponseDto {
 
     @JsonProperty("externalReference")
     public ApiSubscriptionSplitResponseDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +136,6 @@ public class ApiSubscriptionSplitResponseDto {
 
     @JsonProperty("description")
     public ApiSubscriptionSplitResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +144,6 @@ public class ApiSubscriptionSplitResponseDto {
 
     @JsonProperty("status")
     public ApiSubscriptionSplitResponseDtoBuilder status(ApiSubscriptionSplitResponseSubscriptionSplitStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -173,9 +155,6 @@ public class ApiSubscriptionSplitResponseDto {
     public ApiSubscriptionSplitResponseDtoBuilder disabledReason(
       ApiSubscriptionSplitResponseSubscriptionSplitDisabledReason value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("disabledReason cannot be null");
-      }
       this.disabledReason = JsonNullable.of(value);
       return this;
     }

@@ -117,9 +117,6 @@ public class ApiNotificationUpdateRequestDto {
 
     @JsonProperty("enabled")
     public ApiNotificationUpdateRequestDtoBuilder enabled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("enabled cannot be null");
-      }
       this.enabled = JsonNullable.of(value);
       return this;
     }
@@ -128,9 +125,6 @@ public class ApiNotificationUpdateRequestDto {
 
     @JsonProperty("emailEnabledForProvider")
     public ApiNotificationUpdateRequestDtoBuilder emailEnabledForProvider(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("emailEnabledForProvider cannot be null");
-      }
       this.emailEnabledForProvider = JsonNullable.of(value);
       return this;
     }
@@ -139,9 +133,6 @@ public class ApiNotificationUpdateRequestDto {
 
     @JsonProperty("smsEnabledForProvider")
     public ApiNotificationUpdateRequestDtoBuilder smsEnabledForProvider(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("smsEnabledForProvider cannot be null");
-      }
       this.smsEnabledForProvider = JsonNullable.of(value);
       return this;
     }
@@ -150,9 +141,6 @@ public class ApiNotificationUpdateRequestDto {
 
     @JsonProperty("emailEnabledForCustomer")
     public ApiNotificationUpdateRequestDtoBuilder emailEnabledForCustomer(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("emailEnabledForCustomer cannot be null");
-      }
       this.emailEnabledForCustomer = JsonNullable.of(value);
       return this;
     }
@@ -161,9 +149,6 @@ public class ApiNotificationUpdateRequestDto {
 
     @JsonProperty("smsEnabledForCustomer")
     public ApiNotificationUpdateRequestDtoBuilder smsEnabledForCustomer(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("smsEnabledForCustomer cannot be null");
-      }
       this.smsEnabledForCustomer = JsonNullable.of(value);
       return this;
     }
@@ -172,9 +157,6 @@ public class ApiNotificationUpdateRequestDto {
 
     @JsonProperty("phoneCallEnabledForCustomer")
     public ApiNotificationUpdateRequestDtoBuilder phoneCallEnabledForCustomer(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("phoneCallEnabledForCustomer cannot be null");
-      }
       this.phoneCallEnabledForCustomer = JsonNullable.of(value);
       return this;
     }
@@ -183,9 +165,6 @@ public class ApiNotificationUpdateRequestDto {
 
     @JsonProperty("whatsappEnabledForCustomer")
     public ApiNotificationUpdateRequestDtoBuilder whatsappEnabledForCustomer(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("whatsappEnabledForCustomer cannot be null");
-      }
       this.whatsappEnabledForCustomer = JsonNullable.of(value);
       return this;
     }
@@ -194,9 +173,6 @@ public class ApiNotificationUpdateRequestDto {
 
     @JsonProperty("scheduleOffset")
     public ApiNotificationUpdateRequestDtoBuilder scheduleOffset(ApiNotificationUpdateRequestDtoScheduleOffset value) {
-      if (value == null) {
-        throw new IllegalStateException("scheduleOffset cannot be null");
-      }
       this.scheduleOffset = JsonNullable.of(value);
       return this;
     }

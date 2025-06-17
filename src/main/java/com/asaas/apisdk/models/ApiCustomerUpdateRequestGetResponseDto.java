@@ -4,6 +4,7 @@ package com.asaas.apisdk.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -137,6 +138,12 @@ public class ApiCustomerUpdateRequestGetResponseDto {
   @JsonProperty("site")
   private JsonNullable<String> site;
 
+  /**
+   * Company names available. Only filled in for Legal Entity type accounts.
+   */
+  @JsonProperty("availableCompanyNames")
+  private JsonNullable<List<String>> availableCompanyNames;
+
   @JsonProperty("commercialInfoExpiration")
   private JsonNullable<ApiCustomerUpdateRequestCommercialInfoExpirationResponseDto> commercialInfoExpiration;
 
@@ -241,6 +248,11 @@ public class ApiCustomerUpdateRequestGetResponseDto {
   }
 
   @JsonIgnore
+  public List<String> getAvailableCompanyNames() {
+    return availableCompanyNames.orElse(null);
+  }
+
+  @JsonIgnore
   public ApiCustomerUpdateRequestCommercialInfoExpirationResponseDto getCommercialInfoExpiration() {
     return commercialInfoExpiration.orElse(null);
   }
@@ -252,9 +264,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("status")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder status(ApiCustomerUpdateRequestGetResponseStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -265,9 +274,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
     public ApiCustomerUpdateRequestGetResponseDtoBuilder personType(
       ApiCustomerUpdateRequestGetResponsePersonType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("personType cannot be null");
-      }
       this.personType = JsonNullable.of(value);
       return this;
     }
@@ -276,9 +282,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("cpfCnpj")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }
@@ -287,9 +290,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("name")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -298,9 +298,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("birthDate")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder birthDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("birthDate cannot be null");
-      }
       this.birthDate = JsonNullable.of(value);
       return this;
     }
@@ -309,9 +306,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("companyName")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder companyName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("companyName cannot be null");
-      }
       this.companyName = JsonNullable.of(value);
       return this;
     }
@@ -322,9 +316,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
     public ApiCustomerUpdateRequestGetResponseDtoBuilder companyType(
       ApiCustomerUpdateRequestGetResponseCompanyType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("companyType cannot be null");
-      }
       this.companyType = JsonNullable.of(value);
       return this;
     }
@@ -333,9 +324,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("incomeValue")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder incomeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("incomeValue cannot be null");
-      }
       this.incomeValue = JsonNullable.of(value);
       return this;
     }
@@ -344,9 +332,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("email")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder email(String value) {
-      if (value == null) {
-        throw new IllegalStateException("email cannot be null");
-      }
       this.email = JsonNullable.of(value);
       return this;
     }
@@ -355,9 +340,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("phone")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder phone(String value) {
-      if (value == null) {
-        throw new IllegalStateException("phone cannot be null");
-      }
       this.phone = JsonNullable.of(value);
       return this;
     }
@@ -366,9 +348,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("mobilePhone")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder mobilePhone(String value) {
-      if (value == null) {
-        throw new IllegalStateException("mobilePhone cannot be null");
-      }
       this.mobilePhone = JsonNullable.of(value);
       return this;
     }
@@ -377,9 +356,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("postalCode")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder postalCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("postalCode cannot be null");
-      }
       this.postalCode = JsonNullable.of(value);
       return this;
     }
@@ -388,9 +364,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("address")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder address(String value) {
-      if (value == null) {
-        throw new IllegalStateException("address cannot be null");
-      }
       this.address = JsonNullable.of(value);
       return this;
     }
@@ -399,9 +372,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("addressNumber")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder addressNumber(String value) {
-      if (value == null) {
-        throw new IllegalStateException("addressNumber cannot be null");
-      }
       this.addressNumber = JsonNullable.of(value);
       return this;
     }
@@ -410,9 +380,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("complement")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder complement(String value) {
-      if (value == null) {
-        throw new IllegalStateException("complement cannot be null");
-      }
       this.complement = JsonNullable.of(value);
       return this;
     }
@@ -421,9 +388,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("province")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder province(String value) {
-      if (value == null) {
-        throw new IllegalStateException("province cannot be null");
-      }
       this.province = JsonNullable.of(value);
       return this;
     }
@@ -432,9 +396,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("city")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder city(ApiCustomerUpdateRequestCityDto value) {
-      if (value == null) {
-        throw new IllegalStateException("city cannot be null");
-      }
       this.city = JsonNullable.of(value);
       return this;
     }
@@ -443,9 +404,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("denialReason")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder denialReason(String value) {
-      if (value == null) {
-        throw new IllegalStateException("denialReason cannot be null");
-      }
       this.denialReason = JsonNullable.of(value);
       return this;
     }
@@ -454,9 +412,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("tradingName")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder tradingName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("tradingName cannot be null");
-      }
       this.tradingName = JsonNullable.of(value);
       return this;
     }
@@ -465,10 +420,15 @@ public class ApiCustomerUpdateRequestGetResponseDto {
 
     @JsonProperty("site")
     public ApiCustomerUpdateRequestGetResponseDtoBuilder site(String value) {
-      if (value == null) {
-        throw new IllegalStateException("site cannot be null");
-      }
       this.site = JsonNullable.of(value);
+      return this;
+    }
+
+    private JsonNullable<List<String>> availableCompanyNames = JsonNullable.undefined();
+
+    @JsonProperty("availableCompanyNames")
+    public ApiCustomerUpdateRequestGetResponseDtoBuilder availableCompanyNames(List<String> value) {
+      this.availableCompanyNames = JsonNullable.of(value);
       return this;
     }
 
@@ -479,9 +439,6 @@ public class ApiCustomerUpdateRequestGetResponseDto {
     public ApiCustomerUpdateRequestGetResponseDtoBuilder commercialInfoExpiration(
       ApiCustomerUpdateRequestCommercialInfoExpirationResponseDto value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("commercialInfoExpiration cannot be null");
-      }
       this.commercialInfoExpiration = JsonNullable.of(value);
       return this;
     }

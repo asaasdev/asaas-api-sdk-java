@@ -226,9 +226,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("object")
     public ApiBillGetResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -237,9 +234,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("id")
     public ApiBillGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -248,9 +242,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("status")
     public ApiBillGetResponseDtoBuilder status(ApiBillGetResponseBillStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -259,9 +250,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("value")
     public ApiBillGetResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -270,9 +258,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("discount")
     public ApiBillGetResponseDtoBuilder discount(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("discount cannot be null");
-      }
       this.discount = JsonNullable.of(value);
       return this;
     }
@@ -281,9 +266,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("interest")
     public ApiBillGetResponseDtoBuilder interest(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("interest cannot be null");
-      }
       this.interest = JsonNullable.of(value);
       return this;
     }
@@ -292,9 +274,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("fine")
     public ApiBillGetResponseDtoBuilder fine(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fine cannot be null");
-      }
       this.fine = JsonNullable.of(value);
       return this;
     }
@@ -303,9 +282,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("identificationField")
     public ApiBillGetResponseDtoBuilder identificationField(String value) {
-      if (value == null) {
-        throw new IllegalStateException("identificationField cannot be null");
-      }
       this.identificationField = JsonNullable.of(value);
       return this;
     }
@@ -314,9 +290,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("dueDate")
     public ApiBillGetResponseDtoBuilder dueDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dueDate cannot be null");
-      }
       this.dueDate = JsonNullable.of(value);
       return this;
     }
@@ -325,9 +298,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("scheduleDate")
     public ApiBillGetResponseDtoBuilder scheduleDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("scheduleDate cannot be null");
-      }
       this.scheduleDate = JsonNullable.of(value);
       return this;
     }
@@ -336,9 +306,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("paymentDate")
     public ApiBillGetResponseDtoBuilder paymentDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("paymentDate cannot be null");
-      }
       this.paymentDate = JsonNullable.of(value);
       return this;
     }
@@ -347,9 +314,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("fee")
     public ApiBillGetResponseDtoBuilder fee(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fee cannot be null");
-      }
       this.fee = JsonNullable.of(value);
       return this;
     }
@@ -358,9 +322,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("description")
     public ApiBillGetResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -369,9 +330,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("companyName")
     public ApiBillGetResponseDtoBuilder companyName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("companyName cannot be null");
-      }
       this.companyName = JsonNullable.of(value);
       return this;
     }
@@ -380,9 +338,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("transactionReceiptUrl")
     public ApiBillGetResponseDtoBuilder transactionReceiptUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("transactionReceiptUrl cannot be null");
-      }
       this.transactionReceiptUrl = JsonNullable.of(value);
       return this;
     }
@@ -391,9 +346,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("canBeCancelled")
     public ApiBillGetResponseDtoBuilder canBeCancelled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("canBeCancelled cannot be null");
-      }
       this.canBeCancelled = JsonNullable.of(value);
       return this;
     }
@@ -402,9 +354,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("externalReference")
     public ApiBillGetResponseDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -413,9 +362,6 @@ public class ApiBillGetResponseDto {
 
     @JsonProperty("failReasons")
     public ApiBillGetResponseDtoBuilder failReasons(List<String> value) {
-      if (value == null) {
-        throw new IllegalStateException("failReasons cannot be null");
-      }
       this.failReasons = JsonNullable.of(value);
       return this;
     }

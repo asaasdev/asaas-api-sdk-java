@@ -137,9 +137,6 @@ public class ApiCheckoutSessionCustomerDataDto {
 
     @JsonProperty("name")
     public ApiCheckoutSessionCustomerDataDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +145,6 @@ public class ApiCheckoutSessionCustomerDataDto {
 
     @JsonProperty("cpfCnpj")
     public ApiCheckoutSessionCustomerDataDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +153,6 @@ public class ApiCheckoutSessionCustomerDataDto {
 
     @JsonProperty("email")
     public ApiCheckoutSessionCustomerDataDtoBuilder email(String value) {
-      if (value == null) {
-        throw new IllegalStateException("email cannot be null");
-      }
       this.email = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +161,6 @@ public class ApiCheckoutSessionCustomerDataDto {
 
     @JsonProperty("phone")
     public ApiCheckoutSessionCustomerDataDtoBuilder phone(String value) {
-      if (value == null) {
-        throw new IllegalStateException("phone cannot be null");
-      }
       this.phone = JsonNullable.of(value);
       return this;
     }
@@ -181,9 +169,6 @@ public class ApiCheckoutSessionCustomerDataDto {
 
     @JsonProperty("address")
     public ApiCheckoutSessionCustomerDataDtoBuilder address(String value) {
-      if (value == null) {
-        throw new IllegalStateException("address cannot be null");
-      }
       this.address = JsonNullable.of(value);
       return this;
     }
@@ -192,9 +177,6 @@ public class ApiCheckoutSessionCustomerDataDto {
 
     @JsonProperty("addressNumber")
     public ApiCheckoutSessionCustomerDataDtoBuilder addressNumber(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("addressNumber cannot be null");
-      }
       this.addressNumber = JsonNullable.of(value);
       return this;
     }
@@ -203,9 +185,6 @@ public class ApiCheckoutSessionCustomerDataDto {
 
     @JsonProperty("complement")
     public ApiCheckoutSessionCustomerDataDtoBuilder complement(String value) {
-      if (value == null) {
-        throw new IllegalStateException("complement cannot be null");
-      }
       this.complement = JsonNullable.of(value);
       return this;
     }
@@ -214,9 +193,6 @@ public class ApiCheckoutSessionCustomerDataDto {
 
     @JsonProperty("province")
     public ApiCheckoutSessionCustomerDataDtoBuilder province(String value) {
-      if (value == null) {
-        throw new IllegalStateException("province cannot be null");
-      }
       this.province = JsonNullable.of(value);
       return this;
     }
@@ -225,9 +201,6 @@ public class ApiCheckoutSessionCustomerDataDto {
 
     @JsonProperty("postalCode")
     public ApiCheckoutSessionCustomerDataDtoBuilder postalCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("postalCode cannot be null");
-      }
       this.postalCode = JsonNullable.of(value);
       return this;
     }
@@ -236,9 +209,6 @@ public class ApiCheckoutSessionCustomerDataDto {
 
     @JsonProperty("city")
     public ApiCheckoutSessionCustomerDataDtoBuilder city(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("city cannot be null");
-      }
       this.city = JsonNullable.of(value);
       return this;
     }

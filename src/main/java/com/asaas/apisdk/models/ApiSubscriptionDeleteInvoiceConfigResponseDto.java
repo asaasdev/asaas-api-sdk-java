@@ -49,9 +49,6 @@ public class ApiSubscriptionDeleteInvoiceConfigResponseDto {
 
     @JsonProperty("deleted")
     public ApiSubscriptionDeleteInvoiceConfigResponseDtoBuilder deleted(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("deleted cannot be null");
-      }
       this.deleted = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiSubscriptionDeleteInvoiceConfigResponseDto {
 
     @JsonProperty("id")
     public ApiSubscriptionDeleteInvoiceConfigResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }

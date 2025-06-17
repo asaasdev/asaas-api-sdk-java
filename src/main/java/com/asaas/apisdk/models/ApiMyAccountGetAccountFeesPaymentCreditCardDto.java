@@ -148,9 +148,6 @@ public class ApiMyAccountGetAccountFeesPaymentCreditCardDto {
 
     @JsonProperty("operationValue")
     public ApiMyAccountGetAccountFeesPaymentCreditCardDtoBuilder operationValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("operationValue cannot be null");
-      }
       this.operationValue = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +156,6 @@ public class ApiMyAccountGetAccountFeesPaymentCreditCardDto {
 
     @JsonProperty("oneInstallmentPercentage")
     public ApiMyAccountGetAccountFeesPaymentCreditCardDtoBuilder oneInstallmentPercentage(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("oneInstallmentPercentage cannot be null");
-      }
       this.oneInstallmentPercentage = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +164,6 @@ public class ApiMyAccountGetAccountFeesPaymentCreditCardDto {
 
     @JsonProperty("upToSixInstallmentsPercentage")
     public ApiMyAccountGetAccountFeesPaymentCreditCardDtoBuilder upToSixInstallmentsPercentage(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("upToSixInstallmentsPercentage cannot be null");
-      }
       this.upToSixInstallmentsPercentage = JsonNullable.of(value);
       return this;
     }
@@ -181,9 +172,6 @@ public class ApiMyAccountGetAccountFeesPaymentCreditCardDto {
 
     @JsonProperty("upToTwelveInstallmentsPercentage")
     public ApiMyAccountGetAccountFeesPaymentCreditCardDtoBuilder upToTwelveInstallmentsPercentage(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("upToTwelveInstallmentsPercentage cannot be null");
-      }
       this.upToTwelveInstallmentsPercentage = JsonNullable.of(value);
       return this;
     }
@@ -192,9 +180,6 @@ public class ApiMyAccountGetAccountFeesPaymentCreditCardDto {
 
     @JsonProperty("upToTwentyOneInstallmentsPercentage")
     public ApiMyAccountGetAccountFeesPaymentCreditCardDtoBuilder upToTwentyOneInstallmentsPercentage(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("upToTwentyOneInstallmentsPercentage cannot be null");
-      }
       this.upToTwentyOneInstallmentsPercentage = JsonNullable.of(value);
       return this;
     }
@@ -203,9 +188,6 @@ public class ApiMyAccountGetAccountFeesPaymentCreditCardDto {
 
     @JsonProperty("discountOneInstallmentPercentage")
     public ApiMyAccountGetAccountFeesPaymentCreditCardDtoBuilder discountOneInstallmentPercentage(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("discountOneInstallmentPercentage cannot be null");
-      }
       this.discountOneInstallmentPercentage = JsonNullable.of(value);
       return this;
     }
@@ -214,9 +196,6 @@ public class ApiMyAccountGetAccountFeesPaymentCreditCardDto {
 
     @JsonProperty("discountUpToSixInstallmentsPercentage")
     public ApiMyAccountGetAccountFeesPaymentCreditCardDtoBuilder discountUpToSixInstallmentsPercentage(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("discountUpToSixInstallmentsPercentage cannot be null");
-      }
       this.discountUpToSixInstallmentsPercentage = JsonNullable.of(value);
       return this;
     }
@@ -227,9 +206,6 @@ public class ApiMyAccountGetAccountFeesPaymentCreditCardDto {
     public ApiMyAccountGetAccountFeesPaymentCreditCardDtoBuilder discountUpToTwelveInstallmentsPercentage(
       Double value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("discountUpToTwelveInstallmentsPercentage cannot be null");
-      }
       this.discountUpToTwelveInstallmentsPercentage = JsonNullable.of(value);
       return this;
     }
@@ -240,9 +216,6 @@ public class ApiMyAccountGetAccountFeesPaymentCreditCardDto {
     public ApiMyAccountGetAccountFeesPaymentCreditCardDtoBuilder discountUpToTwentyOneInstallmentsPercentage(
       Double value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("discountUpToTwentyOneInstallmentsPercentage cannot be null");
-      }
       this.discountUpToTwentyOneInstallmentsPercentage = JsonNullable.of(value);
       return this;
     }
@@ -251,9 +224,6 @@ public class ApiMyAccountGetAccountFeesPaymentCreditCardDto {
 
     @JsonProperty("discountExpiration")
     public ApiMyAccountGetAccountFeesPaymentCreditCardDtoBuilder discountExpiration(String value) {
-      if (value == null) {
-        throw new IllegalStateException("discountExpiration cannot be null");
-      }
       this.discountExpiration = JsonNullable.of(value);
       return this;
     }
@@ -262,9 +232,6 @@ public class ApiMyAccountGetAccountFeesPaymentCreditCardDto {
 
     @JsonProperty("daysToReceive")
     public ApiMyAccountGetAccountFeesPaymentCreditCardDtoBuilder daysToReceive(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("daysToReceive cannot be null");
-      }
       this.daysToReceive = JsonNullable.of(value);
       return this;
     }

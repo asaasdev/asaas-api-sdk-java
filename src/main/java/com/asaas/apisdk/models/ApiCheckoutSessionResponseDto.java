@@ -115,9 +115,6 @@ public class ApiCheckoutSessionResponseDto {
 
     @JsonProperty("billingTypes")
     public ApiCheckoutSessionResponseDtoBuilder billingTypes(List<String> value) {
-      if (value == null) {
-        throw new IllegalStateException("billingTypes cannot be null");
-      }
       this.billingTypes = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +123,6 @@ public class ApiCheckoutSessionResponseDto {
 
     @JsonProperty("chargeTypes")
     public ApiCheckoutSessionResponseDtoBuilder chargeTypes(List<String> value) {
-      if (value == null) {
-        throw new IllegalStateException("chargeTypes cannot be null");
-      }
       this.chargeTypes = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +131,6 @@ public class ApiCheckoutSessionResponseDto {
 
     @JsonProperty("minutesToExpire")
     public ApiCheckoutSessionResponseDtoBuilder minutesToExpire(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("minutesToExpire cannot be null");
-      }
       this.minutesToExpire = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +139,6 @@ public class ApiCheckoutSessionResponseDto {
 
     @JsonProperty("callback")
     public ApiCheckoutSessionResponseDtoBuilder callback(ApiCheckoutSessionCallbackDto value) {
-      if (value == null) {
-        throw new IllegalStateException("callback cannot be null");
-      }
       this.callback = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +147,6 @@ public class ApiCheckoutSessionResponseDto {
 
     @JsonProperty("items")
     public ApiCheckoutSessionResponseDtoBuilder items(List<ApiCheckoutSessionItemsDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("items cannot be null");
-      }
       this.items = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +155,6 @@ public class ApiCheckoutSessionResponseDto {
 
     @JsonProperty("customerData")
     public ApiCheckoutSessionResponseDtoBuilder customerData(ApiCheckoutSessionCustomerDataDto value) {
-      if (value == null) {
-        throw new IllegalStateException("customerData cannot be null");
-      }
       this.customerData = JsonNullable.of(value);
       return this;
     }
@@ -181,9 +163,6 @@ public class ApiCheckoutSessionResponseDto {
 
     @JsonProperty("subscription")
     public ApiCheckoutSessionResponseDtoBuilder subscription(ApiCheckoutSessionSubscriptionDto value) {
-      if (value == null) {
-        throw new IllegalStateException("subscription cannot be null");
-      }
       this.subscription = JsonNullable.of(value);
       return this;
     }
@@ -192,9 +171,6 @@ public class ApiCheckoutSessionResponseDto {
 
     @JsonProperty("installment")
     public ApiCheckoutSessionResponseDtoBuilder installment(ApiCheckoutSessionInstallmentDto value) {
-      if (value == null) {
-        throw new IllegalStateException("installment cannot be null");
-      }
       this.installment = JsonNullable.of(value);
       return this;
     }
@@ -203,9 +179,6 @@ public class ApiCheckoutSessionResponseDto {
 
     @JsonProperty("split")
     public ApiCheckoutSessionResponseDtoBuilder split(List<ApiCheckoutSessionSplitDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("split cannot be null");
-      }
       this.split = JsonNullable.of(value);
       return this;
     }

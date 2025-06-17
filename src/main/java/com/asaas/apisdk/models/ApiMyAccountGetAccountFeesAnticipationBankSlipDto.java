@@ -38,9 +38,6 @@ public class ApiMyAccountGetAccountFeesAnticipationBankSlipDto {
 
     @JsonProperty("monthlyFeePercentage")
     public ApiMyAccountGetAccountFeesAnticipationBankSlipDtoBuilder monthlyFeePercentage(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("monthlyFeePercentage cannot be null");
-      }
       this.monthlyFeePercentage = JsonNullable.of(value);
       return this;
     }

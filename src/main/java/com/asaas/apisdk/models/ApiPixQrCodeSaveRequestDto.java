@@ -115,9 +115,6 @@ public class ApiPixQrCodeSaveRequestDto {
 
     @JsonProperty("addressKey")
     public ApiPixQrCodeSaveRequestDtoBuilder addressKey(String value) {
-      if (value == null) {
-        throw new IllegalStateException("addressKey cannot be null");
-      }
       this.addressKey = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +123,6 @@ public class ApiPixQrCodeSaveRequestDto {
 
     @JsonProperty("description")
     public ApiPixQrCodeSaveRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +131,6 @@ public class ApiPixQrCodeSaveRequestDto {
 
     @JsonProperty("value")
     public ApiPixQrCodeSaveRequestDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +139,6 @@ public class ApiPixQrCodeSaveRequestDto {
 
     @JsonProperty("format")
     public ApiPixQrCodeSaveRequestDtoBuilder format(Format value) {
-      if (value == null) {
-        throw new IllegalStateException("format cannot be null");
-      }
       this.format = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +147,6 @@ public class ApiPixQrCodeSaveRequestDto {
 
     @JsonProperty("expirationDate")
     public ApiPixQrCodeSaveRequestDtoBuilder expirationDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("expirationDate cannot be null");
-      }
       this.expirationDate = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +155,6 @@ public class ApiPixQrCodeSaveRequestDto {
 
     @JsonProperty("expirationSeconds")
     public ApiPixQrCodeSaveRequestDtoBuilder expirationSeconds(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("expirationSeconds cannot be null");
-      }
       this.expirationSeconds = JsonNullable.of(value);
       return this;
     }
@@ -181,9 +163,6 @@ public class ApiPixQrCodeSaveRequestDto {
 
     @JsonProperty("allowsMultiplePayments")
     public ApiPixQrCodeSaveRequestDtoBuilder allowsMultiplePayments(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("allowsMultiplePayments cannot be null");
-      }
       this.allowsMultiplePayments = JsonNullable.of(value);
       return this;
     }
@@ -192,9 +171,6 @@ public class ApiPixQrCodeSaveRequestDto {
 
     @JsonProperty("externalReference")
     public ApiPixQrCodeSaveRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }

@@ -38,9 +38,6 @@ public class ApiPaymentStatusResponseDto {
 
     @JsonProperty("status")
     public ApiPaymentStatusResponseDtoBuilder status(ApiPaymentStatusResponsePaymentStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }

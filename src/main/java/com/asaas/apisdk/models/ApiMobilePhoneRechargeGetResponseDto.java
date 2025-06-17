@@ -93,9 +93,6 @@ public class ApiMobilePhoneRechargeGetResponseDto {
 
     @JsonProperty("id")
     public ApiMobilePhoneRechargeGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +101,6 @@ public class ApiMobilePhoneRechargeGetResponseDto {
 
     @JsonProperty("value")
     public ApiMobilePhoneRechargeGetResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +109,6 @@ public class ApiMobilePhoneRechargeGetResponseDto {
 
     @JsonProperty("phoneNumber")
     public ApiMobilePhoneRechargeGetResponseDtoBuilder phoneNumber(String value) {
-      if (value == null) {
-        throw new IllegalStateException("phoneNumber cannot be null");
-      }
       this.phoneNumber = JsonNullable.of(value);
       return this;
     }
@@ -128,9 +119,6 @@ public class ApiMobilePhoneRechargeGetResponseDto {
     public ApiMobilePhoneRechargeGetResponseDtoBuilder status(
       ApiMobilePhoneRechargeGetResponseMobilePhoneRechargeStatus value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -139,9 +127,6 @@ public class ApiMobilePhoneRechargeGetResponseDto {
 
     @JsonProperty("canBeCancelled")
     public ApiMobilePhoneRechargeGetResponseDtoBuilder canBeCancelled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("canBeCancelled cannot be null");
-      }
       this.canBeCancelled = JsonNullable.of(value);
       return this;
     }
@@ -150,9 +135,6 @@ public class ApiMobilePhoneRechargeGetResponseDto {
 
     @JsonProperty("operatorName")
     public ApiMobilePhoneRechargeGetResponseDtoBuilder operatorName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("operatorName cannot be null");
-      }
       this.operatorName = JsonNullable.of(value);
       return this;
     }

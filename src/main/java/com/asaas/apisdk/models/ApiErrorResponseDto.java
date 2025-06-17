@@ -43,9 +43,6 @@ public class ApiErrorResponseDto {
 
     @JsonProperty("errors")
     public ApiErrorResponseDtoBuilder errors(List<ApiErrorResponseItemDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("errors cannot be null");
-      }
       this.errors = JsonNullable.of(value);
       return this;
     }

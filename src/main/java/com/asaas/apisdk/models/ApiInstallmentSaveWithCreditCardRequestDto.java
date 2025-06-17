@@ -3,6 +3,7 @@
 package com.asaas.apisdk.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import lombok.Builder;
@@ -52,10 +53,10 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
   @NonNull
   private String dueDate;
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCreditCardRequestDto creditCard;
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCreditCardHolderInfoRequestDto creditCardHolderInfo;
 
   /**
@@ -179,13 +180,34 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
   // Overwrite lombok builder methods
   public static class ApiInstallmentSaveWithCreditCardRequestDtoBuilder {
 
+    /**
+     * Flag to track if the creditCard property has been set.
+     */
+    private boolean creditCard$set = false;
+
+    /**
+     * Flag to track if the creditCardHolderInfo property has been set.
+     */
+    private boolean creditCardHolderInfo$set = false;
+
+    public ApiInstallmentSaveWithCreditCardRequestDtoBuilder creditCard(ApiCreditCardRequestDto creditCard) {
+      this.creditCard$set = true;
+      this.creditCard = creditCard;
+      return this;
+    }
+
+    public ApiInstallmentSaveWithCreditCardRequestDtoBuilder creditCardHolderInfo(
+      ApiCreditCardHolderInfoRequestDto creditCardHolderInfo
+    ) {
+      this.creditCardHolderInfo$set = true;
+      this.creditCardHolderInfo = creditCardHolderInfo;
+      return this;
+    }
+
     private JsonNullable<Double> totalValue = JsonNullable.undefined();
 
     @JsonProperty("totalValue")
     public ApiInstallmentSaveWithCreditCardRequestDtoBuilder totalValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalValue cannot be null");
-      }
       this.totalValue = JsonNullable.of(value);
       return this;
     }
@@ -194,9 +216,6 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
 
     @JsonProperty("description")
     public ApiInstallmentSaveWithCreditCardRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -205,9 +224,6 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
 
     @JsonProperty("postalService")
     public ApiInstallmentSaveWithCreditCardRequestDtoBuilder postalService(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("postalService cannot be null");
-      }
       this.postalService = JsonNullable.of(value);
       return this;
     }
@@ -216,9 +232,6 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
 
     @JsonProperty("daysAfterDueDateToRegistrationCancellation")
     public ApiInstallmentSaveWithCreditCardRequestDtoBuilder daysAfterDueDateToRegistrationCancellation(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("daysAfterDueDateToRegistrationCancellation cannot be null");
-      }
       this.daysAfterDueDateToRegistrationCancellation = JsonNullable.of(value);
       return this;
     }
@@ -227,9 +240,6 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
 
     @JsonProperty("paymentExternalReference")
     public ApiInstallmentSaveWithCreditCardRequestDtoBuilder paymentExternalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("paymentExternalReference cannot be null");
-      }
       this.paymentExternalReference = JsonNullable.of(value);
       return this;
     }
@@ -238,9 +248,6 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
 
     @JsonProperty("discount")
     public ApiInstallmentSaveWithCreditCardRequestDtoBuilder discount(ApiPaymentDiscountDto value) {
-      if (value == null) {
-        throw new IllegalStateException("discount cannot be null");
-      }
       this.discount = JsonNullable.of(value);
       return this;
     }
@@ -249,9 +256,6 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
 
     @JsonProperty("interest")
     public ApiInstallmentSaveWithCreditCardRequestDtoBuilder interest(ApiPaymentInterestRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("interest cannot be null");
-      }
       this.interest = JsonNullable.of(value);
       return this;
     }
@@ -260,9 +264,6 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
 
     @JsonProperty("fine")
     public ApiInstallmentSaveWithCreditCardRequestDtoBuilder fine(ApiPaymentFineRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("fine cannot be null");
-      }
       this.fine = JsonNullable.of(value);
       return this;
     }
@@ -271,9 +272,6 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
 
     @JsonProperty("splits")
     public ApiInstallmentSaveWithCreditCardRequestDtoBuilder splits(List<ApiInstallmentSplitRequestDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("splits cannot be null");
-      }
       this.splits = JsonNullable.of(value);
       return this;
     }
@@ -282,9 +280,6 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
 
     @JsonProperty("creditCardToken")
     public ApiInstallmentSaveWithCreditCardRequestDtoBuilder creditCardToken(String value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCardToken cannot be null");
-      }
       this.creditCardToken = JsonNullable.of(value);
       return this;
     }
@@ -293,11 +288,38 @@ public class ApiInstallmentSaveWithCreditCardRequestDto {
 
     @JsonProperty("authorizeOnly")
     public ApiInstallmentSaveWithCreditCardRequestDtoBuilder authorizeOnly(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("authorizeOnly cannot be null");
-      }
       this.authorizeOnly = JsonNullable.of(value);
       return this;
+    }
+
+    public ApiInstallmentSaveWithCreditCardRequestDto build() {
+      if (!creditCard$set) {
+        throw new IllegalStateException("creditCard is required");
+      }
+      if (!creditCardHolderInfo$set) {
+        throw new IllegalStateException("creditCardHolderInfo is required");
+      }
+      return new ApiInstallmentSaveWithCreditCardRequestDto(
+        installmentCount,
+        customer,
+        value,
+        billingType,
+        dueDate,
+        creditCard,
+        creditCardHolderInfo,
+        remoteIp,
+        totalValue,
+        description,
+        postalService,
+        daysAfterDueDateToRegistrationCancellation,
+        paymentExternalReference,
+        discount,
+        interest,
+        fine,
+        splits,
+        creditCardToken,
+        authorizeOnly
+      );
     }
   }
 }

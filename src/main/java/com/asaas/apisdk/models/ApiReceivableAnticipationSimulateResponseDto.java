@@ -137,9 +137,6 @@ public class ApiReceivableAnticipationSimulateResponseDto {
 
     @JsonProperty("installment")
     public ApiReceivableAnticipationSimulateResponseDtoBuilder installment(String value) {
-      if (value == null) {
-        throw new IllegalStateException("installment cannot be null");
-      }
       this.installment = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +145,6 @@ public class ApiReceivableAnticipationSimulateResponseDto {
 
     @JsonProperty("payment")
     public ApiReceivableAnticipationSimulateResponseDtoBuilder payment(String value) {
-      if (value == null) {
-        throw new IllegalStateException("payment cannot be null");
-      }
       this.payment = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +153,6 @@ public class ApiReceivableAnticipationSimulateResponseDto {
 
     @JsonProperty("anticipationDate")
     public ApiReceivableAnticipationSimulateResponseDtoBuilder anticipationDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("anticipationDate cannot be null");
-      }
       this.anticipationDate = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +161,6 @@ public class ApiReceivableAnticipationSimulateResponseDto {
 
     @JsonProperty("dueDate")
     public ApiReceivableAnticipationSimulateResponseDtoBuilder dueDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dueDate cannot be null");
-      }
       this.dueDate = JsonNullable.of(value);
       return this;
     }
@@ -181,9 +169,6 @@ public class ApiReceivableAnticipationSimulateResponseDto {
 
     @JsonProperty("fee")
     public ApiReceivableAnticipationSimulateResponseDtoBuilder fee(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fee cannot be null");
-      }
       this.fee = JsonNullable.of(value);
       return this;
     }
@@ -192,9 +177,6 @@ public class ApiReceivableAnticipationSimulateResponseDto {
 
     @JsonProperty("anticipationDays")
     public ApiReceivableAnticipationSimulateResponseDtoBuilder anticipationDays(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("anticipationDays cannot be null");
-      }
       this.anticipationDays = JsonNullable.of(value);
       return this;
     }
@@ -203,9 +185,6 @@ public class ApiReceivableAnticipationSimulateResponseDto {
 
     @JsonProperty("netValue")
     public ApiReceivableAnticipationSimulateResponseDtoBuilder netValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("netValue cannot be null");
-      }
       this.netValue = JsonNullable.of(value);
       return this;
     }
@@ -214,9 +193,6 @@ public class ApiReceivableAnticipationSimulateResponseDto {
 
     @JsonProperty("totalValue")
     public ApiReceivableAnticipationSimulateResponseDtoBuilder totalValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalValue cannot be null");
-      }
       this.totalValue = JsonNullable.of(value);
       return this;
     }
@@ -225,9 +201,6 @@ public class ApiReceivableAnticipationSimulateResponseDto {
 
     @JsonProperty("value")
     public ApiReceivableAnticipationSimulateResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -236,9 +209,6 @@ public class ApiReceivableAnticipationSimulateResponseDto {
 
     @JsonProperty("isDocumentationRequired")
     public ApiReceivableAnticipationSimulateResponseDtoBuilder isDocumentationRequired(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("isDocumentationRequired cannot be null");
-      }
       this.isDocumentationRequired = JsonNullable.of(value);
       return this;
     }

@@ -78,9 +78,6 @@ public class ApiSubscriptionSplitRequestDto {
 
     @JsonProperty("fixedValue")
     public ApiSubscriptionSplitRequestDtoBuilder fixedValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fixedValue cannot be null");
-      }
       this.fixedValue = JsonNullable.of(value);
       return this;
     }
@@ -89,9 +86,6 @@ public class ApiSubscriptionSplitRequestDto {
 
     @JsonProperty("percentualValue")
     public ApiSubscriptionSplitRequestDtoBuilder percentualValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("percentualValue cannot be null");
-      }
       this.percentualValue = JsonNullable.of(value);
       return this;
     }
@@ -100,9 +94,6 @@ public class ApiSubscriptionSplitRequestDto {
 
     @JsonProperty("externalReference")
     public ApiSubscriptionSplitRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -111,9 +102,6 @@ public class ApiSubscriptionSplitRequestDto {
 
     @JsonProperty("description")
     public ApiSubscriptionSplitRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }

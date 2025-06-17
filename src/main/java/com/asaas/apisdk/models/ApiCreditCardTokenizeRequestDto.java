@@ -2,6 +2,7 @@
 
 package com.asaas.apisdk.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,10 +25,10 @@ public class ApiCreditCardTokenizeRequestDto {
   @NonNull
   private String customer;
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCreditCardRequestDto creditCard;
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCreditCardHolderInfoRequestDto creditCardHolderInfo;
 
   /**
@@ -35,4 +36,42 @@ public class ApiCreditCardTokenizeRequestDto {
    */
   @NonNull
   private String remoteIp;
+
+  // Overwrite lombok builder methods
+  public static class ApiCreditCardTokenizeRequestDtoBuilder {
+
+    /**
+     * Flag to track if the creditCard property has been set.
+     */
+    private boolean creditCard$set = false;
+
+    /**
+     * Flag to track if the creditCardHolderInfo property has been set.
+     */
+    private boolean creditCardHolderInfo$set = false;
+
+    public ApiCreditCardTokenizeRequestDtoBuilder creditCard(ApiCreditCardRequestDto creditCard) {
+      this.creditCard$set = true;
+      this.creditCard = creditCard;
+      return this;
+    }
+
+    public ApiCreditCardTokenizeRequestDtoBuilder creditCardHolderInfo(
+      ApiCreditCardHolderInfoRequestDto creditCardHolderInfo
+    ) {
+      this.creditCardHolderInfo$set = true;
+      this.creditCardHolderInfo = creditCardHolderInfo;
+      return this;
+    }
+
+    public ApiCreditCardTokenizeRequestDto build() {
+      if (!creditCard$set) {
+        throw new IllegalStateException("creditCard is required");
+      }
+      if (!creditCardHolderInfo$set) {
+        throw new IllegalStateException("creditCardHolderInfo is required");
+      }
+      return new ApiCreditCardTokenizeRequestDto(customer, creditCard, creditCardHolderInfo, remoteIp);
+    }
+  }
 }

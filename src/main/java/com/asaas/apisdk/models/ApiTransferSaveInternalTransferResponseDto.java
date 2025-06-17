@@ -244,9 +244,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("object")
     public ApiTransferSaveInternalTransferResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -255,9 +252,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("id")
     public ApiTransferSaveInternalTransferResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -268,9 +262,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
     public ApiTransferSaveInternalTransferResponseDtoBuilder type(
       ApiTransferSaveInternalTransferResponseDtoType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }
@@ -279,9 +270,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("dateCreated")
     public ApiTransferSaveInternalTransferResponseDtoBuilder dateCreated(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dateCreated cannot be null");
-      }
       this.dateCreated = JsonNullable.of(value);
       return this;
     }
@@ -290,9 +278,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("value")
     public ApiTransferSaveInternalTransferResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -301,9 +286,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("netValue")
     public ApiTransferSaveInternalTransferResponseDtoBuilder netValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("netValue cannot be null");
-      }
       this.netValue = JsonNullable.of(value);
       return this;
     }
@@ -314,9 +296,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
     public ApiTransferSaveInternalTransferResponseDtoBuilder status(
       ApiTransferSaveInternalTransferResponseTransferStatus value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -325,9 +304,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("transferFee")
     public ApiTransferSaveInternalTransferResponseDtoBuilder transferFee(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("transferFee cannot be null");
-      }
       this.transferFee = JsonNullable.of(value);
       return this;
     }
@@ -336,9 +312,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("effectiveDate")
     public ApiTransferSaveInternalTransferResponseDtoBuilder effectiveDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("effectiveDate cannot be null");
-      }
       this.effectiveDate = JsonNullable.of(value);
       return this;
     }
@@ -347,9 +320,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("scheduleDate")
     public ApiTransferSaveInternalTransferResponseDtoBuilder scheduleDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("scheduleDate cannot be null");
-      }
       this.scheduleDate = JsonNullable.of(value);
       return this;
     }
@@ -358,9 +328,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("endToEndIdentifier")
     public ApiTransferSaveInternalTransferResponseDtoBuilder endToEndIdentifier(String value) {
-      if (value == null) {
-        throw new IllegalStateException("endToEndIdentifier cannot be null");
-      }
       this.endToEndIdentifier = JsonNullable.of(value);
       return this;
     }
@@ -369,9 +336,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("authorized")
     public ApiTransferSaveInternalTransferResponseDtoBuilder authorized(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("authorized cannot be null");
-      }
       this.authorized = JsonNullable.of(value);
       return this;
     }
@@ -380,9 +344,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("failReason")
     public ApiTransferSaveInternalTransferResponseDtoBuilder failReason(String value) {
-      if (value == null) {
-        throw new IllegalStateException("failReason cannot be null");
-      }
       this.failReason = JsonNullable.of(value);
       return this;
     }
@@ -391,9 +352,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("externalReference")
     public ApiTransferSaveInternalTransferResponseDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -402,9 +360,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("transactionReceiptUrl")
     public ApiTransferSaveInternalTransferResponseDtoBuilder transactionReceiptUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("transactionReceiptUrl cannot be null");
-      }
       this.transactionReceiptUrl = JsonNullable.of(value);
       return this;
     }
@@ -415,9 +370,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
     public ApiTransferSaveInternalTransferResponseDtoBuilder operationType(
       ApiTransferSaveInternalTransferResponseTransferType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("operationType cannot be null");
-      }
       this.operationType = JsonNullable.of(value);
       return this;
     }
@@ -426,9 +378,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("description")
     public ApiTransferSaveInternalTransferResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -437,9 +386,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("recurring")
     public ApiTransferSaveInternalTransferResponseDtoBuilder recurring(String value) {
-      if (value == null) {
-        throw new IllegalStateException("recurring cannot be null");
-      }
       this.recurring = JsonNullable.of(value);
       return this;
     }
@@ -448,9 +394,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("walletId")
     public ApiTransferSaveInternalTransferResponseDtoBuilder walletId(String value) {
-      if (value == null) {
-        throw new IllegalStateException("walletId cannot be null");
-      }
       this.walletId = JsonNullable.of(value);
       return this;
     }
@@ -459,9 +402,6 @@ public class ApiTransferSaveInternalTransferResponseDto {
 
     @JsonProperty("account")
     public ApiTransferSaveInternalTransferResponseDtoBuilder account(ApiTransferSaveInternalTransferAccountDto value) {
-      if (value == null) {
-        throw new IllegalStateException("account cannot be null");
-      }
       this.account = JsonNullable.of(value);
       return this;
     }

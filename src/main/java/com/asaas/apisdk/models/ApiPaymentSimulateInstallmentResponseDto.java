@@ -49,9 +49,6 @@ public class ApiPaymentSimulateInstallmentResponseDto {
 
     @JsonProperty("paymentNetValue")
     public ApiPaymentSimulateInstallmentResponseDtoBuilder paymentNetValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("paymentNetValue cannot be null");
-      }
       this.paymentNetValue = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiPaymentSimulateInstallmentResponseDto {
 
     @JsonProperty("paymentValue")
     public ApiPaymentSimulateInstallmentResponseDtoBuilder paymentValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("paymentValue cannot be null");
-      }
       this.paymentValue = JsonNullable.of(value);
       return this;
     }

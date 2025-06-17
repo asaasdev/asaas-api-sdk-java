@@ -49,9 +49,6 @@ public class ApiErrorResponseItemDto {
 
     @JsonProperty("code")
     public ApiErrorResponseItemDtoBuilder code(String value) {
-      if (value == null) {
-        throw new IllegalStateException("code cannot be null");
-      }
       this.code = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiErrorResponseItemDto {
 
     @JsonProperty("description")
     public ApiErrorResponseItemDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }

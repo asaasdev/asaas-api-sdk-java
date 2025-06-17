@@ -183,9 +183,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder personType(
       ApiCustomerUpdateRequestSaveRequestPersonType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("personType cannot be null");
-      }
       this.personType = JsonNullable.of(value);
       return this;
     }
@@ -194,9 +191,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("cpfCnpj")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }
@@ -205,9 +199,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("birthDate")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder birthDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("birthDate cannot be null");
-      }
       this.birthDate = JsonNullable.of(value);
       return this;
     }
@@ -218,9 +209,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder companyType(
       ApiCustomerUpdateRequestSaveRequestCompanyType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("companyType cannot be null");
-      }
       this.companyType = JsonNullable.of(value);
       return this;
     }
@@ -229,9 +217,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("incomeValue")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder incomeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("incomeValue cannot be null");
-      }
       this.incomeValue = JsonNullable.of(value);
       return this;
     }
@@ -240,9 +225,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("email")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder email(String value) {
-      if (value == null) {
-        throw new IllegalStateException("email cannot be null");
-      }
       this.email = JsonNullable.of(value);
       return this;
     }
@@ -251,9 +233,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("phone")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder phone(String value) {
-      if (value == null) {
-        throw new IllegalStateException("phone cannot be null");
-      }
       this.phone = JsonNullable.of(value);
       return this;
     }
@@ -262,9 +241,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("mobilePhone")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder mobilePhone(String value) {
-      if (value == null) {
-        throw new IllegalStateException("mobilePhone cannot be null");
-      }
       this.mobilePhone = JsonNullable.of(value);
       return this;
     }
@@ -273,9 +249,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("site")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder site(String value) {
-      if (value == null) {
-        throw new IllegalStateException("site cannot be null");
-      }
       this.site = JsonNullable.of(value);
       return this;
     }
@@ -284,9 +257,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("postalCode")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder postalCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("postalCode cannot be null");
-      }
       this.postalCode = JsonNullable.of(value);
       return this;
     }
@@ -295,9 +265,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("address")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder address(String value) {
-      if (value == null) {
-        throw new IllegalStateException("address cannot be null");
-      }
       this.address = JsonNullable.of(value);
       return this;
     }
@@ -306,9 +273,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("addressNumber")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder addressNumber(String value) {
-      if (value == null) {
-        throw new IllegalStateException("addressNumber cannot be null");
-      }
       this.addressNumber = JsonNullable.of(value);
       return this;
     }
@@ -317,9 +281,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("complement")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder complement(String value) {
-      if (value == null) {
-        throw new IllegalStateException("complement cannot be null");
-      }
       this.complement = JsonNullable.of(value);
       return this;
     }
@@ -328,9 +289,6 @@ public class ApiCustomerUpdateRequestSaveRequestDto {
 
     @JsonProperty("province")
     public ApiCustomerUpdateRequestSaveRequestDtoBuilder province(String value) {
-      if (value == null) {
-        throw new IllegalStateException("province cannot be null");
-      }
       this.province = JsonNullable.of(value);
       return this;
     }

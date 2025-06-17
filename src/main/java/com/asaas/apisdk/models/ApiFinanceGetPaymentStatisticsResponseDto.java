@@ -60,9 +60,6 @@ public class ApiFinanceGetPaymentStatisticsResponseDto {
 
     @JsonProperty("quantity")
     public ApiFinanceGetPaymentStatisticsResponseDtoBuilder quantity(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("quantity cannot be null");
-      }
       this.quantity = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiFinanceGetPaymentStatisticsResponseDto {
 
     @JsonProperty("value")
     public ApiFinanceGetPaymentStatisticsResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiFinanceGetPaymentStatisticsResponseDto {
 
     @JsonProperty("netValue")
     public ApiFinanceGetPaymentStatisticsResponseDtoBuilder netValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("netValue cannot be null");
-      }
       this.netValue = JsonNullable.of(value);
       return this;
     }

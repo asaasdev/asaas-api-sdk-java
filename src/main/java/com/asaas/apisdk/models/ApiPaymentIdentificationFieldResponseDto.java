@@ -60,9 +60,6 @@ public class ApiPaymentIdentificationFieldResponseDto {
 
     @JsonProperty("identificationField")
     public ApiPaymentIdentificationFieldResponseDtoBuilder identificationField(String value) {
-      if (value == null) {
-        throw new IllegalStateException("identificationField cannot be null");
-      }
       this.identificationField = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiPaymentIdentificationFieldResponseDto {
 
     @JsonProperty("nossoNumero")
     public ApiPaymentIdentificationFieldResponseDtoBuilder nossoNumero(String value) {
-      if (value == null) {
-        throw new IllegalStateException("nossoNumero cannot be null");
-      }
       this.nossoNumero = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiPaymentIdentificationFieldResponseDto {
 
     @JsonProperty("barCode")
     public ApiPaymentIdentificationFieldResponseDtoBuilder barCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("barCode cannot be null");
-      }
       this.barCode = JsonNullable.of(value);
       return this;
     }

@@ -134,9 +134,6 @@ public class ApiSubscriptionConfigureInvoiceRequestDto {
 
     @JsonProperty("municipalServiceId")
     public ApiSubscriptionConfigureInvoiceRequestDtoBuilder municipalServiceId(String value) {
-      if (value == null) {
-        throw new IllegalStateException("municipalServiceId cannot be null");
-      }
       this.municipalServiceId = JsonNullable.of(value);
       return this;
     }
@@ -145,9 +142,6 @@ public class ApiSubscriptionConfigureInvoiceRequestDto {
 
     @JsonProperty("municipalServiceCode")
     public ApiSubscriptionConfigureInvoiceRequestDtoBuilder municipalServiceCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("municipalServiceCode cannot be null");
-      }
       this.municipalServiceCode = JsonNullable.of(value);
       return this;
     }
@@ -156,9 +150,6 @@ public class ApiSubscriptionConfigureInvoiceRequestDto {
 
     @JsonProperty("municipalServiceName")
     public ApiSubscriptionConfigureInvoiceRequestDtoBuilder municipalServiceName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("municipalServiceName cannot be null");
-      }
       this.municipalServiceName = JsonNullable.of(value);
       return this;
     }
@@ -167,9 +158,6 @@ public class ApiSubscriptionConfigureInvoiceRequestDto {
 
     @JsonProperty("updatePayment")
     public ApiSubscriptionConfigureInvoiceRequestDtoBuilder updatePayment(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("updatePayment cannot be null");
-      }
       this.updatePayment = JsonNullable.of(value);
       return this;
     }
@@ -178,9 +166,6 @@ public class ApiSubscriptionConfigureInvoiceRequestDto {
 
     @JsonProperty("deductions")
     public ApiSubscriptionConfigureInvoiceRequestDtoBuilder deductions(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("deductions cannot be null");
-      }
       this.deductions = JsonNullable.of(value);
       return this;
     }
@@ -192,9 +177,6 @@ public class ApiSubscriptionConfigureInvoiceRequestDto {
     public ApiSubscriptionConfigureInvoiceRequestDtoBuilder effectiveDatePeriod(
       ApiSubscriptionConfigureInvoiceRequestDtoEffectiveDatePeriod value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("effectiveDatePeriod cannot be null");
-      }
       this.effectiveDatePeriod = JsonNullable.of(value);
       return this;
     }
@@ -203,9 +185,6 @@ public class ApiSubscriptionConfigureInvoiceRequestDto {
 
     @JsonProperty("receivedOnly")
     public ApiSubscriptionConfigureInvoiceRequestDtoBuilder receivedOnly(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("receivedOnly cannot be null");
-      }
       this.receivedOnly = JsonNullable.of(value);
       return this;
     }
@@ -214,9 +193,6 @@ public class ApiSubscriptionConfigureInvoiceRequestDto {
 
     @JsonProperty("daysBeforeDueDate")
     public ApiSubscriptionConfigureInvoiceRequestDtoBuilder daysBeforeDueDate(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("daysBeforeDueDate cannot be null");
-      }
       this.daysBeforeDueDate = JsonNullable.of(value);
       return this;
     }
@@ -225,9 +201,6 @@ public class ApiSubscriptionConfigureInvoiceRequestDto {
 
     @JsonProperty("observations")
     public ApiSubscriptionConfigureInvoiceRequestDtoBuilder observations(String value) {
-      if (value == null) {
-        throw new IllegalStateException("observations cannot be null");
-      }
       this.observations = JsonNullable.of(value);
       return this;
     }
@@ -236,9 +209,6 @@ public class ApiSubscriptionConfigureInvoiceRequestDto {
 
     @JsonProperty("taxes")
     public ApiSubscriptionConfigureInvoiceRequestDtoBuilder taxes(ApiCustomerInvoiceTaxesDto value) {
-      if (value == null) {
-        throw new IllegalStateException("taxes cannot be null");
-      }
       this.taxes = JsonNullable.of(value);
       return this;
     }

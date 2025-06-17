@@ -100,9 +100,6 @@ public class ApiInstallmentSplitRequestDto {
 
     @JsonProperty("fixedValue")
     public ApiInstallmentSplitRequestDtoBuilder fixedValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fixedValue cannot be null");
-      }
       this.fixedValue = JsonNullable.of(value);
       return this;
     }
@@ -111,9 +108,6 @@ public class ApiInstallmentSplitRequestDto {
 
     @JsonProperty("percentualValue")
     public ApiInstallmentSplitRequestDtoBuilder percentualValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("percentualValue cannot be null");
-      }
       this.percentualValue = JsonNullable.of(value);
       return this;
     }
@@ -122,9 +116,6 @@ public class ApiInstallmentSplitRequestDto {
 
     @JsonProperty("totalFixedValue")
     public ApiInstallmentSplitRequestDtoBuilder totalFixedValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalFixedValue cannot be null");
-      }
       this.totalFixedValue = JsonNullable.of(value);
       return this;
     }
@@ -133,9 +124,6 @@ public class ApiInstallmentSplitRequestDto {
 
     @JsonProperty("externalReference")
     public ApiInstallmentSplitRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -144,9 +132,6 @@ public class ApiInstallmentSplitRequestDto {
 
     @JsonProperty("description")
     public ApiInstallmentSplitRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -155,9 +140,6 @@ public class ApiInstallmentSplitRequestDto {
 
     @JsonProperty("installmentNumber")
     public ApiInstallmentSplitRequestDtoBuilder installmentNumber(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("installmentNumber cannot be null");
-      }
       this.installmentNumber = JsonNullable.of(value);
       return this;
     }

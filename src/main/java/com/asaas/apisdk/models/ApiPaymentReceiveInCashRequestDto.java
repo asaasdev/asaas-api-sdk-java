@@ -60,9 +60,6 @@ public class ApiPaymentReceiveInCashRequestDto {
 
     @JsonProperty("paymentDate")
     public ApiPaymentReceiveInCashRequestDtoBuilder paymentDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("paymentDate cannot be null");
-      }
       this.paymentDate = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiPaymentReceiveInCashRequestDto {
 
     @JsonProperty("value")
     public ApiPaymentReceiveInCashRequestDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiPaymentReceiveInCashRequestDto {
 
     @JsonProperty("notifyCustomer")
     public ApiPaymentReceiveInCashRequestDtoBuilder notifyCustomer(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("notifyCustomer cannot be null");
-      }
       this.notifyCustomer = JsonNullable.of(value);
       return this;
     }

@@ -49,9 +49,6 @@ public class ApiBillSimulateRequestDto {
 
     @JsonProperty("identificationField")
     public ApiBillSimulateRequestDtoBuilder identificationField(String value) {
-      if (value == null) {
-        throw new IllegalStateException("identificationField cannot be null");
-      }
       this.identificationField = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiBillSimulateRequestDto {
 
     @JsonProperty("barCode")
     public ApiBillSimulateRequestDtoBuilder barCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("barCode cannot be null");
-      }
       this.barCode = JsonNullable.of(value);
       return this;
     }

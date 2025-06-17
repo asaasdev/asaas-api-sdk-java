@@ -82,9 +82,6 @@ public class ApiPaymentCustodyGetResponseDto {
 
     @JsonProperty("id")
     public ApiPaymentCustodyGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -93,9 +90,6 @@ public class ApiPaymentCustodyGetResponseDto {
 
     @JsonProperty("status")
     public ApiPaymentCustodyGetResponseDtoBuilder status(ApiPaymentCustodyGetResponsePaymentCustodyStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +98,6 @@ public class ApiPaymentCustodyGetResponseDto {
 
     @JsonProperty("expirationDate")
     public ApiPaymentCustodyGetResponseDtoBuilder expirationDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("expirationDate cannot be null");
-      }
       this.expirationDate = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +106,6 @@ public class ApiPaymentCustodyGetResponseDto {
 
     @JsonProperty("finishDate")
     public ApiPaymentCustodyGetResponseDtoBuilder finishDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("finishDate cannot be null");
-      }
       this.finishDate = JsonNullable.of(value);
       return this;
     }
@@ -129,9 +117,6 @@ public class ApiPaymentCustodyGetResponseDto {
     public ApiPaymentCustodyGetResponseDtoBuilder finishReason(
       ApiPaymentCustodyGetResponsePaymentCustodyFinishReason value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("finishReason cannot be null");
-      }
       this.finishReason = JsonNullable.of(value);
       return this;
     }

@@ -60,9 +60,6 @@ public class ApiPaymentPixQrCodeResponseDto {
 
     @JsonProperty("encodedImage")
     public ApiPaymentPixQrCodeResponseDtoBuilder encodedImage(String value) {
-      if (value == null) {
-        throw new IllegalStateException("encodedImage cannot be null");
-      }
       this.encodedImage = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiPaymentPixQrCodeResponseDto {
 
     @JsonProperty("payload")
     public ApiPaymentPixQrCodeResponseDtoBuilder payload(String value) {
-      if (value == null) {
-        throw new IllegalStateException("payload cannot be null");
-      }
       this.payload = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiPaymentPixQrCodeResponseDto {
 
     @JsonProperty("expirationDate")
     public ApiPaymentPixQrCodeResponseDtoBuilder expirationDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("expirationDate cannot be null");
-      }
       this.expirationDate = JsonNullable.of(value);
       return this;
     }

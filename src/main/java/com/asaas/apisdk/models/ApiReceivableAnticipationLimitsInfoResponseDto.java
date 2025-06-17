@@ -49,9 +49,6 @@ public class ApiReceivableAnticipationLimitsInfoResponseDto {
 
     @JsonProperty("total")
     public ApiReceivableAnticipationLimitsInfoResponseDtoBuilder total(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("total cannot be null");
-      }
       this.total = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiReceivableAnticipationLimitsInfoResponseDto {
 
     @JsonProperty("available")
     public ApiReceivableAnticipationLimitsInfoResponseDtoBuilder available(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("available cannot be null");
-      }
       this.available = JsonNullable.of(value);
       return this;
     }

@@ -239,9 +239,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("object")
     public ApiSubscriptionGetResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -250,9 +247,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("id")
     public ApiSubscriptionGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -261,9 +255,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("dateCreated")
     public ApiSubscriptionGetResponseDtoBuilder dateCreated(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dateCreated cannot be null");
-      }
       this.dateCreated = JsonNullable.of(value);
       return this;
     }
@@ -272,9 +263,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("customer")
     public ApiSubscriptionGetResponseDtoBuilder customer(String value) {
-      if (value == null) {
-        throw new IllegalStateException("customer cannot be null");
-      }
       this.customer = JsonNullable.of(value);
       return this;
     }
@@ -283,9 +271,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("paymentLink")
     public ApiSubscriptionGetResponseDtoBuilder paymentLink(String value) {
-      if (value == null) {
-        throw new IllegalStateException("paymentLink cannot be null");
-      }
       this.paymentLink = JsonNullable.of(value);
       return this;
     }
@@ -294,9 +279,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("billingType")
     public ApiSubscriptionGetResponseDtoBuilder billingType(ApiSubscriptionGetResponseBillingType value) {
-      if (value == null) {
-        throw new IllegalStateException("billingType cannot be null");
-      }
       this.billingType = JsonNullable.of(value);
       return this;
     }
@@ -305,9 +287,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("cycle")
     public ApiSubscriptionGetResponseDtoBuilder cycle(ApiSubscriptionGetResponseCycle value) {
-      if (value == null) {
-        throw new IllegalStateException("cycle cannot be null");
-      }
       this.cycle = JsonNullable.of(value);
       return this;
     }
@@ -316,9 +295,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("value")
     public ApiSubscriptionGetResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -327,9 +303,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("nextDueDate")
     public ApiSubscriptionGetResponseDtoBuilder nextDueDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("nextDueDate cannot be null");
-      }
       this.nextDueDate = JsonNullable.of(value);
       return this;
     }
@@ -338,9 +311,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("endDate")
     public ApiSubscriptionGetResponseDtoBuilder endDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("endDate cannot be null");
-      }
       this.endDate = JsonNullable.of(value);
       return this;
     }
@@ -349,9 +319,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("description")
     public ApiSubscriptionGetResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -360,9 +327,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("status")
     public ApiSubscriptionGetResponseDtoBuilder status(ApiSubscriptionGetResponseSubscriptionStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -371,9 +335,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("discount")
     public ApiSubscriptionGetResponseDtoBuilder discount(ApiPaymentDiscountDto value) {
-      if (value == null) {
-        throw new IllegalStateException("discount cannot be null");
-      }
       this.discount = JsonNullable.of(value);
       return this;
     }
@@ -382,9 +343,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("fine")
     public ApiSubscriptionGetResponseDtoBuilder fine(ApiPaymentFineResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("fine cannot be null");
-      }
       this.fine = JsonNullable.of(value);
       return this;
     }
@@ -393,9 +351,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("interest")
     public ApiSubscriptionGetResponseDtoBuilder interest(ApiPaymentInterestResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("interest cannot be null");
-      }
       this.interest = JsonNullable.of(value);
       return this;
     }
@@ -404,9 +359,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("deleted")
     public ApiSubscriptionGetResponseDtoBuilder deleted(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("deleted cannot be null");
-      }
       this.deleted = JsonNullable.of(value);
       return this;
     }
@@ -415,9 +367,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("maxPayments")
     public ApiSubscriptionGetResponseDtoBuilder maxPayments(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("maxPayments cannot be null");
-      }
       this.maxPayments = JsonNullable.of(value);
       return this;
     }
@@ -426,9 +375,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("externalReference")
     public ApiSubscriptionGetResponseDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -437,9 +383,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("checkoutSession")
     public ApiSubscriptionGetResponseDtoBuilder checkoutSession(String value) {
-      if (value == null) {
-        throw new IllegalStateException("checkoutSession cannot be null");
-      }
       this.checkoutSession = JsonNullable.of(value);
       return this;
     }
@@ -448,9 +391,6 @@ public class ApiSubscriptionGetResponseDto {
 
     @JsonProperty("split")
     public ApiSubscriptionGetResponseDtoBuilder split(List<ApiSubscriptionSplitResponseDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("split cannot be null");
-      }
       this.split = JsonNullable.of(value);
       return this;
     }

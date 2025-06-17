@@ -89,9 +89,6 @@ public class ApiPaymentSplitRequestDto {
 
     @JsonProperty("fixedValue")
     public ApiPaymentSplitRequestDtoBuilder fixedValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fixedValue cannot be null");
-      }
       this.fixedValue = JsonNullable.of(value);
       return this;
     }
@@ -100,9 +97,6 @@ public class ApiPaymentSplitRequestDto {
 
     @JsonProperty("percentualValue")
     public ApiPaymentSplitRequestDtoBuilder percentualValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("percentualValue cannot be null");
-      }
       this.percentualValue = JsonNullable.of(value);
       return this;
     }
@@ -111,9 +105,6 @@ public class ApiPaymentSplitRequestDto {
 
     @JsonProperty("totalFixedValue")
     public ApiPaymentSplitRequestDtoBuilder totalFixedValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalFixedValue cannot be null");
-      }
       this.totalFixedValue = JsonNullable.of(value);
       return this;
     }
@@ -122,9 +113,6 @@ public class ApiPaymentSplitRequestDto {
 
     @JsonProperty("externalReference")
     public ApiPaymentSplitRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -133,9 +121,6 @@ public class ApiPaymentSplitRequestDto {
 
     @JsonProperty("description")
     public ApiPaymentSplitRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }

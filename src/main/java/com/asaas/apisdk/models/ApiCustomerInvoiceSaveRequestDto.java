@@ -3,6 +3,7 @@
 package com.asaas.apisdk.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
@@ -57,7 +58,7 @@ public class ApiCustomerInvoiceSaveRequestDto {
   @NonNull
   private String municipalServiceName;
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCustomerInvoiceTaxesDto taxes;
 
   /**
@@ -140,13 +141,21 @@ public class ApiCustomerInvoiceSaveRequestDto {
   // Overwrite lombok builder methods
   public static class ApiCustomerInvoiceSaveRequestDtoBuilder {
 
+    /**
+     * Flag to track if the taxes property has been set.
+     */
+    private boolean taxes$set = false;
+
+    public ApiCustomerInvoiceSaveRequestDtoBuilder taxes(ApiCustomerInvoiceTaxesDto taxes) {
+      this.taxes$set = true;
+      this.taxes = taxes;
+      return this;
+    }
+
     private JsonNullable<String> payment = JsonNullable.undefined();
 
     @JsonProperty("payment")
     public ApiCustomerInvoiceSaveRequestDtoBuilder payment(String value) {
-      if (value == null) {
-        throw new IllegalStateException("payment cannot be null");
-      }
       this.payment = JsonNullable.of(value);
       return this;
     }
@@ -155,9 +164,6 @@ public class ApiCustomerInvoiceSaveRequestDto {
 
     @JsonProperty("installment")
     public ApiCustomerInvoiceSaveRequestDtoBuilder installment(String value) {
-      if (value == null) {
-        throw new IllegalStateException("installment cannot be null");
-      }
       this.installment = JsonNullable.of(value);
       return this;
     }
@@ -166,9 +172,6 @@ public class ApiCustomerInvoiceSaveRequestDto {
 
     @JsonProperty("customer")
     public ApiCustomerInvoiceSaveRequestDtoBuilder customer(String value) {
-      if (value == null) {
-        throw new IllegalStateException("customer cannot be null");
-      }
       this.customer = JsonNullable.of(value);
       return this;
     }
@@ -177,9 +180,6 @@ public class ApiCustomerInvoiceSaveRequestDto {
 
     @JsonProperty("externalReference")
     public ApiCustomerInvoiceSaveRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -188,9 +188,6 @@ public class ApiCustomerInvoiceSaveRequestDto {
 
     @JsonProperty("municipalServiceId")
     public ApiCustomerInvoiceSaveRequestDtoBuilder municipalServiceId(String value) {
-      if (value == null) {
-        throw new IllegalStateException("municipalServiceId cannot be null");
-      }
       this.municipalServiceId = JsonNullable.of(value);
       return this;
     }
@@ -199,9 +196,6 @@ public class ApiCustomerInvoiceSaveRequestDto {
 
     @JsonProperty("municipalServiceCode")
     public ApiCustomerInvoiceSaveRequestDtoBuilder municipalServiceCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("municipalServiceCode cannot be null");
-      }
       this.municipalServiceCode = JsonNullable.of(value);
       return this;
     }
@@ -210,11 +204,30 @@ public class ApiCustomerInvoiceSaveRequestDto {
 
     @JsonProperty("updatePayment")
     public ApiCustomerInvoiceSaveRequestDtoBuilder updatePayment(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("updatePayment cannot be null");
-      }
       this.updatePayment = JsonNullable.of(value);
       return this;
+    }
+
+    public ApiCustomerInvoiceSaveRequestDto build() {
+      if (!taxes$set) {
+        throw new IllegalStateException("taxes is required");
+      }
+      return new ApiCustomerInvoiceSaveRequestDto(
+        serviceDescription,
+        observations,
+        value,
+        deductions,
+        effectiveDate,
+        municipalServiceName,
+        taxes,
+        payment,
+        installment,
+        customer,
+        externalReference,
+        municipalServiceId,
+        municipalServiceCode,
+        updatePayment
+      );
     }
   }
 }

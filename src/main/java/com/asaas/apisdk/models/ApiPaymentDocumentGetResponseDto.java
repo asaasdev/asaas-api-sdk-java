@@ -101,9 +101,6 @@ public class ApiPaymentDocumentGetResponseDto {
 
     @JsonProperty("object")
     public ApiPaymentDocumentGetResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -112,9 +109,6 @@ public class ApiPaymentDocumentGetResponseDto {
 
     @JsonProperty("id")
     public ApiPaymentDocumentGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -123,9 +117,6 @@ public class ApiPaymentDocumentGetResponseDto {
 
     @JsonProperty("name")
     public ApiPaymentDocumentGetResponseDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -134,9 +125,6 @@ public class ApiPaymentDocumentGetResponseDto {
 
     @JsonProperty("type")
     public ApiPaymentDocumentGetResponseDtoBuilder type(ApiPaymentDocumentGetResponsePaymentDocumentType value) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }
@@ -145,9 +133,6 @@ public class ApiPaymentDocumentGetResponseDto {
 
     @JsonProperty("availableAfterPayment")
     public ApiPaymentDocumentGetResponseDtoBuilder availableAfterPayment(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("availableAfterPayment cannot be null");
-      }
       this.availableAfterPayment = JsonNullable.of(value);
       return this;
     }
@@ -156,9 +141,6 @@ public class ApiPaymentDocumentGetResponseDto {
 
     @JsonProperty("file")
     public ApiPaymentDocumentGetResponseDtoBuilder file(ApiPaymentDocumentFileResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("file cannot be null");
-      }
       this.file = JsonNullable.of(value);
       return this;
     }
@@ -167,9 +149,6 @@ public class ApiPaymentDocumentGetResponseDto {
 
     @JsonProperty("deleted")
     public ApiPaymentDocumentGetResponseDtoBuilder deleted(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("deleted cannot be null");
-      }
       this.deleted = JsonNullable.of(value);
       return this;
     }

@@ -93,9 +93,6 @@ public class ApiPaymentDocumentFileResponseDto {
 
     @JsonProperty("publicId")
     public ApiPaymentDocumentFileResponseDtoBuilder publicId(String value) {
-      if (value == null) {
-        throw new IllegalStateException("publicId cannot be null");
-      }
       this.publicId = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +101,6 @@ public class ApiPaymentDocumentFileResponseDto {
 
     @JsonProperty("originalName")
     public ApiPaymentDocumentFileResponseDtoBuilder originalName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("originalName cannot be null");
-      }
       this.originalName = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +109,6 @@ public class ApiPaymentDocumentFileResponseDto {
 
     @JsonProperty("size")
     public ApiPaymentDocumentFileResponseDtoBuilder size(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("size cannot be null");
-      }
       this.size = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +117,6 @@ public class ApiPaymentDocumentFileResponseDto {
 
     @JsonProperty("extension")
     public ApiPaymentDocumentFileResponseDtoBuilder extension(String value) {
-      if (value == null) {
-        throw new IllegalStateException("extension cannot be null");
-      }
       this.extension = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +125,6 @@ public class ApiPaymentDocumentFileResponseDto {
 
     @JsonProperty("previewUrl")
     public ApiPaymentDocumentFileResponseDtoBuilder previewUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("previewUrl cannot be null");
-      }
       this.previewUrl = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +133,6 @@ public class ApiPaymentDocumentFileResponseDto {
 
     @JsonProperty("downloadUrl")
     public ApiPaymentDocumentFileResponseDtoBuilder downloadUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("downloadUrl cannot be null");
-      }
       this.downloadUrl = JsonNullable.of(value);
       return this;
     }

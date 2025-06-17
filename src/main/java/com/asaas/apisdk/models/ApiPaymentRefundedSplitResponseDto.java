@@ -60,9 +60,6 @@ public class ApiPaymentRefundedSplitResponseDto {
 
     @JsonProperty("id")
     public ApiPaymentRefundedSplitResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiPaymentRefundedSplitResponseDto {
 
     @JsonProperty("value")
     public ApiPaymentRefundedSplitResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiPaymentRefundedSplitResponseDto {
 
     @JsonProperty("done")
     public ApiPaymentRefundedSplitResponseDtoBuilder done(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("done cannot be null");
-      }
       this.done = JsonNullable.of(value);
       return this;
     }

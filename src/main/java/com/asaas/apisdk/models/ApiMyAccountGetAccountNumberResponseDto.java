@@ -60,9 +60,6 @@ public class ApiMyAccountGetAccountNumberResponseDto {
 
     @JsonProperty("agency")
     public ApiMyAccountGetAccountNumberResponseDtoBuilder agency(String value) {
-      if (value == null) {
-        throw new IllegalStateException("agency cannot be null");
-      }
       this.agency = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiMyAccountGetAccountNumberResponseDto {
 
     @JsonProperty("account")
     public ApiMyAccountGetAccountNumberResponseDtoBuilder account(String value) {
-      if (value == null) {
-        throw new IllegalStateException("account cannot be null");
-      }
       this.account = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiMyAccountGetAccountNumberResponseDto {
 
     @JsonProperty("accountDigit")
     public ApiMyAccountGetAccountNumberResponseDtoBuilder accountDigit(String value) {
-      if (value == null) {
-        throw new IllegalStateException("accountDigit cannot be null");
-      }
       this.accountDigit = JsonNullable.of(value);
       return this;
     }

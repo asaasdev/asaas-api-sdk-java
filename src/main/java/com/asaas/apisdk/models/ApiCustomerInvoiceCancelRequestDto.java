@@ -38,9 +38,6 @@ public class ApiCustomerInvoiceCancelRequestDto {
 
     @JsonProperty("cancelOnlyOnAsaas")
     public ApiCustomerInvoiceCancelRequestDtoBuilder cancelOnlyOnAsaas(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("cancelOnlyOnAsaas cannot be null");
-      }
       this.cancelOnlyOnAsaas = JsonNullable.of(value);
       return this;
     }

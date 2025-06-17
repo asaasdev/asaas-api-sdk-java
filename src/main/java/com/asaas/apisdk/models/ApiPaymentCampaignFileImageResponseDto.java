@@ -82,9 +82,6 @@ public class ApiPaymentCampaignFileImageResponseDto {
 
     @JsonProperty("originalName")
     public ApiPaymentCampaignFileImageResponseDtoBuilder originalName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("originalName cannot be null");
-      }
       this.originalName = JsonNullable.of(value);
       return this;
     }
@@ -93,9 +90,6 @@ public class ApiPaymentCampaignFileImageResponseDto {
 
     @JsonProperty("size")
     public ApiPaymentCampaignFileImageResponseDtoBuilder size(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("size cannot be null");
-      }
       this.size = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +98,6 @@ public class ApiPaymentCampaignFileImageResponseDto {
 
     @JsonProperty("extension")
     public ApiPaymentCampaignFileImageResponseDtoBuilder extension(String value) {
-      if (value == null) {
-        throw new IllegalStateException("extension cannot be null");
-      }
       this.extension = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +106,6 @@ public class ApiPaymentCampaignFileImageResponseDto {
 
     @JsonProperty("previewUrl")
     public ApiPaymentCampaignFileImageResponseDtoBuilder previewUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("previewUrl cannot be null");
-      }
       this.previewUrl = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +114,6 @@ public class ApiPaymentCampaignFileImageResponseDto {
 
     @JsonProperty("downloadUrl")
     public ApiPaymentCampaignFileImageResponseDtoBuilder downloadUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("downloadUrl cannot be null");
-      }
       this.downloadUrl = JsonNullable.of(value);
       return this;
     }

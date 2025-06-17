@@ -38,9 +38,6 @@ public class ApiMyAccountDisableAccountResponseDto {
 
     @JsonProperty("observations")
     public ApiMyAccountDisableAccountResponseDtoBuilder observations(String value) {
-      if (value == null) {
-        throw new IllegalStateException("observations cannot be null");
-      }
       this.observations = JsonNullable.of(value);
       return this;
     }

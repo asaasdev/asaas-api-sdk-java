@@ -173,9 +173,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("description")
     public ApiPaymentSaveRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -184,9 +181,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("daysAfterDueDateToRegistrationCancellation")
     public ApiPaymentSaveRequestDtoBuilder daysAfterDueDateToRegistrationCancellation(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("daysAfterDueDateToRegistrationCancellation cannot be null");
-      }
       this.daysAfterDueDateToRegistrationCancellation = JsonNullable.of(value);
       return this;
     }
@@ -195,9 +189,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("externalReference")
     public ApiPaymentSaveRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -206,9 +197,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("installmentCount")
     public ApiPaymentSaveRequestDtoBuilder installmentCount(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("installmentCount cannot be null");
-      }
       this.installmentCount = JsonNullable.of(value);
       return this;
     }
@@ -217,9 +205,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("totalValue")
     public ApiPaymentSaveRequestDtoBuilder totalValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalValue cannot be null");
-      }
       this.totalValue = JsonNullable.of(value);
       return this;
     }
@@ -228,9 +213,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("installmentValue")
     public ApiPaymentSaveRequestDtoBuilder installmentValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("installmentValue cannot be null");
-      }
       this.installmentValue = JsonNullable.of(value);
       return this;
     }
@@ -239,9 +221,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("discount")
     public ApiPaymentSaveRequestDtoBuilder discount(ApiPaymentDiscountDto value) {
-      if (value == null) {
-        throw new IllegalStateException("discount cannot be null");
-      }
       this.discount = JsonNullable.of(value);
       return this;
     }
@@ -250,9 +229,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("interest")
     public ApiPaymentSaveRequestDtoBuilder interest(ApiPaymentInterestRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("interest cannot be null");
-      }
       this.interest = JsonNullable.of(value);
       return this;
     }
@@ -261,9 +237,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("fine")
     public ApiPaymentSaveRequestDtoBuilder fine(ApiPaymentFineRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("fine cannot be null");
-      }
       this.fine = JsonNullable.of(value);
       return this;
     }
@@ -272,9 +245,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("postalService")
     public ApiPaymentSaveRequestDtoBuilder postalService(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("postalService cannot be null");
-      }
       this.postalService = JsonNullable.of(value);
       return this;
     }
@@ -283,9 +253,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("split")
     public ApiPaymentSaveRequestDtoBuilder split(List<ApiPaymentSplitRequestDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("split cannot be null");
-      }
       this.split = JsonNullable.of(value);
       return this;
     }
@@ -294,9 +261,6 @@ public class ApiPaymentSaveRequestDto {
 
     @JsonProperty("callback")
     public ApiPaymentSaveRequestDtoBuilder callback(ApiPaymentCallbackRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("callback cannot be null");
-      }
       this.callback = JsonNullable.of(value);
       return this;
     }

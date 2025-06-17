@@ -60,9 +60,6 @@ public class ApiMyAccountGetAccountFeesNotificationDto {
 
     @JsonProperty("phoneCallFeeValue")
     public ApiMyAccountGetAccountFeesNotificationDtoBuilder phoneCallFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("phoneCallFeeValue cannot be null");
-      }
       this.phoneCallFeeValue = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiMyAccountGetAccountFeesNotificationDto {
 
     @JsonProperty("whatsAppFeeValue")
     public ApiMyAccountGetAccountFeesNotificationDtoBuilder whatsAppFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("whatsAppFeeValue cannot be null");
-      }
       this.whatsAppFeeValue = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiMyAccountGetAccountFeesNotificationDto {
 
     @JsonProperty("messagingFeeValue")
     public ApiMyAccountGetAccountFeesNotificationDtoBuilder messagingFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("messagingFeeValue cannot be null");
-      }
       this.messagingFeeValue = JsonNullable.of(value);
       return this;
     }

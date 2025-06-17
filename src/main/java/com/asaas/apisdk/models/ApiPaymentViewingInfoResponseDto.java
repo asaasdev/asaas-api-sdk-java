@@ -49,9 +49,6 @@ public class ApiPaymentViewingInfoResponseDto {
 
     @JsonProperty("invoiceViewedDate")
     public ApiPaymentViewingInfoResponseDtoBuilder invoiceViewedDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("invoiceViewedDate cannot be null");
-      }
       this.invoiceViewedDate = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiPaymentViewingInfoResponseDto {
 
     @JsonProperty("boletoViewedDate")
     public ApiPaymentViewingInfoResponseDtoBuilder boletoViewedDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("boletoViewedDate cannot be null");
-      }
       this.boletoViewedDate = JsonNullable.of(value);
       return this;
     }

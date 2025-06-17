@@ -252,9 +252,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("payload")
     public ApiPixQrCodeDecodeResponseDtoBuilder payload(String value) {
-      if (value == null) {
-        throw new IllegalStateException("payload cannot be null");
-      }
       this.payload = JsonNullable.of(value);
       return this;
     }
@@ -263,9 +260,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("type")
     public ApiPixQrCodeDecodeResponseDtoBuilder type(ApiPixQrCodeDecodeResponsePixQrCodeType value) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }
@@ -277,9 +271,6 @@ public class ApiPixQrCodeDecodeResponseDto {
     public ApiPixQrCodeDecodeResponseDtoBuilder transactionOriginType(
       ApiPixQrCodeDecodeResponsePixTransactionOriginType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("transactionOriginType cannot be null");
-      }
       this.transactionOriginType = JsonNullable.of(value);
       return this;
     }
@@ -288,9 +279,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("pixKey")
     public ApiPixQrCodeDecodeResponseDtoBuilder pixKey(String value) {
-      if (value == null) {
-        throw new IllegalStateException("pixKey cannot be null");
-      }
       this.pixKey = JsonNullable.of(value);
       return this;
     }
@@ -299,9 +287,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("conciliationIdentifier")
     public ApiPixQrCodeDecodeResponseDtoBuilder conciliationIdentifier(String value) {
-      if (value == null) {
-        throw new IllegalStateException("conciliationIdentifier cannot be null");
-      }
       this.conciliationIdentifier = JsonNullable.of(value);
       return this;
     }
@@ -310,9 +295,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("dueDate")
     public ApiPixQrCodeDecodeResponseDtoBuilder dueDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dueDate cannot be null");
-      }
       this.dueDate = JsonNullable.of(value);
       return this;
     }
@@ -321,9 +303,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("expirationDate")
     public ApiPixQrCodeDecodeResponseDtoBuilder expirationDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("expirationDate cannot be null");
-      }
       this.expirationDate = JsonNullable.of(value);
       return this;
     }
@@ -334,9 +313,6 @@ public class ApiPixQrCodeDecodeResponseDto {
     public ApiPixQrCodeDecodeResponseDtoBuilder finality(
       ApiPixQrCodeDecodeResponsePixTransactionCashValueFinality value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("finality cannot be null");
-      }
       this.finality = JsonNullable.of(value);
       return this;
     }
@@ -345,9 +321,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("value")
     public ApiPixQrCodeDecodeResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -356,9 +329,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("changeValue")
     public ApiPixQrCodeDecodeResponseDtoBuilder changeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("changeValue cannot be null");
-      }
       this.changeValue = JsonNullable.of(value);
       return this;
     }
@@ -367,9 +337,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("interest")
     public ApiPixQrCodeDecodeResponseDtoBuilder interest(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("interest cannot be null");
-      }
       this.interest = JsonNullable.of(value);
       return this;
     }
@@ -378,9 +345,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("fine")
     public ApiPixQrCodeDecodeResponseDtoBuilder fine(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fine cannot be null");
-      }
       this.fine = JsonNullable.of(value);
       return this;
     }
@@ -389,9 +353,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("discount")
     public ApiPixQrCodeDecodeResponseDtoBuilder discount(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("discount cannot be null");
-      }
       this.discount = JsonNullable.of(value);
       return this;
     }
@@ -400,9 +361,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("totalValue")
     public ApiPixQrCodeDecodeResponseDtoBuilder totalValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalValue cannot be null");
-      }
       this.totalValue = JsonNullable.of(value);
       return this;
     }
@@ -411,9 +369,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("canBePaidWithDifferentValue")
     public ApiPixQrCodeDecodeResponseDtoBuilder canBePaidWithDifferentValue(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("canBePaidWithDifferentValue cannot be null");
-      }
       this.canBePaidWithDifferentValue = JsonNullable.of(value);
       return this;
     }
@@ -422,9 +377,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("canBeModifyChangeValue")
     public ApiPixQrCodeDecodeResponseDtoBuilder canBeModifyChangeValue(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("canBeModifyChangeValue cannot be null");
-      }
       this.canBeModifyChangeValue = JsonNullable.of(value);
       return this;
     }
@@ -433,9 +385,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("receiver")
     public ApiPixQrCodeDecodeResponseDtoBuilder receiver(ApiPixQrCodeDecodeReceiverDto value) {
-      if (value == null) {
-        throw new IllegalStateException("receiver cannot be null");
-      }
       this.receiver = JsonNullable.of(value);
       return this;
     }
@@ -444,9 +393,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("payer")
     public ApiPixQrCodeDecodeResponseDtoBuilder payer(ApiPixTransactionQrCodePayerResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("payer cannot be null");
-      }
       this.payer = JsonNullable.of(value);
       return this;
     }
@@ -455,9 +401,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("description")
     public ApiPixQrCodeDecodeResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -466,9 +409,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("canBePaid")
     public ApiPixQrCodeDecodeResponseDtoBuilder canBePaid(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("canBePaid cannot be null");
-      }
       this.canBePaid = JsonNullable.of(value);
       return this;
     }
@@ -477,9 +417,6 @@ public class ApiPixQrCodeDecodeResponseDto {
 
     @JsonProperty("cannotBePaidReason")
     public ApiPixQrCodeDecodeResponseDtoBuilder cannotBePaidReason(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cannotBePaidReason cannot be null");
-      }
       this.cannotBePaidReason = JsonNullable.of(value);
       return this;
     }

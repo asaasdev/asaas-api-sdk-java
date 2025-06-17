@@ -82,9 +82,6 @@ public class ApiMobilePhoneRechargeFindProviderResponseValuesDto {
 
     @JsonProperty("name")
     public ApiMobilePhoneRechargeFindProviderResponseValuesDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -93,9 +90,6 @@ public class ApiMobilePhoneRechargeFindProviderResponseValuesDto {
 
     @JsonProperty("description")
     public ApiMobilePhoneRechargeFindProviderResponseValuesDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +98,6 @@ public class ApiMobilePhoneRechargeFindProviderResponseValuesDto {
 
     @JsonProperty("bonus")
     public ApiMobilePhoneRechargeFindProviderResponseValuesDtoBuilder bonus(String value) {
-      if (value == null) {
-        throw new IllegalStateException("bonus cannot be null");
-      }
       this.bonus = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +106,6 @@ public class ApiMobilePhoneRechargeFindProviderResponseValuesDto {
 
     @JsonProperty("minValue")
     public ApiMobilePhoneRechargeFindProviderResponseValuesDtoBuilder minValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("minValue cannot be null");
-      }
       this.minValue = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +114,6 @@ public class ApiMobilePhoneRechargeFindProviderResponseValuesDto {
 
     @JsonProperty("maxValue")
     public ApiMobilePhoneRechargeFindProviderResponseValuesDtoBuilder maxValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("maxValue cannot be null");
-      }
       this.maxValue = JsonNullable.of(value);
       return this;
     }

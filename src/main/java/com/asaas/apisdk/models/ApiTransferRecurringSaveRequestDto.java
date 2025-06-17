@@ -54,9 +54,6 @@ public class ApiTransferRecurringSaveRequestDto {
     public ApiTransferRecurringSaveRequestDtoBuilder frequency(
       ApiTransferRecurringSaveRequestRecurringCheckoutScheduleFrequency value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("frequency cannot be null");
-      }
       this.frequency = JsonNullable.of(value);
       return this;
     }
@@ -65,9 +62,6 @@ public class ApiTransferRecurringSaveRequestDto {
 
     @JsonProperty("quantity")
     public ApiTransferRecurringSaveRequestDtoBuilder quantity(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("quantity cannot be null");
-      }
       this.quantity = JsonNullable.of(value);
       return this;
     }

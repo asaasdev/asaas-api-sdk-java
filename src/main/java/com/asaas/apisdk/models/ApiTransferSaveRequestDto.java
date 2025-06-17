@@ -116,9 +116,6 @@ public class ApiTransferSaveRequestDto {
 
     @JsonProperty("bankAccount")
     public ApiTransferSaveRequestDtoBuilder bankAccount(ApiTransferBankAccountSaveRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("bankAccount cannot be null");
-      }
       this.bankAccount = JsonNullable.of(value);
       return this;
     }
@@ -127,9 +124,6 @@ public class ApiTransferSaveRequestDto {
 
     @JsonProperty("operationType")
     public ApiTransferSaveRequestDtoBuilder operationType(ApiTransferSaveRequestTransferType value) {
-      if (value == null) {
-        throw new IllegalStateException("operationType cannot be null");
-      }
       this.operationType = JsonNullable.of(value);
       return this;
     }
@@ -138,9 +132,6 @@ public class ApiTransferSaveRequestDto {
 
     @JsonProperty("pixAddressKey")
     public ApiTransferSaveRequestDtoBuilder pixAddressKey(String value) {
-      if (value == null) {
-        throw new IllegalStateException("pixAddressKey cannot be null");
-      }
       this.pixAddressKey = JsonNullable.of(value);
       return this;
     }
@@ -149,9 +140,6 @@ public class ApiTransferSaveRequestDto {
 
     @JsonProperty("pixAddressKeyType")
     public ApiTransferSaveRequestDtoBuilder pixAddressKeyType(ApiTransferSaveRequestPixAddressKeyType value) {
-      if (value == null) {
-        throw new IllegalStateException("pixAddressKeyType cannot be null");
-      }
       this.pixAddressKeyType = JsonNullable.of(value);
       return this;
     }
@@ -160,9 +148,6 @@ public class ApiTransferSaveRequestDto {
 
     @JsonProperty("description")
     public ApiTransferSaveRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -171,9 +156,6 @@ public class ApiTransferSaveRequestDto {
 
     @JsonProperty("scheduleDate")
     public ApiTransferSaveRequestDtoBuilder scheduleDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("scheduleDate cannot be null");
-      }
       this.scheduleDate = JsonNullable.of(value);
       return this;
     }
@@ -182,9 +164,6 @@ public class ApiTransferSaveRequestDto {
 
     @JsonProperty("externalReference")
     public ApiTransferSaveRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -193,9 +172,6 @@ public class ApiTransferSaveRequestDto {
 
     @JsonProperty("recurring")
     public ApiTransferSaveRequestDtoBuilder recurring(ApiTransferRecurringSaveRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("recurring cannot be null");
-      }
       this.recurring = JsonNullable.of(value);
       return this;
     }

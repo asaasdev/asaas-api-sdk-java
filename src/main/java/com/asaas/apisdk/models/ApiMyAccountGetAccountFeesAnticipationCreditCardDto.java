@@ -49,9 +49,6 @@ public class ApiMyAccountGetAccountFeesAnticipationCreditCardDto {
 
     @JsonProperty("detachedMonthlyFeeValue")
     public ApiMyAccountGetAccountFeesAnticipationCreditCardDtoBuilder detachedMonthlyFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("detachedMonthlyFeeValue cannot be null");
-      }
       this.detachedMonthlyFeeValue = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiMyAccountGetAccountFeesAnticipationCreditCardDto {
 
     @JsonProperty("installmentMonthlyFeeValue")
     public ApiMyAccountGetAccountFeesAnticipationCreditCardDtoBuilder installmentMonthlyFeeValue(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("installmentMonthlyFeeValue cannot be null");
-      }
       this.installmentMonthlyFeeValue = JsonNullable.of(value);
       return this;
     }

@@ -107,9 +107,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataDto {
 
     @JsonProperty("payment")
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataDtoBuilder payment(String value) {
-      if (value == null) {
-        throw new IllegalStateException("payment cannot be null");
-      }
       this.payment = JsonNullable.of(value);
       return this;
     }
@@ -118,9 +115,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataDto {
 
     @JsonProperty("customer")
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataDtoBuilder customer(String value) {
-      if (value == null) {
-        throw new IllegalStateException("customer cannot be null");
-      }
       this.customer = JsonNullable.of(value);
       return this;
     }
@@ -129,9 +123,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataDto {
 
     @JsonProperty("value")
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -143,9 +134,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataDto {
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataDtoBuilder status(
       ApiPaymentDunningPaymentsAvailableForDunningResponseDataPaymentStatus value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -157,9 +145,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataDto {
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataDtoBuilder billingType(
       ApiPaymentDunningPaymentsAvailableForDunningResponseDataBillingType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("billingType cannot be null");
-      }
       this.billingType = JsonNullable.of(value);
       return this;
     }
@@ -168,9 +153,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataDto {
 
     @JsonProperty("dueDate")
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataDtoBuilder dueDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dueDate cannot be null");
-      }
       this.dueDate = JsonNullable.of(value);
       return this;
     }
@@ -183,9 +165,6 @@ public class ApiPaymentDunningPaymentsAvailableForDunningResponseDataDto {
     public ApiPaymentDunningPaymentsAvailableForDunningResponseDataDtoBuilder typeSimulations(
       List<ApiPaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulationItemDto> value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("typeSimulations cannot be null");
-      }
       this.typeSimulations = JsonNullable.of(value);
       return this;
     }

@@ -68,9 +68,6 @@ public class ApiPaymentSimulatePixResponseDto {
 
     @JsonProperty("netValue")
     public ApiPaymentSimulatePixResponseDtoBuilder netValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("netValue cannot be null");
-      }
       this.netValue = JsonNullable.of(value);
       return this;
     }
@@ -79,9 +76,6 @@ public class ApiPaymentSimulatePixResponseDto {
 
     @JsonProperty("feePercentage")
     public ApiPaymentSimulatePixResponseDtoBuilder feePercentage(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("feePercentage cannot be null");
-      }
       this.feePercentage = JsonNullable.of(value);
       return this;
     }
@@ -90,9 +84,6 @@ public class ApiPaymentSimulatePixResponseDto {
 
     @JsonProperty("feeValue")
     public ApiPaymentSimulatePixResponseDtoBuilder feeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("feeValue cannot be null");
-      }
       this.feeValue = JsonNullable.of(value);
       return this;
     }
@@ -101,9 +92,6 @@ public class ApiPaymentSimulatePixResponseDto {
 
     @JsonProperty("installment")
     public ApiPaymentSimulatePixResponseDtoBuilder installment(ApiPaymentSimulateInstallmentResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("installment cannot be null");
-      }
       this.installment = JsonNullable.of(value);
       return this;
     }

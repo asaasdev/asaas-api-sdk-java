@@ -2,28 +2,29 @@
 
 **Properties**
 
-| Name                     | Type                                                        | Required | Description                                                  |
-| :----------------------- | :---------------------------------------------------------- | :------- | :----------------------------------------------------------- |
-| status                   | ApiCustomerUpdateRequestGetResponseStatus                   | ❌       | Account status                                               |
-| personType               | ApiCustomerUpdateRequestGetResponsePersonType               | ❌       | Person Type                                                  |
-| cpfCnpj                  | String                                                      | ❌       | CPF or CNPJ of the account owner                             |
-| name                     | String                                                      | ❌       | Account owner name                                           |
-| birthDate                | String                                                      | ❌       | Birthday (Required if the information is from an individual) |
-| companyName              | String                                                      | ❌       | Company Name                                                 |
-| companyType              | ApiCustomerUpdateRequestGetResponseCompanyType              | ❌       | Type of company (only when Legal Entity)                     |
-| incomeValue              | Double                                                      | ❌       | Billing/Monthly income                                       |
-| email                    | String                                                      | ❌       | Account's email                                              |
-| phone                    | String                                                      | ❌       | Telephone                                                    |
-| mobilePhone              | String                                                      | ❌       | Cell phone                                                   |
-| postalCode               | String                                                      | ❌       | Address zip code                                             |
-| address                  | String                                                      | ❌       | Public place                                                 |
-| addressNumber            | String                                                      | ❌       | Address number                                               |
-| complement               | String                                                      | ❌       | Address complement                                           |
-| province                 | String                                                      | ❌       | Neighborhood                                                 |
-| city                     | ApiCustomerUpdateRequestCityDto                             | ❌       |                                                              |
-| denialReason             | String                                                      | ❌       | Reason why it is necessary to resend the information         |
-| tradingName              | String                                                      | ❌       | Display name (auto-populated)                                |
-| site                     | String                                                      | ❌       | Web site                                                     |
-| commercialInfoExpiration | ApiCustomerUpdateRequestCommercialInfoExpirationResponseDto | ❌       |                                                              |
+| Name                     | Type                                                        | Required | Description                                                             |
+| :----------------------- | :---------------------------------------------------------- | :------- | :---------------------------------------------------------------------- |
+| status                   | ApiCustomerUpdateRequestGetResponseStatus                   | ❌       | Account status                                                          |
+| personType               | ApiCustomerUpdateRequestGetResponsePersonType               | ❌       | Person Type                                                             |
+| cpfCnpj                  | String                                                      | ❌       | CPF or CNPJ of the account owner                                        |
+| name                     | String                                                      | ❌       | Account owner name                                                      |
+| birthDate                | String                                                      | ❌       | Birthday (Required if the information is from an individual)            |
+| companyName              | String                                                      | ❌       | Company Name                                                            |
+| companyType              | ApiCustomerUpdateRequestGetResponseCompanyType              | ❌       | Type of company (only when Legal Entity)                                |
+| incomeValue              | Double                                                      | ❌       | Billing/Monthly income                                                  |
+| email                    | String                                                      | ❌       | Account's email                                                         |
+| phone                    | String                                                      | ❌       | Telephone                                                               |
+| mobilePhone              | String                                                      | ❌       | Cell phone                                                              |
+| postalCode               | String                                                      | ❌       | Address zip code                                                        |
+| address                  | String                                                      | ❌       | Public place                                                            |
+| addressNumber            | String                                                      | ❌       | Address number                                                          |
+| complement               | String                                                      | ❌       | Address complement                                                      |
+| province                 | String                                                      | ❌       | Neighborhood                                                            |
+| city                     | ApiCustomerUpdateRequestCityDto                             | ❌       |                                                                         |
+| denialReason             | String                                                      | ❌       | Reason why it is necessary to resend the information                    |
+| tradingName              | String                                                      | ❌       | Display name (auto-populated)                                           |
+| site                     | String                                                      | ❌       | Web site                                                                |
+| availableCompanyNames    | List\<String\>                                              | ❌       | Company names available. Only filled in for Legal Entity type accounts. |
+| commercialInfoExpiration | ApiCustomerUpdateRequestCommercialInfoExpirationResponseDto | ❌       |                                                                         |
 
 <!-- This file was generated by liblab | https://liblab.com/ -->

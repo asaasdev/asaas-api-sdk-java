@@ -3,6 +3,7 @@
 package com.asaas.apisdk.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
@@ -21,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Jacksonized
 public class ApiSubscriptionUpdateCreditCardRequestDto {
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCreditCardRequestDto creditCard;
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCreditCardHolderInfoRequestDto creditCardHolderInfo;
 
   /**
@@ -47,15 +48,46 @@ public class ApiSubscriptionUpdateCreditCardRequestDto {
   // Overwrite lombok builder methods
   public static class ApiSubscriptionUpdateCreditCardRequestDtoBuilder {
 
+    /**
+     * Flag to track if the creditCard property has been set.
+     */
+    private boolean creditCard$set = false;
+
+    /**
+     * Flag to track if the creditCardHolderInfo property has been set.
+     */
+    private boolean creditCardHolderInfo$set = false;
+
+    public ApiSubscriptionUpdateCreditCardRequestDtoBuilder creditCard(ApiCreditCardRequestDto creditCard) {
+      this.creditCard$set = true;
+      this.creditCard = creditCard;
+      return this;
+    }
+
+    public ApiSubscriptionUpdateCreditCardRequestDtoBuilder creditCardHolderInfo(
+      ApiCreditCardHolderInfoRequestDto creditCardHolderInfo
+    ) {
+      this.creditCardHolderInfo$set = true;
+      this.creditCardHolderInfo = creditCardHolderInfo;
+      return this;
+    }
+
     private JsonNullable<String> creditCardToken = JsonNullable.undefined();
 
     @JsonProperty("creditCardToken")
     public ApiSubscriptionUpdateCreditCardRequestDtoBuilder creditCardToken(String value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCardToken cannot be null");
-      }
       this.creditCardToken = JsonNullable.of(value);
       return this;
+    }
+
+    public ApiSubscriptionUpdateCreditCardRequestDto build() {
+      if (!creditCard$set) {
+        throw new IllegalStateException("creditCard is required");
+      }
+      if (!creditCardHolderInfo$set) {
+        throw new IllegalStateException("creditCardHolderInfo is required");
+      }
+      return new ApiSubscriptionUpdateCreditCardRequestDto(creditCard, creditCardHolderInfo, remoteIp, creditCardToken);
     }
   }
 }

@@ -122,9 +122,6 @@ public class ApiBillSaveRequestDto {
 
     @JsonProperty("scheduleDate")
     public ApiBillSaveRequestDtoBuilder scheduleDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("scheduleDate cannot be null");
-      }
       this.scheduleDate = JsonNullable.of(value);
       return this;
     }
@@ -133,9 +130,6 @@ public class ApiBillSaveRequestDto {
 
     @JsonProperty("description")
     public ApiBillSaveRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -144,9 +138,6 @@ public class ApiBillSaveRequestDto {
 
     @JsonProperty("discount")
     public ApiBillSaveRequestDtoBuilder discount(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("discount cannot be null");
-      }
       this.discount = JsonNullable.of(value);
       return this;
     }
@@ -155,9 +146,6 @@ public class ApiBillSaveRequestDto {
 
     @JsonProperty("interest")
     public ApiBillSaveRequestDtoBuilder interest(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("interest cannot be null");
-      }
       this.interest = JsonNullable.of(value);
       return this;
     }
@@ -166,9 +154,6 @@ public class ApiBillSaveRequestDto {
 
     @JsonProperty("fine")
     public ApiBillSaveRequestDtoBuilder fine(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fine cannot be null");
-      }
       this.fine = JsonNullable.of(value);
       return this;
     }
@@ -177,9 +162,6 @@ public class ApiBillSaveRequestDto {
 
     @JsonProperty("dueDate")
     public ApiBillSaveRequestDtoBuilder dueDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dueDate cannot be null");
-      }
       this.dueDate = JsonNullable.of(value);
       return this;
     }
@@ -188,9 +170,6 @@ public class ApiBillSaveRequestDto {
 
     @JsonProperty("value")
     public ApiBillSaveRequestDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -199,9 +178,6 @@ public class ApiBillSaveRequestDto {
 
     @JsonProperty("externalReference")
     public ApiBillSaveRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }

@@ -93,9 +93,6 @@ public class ApiPixTransactionExternalAccountResponseDto {
 
     @JsonProperty("ispb")
     public ApiPixTransactionExternalAccountResponseDtoBuilder ispb(String value) {
-      if (value == null) {
-        throw new IllegalStateException("ispb cannot be null");
-      }
       this.ispb = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +101,6 @@ public class ApiPixTransactionExternalAccountResponseDto {
 
     @JsonProperty("ispbName")
     public ApiPixTransactionExternalAccountResponseDtoBuilder ispbName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("ispbName cannot be null");
-      }
       this.ispbName = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +109,6 @@ public class ApiPixTransactionExternalAccountResponseDto {
 
     @JsonProperty("name")
     public ApiPixTransactionExternalAccountResponseDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +117,6 @@ public class ApiPixTransactionExternalAccountResponseDto {
 
     @JsonProperty("cpfCnpj")
     public ApiPixTransactionExternalAccountResponseDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +125,6 @@ public class ApiPixTransactionExternalAccountResponseDto {
 
     @JsonProperty("addressKey")
     public ApiPixTransactionExternalAccountResponseDtoBuilder addressKey(String value) {
-      if (value == null) {
-        throw new IllegalStateException("addressKey cannot be null");
-      }
       this.addressKey = JsonNullable.of(value);
       return this;
     }
@@ -151,9 +136,6 @@ public class ApiPixTransactionExternalAccountResponseDto {
     public ApiPixTransactionExternalAccountResponseDtoBuilder addressKeyType(
       ApiPixTransactionExternalAccountResponsePixAddressKeyType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("addressKeyType cannot be null");
-      }
       this.addressKeyType = JsonNullable.of(value);
       return this;
     }

@@ -57,9 +57,6 @@ public class ApiPaymentCampaignFileGetResponseDto {
 
     @JsonProperty("id")
     public ApiPaymentCampaignFileGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -68,9 +65,6 @@ public class ApiPaymentCampaignFileGetResponseDto {
 
     @JsonProperty("main")
     public ApiPaymentCampaignFileGetResponseDtoBuilder main(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("main cannot be null");
-      }
       this.main = JsonNullable.of(value);
       return this;
     }
@@ -79,9 +73,6 @@ public class ApiPaymentCampaignFileGetResponseDto {
 
     @JsonProperty("image")
     public ApiPaymentCampaignFileGetResponseDtoBuilder image(ApiPaymentCampaignFileImageResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("image cannot be null");
-      }
       this.image = JsonNullable.of(value);
       return this;
     }

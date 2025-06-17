@@ -60,9 +60,6 @@ public class ApiCheckoutSessionSubscriptionDto {
 
     @JsonProperty("cycle")
     public ApiCheckoutSessionSubscriptionDtoBuilder cycle(ApiCheckoutSessionSubscriptionCycle value) {
-      if (value == null) {
-        throw new IllegalStateException("cycle cannot be null");
-      }
       this.cycle = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiCheckoutSessionSubscriptionDto {
 
     @JsonProperty("endDate")
     public ApiCheckoutSessionSubscriptionDtoBuilder endDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("endDate cannot be null");
-      }
       this.endDate = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiCheckoutSessionSubscriptionDto {
 
     @JsonProperty("nextDueDate")
     public ApiCheckoutSessionSubscriptionDtoBuilder nextDueDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("nextDueDate cannot be null");
-      }
       this.nextDueDate = JsonNullable.of(value);
       return this;
     }

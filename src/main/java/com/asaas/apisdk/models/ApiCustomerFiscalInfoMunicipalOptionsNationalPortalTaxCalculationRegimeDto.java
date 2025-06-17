@@ -49,9 +49,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsNationalPortalTaxCalculationRe
 
     @JsonProperty("label")
     public ApiCustomerFiscalInfoMunicipalOptionsNationalPortalTaxCalculationRegimeDtoBuilder label(String value) {
-      if (value == null) {
-        throw new IllegalStateException("label cannot be null");
-      }
       this.label = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsNationalPortalTaxCalculationRe
 
     @JsonProperty("value")
     public ApiCustomerFiscalInfoMunicipalOptionsNationalPortalTaxCalculationRegimeDtoBuilder value(String value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }

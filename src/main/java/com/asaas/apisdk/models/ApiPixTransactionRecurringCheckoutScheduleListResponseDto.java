@@ -94,9 +94,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleListResponseDto {
 
     @JsonProperty("object")
     public ApiPixTransactionRecurringCheckoutScheduleListResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -105,9 +102,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleListResponseDto {
 
     @JsonProperty("hasMore")
     public ApiPixTransactionRecurringCheckoutScheduleListResponseDtoBuilder hasMore(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("hasMore cannot be null");
-      }
       this.hasMore = JsonNullable.of(value);
       return this;
     }
@@ -116,9 +110,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleListResponseDto {
 
     @JsonProperty("totalCount")
     public ApiPixTransactionRecurringCheckoutScheduleListResponseDtoBuilder totalCount(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("totalCount cannot be null");
-      }
       this.totalCount = JsonNullable.of(value);
       return this;
     }
@@ -127,9 +118,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleListResponseDto {
 
     @JsonProperty("limit")
     public ApiPixTransactionRecurringCheckoutScheduleListResponseDtoBuilder limit(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("limit cannot be null");
-      }
       this.limit = JsonNullable.of(value);
       return this;
     }
@@ -138,9 +126,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleListResponseDto {
 
     @JsonProperty("offset")
     public ApiPixTransactionRecurringCheckoutScheduleListResponseDtoBuilder offset(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("offset cannot be null");
-      }
       this.offset = JsonNullable.of(value);
       return this;
     }
@@ -152,9 +137,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleListResponseDto {
     public ApiPixTransactionRecurringCheckoutScheduleListResponseDtoBuilder data(
       List<ApiPixTransactionRecurringCheckoutScheduleGetResponseDto> value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("data cannot be null");
-      }
       this.data = JsonNullable.of(value);
       return this;
     }

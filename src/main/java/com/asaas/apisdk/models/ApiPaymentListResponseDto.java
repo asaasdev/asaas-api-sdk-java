@@ -94,9 +94,6 @@ public class ApiPaymentListResponseDto {
 
     @JsonProperty("object")
     public ApiPaymentListResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -105,9 +102,6 @@ public class ApiPaymentListResponseDto {
 
     @JsonProperty("hasMore")
     public ApiPaymentListResponseDtoBuilder hasMore(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("hasMore cannot be null");
-      }
       this.hasMore = JsonNullable.of(value);
       return this;
     }
@@ -116,9 +110,6 @@ public class ApiPaymentListResponseDto {
 
     @JsonProperty("totalCount")
     public ApiPaymentListResponseDtoBuilder totalCount(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("totalCount cannot be null");
-      }
       this.totalCount = JsonNullable.of(value);
       return this;
     }
@@ -127,9 +118,6 @@ public class ApiPaymentListResponseDto {
 
     @JsonProperty("limit")
     public ApiPaymentListResponseDtoBuilder limit(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("limit cannot be null");
-      }
       this.limit = JsonNullable.of(value);
       return this;
     }
@@ -138,9 +126,6 @@ public class ApiPaymentListResponseDto {
 
     @JsonProperty("offset")
     public ApiPaymentListResponseDtoBuilder offset(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("offset cannot be null");
-      }
       this.offset = JsonNullable.of(value);
       return this;
     }
@@ -149,9 +134,6 @@ public class ApiPaymentListResponseDto {
 
     @JsonProperty("data")
     public ApiPaymentListResponseDtoBuilder data(List<ApiPaymentGetResponseDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("data cannot be null");
-      }
       this.data = JsonNullable.of(value);
       return this;
     }

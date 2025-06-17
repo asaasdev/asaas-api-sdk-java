@@ -94,9 +94,6 @@ public class ApiPixTransactionListResponseDto {
 
     @JsonProperty("object")
     public ApiPixTransactionListResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -105,9 +102,6 @@ public class ApiPixTransactionListResponseDto {
 
     @JsonProperty("hasMore")
     public ApiPixTransactionListResponseDtoBuilder hasMore(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("hasMore cannot be null");
-      }
       this.hasMore = JsonNullable.of(value);
       return this;
     }
@@ -116,9 +110,6 @@ public class ApiPixTransactionListResponseDto {
 
     @JsonProperty("totalCount")
     public ApiPixTransactionListResponseDtoBuilder totalCount(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("totalCount cannot be null");
-      }
       this.totalCount = JsonNullable.of(value);
       return this;
     }
@@ -127,9 +118,6 @@ public class ApiPixTransactionListResponseDto {
 
     @JsonProperty("limit")
     public ApiPixTransactionListResponseDtoBuilder limit(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("limit cannot be null");
-      }
       this.limit = JsonNullable.of(value);
       return this;
     }
@@ -138,9 +126,6 @@ public class ApiPixTransactionListResponseDto {
 
     @JsonProperty("offset")
     public ApiPixTransactionListResponseDtoBuilder offset(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("offset cannot be null");
-      }
       this.offset = JsonNullable.of(value);
       return this;
     }
@@ -149,9 +134,6 @@ public class ApiPixTransactionListResponseDto {
 
     @JsonProperty("data")
     public ApiPixTransactionListResponseDtoBuilder data(List<ApiPixTransactionGetResponseDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("data cannot be null");
-      }
       this.data = JsonNullable.of(value);
       return this;
     }

@@ -38,9 +38,6 @@ public class ApiMyAccountGetAccountFeesInvoiceDto {
 
     @JsonProperty("feeValue")
     public ApiMyAccountGetAccountFeesInvoiceDtoBuilder feeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("feeValue cannot be null");
-      }
       this.feeValue = JsonNullable.of(value);
       return this;
     }

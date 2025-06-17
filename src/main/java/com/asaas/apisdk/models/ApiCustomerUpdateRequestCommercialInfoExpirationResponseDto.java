@@ -49,9 +49,6 @@ public class ApiCustomerUpdateRequestCommercialInfoExpirationResponseDto {
 
     @JsonProperty("isExpired")
     public ApiCustomerUpdateRequestCommercialInfoExpirationResponseDtoBuilder isExpired(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("isExpired cannot be null");
-      }
       this.isExpired = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiCustomerUpdateRequestCommercialInfoExpirationResponseDto {
 
     @JsonProperty("scheduledDate")
     public ApiCustomerUpdateRequestCommercialInfoExpirationResponseDtoBuilder scheduledDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("scheduledDate cannot be null");
-      }
       this.scheduledDate = JsonNullable.of(value);
       return this;
     }

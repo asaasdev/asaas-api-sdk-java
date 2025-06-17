@@ -45,9 +45,6 @@ public class ApiReceivableAnticipationLimitsResponseDto {
     public ApiReceivableAnticipationLimitsResponseDtoBuilder creditCard(
       ApiReceivableAnticipationLimitsInfoResponseDto value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("creditCard cannot be null");
-      }
       this.creditCard = JsonNullable.of(value);
       return this;
     }
@@ -58,9 +55,6 @@ public class ApiReceivableAnticipationLimitsResponseDto {
     public ApiReceivableAnticipationLimitsResponseDtoBuilder bankSlip(
       ApiReceivableAnticipationLimitsInfoResponseDto value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("bankSlip cannot be null");
-      }
       this.bankSlip = JsonNullable.of(value);
       return this;
     }

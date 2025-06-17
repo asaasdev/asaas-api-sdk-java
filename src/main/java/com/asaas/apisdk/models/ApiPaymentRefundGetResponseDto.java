@@ -116,9 +116,6 @@ public class ApiPaymentRefundGetResponseDto {
 
     @JsonProperty("dateCreated")
     public ApiPaymentRefundGetResponseDtoBuilder dateCreated(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dateCreated cannot be null");
-      }
       this.dateCreated = JsonNullable.of(value);
       return this;
     }
@@ -127,9 +124,6 @@ public class ApiPaymentRefundGetResponseDto {
 
     @JsonProperty("status")
     public ApiPaymentRefundGetResponseDtoBuilder status(ApiPaymentRefundGetResponsePaymentRefundStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -138,9 +132,6 @@ public class ApiPaymentRefundGetResponseDto {
 
     @JsonProperty("value")
     public ApiPaymentRefundGetResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -149,9 +140,6 @@ public class ApiPaymentRefundGetResponseDto {
 
     @JsonProperty("endToEndIdentifier")
     public ApiPaymentRefundGetResponseDtoBuilder endToEndIdentifier(String value) {
-      if (value == null) {
-        throw new IllegalStateException("endToEndIdentifier cannot be null");
-      }
       this.endToEndIdentifier = JsonNullable.of(value);
       return this;
     }
@@ -160,9 +148,6 @@ public class ApiPaymentRefundGetResponseDto {
 
     @JsonProperty("description")
     public ApiPaymentRefundGetResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -171,9 +156,6 @@ public class ApiPaymentRefundGetResponseDto {
 
     @JsonProperty("effectiveDate")
     public ApiPaymentRefundGetResponseDtoBuilder effectiveDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("effectiveDate cannot be null");
-      }
       this.effectiveDate = JsonNullable.of(value);
       return this;
     }
@@ -182,9 +164,6 @@ public class ApiPaymentRefundGetResponseDto {
 
     @JsonProperty("transactionReceiptUrl")
     public ApiPaymentRefundGetResponseDtoBuilder transactionReceiptUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("transactionReceiptUrl cannot be null");
-      }
       this.transactionReceiptUrl = JsonNullable.of(value);
       return this;
     }
@@ -193,9 +172,6 @@ public class ApiPaymentRefundGetResponseDto {
 
     @JsonProperty("refundedSplits")
     public ApiPaymentRefundGetResponseDtoBuilder refundedSplits(List<ApiPaymentRefundedSplitResponseDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("refundedSplits cannot be null");
-      }
       this.refundedSplits = JsonNullable.of(value);
       return this;
     }

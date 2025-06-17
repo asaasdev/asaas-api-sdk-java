@@ -49,9 +49,6 @@ public class ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDataDto {
 
     @JsonProperty("nbsCode")
     public ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDataDtoBuilder nbsCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("nbsCode cannot be null");
-      }
       this.nbsCode = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDataDto {
 
     @JsonProperty("codeDescription")
     public ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDataDtoBuilder codeDescription(String value) {
-      if (value == null) {
-        throw new IllegalStateException("codeDescription cannot be null");
-      }
       this.codeDescription = JsonNullable.of(value);
       return this;
     }

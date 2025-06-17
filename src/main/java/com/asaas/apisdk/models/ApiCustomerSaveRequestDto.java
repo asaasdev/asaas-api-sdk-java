@@ -160,9 +160,6 @@ public class ApiCustomerSaveRequestDto {
 
     @JsonProperty("loginEmail")
     public ApiCustomerSaveRequestDtoBuilder loginEmail(String value) {
-      if (value == null) {
-        throw new IllegalStateException("loginEmail cannot be null");
-      }
       this.loginEmail = JsonNullable.of(value);
       return this;
     }
@@ -171,9 +168,6 @@ public class ApiCustomerSaveRequestDto {
 
     @JsonProperty("birthDate")
     public ApiCustomerSaveRequestDtoBuilder birthDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("birthDate cannot be null");
-      }
       this.birthDate = JsonNullable.of(value);
       return this;
     }
@@ -182,9 +176,6 @@ public class ApiCustomerSaveRequestDto {
 
     @JsonProperty("companyType")
     public ApiCustomerSaveRequestDtoBuilder companyType(ApiCustomerSaveRequestCompanyType value) {
-      if (value == null) {
-        throw new IllegalStateException("companyType cannot be null");
-      }
       this.companyType = JsonNullable.of(value);
       return this;
     }
@@ -193,9 +184,6 @@ public class ApiCustomerSaveRequestDto {
 
     @JsonProperty("phone")
     public ApiCustomerSaveRequestDtoBuilder phone(String value) {
-      if (value == null) {
-        throw new IllegalStateException("phone cannot be null");
-      }
       this.phone = JsonNullable.of(value);
       return this;
     }
@@ -204,9 +192,6 @@ public class ApiCustomerSaveRequestDto {
 
     @JsonProperty("site")
     public ApiCustomerSaveRequestDtoBuilder site(String value) {
-      if (value == null) {
-        throw new IllegalStateException("site cannot be null");
-      }
       this.site = JsonNullable.of(value);
       return this;
     }
@@ -215,9 +200,6 @@ public class ApiCustomerSaveRequestDto {
 
     @JsonProperty("complement")
     public ApiCustomerSaveRequestDtoBuilder complement(String value) {
-      if (value == null) {
-        throw new IllegalStateException("complement cannot be null");
-      }
       this.complement = JsonNullable.of(value);
       return this;
     }
@@ -226,9 +208,6 @@ public class ApiCustomerSaveRequestDto {
 
     @JsonProperty("webhooks")
     public ApiCustomerSaveRequestDtoBuilder webhooks(List<ApiPushNotificationConfigSaveRequestDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("webhooks cannot be null");
-      }
       this.webhooks = JsonNullable.of(value);
       return this;
     }

@@ -62,9 +62,6 @@ public class ApiPaymentSimulateResponseDto {
 
     @JsonProperty("value")
     public ApiPaymentSimulateResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -73,9 +70,6 @@ public class ApiPaymentSimulateResponseDto {
 
     @JsonProperty("creditCard")
     public ApiPaymentSimulateResponseDtoBuilder creditCard(ApiPaymentSimulateCreditCardResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCard cannot be null");
-      }
       this.creditCard = JsonNullable.of(value);
       return this;
     }
@@ -84,9 +78,6 @@ public class ApiPaymentSimulateResponseDto {
 
     @JsonProperty("bankSlip")
     public ApiPaymentSimulateResponseDtoBuilder bankSlip(ApiPaymentSimulateBankSlipResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("bankSlip cannot be null");
-      }
       this.bankSlip = JsonNullable.of(value);
       return this;
     }
@@ -95,9 +86,6 @@ public class ApiPaymentSimulateResponseDto {
 
     @JsonProperty("pix")
     public ApiPaymentSimulateResponseDtoBuilder pix(ApiPaymentSimulatePixResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("pix cannot be null");
-      }
       this.pix = JsonNullable.of(value);
       return this;
     }

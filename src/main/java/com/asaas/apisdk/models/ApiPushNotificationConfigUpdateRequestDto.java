@@ -105,9 +105,6 @@ public class ApiPushNotificationConfigUpdateRequestDto {
 
     @JsonProperty("name")
     public ApiPushNotificationConfigUpdateRequestDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -116,9 +113,6 @@ public class ApiPushNotificationConfigUpdateRequestDto {
 
     @JsonProperty("url")
     public ApiPushNotificationConfigUpdateRequestDtoBuilder url(String value) {
-      if (value == null) {
-        throw new IllegalStateException("url cannot be null");
-      }
       this.url = JsonNullable.of(value);
       return this;
     }
@@ -130,9 +124,6 @@ public class ApiPushNotificationConfigUpdateRequestDto {
     public ApiPushNotificationConfigUpdateRequestDtoBuilder sendType(
       ApiPushNotificationConfigUpdateRequestPushNotificationSendType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("sendType cannot be null");
-      }
       this.sendType = JsonNullable.of(value);
       return this;
     }
@@ -141,9 +132,6 @@ public class ApiPushNotificationConfigUpdateRequestDto {
 
     @JsonProperty("enabled")
     public ApiPushNotificationConfigUpdateRequestDtoBuilder enabled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("enabled cannot be null");
-      }
       this.enabled = JsonNullable.of(value);
       return this;
     }
@@ -152,9 +140,6 @@ public class ApiPushNotificationConfigUpdateRequestDto {
 
     @JsonProperty("interrupted")
     public ApiPushNotificationConfigUpdateRequestDtoBuilder interrupted(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("interrupted cannot be null");
-      }
       this.interrupted = JsonNullable.of(value);
       return this;
     }
@@ -163,9 +148,6 @@ public class ApiPushNotificationConfigUpdateRequestDto {
 
     @JsonProperty("authToken")
     public ApiPushNotificationConfigUpdateRequestDtoBuilder authToken(String value) {
-      if (value == null) {
-        throw new IllegalStateException("authToken cannot be null");
-      }
       this.authToken = JsonNullable.of(value);
       return this;
     }
@@ -174,9 +156,6 @@ public class ApiPushNotificationConfigUpdateRequestDto {
 
     @JsonProperty("events")
     public ApiPushNotificationConfigUpdateRequestDtoBuilder events(List<String> value) {
-      if (value == null) {
-        throw new IllegalStateException("events cannot be null");
-      }
       this.events = JsonNullable.of(value);
       return this;
     }

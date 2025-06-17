@@ -45,9 +45,6 @@ public class ApiPaymentCallbackRequestDto {
 
     @JsonProperty("autoRedirect")
     public ApiPaymentCallbackRequestDtoBuilder autoRedirect(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("autoRedirect cannot be null");
-      }
       this.autoRedirect = JsonNullable.of(value);
       return this;
     }

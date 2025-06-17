@@ -49,9 +49,6 @@ public class ApiChargebackCreditCardResponseDto {
 
     @JsonProperty("number")
     public ApiChargebackCreditCardResponseDtoBuilder number(String value) {
-      if (value == null) {
-        throw new IllegalStateException("number cannot be null");
-      }
       this.number = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiChargebackCreditCardResponseDto {
 
     @JsonProperty("brand")
     public ApiChargebackCreditCardResponseDtoBuilder brand(ApiChargebackCreditCardResponseCreditCardBrand value) {
-      if (value == null) {
-        throw new IllegalStateException("brand cannot be null");
-      }
       this.brand = JsonNullable.of(value);
       return this;
     }

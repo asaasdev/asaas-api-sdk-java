@@ -71,9 +71,6 @@ public class ApiPixOriginalTransactionResponseDto {
 
     @JsonProperty("id")
     public ApiPixOriginalTransactionResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +79,6 @@ public class ApiPixOriginalTransactionResponseDto {
 
     @JsonProperty("endToEndIdentifier")
     public ApiPixOriginalTransactionResponseDtoBuilder endToEndIdentifier(String value) {
-      if (value == null) {
-        throw new IllegalStateException("endToEndIdentifier cannot be null");
-      }
       this.endToEndIdentifier = JsonNullable.of(value);
       return this;
     }
@@ -93,9 +87,6 @@ public class ApiPixOriginalTransactionResponseDto {
 
     @JsonProperty("value")
     public ApiPixOriginalTransactionResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +95,6 @@ public class ApiPixOriginalTransactionResponseDto {
 
     @JsonProperty("effectiveDate")
     public ApiPixOriginalTransactionResponseDtoBuilder effectiveDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("effectiveDate cannot be null");
-      }
       this.effectiveDate = JsonNullable.of(value);
       return this;
     }

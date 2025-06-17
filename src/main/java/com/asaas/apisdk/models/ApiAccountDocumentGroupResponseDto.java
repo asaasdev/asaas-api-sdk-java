@@ -124,9 +124,6 @@ public class ApiAccountDocumentGroupResponseDto {
 
     @JsonProperty("id")
     public ApiAccountDocumentGroupResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +134,6 @@ public class ApiAccountDocumentGroupResponseDto {
     public ApiAccountDocumentGroupResponseDtoBuilder status(
       ApiAccountDocumentGroupResponseCustomerDocumentStatus value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +142,6 @@ public class ApiAccountDocumentGroupResponseDto {
 
     @JsonProperty("type")
     public ApiAccountDocumentGroupResponseDtoBuilder type(ApiAccountDocumentGroupResponseCustomerDocumentType value) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +150,6 @@ public class ApiAccountDocumentGroupResponseDto {
 
     @JsonProperty("title")
     public ApiAccountDocumentGroupResponseDtoBuilder title(String value) {
-      if (value == null) {
-        throw new IllegalStateException("title cannot be null");
-      }
       this.title = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +158,6 @@ public class ApiAccountDocumentGroupResponseDto {
 
     @JsonProperty("description")
     public ApiAccountDocumentGroupResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -181,9 +166,6 @@ public class ApiAccountDocumentGroupResponseDto {
 
     @JsonProperty("responsible")
     public ApiAccountDocumentGroupResponseDtoBuilder responsible(ApiAccountDocumentGroupResponsibleResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("responsible cannot be null");
-      }
       this.responsible = JsonNullable.of(value);
       return this;
     }
@@ -192,9 +174,6 @@ public class ApiAccountDocumentGroupResponseDto {
 
     @JsonProperty("onboardingUrl")
     public ApiAccountDocumentGroupResponseDtoBuilder onboardingUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("onboardingUrl cannot be null");
-      }
       this.onboardingUrl = JsonNullable.of(value);
       return this;
     }
@@ -203,9 +182,6 @@ public class ApiAccountDocumentGroupResponseDto {
 
     @JsonProperty("onboardingUrlExpirationDate")
     public ApiAccountDocumentGroupResponseDtoBuilder onboardingUrlExpirationDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("onboardingUrlExpirationDate cannot be null");
-      }
       this.onboardingUrlExpirationDate = JsonNullable.of(value);
       return this;
     }
@@ -214,9 +190,6 @@ public class ApiAccountDocumentGroupResponseDto {
 
     @JsonProperty("documents")
     public ApiAccountDocumentGroupResponseDtoBuilder documents(List<ApiAccountDocumentGetResponseDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("documents cannot be null");
-      }
       this.documents = JsonNullable.of(value);
       return this;
     }

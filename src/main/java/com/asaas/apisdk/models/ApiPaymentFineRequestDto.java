@@ -49,9 +49,6 @@ public class ApiPaymentFineRequestDto {
 
     @JsonProperty("value")
     public ApiPaymentFineRequestDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiPaymentFineRequestDto {
 
     @JsonProperty("type")
     public ApiPaymentFineRequestDtoBuilder type(ApiPaymentFineRequestFineType value) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }

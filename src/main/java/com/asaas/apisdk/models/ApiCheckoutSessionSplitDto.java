@@ -67,9 +67,6 @@ public class ApiCheckoutSessionSplitDto {
 
     @JsonProperty("fixedValue")
     public ApiCheckoutSessionSplitDtoBuilder fixedValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fixedValue cannot be null");
-      }
       this.fixedValue = JsonNullable.of(value);
       return this;
     }
@@ -78,9 +75,6 @@ public class ApiCheckoutSessionSplitDto {
 
     @JsonProperty("percentageValue")
     public ApiCheckoutSessionSplitDtoBuilder percentageValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("percentageValue cannot be null");
-      }
       this.percentageValue = JsonNullable.of(value);
       return this;
     }
@@ -89,9 +83,6 @@ public class ApiCheckoutSessionSplitDto {
 
     @JsonProperty("totalFixedValue")
     public ApiCheckoutSessionSplitDtoBuilder totalFixedValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalFixedValue cannot be null");
-      }
       this.totalFixedValue = JsonNullable.of(value);
       return this;
     }

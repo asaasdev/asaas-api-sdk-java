@@ -35,9 +35,6 @@ public class ApiPaymentLimitsResponseDto {
 
     @JsonProperty("creation")
     public ApiPaymentLimitsResponseDtoBuilder creation(ApiPaymentLimitsResponseCreationDto value) {
-      if (value == null) {
-        throw new IllegalStateException("creation cannot be null");
-      }
       this.creation = JsonNullable.of(value);
       return this;
     }

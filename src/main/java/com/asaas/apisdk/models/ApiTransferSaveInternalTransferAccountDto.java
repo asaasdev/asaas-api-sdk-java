@@ -82,9 +82,6 @@ public class ApiTransferSaveInternalTransferAccountDto {
 
     @JsonProperty("name")
     public ApiTransferSaveInternalTransferAccountDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -93,9 +90,6 @@ public class ApiTransferSaveInternalTransferAccountDto {
 
     @JsonProperty("cpfCnpj")
     public ApiTransferSaveInternalTransferAccountDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +98,6 @@ public class ApiTransferSaveInternalTransferAccountDto {
 
     @JsonProperty("agency")
     public ApiTransferSaveInternalTransferAccountDtoBuilder agency(String value) {
-      if (value == null) {
-        throw new IllegalStateException("agency cannot be null");
-      }
       this.agency = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +106,6 @@ public class ApiTransferSaveInternalTransferAccountDto {
 
     @JsonProperty("account")
     public ApiTransferSaveInternalTransferAccountDtoBuilder account(String value) {
-      if (value == null) {
-        throw new IllegalStateException("account cannot be null");
-      }
       this.account = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +114,6 @@ public class ApiTransferSaveInternalTransferAccountDto {
 
     @JsonProperty("accountDigit")
     public ApiTransferSaveInternalTransferAccountDtoBuilder accountDigit(String value) {
-      if (value == null) {
-        throw new IllegalStateException("accountDigit cannot be null");
-      }
       this.accountDigit = JsonNullable.of(value);
       return this;
     }

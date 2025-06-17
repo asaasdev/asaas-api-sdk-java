@@ -125,9 +125,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto {
 
     @JsonProperty("id")
     public ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -140,9 +137,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto {
     public ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDtoBuilder status(
       ApiPixTransactionRecurringCheckoutScheduleGetItemResponseRecurringCheckoutSchedulePixItemStatus value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -151,9 +145,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto {
 
     @JsonProperty("scheduledDate")
     public ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDtoBuilder scheduledDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("scheduledDate cannot be null");
-      }
       this.scheduledDate = JsonNullable.of(value);
       return this;
     }
@@ -162,9 +153,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto {
 
     @JsonProperty("canBeCancelled")
     public ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDtoBuilder canBeCancelled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("canBeCancelled cannot be null");
-      }
       this.canBeCancelled = JsonNullable.of(value);
       return this;
     }
@@ -173,9 +161,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto {
 
     @JsonProperty("recurrenceNumber")
     public ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDtoBuilder recurrenceNumber(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("recurrenceNumber cannot be null");
-      }
       this.recurrenceNumber = JsonNullable.of(value);
       return this;
     }
@@ -184,9 +169,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto {
 
     @JsonProperty("quantity")
     public ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDtoBuilder quantity(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("quantity cannot be null");
-      }
       this.quantity = JsonNullable.of(value);
       return this;
     }
@@ -195,9 +177,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto {
 
     @JsonProperty("value")
     public ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -206,9 +185,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto {
 
     @JsonProperty("refusalReasonDescription")
     public ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDtoBuilder refusalReasonDescription(String value) {
-      if (value == null) {
-        throw new IllegalStateException("refusalReasonDescription cannot be null");
-      }
       this.refusalReasonDescription = JsonNullable.of(value);
       return this;
     }
@@ -220,9 +196,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto {
     public ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDtoBuilder externalAccount(
       ApiPixTransactionRecurringCheckoutScheduleExternalAccountDto value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("externalAccount cannot be null");
-      }
       this.externalAccount = JsonNullable.of(value);
       return this;
     }

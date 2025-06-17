@@ -203,9 +203,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("id")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -214,9 +211,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("dunningNumber")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder dunningNumber(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("dunningNumber cannot be null");
-      }
       this.dunningNumber = JsonNullable.of(value);
       return this;
     }
@@ -227,9 +221,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder status(
       ApiPaymentDunningSaveDocumentsResponsePaymentDunningStatus value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -240,9 +231,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder type(
       ApiPaymentDunningSaveDocumentsResponsePaymentDunningType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }
@@ -251,9 +239,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("payment")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder payment(String value) {
-      if (value == null) {
-        throw new IllegalStateException("payment cannot be null");
-      }
       this.payment = JsonNullable.of(value);
       return this;
     }
@@ -262,9 +247,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("requestDate")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder requestDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("requestDate cannot be null");
-      }
       this.requestDate = JsonNullable.of(value);
       return this;
     }
@@ -273,9 +255,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("description")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -284,9 +263,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("value")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -295,9 +271,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("feeValue")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder feeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("feeValue cannot be null");
-      }
       this.feeValue = JsonNullable.of(value);
       return this;
     }
@@ -306,9 +279,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("netValue")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder netValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("netValue cannot be null");
-      }
       this.netValue = JsonNullable.of(value);
       return this;
     }
@@ -317,9 +287,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("receivedInCashFeeValue")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder receivedInCashFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("receivedInCashFeeValue cannot be null");
-      }
       this.receivedInCashFeeValue = JsonNullable.of(value);
       return this;
     }
@@ -328,9 +295,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("denialReason")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder denialReason(String value) {
-      if (value == null) {
-        throw new IllegalStateException("denialReason cannot be null");
-      }
       this.denialReason = JsonNullable.of(value);
       return this;
     }
@@ -339,9 +303,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("cancellationFeeValue")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder cancellationFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("cancellationFeeValue cannot be null");
-      }
       this.cancellationFeeValue = JsonNullable.of(value);
       return this;
     }
@@ -350,9 +311,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("canBeCancelled")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder canBeCancelled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("canBeCancelled cannot be null");
-      }
       this.canBeCancelled = JsonNullable.of(value);
       return this;
     }
@@ -361,9 +319,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("cannotBeCancelledReason")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder cannotBeCancelledReason(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cannotBeCancelledReason cannot be null");
-      }
       this.cannotBeCancelledReason = JsonNullable.of(value);
       return this;
     }
@@ -372,9 +327,6 @@ public class ApiPaymentDunningSaveDocumentsResponseDto {
 
     @JsonProperty("isNecessaryResendDocumentation")
     public ApiPaymentDunningSaveDocumentsResponseDtoBuilder isNecessaryResendDocumentation(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("isNecessaryResendDocumentation cannot be null");
-      }
       this.isNecessaryResendDocumentation = JsonNullable.of(value);
       return this;
     }

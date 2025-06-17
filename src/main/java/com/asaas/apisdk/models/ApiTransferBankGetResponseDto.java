@@ -60,9 +60,6 @@ public class ApiTransferBankGetResponseDto {
 
     @JsonProperty("ispb")
     public ApiTransferBankGetResponseDtoBuilder ispb(String value) {
-      if (value == null) {
-        throw new IllegalStateException("ispb cannot be null");
-      }
       this.ispb = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiTransferBankGetResponseDto {
 
     @JsonProperty("code")
     public ApiTransferBankGetResponseDtoBuilder code(String value) {
-      if (value == null) {
-        throw new IllegalStateException("code cannot be null");
-      }
       this.code = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiTransferBankGetResponseDto {
 
     @JsonProperty("name")
     public ApiTransferBankGetResponseDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
