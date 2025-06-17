@@ -49,9 +49,6 @@ public class ApiPixTokenBucketGetAddressKeyResponseDto {
 
     @JsonProperty("capacity")
     public ApiPixTokenBucketGetAddressKeyResponseDtoBuilder capacity(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("capacity cannot be null");
-      }
       this.capacity = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiPixTokenBucketGetAddressKeyResponseDto {
 
     @JsonProperty("remaining")
     public ApiPixTokenBucketGetAddressKeyResponseDtoBuilder remaining(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("remaining cannot be null");
-      }
       this.remaining = JsonNullable.of(value);
       return this;
     }

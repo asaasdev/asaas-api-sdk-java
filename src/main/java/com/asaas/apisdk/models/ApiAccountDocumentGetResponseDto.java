@@ -49,9 +49,6 @@ public class ApiAccountDocumentGetResponseDto {
 
     @JsonProperty("id")
     public ApiAccountDocumentGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiAccountDocumentGetResponseDto {
 
     @JsonProperty("status")
     public ApiAccountDocumentGetResponseDtoBuilder status(ApiAccountDocumentGetResponseCustomerDocumentStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }

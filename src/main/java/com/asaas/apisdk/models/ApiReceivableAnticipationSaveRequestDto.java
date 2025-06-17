@@ -60,9 +60,6 @@ public class ApiReceivableAnticipationSaveRequestDto {
 
     @JsonProperty("installment")
     public ApiReceivableAnticipationSaveRequestDtoBuilder installment(String value) {
-      if (value == null) {
-        throw new IllegalStateException("installment cannot be null");
-      }
       this.installment = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiReceivableAnticipationSaveRequestDto {
 
     @JsonProperty("payment")
     public ApiReceivableAnticipationSaveRequestDtoBuilder payment(String value) {
-      if (value == null) {
-        throw new IllegalStateException("payment cannot be null");
-      }
       this.payment = JsonNullable.of(value);
       return this;
     }

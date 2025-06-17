@@ -51,9 +51,6 @@ public class ApiTransferSaveInternalTransferRequestDto {
 
     @JsonProperty("externalReference")
     public ApiTransferSaveInternalTransferRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }

@@ -60,9 +60,6 @@ public class ApiPaymentLimitsResponseCreationDailyDto {
 
     @JsonProperty("limit")
     public ApiPaymentLimitsResponseCreationDailyDtoBuilder limit(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("limit cannot be null");
-      }
       this.limit = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiPaymentLimitsResponseCreationDailyDto {
 
     @JsonProperty("used")
     public ApiPaymentLimitsResponseCreationDailyDtoBuilder used(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("used cannot be null");
-      }
       this.used = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiPaymentLimitsResponseCreationDailyDto {
 
     @JsonProperty("wasReached")
     public ApiPaymentLimitsResponseCreationDailyDtoBuilder wasReached(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("wasReached cannot be null");
-      }
       this.wasReached = JsonNullable.of(value);
       return this;
     }

@@ -49,9 +49,6 @@ public class ApiWalletGetResponseDto {
 
     @JsonProperty("object")
     public ApiWalletGetResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiWalletGetResponseDto {
 
     @JsonProperty("id")
     public ApiWalletGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }

@@ -60,9 +60,6 @@ public class ApiAccountDocumentSaveRequestDto {
 
     @JsonProperty("type")
     public ApiAccountDocumentSaveRequestDtoBuilder type(ApiAccountDocumentSaveRequestCustomerDocumentType value) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }

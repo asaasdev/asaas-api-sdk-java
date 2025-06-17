@@ -82,9 +82,6 @@ public class ApiMyAccountGetStatusResponseDto {
 
     @JsonProperty("id")
     public ApiMyAccountGetStatusResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -93,9 +90,6 @@ public class ApiMyAccountGetStatusResponseDto {
 
     @JsonProperty("commercialInfo")
     public ApiMyAccountGetStatusResponseDtoBuilder commercialInfo(ApiMyAccountGetStatusResponseStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("commercialInfo cannot be null");
-      }
       this.commercialInfo = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +98,6 @@ public class ApiMyAccountGetStatusResponseDto {
 
     @JsonProperty("bankAccountInfo")
     public ApiMyAccountGetStatusResponseDtoBuilder bankAccountInfo(ApiMyAccountGetStatusResponseStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("bankAccountInfo cannot be null");
-      }
       this.bankAccountInfo = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +106,6 @@ public class ApiMyAccountGetStatusResponseDto {
 
     @JsonProperty("documentation")
     public ApiMyAccountGetStatusResponseDtoBuilder documentation(ApiMyAccountGetStatusResponseStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("documentation cannot be null");
-      }
       this.documentation = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +114,6 @@ public class ApiMyAccountGetStatusResponseDto {
 
     @JsonProperty("general")
     public ApiMyAccountGetStatusResponseDtoBuilder general(ApiMyAccountGetStatusResponseStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("general cannot be null");
-      }
       this.general = JsonNullable.of(value);
       return this;
     }

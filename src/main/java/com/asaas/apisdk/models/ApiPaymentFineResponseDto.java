@@ -38,9 +38,6 @@ public class ApiPaymentFineResponseDto {
 
     @JsonProperty("value")
     public ApiPaymentFineResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }

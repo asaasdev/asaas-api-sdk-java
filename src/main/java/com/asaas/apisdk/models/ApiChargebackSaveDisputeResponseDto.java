@@ -61,9 +61,6 @@ public class ApiChargebackSaveDisputeResponseDto {
 
     @JsonProperty("chargebackId")
     public ApiChargebackSaveDisputeResponseDtoBuilder chargebackId(String value) {
-      if (value == null) {
-        throw new IllegalStateException("chargebackId cannot be null");
-      }
       this.chargebackId = JsonNullable.of(value);
       return this;
     }
@@ -74,9 +71,6 @@ public class ApiChargebackSaveDisputeResponseDto {
     public ApiChargebackSaveDisputeResponseDtoBuilder status(
       ApiChargebackSaveDisputeResponseChargebackDisputeStatus value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -85,9 +79,6 @@ public class ApiChargebackSaveDisputeResponseDto {
 
     @JsonProperty("files")
     public ApiChargebackSaveDisputeResponseDtoBuilder files(List<String> value) {
-      if (value == null) {
-        throw new IllegalStateException("files cannot be null");
-      }
       this.files = JsonNullable.of(value);
       return this;
     }

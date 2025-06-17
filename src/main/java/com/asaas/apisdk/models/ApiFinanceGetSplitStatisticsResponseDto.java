@@ -49,9 +49,6 @@ public class ApiFinanceGetSplitStatisticsResponseDto {
 
     @JsonProperty("income")
     public ApiFinanceGetSplitStatisticsResponseDtoBuilder income(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("income cannot be null");
-      }
       this.income = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiFinanceGetSplitStatisticsResponseDto {
 
     @JsonProperty("value")
     public ApiFinanceGetSplitStatisticsResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }

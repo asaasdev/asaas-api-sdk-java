@@ -71,9 +71,6 @@ public class ApiMyAccountGetAccountFeesPaymentBankSlipDto {
 
     @JsonProperty("defaultValue")
     public ApiMyAccountGetAccountFeesPaymentBankSlipDtoBuilder defaultValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("defaultValue cannot be null");
-      }
       this.defaultValue = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +79,6 @@ public class ApiMyAccountGetAccountFeesPaymentBankSlipDto {
 
     @JsonProperty("discountValue")
     public ApiMyAccountGetAccountFeesPaymentBankSlipDtoBuilder discountValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("discountValue cannot be null");
-      }
       this.discountValue = JsonNullable.of(value);
       return this;
     }
@@ -93,9 +87,6 @@ public class ApiMyAccountGetAccountFeesPaymentBankSlipDto {
 
     @JsonProperty("expirationDate")
     public ApiMyAccountGetAccountFeesPaymentBankSlipDtoBuilder expirationDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("expirationDate cannot be null");
-      }
       this.expirationDate = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +95,6 @@ public class ApiMyAccountGetAccountFeesPaymentBankSlipDto {
 
     @JsonProperty("daysToReceive")
     public ApiMyAccountGetAccountFeesPaymentBankSlipDtoBuilder daysToReceive(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("daysToReceive cannot be null");
-      }
       this.daysToReceive = JsonNullable.of(value);
       return this;
     }

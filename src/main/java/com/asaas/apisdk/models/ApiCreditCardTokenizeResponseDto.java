@@ -60,9 +60,6 @@ public class ApiCreditCardTokenizeResponseDto {
 
     @JsonProperty("creditCardNumber")
     public ApiCreditCardTokenizeResponseDtoBuilder creditCardNumber(String value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCardNumber cannot be null");
-      }
       this.creditCardNumber = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiCreditCardTokenizeResponseDto {
 
     @JsonProperty("creditCardBrand")
     public ApiCreditCardTokenizeResponseDtoBuilder creditCardBrand(ApiCreditCardTokenizeResponseCreditCardBrand value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCardBrand cannot be null");
-      }
       this.creditCardBrand = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiCreditCardTokenizeResponseDto {
 
     @JsonProperty("creditCardToken")
     public ApiCreditCardTokenizeResponseDtoBuilder creditCardToken(String value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCardToken cannot be null");
-      }
       this.creditCardToken = JsonNullable.of(value);
       return this;
     }

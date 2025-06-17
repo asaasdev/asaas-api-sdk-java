@@ -57,9 +57,6 @@ public class ApiPaymentSimulateBankSlipResponseDto {
 
     @JsonProperty("netValue")
     public ApiPaymentSimulateBankSlipResponseDtoBuilder netValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("netValue cannot be null");
-      }
       this.netValue = JsonNullable.of(value);
       return this;
     }
@@ -68,9 +65,6 @@ public class ApiPaymentSimulateBankSlipResponseDto {
 
     @JsonProperty("feeValue")
     public ApiPaymentSimulateBankSlipResponseDtoBuilder feeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("feeValue cannot be null");
-      }
       this.feeValue = JsonNullable.of(value);
       return this;
     }
@@ -79,9 +73,6 @@ public class ApiPaymentSimulateBankSlipResponseDto {
 
     @JsonProperty("installment")
     public ApiPaymentSimulateBankSlipResponseDtoBuilder installment(ApiPaymentSimulateInstallmentResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("installment cannot be null");
-      }
       this.installment = JsonNullable.of(value);
       return this;
     }

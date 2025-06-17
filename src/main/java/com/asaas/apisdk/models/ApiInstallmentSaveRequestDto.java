@@ -149,9 +149,6 @@ public class ApiInstallmentSaveRequestDto {
 
     @JsonProperty("totalValue")
     public ApiInstallmentSaveRequestDtoBuilder totalValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalValue cannot be null");
-      }
       this.totalValue = JsonNullable.of(value);
       return this;
     }
@@ -160,9 +157,6 @@ public class ApiInstallmentSaveRequestDto {
 
     @JsonProperty("description")
     public ApiInstallmentSaveRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -171,9 +165,6 @@ public class ApiInstallmentSaveRequestDto {
 
     @JsonProperty("postalService")
     public ApiInstallmentSaveRequestDtoBuilder postalService(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("postalService cannot be null");
-      }
       this.postalService = JsonNullable.of(value);
       return this;
     }
@@ -182,9 +173,6 @@ public class ApiInstallmentSaveRequestDto {
 
     @JsonProperty("daysAfterDueDateToRegistrationCancellation")
     public ApiInstallmentSaveRequestDtoBuilder daysAfterDueDateToRegistrationCancellation(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("daysAfterDueDateToRegistrationCancellation cannot be null");
-      }
       this.daysAfterDueDateToRegistrationCancellation = JsonNullable.of(value);
       return this;
     }
@@ -193,9 +181,6 @@ public class ApiInstallmentSaveRequestDto {
 
     @JsonProperty("paymentExternalReference")
     public ApiInstallmentSaveRequestDtoBuilder paymentExternalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("paymentExternalReference cannot be null");
-      }
       this.paymentExternalReference = JsonNullable.of(value);
       return this;
     }
@@ -204,9 +189,6 @@ public class ApiInstallmentSaveRequestDto {
 
     @JsonProperty("discount")
     public ApiInstallmentSaveRequestDtoBuilder discount(ApiPaymentDiscountDto value) {
-      if (value == null) {
-        throw new IllegalStateException("discount cannot be null");
-      }
       this.discount = JsonNullable.of(value);
       return this;
     }
@@ -215,9 +197,6 @@ public class ApiInstallmentSaveRequestDto {
 
     @JsonProperty("interest")
     public ApiInstallmentSaveRequestDtoBuilder interest(ApiPaymentInterestRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("interest cannot be null");
-      }
       this.interest = JsonNullable.of(value);
       return this;
     }
@@ -226,9 +205,6 @@ public class ApiInstallmentSaveRequestDto {
 
     @JsonProperty("fine")
     public ApiInstallmentSaveRequestDtoBuilder fine(ApiPaymentFineRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("fine cannot be null");
-      }
       this.fine = JsonNullable.of(value);
       return this;
     }
@@ -237,9 +213,6 @@ public class ApiInstallmentSaveRequestDto {
 
     @JsonProperty("splits")
     public ApiInstallmentSaveRequestDtoBuilder splits(List<ApiInstallmentSplitRequestDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("splits cannot be null");
-      }
       this.splits = JsonNullable.of(value);
       return this;
     }

@@ -49,9 +49,6 @@ public class ApiMyAccountGetAccountFeesCreditBureauReportDto {
 
     @JsonProperty("naturalPersonFeeValue")
     public ApiMyAccountGetAccountFeesCreditBureauReportDtoBuilder naturalPersonFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("naturalPersonFeeValue cannot be null");
-      }
       this.naturalPersonFeeValue = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiMyAccountGetAccountFeesCreditBureauReportDto {
 
     @JsonProperty("legalPersonFeeValue")
     public ApiMyAccountGetAccountFeesCreditBureauReportDtoBuilder legalPersonFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("legalPersonFeeValue cannot be null");
-      }
       this.legalPersonFeeValue = JsonNullable.of(value);
       return this;
     }

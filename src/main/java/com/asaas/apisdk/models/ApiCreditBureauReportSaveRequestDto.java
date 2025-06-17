@@ -49,9 +49,6 @@ public class ApiCreditBureauReportSaveRequestDto {
 
     @JsonProperty("customer")
     public ApiCreditBureauReportSaveRequestDtoBuilder customer(String value) {
-      if (value == null) {
-        throw new IllegalStateException("customer cannot be null");
-      }
       this.customer = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiCreditBureauReportSaveRequestDto {
 
     @JsonProperty("cpfCnpj")
     public ApiCreditBureauReportSaveRequestDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }

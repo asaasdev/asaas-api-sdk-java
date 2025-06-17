@@ -71,9 +71,6 @@ public class ApiMyAccountGetAccountFeesTransferPixDto {
 
     @JsonProperty("feeValue")
     public ApiMyAccountGetAccountFeesTransferPixDtoBuilder feeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("feeValue cannot be null");
-      }
       this.feeValue = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +79,6 @@ public class ApiMyAccountGetAccountFeesTransferPixDto {
 
     @JsonProperty("discountValue")
     public ApiMyAccountGetAccountFeesTransferPixDtoBuilder discountValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("discountValue cannot be null");
-      }
       this.discountValue = JsonNullable.of(value);
       return this;
     }
@@ -93,9 +87,6 @@ public class ApiMyAccountGetAccountFeesTransferPixDto {
 
     @JsonProperty("expirationDate")
     public ApiMyAccountGetAccountFeesTransferPixDtoBuilder expirationDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("expirationDate cannot be null");
-      }
       this.expirationDate = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +95,6 @@ public class ApiMyAccountGetAccountFeesTransferPixDto {
 
     @JsonProperty("consideredInMonthlyTransfersWithoutFee")
     public ApiMyAccountGetAccountFeesTransferPixDtoBuilder consideredInMonthlyTransfersWithoutFee(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("consideredInMonthlyTransfersWithoutFee cannot be null");
-      }
       this.consideredInMonthlyTransfersWithoutFee = JsonNullable.of(value);
       return this;
     }

@@ -39,9 +39,6 @@ public class ApiPixAddressKeyListResponseDto {
 
     @JsonProperty("data")
     public ApiPixAddressKeyListResponseDtoBuilder data(List<ApiPixAddressKeyGetResponseDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("data cannot be null");
-      }
       this.data = JsonNullable.of(value);
       return this;
     }

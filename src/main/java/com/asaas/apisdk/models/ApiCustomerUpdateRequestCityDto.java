@@ -104,9 +104,6 @@ public class ApiCustomerUpdateRequestCityDto {
 
     @JsonProperty("object")
     public ApiCustomerUpdateRequestCityDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +112,6 @@ public class ApiCustomerUpdateRequestCityDto {
 
     @JsonProperty("id")
     public ApiCustomerUpdateRequestCityDtoBuilder id(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +120,6 @@ public class ApiCustomerUpdateRequestCityDto {
 
     @JsonProperty("ibgeCode")
     public ApiCustomerUpdateRequestCityDtoBuilder ibgeCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("ibgeCode cannot be null");
-      }
       this.ibgeCode = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +128,6 @@ public class ApiCustomerUpdateRequestCityDto {
 
     @JsonProperty("name")
     public ApiCustomerUpdateRequestCityDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +136,6 @@ public class ApiCustomerUpdateRequestCityDto {
 
     @JsonProperty("districtCode")
     public ApiCustomerUpdateRequestCityDtoBuilder districtCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("districtCode cannot be null");
-      }
       this.districtCode = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +144,6 @@ public class ApiCustomerUpdateRequestCityDto {
 
     @JsonProperty("district")
     public ApiCustomerUpdateRequestCityDtoBuilder district(String value) {
-      if (value == null) {
-        throw new IllegalStateException("district cannot be null");
-      }
       this.district = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +152,6 @@ public class ApiCustomerUpdateRequestCityDto {
 
     @JsonProperty("state")
     public ApiCustomerUpdateRequestCityDtoBuilder state(ApiCustomerUpdateRequestCityState value) {
-      if (value == null) {
-        throw new IllegalStateException("state cannot be null");
-      }
       this.state = JsonNullable.of(value);
       return this;
     }

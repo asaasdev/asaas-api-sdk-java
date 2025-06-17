@@ -214,9 +214,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("id")
     public ApiPaymentCampaignGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -225,9 +222,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("name")
     public ApiPaymentCampaignGetResponseDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -236,9 +230,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("value")
     public ApiPaymentCampaignGetResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -247,9 +238,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("active")
     public ApiPaymentCampaignGetResponseDtoBuilder active(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("active cannot be null");
-      }
       this.active = JsonNullable.of(value);
       return this;
     }
@@ -258,9 +246,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("chargeType")
     public ApiPaymentCampaignGetResponseDtoBuilder chargeType(ApiPaymentCampaignGetResponseChargeType value) {
-      if (value == null) {
-        throw new IllegalStateException("chargeType cannot be null");
-      }
       this.chargeType = JsonNullable.of(value);
       return this;
     }
@@ -269,9 +254,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("url")
     public ApiPaymentCampaignGetResponseDtoBuilder url(String value) {
-      if (value == null) {
-        throw new IllegalStateException("url cannot be null");
-      }
       this.url = JsonNullable.of(value);
       return this;
     }
@@ -280,9 +262,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("billingType")
     public ApiPaymentCampaignGetResponseDtoBuilder billingType(ApiPaymentCampaignGetResponseBillingType value) {
-      if (value == null) {
-        throw new IllegalStateException("billingType cannot be null");
-      }
       this.billingType = JsonNullable.of(value);
       return this;
     }
@@ -291,9 +270,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("subscriptionCycle")
     public ApiPaymentCampaignGetResponseDtoBuilder subscriptionCycle(ApiPaymentCampaignGetResponseCycle value) {
-      if (value == null) {
-        throw new IllegalStateException("subscriptionCycle cannot be null");
-      }
       this.subscriptionCycle = JsonNullable.of(value);
       return this;
     }
@@ -302,9 +278,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("description")
     public ApiPaymentCampaignGetResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -313,9 +286,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("endDate")
     public ApiPaymentCampaignGetResponseDtoBuilder endDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("endDate cannot be null");
-      }
       this.endDate = JsonNullable.of(value);
       return this;
     }
@@ -324,9 +294,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("deleted")
     public ApiPaymentCampaignGetResponseDtoBuilder deleted(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("deleted cannot be null");
-      }
       this.deleted = JsonNullable.of(value);
       return this;
     }
@@ -335,9 +302,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("viewCount")
     public ApiPaymentCampaignGetResponseDtoBuilder viewCount(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("viewCount cannot be null");
-      }
       this.viewCount = JsonNullable.of(value);
       return this;
     }
@@ -346,9 +310,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("maxInstallmentCount")
     public ApiPaymentCampaignGetResponseDtoBuilder maxInstallmentCount(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("maxInstallmentCount cannot be null");
-      }
       this.maxInstallmentCount = JsonNullable.of(value);
       return this;
     }
@@ -357,9 +318,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("dueDateLimitDays")
     public ApiPaymentCampaignGetResponseDtoBuilder dueDateLimitDays(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("dueDateLimitDays cannot be null");
-      }
       this.dueDateLimitDays = JsonNullable.of(value);
       return this;
     }
@@ -368,9 +326,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("notificationEnabled")
     public ApiPaymentCampaignGetResponseDtoBuilder notificationEnabled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("notificationEnabled cannot be null");
-      }
       this.notificationEnabled = JsonNullable.of(value);
       return this;
     }
@@ -379,9 +334,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("isAddressRequired")
     public ApiPaymentCampaignGetResponseDtoBuilder isAddressRequired(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("isAddressRequired cannot be null");
-      }
       this.isAddressRequired = JsonNullable.of(value);
       return this;
     }
@@ -390,9 +342,6 @@ public class ApiPaymentCampaignGetResponseDto {
 
     @JsonProperty("externalReference")
     public ApiPaymentCampaignGetResponseDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }

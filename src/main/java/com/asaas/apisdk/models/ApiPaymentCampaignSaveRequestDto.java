@@ -153,9 +153,6 @@ public class ApiPaymentCampaignSaveRequestDto {
 
     @JsonProperty("description")
     public ApiPaymentCampaignSaveRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -164,9 +161,6 @@ public class ApiPaymentCampaignSaveRequestDto {
 
     @JsonProperty("endDate")
     public ApiPaymentCampaignSaveRequestDtoBuilder endDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("endDate cannot be null");
-      }
       this.endDate = JsonNullable.of(value);
       return this;
     }
@@ -175,9 +169,6 @@ public class ApiPaymentCampaignSaveRequestDto {
 
     @JsonProperty("value")
     public ApiPaymentCampaignSaveRequestDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -186,9 +177,6 @@ public class ApiPaymentCampaignSaveRequestDto {
 
     @JsonProperty("dueDateLimitDays")
     public ApiPaymentCampaignSaveRequestDtoBuilder dueDateLimitDays(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("dueDateLimitDays cannot be null");
-      }
       this.dueDateLimitDays = JsonNullable.of(value);
       return this;
     }
@@ -197,9 +185,6 @@ public class ApiPaymentCampaignSaveRequestDto {
 
     @JsonProperty("subscriptionCycle")
     public ApiPaymentCampaignSaveRequestDtoBuilder subscriptionCycle(ApiPaymentCampaignSaveRequestCycle value) {
-      if (value == null) {
-        throw new IllegalStateException("subscriptionCycle cannot be null");
-      }
       this.subscriptionCycle = JsonNullable.of(value);
       return this;
     }
@@ -208,9 +193,6 @@ public class ApiPaymentCampaignSaveRequestDto {
 
     @JsonProperty("maxInstallmentCount")
     public ApiPaymentCampaignSaveRequestDtoBuilder maxInstallmentCount(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("maxInstallmentCount cannot be null");
-      }
       this.maxInstallmentCount = JsonNullable.of(value);
       return this;
     }
@@ -219,9 +201,6 @@ public class ApiPaymentCampaignSaveRequestDto {
 
     @JsonProperty("externalReference")
     public ApiPaymentCampaignSaveRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -230,9 +209,6 @@ public class ApiPaymentCampaignSaveRequestDto {
 
     @JsonProperty("notificationEnabled")
     public ApiPaymentCampaignSaveRequestDtoBuilder notificationEnabled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("notificationEnabled cannot be null");
-      }
       this.notificationEnabled = JsonNullable.of(value);
       return this;
     }
@@ -241,9 +217,6 @@ public class ApiPaymentCampaignSaveRequestDto {
 
     @JsonProperty("callback")
     public ApiPaymentCampaignSaveRequestDtoBuilder callback(ApiPaymentCallbackRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("callback cannot be null");
-      }
       this.callback = JsonNullable.of(value);
       return this;
     }
@@ -252,9 +225,6 @@ public class ApiPaymentCampaignSaveRequestDto {
 
     @JsonProperty("isAddressRequired")
     public ApiPaymentCampaignSaveRequestDtoBuilder isAddressRequired(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("isAddressRequired cannot be null");
-      }
       this.isAddressRequired = JsonNullable.of(value);
       return this;
     }

@@ -115,9 +115,6 @@ public class ApiMyAccountGetAccountFeesPaymentPixDto {
 
     @JsonProperty("fixedFeeValue")
     public ApiMyAccountGetAccountFeesPaymentPixDtoBuilder fixedFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fixedFeeValue cannot be null");
-      }
       this.fixedFeeValue = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +123,6 @@ public class ApiMyAccountGetAccountFeesPaymentPixDto {
 
     @JsonProperty("fixedFeeValueWithDiscount")
     public ApiMyAccountGetAccountFeesPaymentPixDtoBuilder fixedFeeValueWithDiscount(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fixedFeeValueWithDiscount cannot be null");
-      }
       this.fixedFeeValueWithDiscount = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +131,6 @@ public class ApiMyAccountGetAccountFeesPaymentPixDto {
 
     @JsonProperty("percentageFee")
     public ApiMyAccountGetAccountFeesPaymentPixDtoBuilder percentageFee(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("percentageFee cannot be null");
-      }
       this.percentageFee = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +139,6 @@ public class ApiMyAccountGetAccountFeesPaymentPixDto {
 
     @JsonProperty("minimumFeeValue")
     public ApiMyAccountGetAccountFeesPaymentPixDtoBuilder minimumFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("minimumFeeValue cannot be null");
-      }
       this.minimumFeeValue = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +147,6 @@ public class ApiMyAccountGetAccountFeesPaymentPixDto {
 
     @JsonProperty("maximumFeeValue")
     public ApiMyAccountGetAccountFeesPaymentPixDtoBuilder maximumFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("maximumFeeValue cannot be null");
-      }
       this.maximumFeeValue = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +155,6 @@ public class ApiMyAccountGetAccountFeesPaymentPixDto {
 
     @JsonProperty("discountExpiration")
     public ApiMyAccountGetAccountFeesPaymentPixDtoBuilder discountExpiration(String value) {
-      if (value == null) {
-        throw new IllegalStateException("discountExpiration cannot be null");
-      }
       this.discountExpiration = JsonNullable.of(value);
       return this;
     }
@@ -181,9 +163,6 @@ public class ApiMyAccountGetAccountFeesPaymentPixDto {
 
     @JsonProperty("monthlyCreditsWithoutFee")
     public ApiMyAccountGetAccountFeesPaymentPixDtoBuilder monthlyCreditsWithoutFee(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("monthlyCreditsWithoutFee cannot be null");
-      }
       this.monthlyCreditsWithoutFee = JsonNullable.of(value);
       return this;
     }
@@ -192,9 +171,6 @@ public class ApiMyAccountGetAccountFeesPaymentPixDto {
 
     @JsonProperty("creditsReceivedOfCurrentMonth")
     public ApiMyAccountGetAccountFeesPaymentPixDtoBuilder creditsReceivedOfCurrentMonth(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("creditsReceivedOfCurrentMonth cannot be null");
-      }
       this.creditsReceivedOfCurrentMonth = JsonNullable.of(value);
       return this;
     }

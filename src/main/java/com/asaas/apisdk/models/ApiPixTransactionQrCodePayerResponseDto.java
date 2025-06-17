@@ -49,9 +49,6 @@ public class ApiPixTransactionQrCodePayerResponseDto {
 
     @JsonProperty("name")
     public ApiPixTransactionQrCodePayerResponseDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiPixTransactionQrCodePayerResponseDto {
 
     @JsonProperty("cpfCnpj")
     public ApiPixTransactionQrCodePayerResponseDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }

@@ -52,9 +52,6 @@ public class ApiPaymentSimulateRequestDto {
 
     @JsonProperty("installmentCount")
     public ApiPaymentSimulateRequestDtoBuilder installmentCount(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("installmentCount cannot be null");
-      }
       this.installmentCount = JsonNullable.of(value);
       return this;
     }

@@ -45,9 +45,6 @@ public class ApiPixTransactionQrCodeSaveRequestDto {
 
     @JsonProperty("changeValue")
     public ApiPixTransactionQrCodeSaveRequestDtoBuilder changeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("changeValue cannot be null");
-      }
       this.changeValue = JsonNullable.of(value);
       return this;
     }

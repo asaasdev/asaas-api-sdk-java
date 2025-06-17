@@ -115,9 +115,6 @@ public class ApiPaymentCheckoutConfigGetResponseDto {
 
     @JsonProperty("object")
     public ApiPaymentCheckoutConfigGetResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +123,6 @@ public class ApiPaymentCheckoutConfigGetResponseDto {
 
     @JsonProperty("logoBackgroundColor")
     public ApiPaymentCheckoutConfigGetResponseDtoBuilder logoBackgroundColor(String value) {
-      if (value == null) {
-        throw new IllegalStateException("logoBackgroundColor cannot be null");
-      }
       this.logoBackgroundColor = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +131,6 @@ public class ApiPaymentCheckoutConfigGetResponseDto {
 
     @JsonProperty("infoBackgroundColor")
     public ApiPaymentCheckoutConfigGetResponseDtoBuilder infoBackgroundColor(String value) {
-      if (value == null) {
-        throw new IllegalStateException("infoBackgroundColor cannot be null");
-      }
       this.infoBackgroundColor = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +139,6 @@ public class ApiPaymentCheckoutConfigGetResponseDto {
 
     @JsonProperty("fontColor")
     public ApiPaymentCheckoutConfigGetResponseDtoBuilder fontColor(String value) {
-      if (value == null) {
-        throw new IllegalStateException("fontColor cannot be null");
-      }
       this.fontColor = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +147,6 @@ public class ApiPaymentCheckoutConfigGetResponseDto {
 
     @JsonProperty("enabled")
     public ApiPaymentCheckoutConfigGetResponseDtoBuilder enabled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("enabled cannot be null");
-      }
       this.enabled = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +155,6 @@ public class ApiPaymentCheckoutConfigGetResponseDto {
 
     @JsonProperty("logoUrl")
     public ApiPaymentCheckoutConfigGetResponseDtoBuilder logoUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("logoUrl cannot be null");
-      }
       this.logoUrl = JsonNullable.of(value);
       return this;
     }
@@ -181,9 +163,6 @@ public class ApiPaymentCheckoutConfigGetResponseDto {
 
     @JsonProperty("observations")
     public ApiPaymentCheckoutConfigGetResponseDtoBuilder observations(String value) {
-      if (value == null) {
-        throw new IllegalStateException("observations cannot be null");
-      }
       this.observations = JsonNullable.of(value);
       return this;
     }
@@ -195,9 +174,6 @@ public class ApiPaymentCheckoutConfigGetResponseDto {
     public ApiPaymentCheckoutConfigGetResponseDtoBuilder status(
       ApiPaymentCheckoutConfigGetResponseCustomerInvoiceConfigStatus value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }

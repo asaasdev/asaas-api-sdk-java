@@ -217,9 +217,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("description")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -228,9 +225,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("daysAfterDueDateToRegistrationCancellation")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder daysAfterDueDateToRegistrationCancellation(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("daysAfterDueDateToRegistrationCancellation cannot be null");
-      }
       this.daysAfterDueDateToRegistrationCancellation = JsonNullable.of(value);
       return this;
     }
@@ -239,9 +233,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("externalReference")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -250,9 +241,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("installmentCount")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder installmentCount(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("installmentCount cannot be null");
-      }
       this.installmentCount = JsonNullable.of(value);
       return this;
     }
@@ -261,9 +249,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("totalValue")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder totalValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalValue cannot be null");
-      }
       this.totalValue = JsonNullable.of(value);
       return this;
     }
@@ -272,9 +257,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("installmentValue")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder installmentValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("installmentValue cannot be null");
-      }
       this.installmentValue = JsonNullable.of(value);
       return this;
     }
@@ -283,9 +265,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("discount")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder discount(ApiPaymentDiscountDto value) {
-      if (value == null) {
-        throw new IllegalStateException("discount cannot be null");
-      }
       this.discount = JsonNullable.of(value);
       return this;
     }
@@ -294,9 +273,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("interest")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder interest(ApiPaymentInterestRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("interest cannot be null");
-      }
       this.interest = JsonNullable.of(value);
       return this;
     }
@@ -305,9 +281,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("fine")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder fine(ApiPaymentFineRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("fine cannot be null");
-      }
       this.fine = JsonNullable.of(value);
       return this;
     }
@@ -316,9 +289,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("postalService")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder postalService(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("postalService cannot be null");
-      }
       this.postalService = JsonNullable.of(value);
       return this;
     }
@@ -327,9 +297,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("split")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder split(List<ApiPaymentSplitRequestDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("split cannot be null");
-      }
       this.split = JsonNullable.of(value);
       return this;
     }
@@ -338,9 +305,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("callback")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder callback(ApiPaymentCallbackRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("callback cannot be null");
-      }
       this.callback = JsonNullable.of(value);
       return this;
     }
@@ -349,9 +313,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("creditCard")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder creditCard(ApiCreditCardRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCard cannot be null");
-      }
       this.creditCard = JsonNullable.of(value);
       return this;
     }
@@ -360,9 +321,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("creditCardHolderInfo")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder creditCardHolderInfo(ApiCreditCardHolderInfoRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCardHolderInfo cannot be null");
-      }
       this.creditCardHolderInfo = JsonNullable.of(value);
       return this;
     }
@@ -371,9 +329,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("creditCardToken")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder creditCardToken(String value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCardToken cannot be null");
-      }
       this.creditCardToken = JsonNullable.of(value);
       return this;
     }
@@ -382,9 +337,6 @@ public class ApiPaymentSaveWithCreditCardRequestDto {
 
     @JsonProperty("authorizeOnly")
     public ApiPaymentSaveWithCreditCardRequestDtoBuilder authorizeOnly(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("authorizeOnly cannot be null");
-      }
       this.authorizeOnly = JsonNullable.of(value);
       return this;
     }

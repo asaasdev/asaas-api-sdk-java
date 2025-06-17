@@ -104,9 +104,6 @@ public class ApiPixQrCodeDecodeReceiverDto {
 
     @JsonProperty("ispb")
     public ApiPixQrCodeDecodeReceiverDtoBuilder ispb(String value) {
-      if (value == null) {
-        throw new IllegalStateException("ispb cannot be null");
-      }
       this.ispb = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +112,6 @@ public class ApiPixQrCodeDecodeReceiverDto {
 
     @JsonProperty("ispbName")
     public ApiPixQrCodeDecodeReceiverDtoBuilder ispbName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("ispbName cannot be null");
-      }
       this.ispbName = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +120,6 @@ public class ApiPixQrCodeDecodeReceiverDto {
 
     @JsonProperty("name")
     public ApiPixQrCodeDecodeReceiverDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +128,6 @@ public class ApiPixQrCodeDecodeReceiverDto {
 
     @JsonProperty("tradingName")
     public ApiPixQrCodeDecodeReceiverDtoBuilder tradingName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("tradingName cannot be null");
-      }
       this.tradingName = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +136,6 @@ public class ApiPixQrCodeDecodeReceiverDto {
 
     @JsonProperty("cpfCnpj")
     public ApiPixQrCodeDecodeReceiverDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +144,6 @@ public class ApiPixQrCodeDecodeReceiverDto {
 
     @JsonProperty("personType")
     public ApiPixQrCodeDecodeReceiverDtoBuilder personType(ApiPixQrCodeDecodeReceiverPersonType value) {
-      if (value == null) {
-        throw new IllegalStateException("personType cannot be null");
-      }
       this.personType = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +152,6 @@ public class ApiPixQrCodeDecodeReceiverDto {
 
     @JsonProperty("accountType")
     public ApiPixQrCodeDecodeReceiverDtoBuilder accountType(ApiPixQrCodeDecodeReceiverPixAccountType value) {
-      if (value == null) {
-        throw new IllegalStateException("accountType cannot be null");
-      }
       this.accountType = JsonNullable.of(value);
       return this;
     }

@@ -138,9 +138,6 @@ public class ApiPushNotificationConfigGetResponseDto {
 
     @JsonProperty("id")
     public ApiPushNotificationConfigGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -149,9 +146,6 @@ public class ApiPushNotificationConfigGetResponseDto {
 
     @JsonProperty("name")
     public ApiPushNotificationConfigGetResponseDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -160,9 +154,6 @@ public class ApiPushNotificationConfigGetResponseDto {
 
     @JsonProperty("url")
     public ApiPushNotificationConfigGetResponseDtoBuilder url(String value) {
-      if (value == null) {
-        throw new IllegalStateException("url cannot be null");
-      }
       this.url = JsonNullable.of(value);
       return this;
     }
@@ -171,9 +162,6 @@ public class ApiPushNotificationConfigGetResponseDto {
 
     @JsonProperty("email")
     public ApiPushNotificationConfigGetResponseDtoBuilder email(String value) {
-      if (value == null) {
-        throw new IllegalStateException("email cannot be null");
-      }
       this.email = JsonNullable.of(value);
       return this;
     }
@@ -182,9 +170,6 @@ public class ApiPushNotificationConfigGetResponseDto {
 
     @JsonProperty("enabled")
     public ApiPushNotificationConfigGetResponseDtoBuilder enabled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("enabled cannot be null");
-      }
       this.enabled = JsonNullable.of(value);
       return this;
     }
@@ -193,9 +178,6 @@ public class ApiPushNotificationConfigGetResponseDto {
 
     @JsonProperty("interrupted")
     public ApiPushNotificationConfigGetResponseDtoBuilder interrupted(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("interrupted cannot be null");
-      }
       this.interrupted = JsonNullable.of(value);
       return this;
     }
@@ -204,9 +186,6 @@ public class ApiPushNotificationConfigGetResponseDto {
 
     @JsonProperty("apiVersion")
     public ApiPushNotificationConfigGetResponseDtoBuilder apiVersion(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("apiVersion cannot be null");
-      }
       this.apiVersion = JsonNullable.of(value);
       return this;
     }
@@ -215,9 +194,6 @@ public class ApiPushNotificationConfigGetResponseDto {
 
     @JsonProperty("hasAuthToken")
     public ApiPushNotificationConfigGetResponseDtoBuilder hasAuthToken(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("hasAuthToken cannot be null");
-      }
       this.hasAuthToken = JsonNullable.of(value);
       return this;
     }
@@ -229,9 +205,6 @@ public class ApiPushNotificationConfigGetResponseDto {
     public ApiPushNotificationConfigGetResponseDtoBuilder sendType(
       ApiPushNotificationConfigGetResponsePushNotificationSendType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("sendType cannot be null");
-      }
       this.sendType = JsonNullable.of(value);
       return this;
     }
@@ -240,9 +213,6 @@ public class ApiPushNotificationConfigGetResponseDto {
 
     @JsonProperty("events")
     public ApiPushNotificationConfigGetResponseDtoBuilder events(List<String> value) {
-      if (value == null) {
-        throw new IllegalStateException("events cannot be null");
-      }
       this.events = JsonNullable.of(value);
       return this;
     }

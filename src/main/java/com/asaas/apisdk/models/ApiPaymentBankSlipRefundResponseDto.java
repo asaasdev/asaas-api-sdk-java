@@ -38,9 +38,6 @@ public class ApiPaymentBankSlipRefundResponseDto {
 
     @JsonProperty("requestUrl")
     public ApiPaymentBankSlipRefundResponseDtoBuilder requestUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("requestUrl cannot be null");
-      }
       this.requestUrl = JsonNullable.of(value);
       return this;
     }

@@ -112,9 +112,6 @@ public class ApiCustomerInvoiceUpdateRequestDto {
 
     @JsonProperty("serviceDescription")
     public ApiCustomerInvoiceUpdateRequestDtoBuilder serviceDescription(String value) {
-      if (value == null) {
-        throw new IllegalStateException("serviceDescription cannot be null");
-      }
       this.serviceDescription = JsonNullable.of(value);
       return this;
     }
@@ -123,9 +120,6 @@ public class ApiCustomerInvoiceUpdateRequestDto {
 
     @JsonProperty("observations")
     public ApiCustomerInvoiceUpdateRequestDtoBuilder observations(String value) {
-      if (value == null) {
-        throw new IllegalStateException("observations cannot be null");
-      }
       this.observations = JsonNullable.of(value);
       return this;
     }
@@ -134,9 +128,6 @@ public class ApiCustomerInvoiceUpdateRequestDto {
 
     @JsonProperty("externalReference")
     public ApiCustomerInvoiceUpdateRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -145,9 +136,6 @@ public class ApiCustomerInvoiceUpdateRequestDto {
 
     @JsonProperty("value")
     public ApiCustomerInvoiceUpdateRequestDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -156,9 +144,6 @@ public class ApiCustomerInvoiceUpdateRequestDto {
 
     @JsonProperty("deductions")
     public ApiCustomerInvoiceUpdateRequestDtoBuilder deductions(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("deductions cannot be null");
-      }
       this.deductions = JsonNullable.of(value);
       return this;
     }
@@ -167,9 +152,6 @@ public class ApiCustomerInvoiceUpdateRequestDto {
 
     @JsonProperty("effectiveDate")
     public ApiCustomerInvoiceUpdateRequestDtoBuilder effectiveDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("effectiveDate cannot be null");
-      }
       this.effectiveDate = JsonNullable.of(value);
       return this;
     }
@@ -178,9 +160,6 @@ public class ApiCustomerInvoiceUpdateRequestDto {
 
     @JsonProperty("updatePayment")
     public ApiCustomerInvoiceUpdateRequestDtoBuilder updatePayment(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("updatePayment cannot be null");
-      }
       this.updatePayment = JsonNullable.of(value);
       return this;
     }
@@ -189,9 +168,6 @@ public class ApiCustomerInvoiceUpdateRequestDto {
 
     @JsonProperty("taxes")
     public ApiCustomerInvoiceUpdateRequestDtoBuilder taxes(ApiCustomerInvoiceTaxesDto value) {
-      if (value == null) {
-        throw new IllegalStateException("taxes cannot be null");
-      }
       this.taxes = JsonNullable.of(value);
       return this;
     }

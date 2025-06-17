@@ -326,9 +326,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("id")
     public ApiPixTransactionGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -337,9 +334,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("endToEndIdentifier")
     public ApiPixTransactionGetResponseDtoBuilder endToEndIdentifier(String value) {
-      if (value == null) {
-        throw new IllegalStateException("endToEndIdentifier cannot be null");
-      }
       this.endToEndIdentifier = JsonNullable.of(value);
       return this;
     }
@@ -351,9 +345,6 @@ public class ApiPixTransactionGetResponseDto {
     public ApiPixTransactionGetResponseDtoBuilder finality(
       ApiPixTransactionGetResponsePixTransactionCashValueFinality value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("finality cannot be null");
-      }
       this.finality = JsonNullable.of(value);
       return this;
     }
@@ -362,9 +353,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("value")
     public ApiPixTransactionGetResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -373,9 +361,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("changeValue")
     public ApiPixTransactionGetResponseDtoBuilder changeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("changeValue cannot be null");
-      }
       this.changeValue = JsonNullable.of(value);
       return this;
     }
@@ -384,9 +369,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("refundedValue")
     public ApiPixTransactionGetResponseDtoBuilder refundedValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("refundedValue cannot be null");
-      }
       this.refundedValue = JsonNullable.of(value);
       return this;
     }
@@ -395,9 +377,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("effectiveDate")
     public ApiPixTransactionGetResponseDtoBuilder effectiveDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("effectiveDate cannot be null");
-      }
       this.effectiveDate = JsonNullable.of(value);
       return this;
     }
@@ -406,9 +385,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("scheduledDate")
     public ApiPixTransactionGetResponseDtoBuilder scheduledDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("scheduledDate cannot be null");
-      }
       this.scheduledDate = JsonNullable.of(value);
       return this;
     }
@@ -417,9 +393,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("status")
     public ApiPixTransactionGetResponseDtoBuilder status(ApiPixTransactionGetResponsePixTransactionStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -428,9 +401,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("type")
     public ApiPixTransactionGetResponseDtoBuilder type(ApiPixTransactionGetResponsePixTransactionType value) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }
@@ -441,9 +411,6 @@ public class ApiPixTransactionGetResponseDto {
     public ApiPixTransactionGetResponseDtoBuilder originType(
       ApiPixTransactionGetResponsePixTransactionOriginType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("originType cannot be null");
-      }
       this.originType = JsonNullable.of(value);
       return this;
     }
@@ -452,9 +419,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("conciliationIdentifier")
     public ApiPixTransactionGetResponseDtoBuilder conciliationIdentifier(String value) {
-      if (value == null) {
-        throw new IllegalStateException("conciliationIdentifier cannot be null");
-      }
       this.conciliationIdentifier = JsonNullable.of(value);
       return this;
     }
@@ -463,9 +427,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("description")
     public ApiPixTransactionGetResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -474,9 +435,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("transactionReceiptUrl")
     public ApiPixTransactionGetResponseDtoBuilder transactionReceiptUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("transactionReceiptUrl cannot be null");
-      }
       this.transactionReceiptUrl = JsonNullable.of(value);
       return this;
     }
@@ -485,9 +443,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("refusalReason")
     public ApiPixTransactionGetResponseDtoBuilder refusalReason(String value) {
-      if (value == null) {
-        throw new IllegalStateException("refusalReason cannot be null");
-      }
       this.refusalReason = JsonNullable.of(value);
       return this;
     }
@@ -496,9 +451,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("canBeCanceled")
     public ApiPixTransactionGetResponseDtoBuilder canBeCanceled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("canBeCanceled cannot be null");
-      }
       this.canBeCanceled = JsonNullable.of(value);
       return this;
     }
@@ -507,9 +459,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("originalTransaction")
     public ApiPixTransactionGetResponseDtoBuilder originalTransaction(ApiPixOriginalTransactionResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("originalTransaction cannot be null");
-      }
       this.originalTransaction = JsonNullable.of(value);
       return this;
     }
@@ -518,9 +467,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("externalAccount")
     public ApiPixTransactionGetResponseDtoBuilder externalAccount(ApiPixTransactionExternalAccountResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("externalAccount cannot be null");
-      }
       this.externalAccount = JsonNullable.of(value);
       return this;
     }
@@ -529,9 +475,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("qrCode")
     public ApiPixTransactionGetResponseDtoBuilder qrCode(ApiPixTransactionQrCodeResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("qrCode cannot be null");
-      }
       this.qrCode = JsonNullable.of(value);
       return this;
     }
@@ -540,9 +483,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("payment")
     public ApiPixTransactionGetResponseDtoBuilder payment(String value) {
-      if (value == null) {
-        throw new IllegalStateException("payment cannot be null");
-      }
       this.payment = JsonNullable.of(value);
       return this;
     }
@@ -551,9 +491,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("canBeRefunded")
     public ApiPixTransactionGetResponseDtoBuilder canBeRefunded(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("canBeRefunded cannot be null");
-      }
       this.canBeRefunded = JsonNullable.of(value);
       return this;
     }
@@ -562,9 +499,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("refundDisabledReason")
     public ApiPixTransactionGetResponseDtoBuilder refundDisabledReason(String value) {
-      if (value == null) {
-        throw new IllegalStateException("refundDisabledReason cannot be null");
-      }
       this.refundDisabledReason = JsonNullable.of(value);
       return this;
     }
@@ -573,9 +507,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("chargedFeeValue")
     public ApiPixTransactionGetResponseDtoBuilder chargedFeeValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("chargedFeeValue cannot be null");
-      }
       this.chargedFeeValue = JsonNullable.of(value);
       return this;
     }
@@ -584,9 +515,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("dateCreated")
     public ApiPixTransactionGetResponseDtoBuilder dateCreated(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dateCreated cannot be null");
-      }
       this.dateCreated = JsonNullable.of(value);
       return this;
     }
@@ -595,9 +523,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("addressKey")
     public ApiPixTransactionGetResponseDtoBuilder addressKey(String value) {
-      if (value == null) {
-        throw new IllegalStateException("addressKey cannot be null");
-      }
       this.addressKey = JsonNullable.of(value);
       return this;
     }
@@ -606,9 +531,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("addressKeyType")
     public ApiPixTransactionGetResponseDtoBuilder addressKeyType(ApiPixTransactionGetResponsePixAddressKeyType value) {
-      if (value == null) {
-        throw new IllegalStateException("addressKeyType cannot be null");
-      }
       this.addressKeyType = JsonNullable.of(value);
       return this;
     }
@@ -617,9 +539,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("transferId")
     public ApiPixTransactionGetResponseDtoBuilder transferId(String value) {
-      if (value == null) {
-        throw new IllegalStateException("transferId cannot be null");
-      }
       this.transferId = JsonNullable.of(value);
       return this;
     }
@@ -628,9 +547,6 @@ public class ApiPixTransactionGetResponseDto {
 
     @JsonProperty("externalReference")
     public ApiPixTransactionGetResponseDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }

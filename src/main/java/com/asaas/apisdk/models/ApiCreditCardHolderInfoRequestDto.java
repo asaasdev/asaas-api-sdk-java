@@ -86,9 +86,6 @@ public class ApiCreditCardHolderInfoRequestDto {
 
     @JsonProperty("addressComplement")
     public ApiCreditCardHolderInfoRequestDtoBuilder addressComplement(String value) {
-      if (value == null) {
-        throw new IllegalStateException("addressComplement cannot be null");
-      }
       this.addressComplement = JsonNullable.of(value);
       return this;
     }
@@ -97,9 +94,6 @@ public class ApiCreditCardHolderInfoRequestDto {
 
     @JsonProperty("mobilePhone")
     public ApiCreditCardHolderInfoRequestDtoBuilder mobilePhone(String value) {
-      if (value == null) {
-        throw new IllegalStateException("mobilePhone cannot be null");
-      }
       this.mobilePhone = JsonNullable.of(value);
       return this;
     }

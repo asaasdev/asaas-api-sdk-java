@@ -110,9 +110,6 @@ public class ApiTransferBankAccountSaveRequestDto {
 
     @JsonProperty("bank")
     public ApiTransferBankAccountSaveRequestDtoBuilder bank(ApiTransferBankSaveRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("bank cannot be null");
-      }
       this.bank = JsonNullable.of(value);
       return this;
     }
@@ -121,9 +118,6 @@ public class ApiTransferBankAccountSaveRequestDto {
 
     @JsonProperty("accountName")
     public ApiTransferBankAccountSaveRequestDtoBuilder accountName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("accountName cannot be null");
-      }
       this.accountName = JsonNullable.of(value);
       return this;
     }
@@ -132,9 +126,6 @@ public class ApiTransferBankAccountSaveRequestDto {
 
     @JsonProperty("ownerBirthDate")
     public ApiTransferBankAccountSaveRequestDtoBuilder ownerBirthDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("ownerBirthDate cannot be null");
-      }
       this.ownerBirthDate = JsonNullable.of(value);
       return this;
     }
@@ -145,9 +136,6 @@ public class ApiTransferBankAccountSaveRequestDto {
     public ApiTransferBankAccountSaveRequestDtoBuilder bankAccountType(
       ApiTransferBankAccountSaveRequestBankAccountType value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("bankAccountType cannot be null");
-      }
       this.bankAccountType = JsonNullable.of(value);
       return this;
     }
@@ -156,9 +144,6 @@ public class ApiTransferBankAccountSaveRequestDto {
 
     @JsonProperty("ispb")
     public ApiTransferBankAccountSaveRequestDtoBuilder ispb(String value) {
-      if (value == null) {
-        throw new IllegalStateException("ispb cannot be null");
-      }
       this.ispb = JsonNullable.of(value);
       return this;
     }

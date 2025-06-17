@@ -50,9 +50,6 @@ public class ApiAccountDocumentGroupResponsibleResponseDto {
 
     @JsonProperty("name")
     public ApiAccountDocumentGroupResponsibleResponseDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -61,9 +58,6 @@ public class ApiAccountDocumentGroupResponsibleResponseDto {
 
     @JsonProperty("type")
     public ApiAccountDocumentGroupResponsibleResponseDtoBuilder type(List<String> value) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }

@@ -60,9 +60,6 @@ public class ApiCustomerFiscalInfoListMunicipalServicesResponseDataDto {
 
     @JsonProperty("id")
     public ApiCustomerFiscalInfoListMunicipalServicesResponseDataDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiCustomerFiscalInfoListMunicipalServicesResponseDataDto {
 
     @JsonProperty("description")
     public ApiCustomerFiscalInfoListMunicipalServicesResponseDataDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiCustomerFiscalInfoListMunicipalServicesResponseDataDto {
 
     @JsonProperty("issTax")
     public ApiCustomerFiscalInfoListMunicipalServicesResponseDataDtoBuilder issTax(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("issTax cannot be null");
-      }
       this.issTax = JsonNullable.of(value);
       return this;
     }

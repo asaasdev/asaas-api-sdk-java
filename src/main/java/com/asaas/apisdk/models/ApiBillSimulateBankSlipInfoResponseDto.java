@@ -214,9 +214,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("identificationField")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder identificationField(String value) {
-      if (value == null) {
-        throw new IllegalStateException("identificationField cannot be null");
-      }
       this.identificationField = JsonNullable.of(value);
       return this;
     }
@@ -225,9 +222,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("value")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -236,9 +230,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("dueDate")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder dueDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dueDate cannot be null");
-      }
       this.dueDate = JsonNullable.of(value);
       return this;
     }
@@ -247,9 +238,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("companyName")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder companyName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("companyName cannot be null");
-      }
       this.companyName = JsonNullable.of(value);
       return this;
     }
@@ -258,9 +246,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("bank")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder bank(String value) {
-      if (value == null) {
-        throw new IllegalStateException("bank cannot be null");
-      }
       this.bank = JsonNullable.of(value);
       return this;
     }
@@ -269,9 +254,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("beneficiaryCpfCnpj")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder beneficiaryCpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("beneficiaryCpfCnpj cannot be null");
-      }
       this.beneficiaryCpfCnpj = JsonNullable.of(value);
       return this;
     }
@@ -280,9 +262,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("beneficiaryName")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder beneficiaryName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("beneficiaryName cannot be null");
-      }
       this.beneficiaryName = JsonNullable.of(value);
       return this;
     }
@@ -291,9 +270,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("allowChangeValue")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder allowChangeValue(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("allowChangeValue cannot be null");
-      }
       this.allowChangeValue = JsonNullable.of(value);
       return this;
     }
@@ -302,9 +278,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("minValue")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder minValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("minValue cannot be null");
-      }
       this.minValue = JsonNullable.of(value);
       return this;
     }
@@ -313,9 +286,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("maxValue")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder maxValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("maxValue cannot be null");
-      }
       this.maxValue = JsonNullable.of(value);
       return this;
     }
@@ -324,9 +294,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("discountValue")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder discountValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("discountValue cannot be null");
-      }
       this.discountValue = JsonNullable.of(value);
       return this;
     }
@@ -335,9 +302,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("interestValue")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder interestValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("interestValue cannot be null");
-      }
       this.interestValue = JsonNullable.of(value);
       return this;
     }
@@ -346,9 +310,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("fineValue")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder fineValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fineValue cannot be null");
-      }
       this.fineValue = JsonNullable.of(value);
       return this;
     }
@@ -357,9 +318,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("originalValue")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder originalValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("originalValue cannot be null");
-      }
       this.originalValue = JsonNullable.of(value);
       return this;
     }
@@ -368,9 +326,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("totalDiscountValue")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder totalDiscountValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalDiscountValue cannot be null");
-      }
       this.totalDiscountValue = JsonNullable.of(value);
       return this;
     }
@@ -379,9 +334,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("totalAdditionalValue")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder totalAdditionalValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalAdditionalValue cannot be null");
-      }
       this.totalAdditionalValue = JsonNullable.of(value);
       return this;
     }
@@ -390,9 +342,6 @@ public class ApiBillSimulateBankSlipInfoResponseDto {
 
     @JsonProperty("isOverdue")
     public ApiBillSimulateBankSlipInfoResponseDtoBuilder isOverdue(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("isOverdue cannot be null");
-      }
       this.isOverdue = JsonNullable.of(value);
       return this;
     }

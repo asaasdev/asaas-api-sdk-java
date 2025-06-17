@@ -42,9 +42,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto {
     public ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDtoBuilder data(
       List<ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto> value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("data cannot be null");
-      }
       this.data = JsonNullable.of(value);
       return this;
     }

@@ -136,9 +136,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetResponseDto {
 
     @JsonProperty("id")
     public ApiPixTransactionRecurringCheckoutScheduleGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -150,9 +147,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetResponseDto {
     public ApiPixTransactionRecurringCheckoutScheduleGetResponseDtoBuilder status(
       ApiPixTransactionRecurringCheckoutScheduleGetResponseRecurringCheckoutScheduleStatus value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -164,9 +158,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetResponseDto {
     public ApiPixTransactionRecurringCheckoutScheduleGetResponseDtoBuilder origin(
       ApiPixTransactionRecurringCheckoutScheduleGetResponseRecurringCheckoutScheduleOrigin value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("origin cannot be null");
-      }
       this.origin = JsonNullable.of(value);
       return this;
     }
@@ -175,9 +166,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetResponseDto {
 
     @JsonProperty("value")
     public ApiPixTransactionRecurringCheckoutScheduleGetResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -190,9 +178,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetResponseDto {
     public ApiPixTransactionRecurringCheckoutScheduleGetResponseDtoBuilder frequency(
       ApiPixTransactionRecurringCheckoutScheduleGetResponseRecurringCheckoutScheduleFrequency value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("frequency cannot be null");
-      }
       this.frequency = JsonNullable.of(value);
       return this;
     }
@@ -201,9 +186,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetResponseDto {
 
     @JsonProperty("quantity")
     public ApiPixTransactionRecurringCheckoutScheduleGetResponseDtoBuilder quantity(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("quantity cannot be null");
-      }
       this.quantity = JsonNullable.of(value);
       return this;
     }
@@ -212,9 +194,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetResponseDto {
 
     @JsonProperty("startDate")
     public ApiPixTransactionRecurringCheckoutScheduleGetResponseDtoBuilder startDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("startDate cannot be null");
-      }
       this.startDate = JsonNullable.of(value);
       return this;
     }
@@ -223,9 +202,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetResponseDto {
 
     @JsonProperty("finishDate")
     public ApiPixTransactionRecurringCheckoutScheduleGetResponseDtoBuilder finishDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("finishDate cannot be null");
-      }
       this.finishDate = JsonNullable.of(value);
       return this;
     }
@@ -234,9 +210,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetResponseDto {
 
     @JsonProperty("canBeCancelled")
     public ApiPixTransactionRecurringCheckoutScheduleGetResponseDtoBuilder canBeCancelled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("canBeCancelled cannot be null");
-      }
       this.canBeCancelled = JsonNullable.of(value);
       return this;
     }
@@ -248,9 +221,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleGetResponseDto {
     public ApiPixTransactionRecurringCheckoutScheduleGetResponseDtoBuilder externalAccount(
       ApiPixTransactionRecurringCheckoutScheduleExternalAccountDto value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("externalAccount cannot be null");
-      }
       this.externalAccount = JsonNullable.of(value);
       return this;
     }

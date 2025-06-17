@@ -93,9 +93,6 @@ public class ApiCreditBureauReportGetResponseDto {
 
     @JsonProperty("id")
     public ApiCreditBureauReportGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +101,6 @@ public class ApiCreditBureauReportGetResponseDto {
 
     @JsonProperty("dateCreated")
     public ApiCreditBureauReportGetResponseDtoBuilder dateCreated(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dateCreated cannot be null");
-      }
       this.dateCreated = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +109,6 @@ public class ApiCreditBureauReportGetResponseDto {
 
     @JsonProperty("cpfCnpj")
     public ApiCreditBureauReportGetResponseDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +117,6 @@ public class ApiCreditBureauReportGetResponseDto {
 
     @JsonProperty("customer")
     public ApiCreditBureauReportGetResponseDtoBuilder customer(String value) {
-      if (value == null) {
-        throw new IllegalStateException("customer cannot be null");
-      }
       this.customer = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +125,6 @@ public class ApiCreditBureauReportGetResponseDto {
 
     @JsonProperty("downloadUrl")
     public ApiCreditBureauReportGetResponseDtoBuilder downloadUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("downloadUrl cannot be null");
-      }
       this.downloadUrl = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +133,6 @@ public class ApiCreditBureauReportGetResponseDto {
 
     @JsonProperty("reportFile")
     public ApiCreditBureauReportGetResponseDtoBuilder reportFile(String value) {
-      if (value == null) {
-        throw new IllegalStateException("reportFile cannot be null");
-      }
       this.reportFile = JsonNullable.of(value);
       return this;
     }

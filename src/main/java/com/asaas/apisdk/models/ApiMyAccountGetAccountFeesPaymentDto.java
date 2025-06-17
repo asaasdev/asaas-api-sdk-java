@@ -59,9 +59,6 @@ public class ApiMyAccountGetAccountFeesPaymentDto {
 
     @JsonProperty("bankSlip")
     public ApiMyAccountGetAccountFeesPaymentDtoBuilder bankSlip(ApiMyAccountGetAccountFeesPaymentBankSlipDto value) {
-      if (value == null) {
-        throw new IllegalStateException("bankSlip cannot be null");
-      }
       this.bankSlip = JsonNullable.of(value);
       return this;
     }
@@ -72,9 +69,6 @@ public class ApiMyAccountGetAccountFeesPaymentDto {
     public ApiMyAccountGetAccountFeesPaymentDtoBuilder creditCard(
       ApiMyAccountGetAccountFeesPaymentCreditCardDto value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("creditCard cannot be null");
-      }
       this.creditCard = JsonNullable.of(value);
       return this;
     }
@@ -83,9 +77,6 @@ public class ApiMyAccountGetAccountFeesPaymentDto {
 
     @JsonProperty("debitCard")
     public ApiMyAccountGetAccountFeesPaymentDtoBuilder debitCard(ApiMyAccountGetAccountFeesPaymentDebitCardDto value) {
-      if (value == null) {
-        throw new IllegalStateException("debitCard cannot be null");
-      }
       this.debitCard = JsonNullable.of(value);
       return this;
     }
@@ -94,9 +85,6 @@ public class ApiMyAccountGetAccountFeesPaymentDto {
 
     @JsonProperty("pix")
     public ApiMyAccountGetAccountFeesPaymentDtoBuilder pix(ApiMyAccountGetAccountFeesPaymentPixDto value) {
-      if (value == null) {
-        throw new IllegalStateException("pix cannot be null");
-      }
       this.pix = JsonNullable.of(value);
       return this;
     }

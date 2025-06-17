@@ -35,9 +35,6 @@ public class ApiPaymentLimitsResponseCreationDto {
 
     @JsonProperty("daily")
     public ApiPaymentLimitsResponseCreationDtoBuilder daily(ApiPaymentLimitsResponseCreationDailyDto value) {
-      if (value == null) {
-        throw new IllegalStateException("daily cannot be null");
-      }
       this.daily = JsonNullable.of(value);
       return this;
     }

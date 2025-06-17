@@ -38,9 +38,6 @@ public class ApiCheckoutSessionInstallmentDto {
 
     @JsonProperty("maxInstallmentCount")
     public ApiCheckoutSessionInstallmentDtoBuilder maxInstallmentCount(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("maxInstallmentCount cannot be null");
-      }
       this.maxInstallmentCount = JsonNullable.of(value);
       return this;
     }

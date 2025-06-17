@@ -49,9 +49,6 @@ public class ApiPaymentCampaignFileSaveRequestDto {
 
     @JsonProperty("main")
     public ApiPaymentCampaignFileSaveRequestDtoBuilder main(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("main cannot be null");
-      }
       this.main = JsonNullable.of(value);
       return this;
     }

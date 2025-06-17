@@ -38,9 +38,6 @@ public class ApiPaymentInterestRequestDto {
 
     @JsonProperty("value")
     public ApiPaymentInterestRequestDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }

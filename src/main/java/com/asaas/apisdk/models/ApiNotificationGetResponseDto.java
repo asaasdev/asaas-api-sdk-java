@@ -170,9 +170,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("object")
     public ApiNotificationGetResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -181,9 +178,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("id")
     public ApiNotificationGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -192,9 +186,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("customer")
     public ApiNotificationGetResponseDtoBuilder customer(String value) {
-      if (value == null) {
-        throw new IllegalStateException("customer cannot be null");
-      }
       this.customer = JsonNullable.of(value);
       return this;
     }
@@ -203,9 +194,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("enabled")
     public ApiNotificationGetResponseDtoBuilder enabled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("enabled cannot be null");
-      }
       this.enabled = JsonNullable.of(value);
       return this;
     }
@@ -214,9 +202,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("emailEnabledForProvider")
     public ApiNotificationGetResponseDtoBuilder emailEnabledForProvider(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("emailEnabledForProvider cannot be null");
-      }
       this.emailEnabledForProvider = JsonNullable.of(value);
       return this;
     }
@@ -225,9 +210,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("smsEnabledForProvider")
     public ApiNotificationGetResponseDtoBuilder smsEnabledForProvider(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("smsEnabledForProvider cannot be null");
-      }
       this.smsEnabledForProvider = JsonNullable.of(value);
       return this;
     }
@@ -236,9 +218,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("emailEnabledForCustomer")
     public ApiNotificationGetResponseDtoBuilder emailEnabledForCustomer(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("emailEnabledForCustomer cannot be null");
-      }
       this.emailEnabledForCustomer = JsonNullable.of(value);
       return this;
     }
@@ -247,9 +226,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("smsEnabledForCustomer")
     public ApiNotificationGetResponseDtoBuilder smsEnabledForCustomer(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("smsEnabledForCustomer cannot be null");
-      }
       this.smsEnabledForCustomer = JsonNullable.of(value);
       return this;
     }
@@ -258,9 +234,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("phoneCallEnabledForCustomer")
     public ApiNotificationGetResponseDtoBuilder phoneCallEnabledForCustomer(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("phoneCallEnabledForCustomer cannot be null");
-      }
       this.phoneCallEnabledForCustomer = JsonNullable.of(value);
       return this;
     }
@@ -269,9 +242,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("whatsappEnabledForCustomer")
     public ApiNotificationGetResponseDtoBuilder whatsappEnabledForCustomer(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("whatsappEnabledForCustomer cannot be null");
-      }
       this.whatsappEnabledForCustomer = JsonNullable.of(value);
       return this;
     }
@@ -280,9 +250,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("event")
     public ApiNotificationGetResponseDtoBuilder event(ApiNotificationGetResponseNotificationEvent value) {
-      if (value == null) {
-        throw new IllegalStateException("event cannot be null");
-      }
       this.event = JsonNullable.of(value);
       return this;
     }
@@ -291,9 +258,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("scheduleOffset")
     public ApiNotificationGetResponseDtoBuilder scheduleOffset(ApiNotificationGetResponseDtoScheduleOffset value) {
-      if (value == null) {
-        throw new IllegalStateException("scheduleOffset cannot be null");
-      }
       this.scheduleOffset = JsonNullable.of(value);
       return this;
     }
@@ -302,9 +266,6 @@ public class ApiNotificationGetResponseDto {
 
     @JsonProperty("deleted")
     public ApiNotificationGetResponseDtoBuilder deleted(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("deleted cannot be null");
-      }
       this.deleted = JsonNullable.of(value);
       return this;
     }

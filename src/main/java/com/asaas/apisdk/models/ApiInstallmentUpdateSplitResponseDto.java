@@ -39,9 +39,6 @@ public class ApiInstallmentUpdateSplitResponseDto {
 
     @JsonProperty("splits")
     public ApiInstallmentUpdateSplitResponseDtoBuilder splits(List<ApiInstallmentSplitGetResponseDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("splits cannot be null");
-      }
       this.splits = JsonNullable.of(value);
       return this;
     }

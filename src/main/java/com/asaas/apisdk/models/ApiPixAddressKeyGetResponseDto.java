@@ -112,9 +112,6 @@ public class ApiPixAddressKeyGetResponseDto {
 
     @JsonProperty("id")
     public ApiPixAddressKeyGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -123,9 +120,6 @@ public class ApiPixAddressKeyGetResponseDto {
 
     @JsonProperty("key")
     public ApiPixAddressKeyGetResponseDtoBuilder key(String value) {
-      if (value == null) {
-        throw new IllegalStateException("key cannot be null");
-      }
       this.key = JsonNullable.of(value);
       return this;
     }
@@ -134,9 +128,6 @@ public class ApiPixAddressKeyGetResponseDto {
 
     @JsonProperty("type")
     public ApiPixAddressKeyGetResponseDtoBuilder type(ApiPixAddressKeyGetResponsePixAddressKeyType value) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }
@@ -145,9 +136,6 @@ public class ApiPixAddressKeyGetResponseDto {
 
     @JsonProperty("status")
     public ApiPixAddressKeyGetResponseDtoBuilder status(ApiPixAddressKeyGetResponsePixAddressKeyStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -156,9 +144,6 @@ public class ApiPixAddressKeyGetResponseDto {
 
     @JsonProperty("dateCreated")
     public ApiPixAddressKeyGetResponseDtoBuilder dateCreated(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dateCreated cannot be null");
-      }
       this.dateCreated = JsonNullable.of(value);
       return this;
     }
@@ -167,9 +152,6 @@ public class ApiPixAddressKeyGetResponseDto {
 
     @JsonProperty("canBeDeleted")
     public ApiPixAddressKeyGetResponseDtoBuilder canBeDeleted(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("canBeDeleted cannot be null");
-      }
       this.canBeDeleted = JsonNullable.of(value);
       return this;
     }
@@ -178,9 +160,6 @@ public class ApiPixAddressKeyGetResponseDto {
 
     @JsonProperty("cannotBeDeletedReason")
     public ApiPixAddressKeyGetResponseDtoBuilder cannotBeDeletedReason(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cannotBeDeletedReason cannot be null");
-      }
       this.cannotBeDeletedReason = JsonNullable.of(value);
       return this;
     }
@@ -189,9 +168,6 @@ public class ApiPixAddressKeyGetResponseDto {
 
     @JsonProperty("qrCode")
     public ApiPixAddressKeyGetResponseDtoBuilder qrCode(ApiPixAddressKeyQrCodeGetResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("qrCode cannot be null");
-      }
       this.qrCode = JsonNullable.of(value);
       return this;
     }

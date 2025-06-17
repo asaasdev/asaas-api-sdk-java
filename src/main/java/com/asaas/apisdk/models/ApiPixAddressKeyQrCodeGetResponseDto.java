@@ -49,9 +49,6 @@ public class ApiPixAddressKeyQrCodeGetResponseDto {
 
     @JsonProperty("encodedImage")
     public ApiPixAddressKeyQrCodeGetResponseDtoBuilder encodedImage(String value) {
-      if (value == null) {
-        throw new IllegalStateException("encodedImage cannot be null");
-      }
       this.encodedImage = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiPixAddressKeyQrCodeGetResponseDto {
 
     @JsonProperty("payload")
     public ApiPixAddressKeyQrCodeGetResponseDtoBuilder payload(String value) {
-      if (value == null) {
-        throw new IllegalStateException("payload cannot be null");
-      }
       this.payload = JsonNullable.of(value);
       return this;
     }

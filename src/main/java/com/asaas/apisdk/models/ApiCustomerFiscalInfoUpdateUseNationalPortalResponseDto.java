@@ -38,9 +38,6 @@ public class ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto {
 
     @JsonProperty("success")
     public ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDtoBuilder success(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("success cannot be null");
-      }
       this.success = JsonNullable.of(value);
       return this;
     }

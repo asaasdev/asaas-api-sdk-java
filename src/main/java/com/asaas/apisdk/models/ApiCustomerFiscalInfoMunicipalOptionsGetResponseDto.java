@@ -178,9 +178,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder authenticationType(
       ApiCustomerFiscalInfoMunicipalOptionsGetResponseEnotasTipoAutenticacao value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("authenticationType cannot be null");
-      }
       this.authenticationType = JsonNullable.of(value);
       return this;
     }
@@ -189,9 +186,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
 
     @JsonProperty("supportsCancellation")
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder supportsCancellation(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("supportsCancellation cannot be null");
-      }
       this.supportsCancellation = JsonNullable.of(value);
       return this;
     }
@@ -200,9 +194,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
 
     @JsonProperty("usesSpecialTaxRegimes")
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder usesSpecialTaxRegimes(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("usesSpecialTaxRegimes cannot be null");
-      }
       this.usesSpecialTaxRegimes = JsonNullable.of(value);
       return this;
     }
@@ -211,9 +202,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
 
     @JsonProperty("usesServiceListItem")
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder usesServiceListItem(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("usesServiceListItem cannot be null");
-      }
       this.usesServiceListItem = JsonNullable.of(value);
       return this;
     }
@@ -225,9 +213,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder specialTaxRegimesList(
       List<ApiCustomerFiscalInfoMunicipalOptionsSpecialTaxRegimesDto> value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("specialTaxRegimesList cannot be null");
-      }
       this.specialTaxRegimesList = JsonNullable.of(value);
       return this;
     }
@@ -240,9 +225,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder nationalPortalTaxCalculationRegimeList(
       List<ApiCustomerFiscalInfoMunicipalOptionsNationalPortalTaxCalculationRegimeDto> value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("nationalPortalTaxCalculationRegimeList cannot be null");
-      }
       this.nationalPortalTaxCalculationRegimeList = JsonNullable.of(value);
       return this;
     }
@@ -253,9 +235,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder nationalPortalTaxCalculationRegimeHelp(
       String value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("nationalPortalTaxCalculationRegimeHelp cannot be null");
-      }
       this.nationalPortalTaxCalculationRegimeHelp = JsonNullable.of(value);
       return this;
     }
@@ -264,9 +243,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
 
     @JsonProperty("municipalInscriptionHelp")
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder municipalInscriptionHelp(String value) {
-      if (value == null) {
-        throw new IllegalStateException("municipalInscriptionHelp cannot be null");
-      }
       this.municipalInscriptionHelp = JsonNullable.of(value);
       return this;
     }
@@ -275,9 +251,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
 
     @JsonProperty("specialTaxRegimeHelp")
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder specialTaxRegimeHelp(String value) {
-      if (value == null) {
-        throw new IllegalStateException("specialTaxRegimeHelp cannot be null");
-      }
       this.specialTaxRegimeHelp = JsonNullable.of(value);
       return this;
     }
@@ -286,9 +259,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
 
     @JsonProperty("serviceListItemHelp")
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder serviceListItemHelp(String value) {
-      if (value == null) {
-        throw new IllegalStateException("serviceListItemHelp cannot be null");
-      }
       this.serviceListItemHelp = JsonNullable.of(value);
       return this;
     }
@@ -297,9 +267,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
 
     @JsonProperty("digitalCertificatedHelp")
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder digitalCertificatedHelp(String value) {
-      if (value == null) {
-        throw new IllegalStateException("digitalCertificatedHelp cannot be null");
-      }
       this.digitalCertificatedHelp = JsonNullable.of(value);
       return this;
     }
@@ -308,9 +275,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
 
     @JsonProperty("accessTokenHelp")
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder accessTokenHelp(String value) {
-      if (value == null) {
-        throw new IllegalStateException("accessTokenHelp cannot be null");
-      }
       this.accessTokenHelp = JsonNullable.of(value);
       return this;
     }
@@ -319,9 +283,6 @@ public class ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto {
 
     @JsonProperty("municipalServiceCodeHelp")
     public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDtoBuilder municipalServiceCodeHelp(String value) {
-      if (value == null) {
-        throw new IllegalStateException("municipalServiceCodeHelp cannot be null");
-      }
       this.municipalServiceCodeHelp = JsonNullable.of(value);
       return this;
     }

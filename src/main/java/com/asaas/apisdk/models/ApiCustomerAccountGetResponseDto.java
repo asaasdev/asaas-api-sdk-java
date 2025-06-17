@@ -291,9 +291,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("object")
     public ApiCustomerAccountGetResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -302,9 +299,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("id")
     public ApiCustomerAccountGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -313,9 +307,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("dateCreated")
     public ApiCustomerAccountGetResponseDtoBuilder dateCreated(String value) {
-      if (value == null) {
-        throw new IllegalStateException("dateCreated cannot be null");
-      }
       this.dateCreated = JsonNullable.of(value);
       return this;
     }
@@ -324,9 +315,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("name")
     public ApiCustomerAccountGetResponseDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -335,9 +323,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("email")
     public ApiCustomerAccountGetResponseDtoBuilder email(String value) {
-      if (value == null) {
-        throw new IllegalStateException("email cannot be null");
-      }
       this.email = JsonNullable.of(value);
       return this;
     }
@@ -346,9 +331,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("phone")
     public ApiCustomerAccountGetResponseDtoBuilder phone(String value) {
-      if (value == null) {
-        throw new IllegalStateException("phone cannot be null");
-      }
       this.phone = JsonNullable.of(value);
       return this;
     }
@@ -357,9 +339,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("mobilePhone")
     public ApiCustomerAccountGetResponseDtoBuilder mobilePhone(String value) {
-      if (value == null) {
-        throw new IllegalStateException("mobilePhone cannot be null");
-      }
       this.mobilePhone = JsonNullable.of(value);
       return this;
     }
@@ -368,9 +347,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("address")
     public ApiCustomerAccountGetResponseDtoBuilder address(String value) {
-      if (value == null) {
-        throw new IllegalStateException("address cannot be null");
-      }
       this.address = JsonNullable.of(value);
       return this;
     }
@@ -379,9 +355,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("addressNumber")
     public ApiCustomerAccountGetResponseDtoBuilder addressNumber(String value) {
-      if (value == null) {
-        throw new IllegalStateException("addressNumber cannot be null");
-      }
       this.addressNumber = JsonNullable.of(value);
       return this;
     }
@@ -390,9 +363,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("complement")
     public ApiCustomerAccountGetResponseDtoBuilder complement(String value) {
-      if (value == null) {
-        throw new IllegalStateException("complement cannot be null");
-      }
       this.complement = JsonNullable.of(value);
       return this;
     }
@@ -401,9 +371,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("province")
     public ApiCustomerAccountGetResponseDtoBuilder province(String value) {
-      if (value == null) {
-        throw new IllegalStateException("province cannot be null");
-      }
       this.province = JsonNullable.of(value);
       return this;
     }
@@ -412,9 +379,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("city")
     public ApiCustomerAccountGetResponseDtoBuilder city(String value) {
-      if (value == null) {
-        throw new IllegalStateException("city cannot be null");
-      }
       this.city = JsonNullable.of(value);
       return this;
     }
@@ -423,9 +387,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("cityName")
     public ApiCustomerAccountGetResponseDtoBuilder cityName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cityName cannot be null");
-      }
       this.cityName = JsonNullable.of(value);
       return this;
     }
@@ -434,9 +395,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("state")
     public ApiCustomerAccountGetResponseDtoBuilder state(String value) {
-      if (value == null) {
-        throw new IllegalStateException("state cannot be null");
-      }
       this.state = JsonNullable.of(value);
       return this;
     }
@@ -445,9 +403,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("country")
     public ApiCustomerAccountGetResponseDtoBuilder country(String value) {
-      if (value == null) {
-        throw new IllegalStateException("country cannot be null");
-      }
       this.country = JsonNullable.of(value);
       return this;
     }
@@ -456,9 +411,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("postalCode")
     public ApiCustomerAccountGetResponseDtoBuilder postalCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("postalCode cannot be null");
-      }
       this.postalCode = JsonNullable.of(value);
       return this;
     }
@@ -467,9 +419,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("cpfCnpj")
     public ApiCustomerAccountGetResponseDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }
@@ -478,9 +427,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("personType")
     public ApiCustomerAccountGetResponseDtoBuilder personType(ApiCustomerAccountGetResponsePersonType value) {
-      if (value == null) {
-        throw new IllegalStateException("personType cannot be null");
-      }
       this.personType = JsonNullable.of(value);
       return this;
     }
@@ -489,9 +435,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("deleted")
     public ApiCustomerAccountGetResponseDtoBuilder deleted(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("deleted cannot be null");
-      }
       this.deleted = JsonNullable.of(value);
       return this;
     }
@@ -500,9 +443,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("additionalEmails")
     public ApiCustomerAccountGetResponseDtoBuilder additionalEmails(String value) {
-      if (value == null) {
-        throw new IllegalStateException("additionalEmails cannot be null");
-      }
       this.additionalEmails = JsonNullable.of(value);
       return this;
     }
@@ -511,9 +451,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("externalReference")
     public ApiCustomerAccountGetResponseDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -522,9 +459,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("notificationDisabled")
     public ApiCustomerAccountGetResponseDtoBuilder notificationDisabled(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("notificationDisabled cannot be null");
-      }
       this.notificationDisabled = JsonNullable.of(value);
       return this;
     }
@@ -533,9 +467,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("observations")
     public ApiCustomerAccountGetResponseDtoBuilder observations(String value) {
-      if (value == null) {
-        throw new IllegalStateException("observations cannot be null");
-      }
       this.observations = JsonNullable.of(value);
       return this;
     }
@@ -544,9 +475,6 @@ public class ApiCustomerAccountGetResponseDto {
 
     @JsonProperty("foreignCustomer")
     public ApiCustomerAccountGetResponseDtoBuilder foreignCustomer(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("foreignCustomer cannot be null");
-      }
       this.foreignCustomer = JsonNullable.of(value);
       return this;
     }

@@ -3,6 +3,7 @@
 package com.asaas.apisdk.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import lombok.Builder;
@@ -34,7 +35,7 @@ public class ApiCheckoutSessionSaveRequestDto {
   @NonNull
   private List<String> chargeTypes;
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCheckoutSessionCallbackDto callback;
 
   /**
@@ -92,13 +93,21 @@ public class ApiCheckoutSessionSaveRequestDto {
   // Overwrite lombok builder methods
   public static class ApiCheckoutSessionSaveRequestDtoBuilder {
 
+    /**
+     * Flag to track if the callback property has been set.
+     */
+    private boolean callback$set = false;
+
+    public ApiCheckoutSessionSaveRequestDtoBuilder callback(ApiCheckoutSessionCallbackDto callback) {
+      this.callback$set = true;
+      this.callback = callback;
+      return this;
+    }
+
     private JsonNullable<Long> minutesToExpire = JsonNullable.undefined();
 
     @JsonProperty("minutesToExpire")
     public ApiCheckoutSessionSaveRequestDtoBuilder minutesToExpire(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("minutesToExpire cannot be null");
-      }
       this.minutesToExpire = JsonNullable.of(value);
       return this;
     }
@@ -107,9 +116,6 @@ public class ApiCheckoutSessionSaveRequestDto {
 
     @JsonProperty("customerData")
     public ApiCheckoutSessionSaveRequestDtoBuilder customerData(ApiCheckoutSessionCustomerDataDto value) {
-      if (value == null) {
-        throw new IllegalStateException("customerData cannot be null");
-      }
       this.customerData = JsonNullable.of(value);
       return this;
     }
@@ -118,9 +124,6 @@ public class ApiCheckoutSessionSaveRequestDto {
 
     @JsonProperty("subscription")
     public ApiCheckoutSessionSaveRequestDtoBuilder subscription(ApiCheckoutSessionSubscriptionDto value) {
-      if (value == null) {
-        throw new IllegalStateException("subscription cannot be null");
-      }
       this.subscription = JsonNullable.of(value);
       return this;
     }
@@ -129,9 +132,6 @@ public class ApiCheckoutSessionSaveRequestDto {
 
     @JsonProperty("installment")
     public ApiCheckoutSessionSaveRequestDtoBuilder installment(ApiCheckoutSessionInstallmentDto value) {
-      if (value == null) {
-        throw new IllegalStateException("installment cannot be null");
-      }
       this.installment = JsonNullable.of(value);
       return this;
     }
@@ -140,11 +140,25 @@ public class ApiCheckoutSessionSaveRequestDto {
 
     @JsonProperty("splits")
     public ApiCheckoutSessionSaveRequestDtoBuilder splits(List<ApiCheckoutSessionSplitDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("splits cannot be null");
-      }
       this.splits = JsonNullable.of(value);
       return this;
+    }
+
+    public ApiCheckoutSessionSaveRequestDto build() {
+      if (!callback$set) {
+        throw new IllegalStateException("callback is required");
+      }
+      return new ApiCheckoutSessionSaveRequestDto(
+        billingTypes,
+        chargeTypes,
+        callback,
+        items,
+        minutesToExpire,
+        customerData,
+        subscription,
+        installment,
+        splits
+      );
     }
   }
 }

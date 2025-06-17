@@ -75,9 +75,6 @@ public class ApiMyAccountGetAccountFeesResponseDto {
 
     @JsonProperty("payment")
     public ApiMyAccountGetAccountFeesResponseDtoBuilder payment(ApiMyAccountGetAccountFeesPaymentDto value) {
-      if (value == null) {
-        throw new IllegalStateException("payment cannot be null");
-      }
       this.payment = JsonNullable.of(value);
       return this;
     }
@@ -86,9 +83,6 @@ public class ApiMyAccountGetAccountFeesResponseDto {
 
     @JsonProperty("transfer")
     public ApiMyAccountGetAccountFeesResponseDtoBuilder transfer(ApiMyAccountGetAccountFeesTransferDto value) {
-      if (value == null) {
-        throw new IllegalStateException("transfer cannot be null");
-      }
       this.transfer = JsonNullable.of(value);
       return this;
     }
@@ -97,9 +91,6 @@ public class ApiMyAccountGetAccountFeesResponseDto {
 
     @JsonProperty("notification")
     public ApiMyAccountGetAccountFeesResponseDtoBuilder notification(ApiMyAccountGetAccountFeesNotificationDto value) {
-      if (value == null) {
-        throw new IllegalStateException("notification cannot be null");
-      }
       this.notification = JsonNullable.of(value);
       return this;
     }
@@ -110,9 +101,6 @@ public class ApiMyAccountGetAccountFeesResponseDto {
     public ApiMyAccountGetAccountFeesResponseDtoBuilder creditBureauReport(
       ApiMyAccountGetAccountFeesCreditBureauReportDto value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("creditBureauReport cannot be null");
-      }
       this.creditBureauReport = JsonNullable.of(value);
       return this;
     }
@@ -121,9 +109,6 @@ public class ApiMyAccountGetAccountFeesResponseDto {
 
     @JsonProperty("invoice")
     public ApiMyAccountGetAccountFeesResponseDtoBuilder invoice(ApiMyAccountGetAccountFeesInvoiceDto value) {
-      if (value == null) {
-        throw new IllegalStateException("invoice cannot be null");
-      }
       this.invoice = JsonNullable.of(value);
       return this;
     }
@@ -132,9 +117,6 @@ public class ApiMyAccountGetAccountFeesResponseDto {
 
     @JsonProperty("anticipation")
     public ApiMyAccountGetAccountFeesResponseDtoBuilder anticipation(ApiMyAccountGetAccountFeesAnticipationDto value) {
-      if (value == null) {
-        throw new IllegalStateException("anticipation cannot be null");
-      }
       this.anticipation = JsonNullable.of(value);
       return this;
     }

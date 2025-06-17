@@ -3,11 +3,11 @@
 package com.asaas.apisdk.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
@@ -21,10 +21,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Jacksonized
 public class ApiPaymentPayWithCreditCardRequestDto {
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCreditCardRequestDto creditCard;
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCreditCardHolderInfoRequestDto creditCardHolderInfo;
 
   /**
@@ -41,15 +41,46 @@ public class ApiPaymentPayWithCreditCardRequestDto {
   // Overwrite lombok builder methods
   public static class ApiPaymentPayWithCreditCardRequestDtoBuilder {
 
+    /**
+     * Flag to track if the creditCard property has been set.
+     */
+    private boolean creditCard$set = false;
+
+    /**
+     * Flag to track if the creditCardHolderInfo property has been set.
+     */
+    private boolean creditCardHolderInfo$set = false;
+
+    public ApiPaymentPayWithCreditCardRequestDtoBuilder creditCard(ApiCreditCardRequestDto creditCard) {
+      this.creditCard$set = true;
+      this.creditCard = creditCard;
+      return this;
+    }
+
+    public ApiPaymentPayWithCreditCardRequestDtoBuilder creditCardHolderInfo(
+      ApiCreditCardHolderInfoRequestDto creditCardHolderInfo
+    ) {
+      this.creditCardHolderInfo$set = true;
+      this.creditCardHolderInfo = creditCardHolderInfo;
+      return this;
+    }
+
     private JsonNullable<String> creditCardToken = JsonNullable.undefined();
 
     @JsonProperty("creditCardToken")
     public ApiPaymentPayWithCreditCardRequestDtoBuilder creditCardToken(String value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCardToken cannot be null");
-      }
       this.creditCardToken = JsonNullable.of(value);
       return this;
+    }
+
+    public ApiPaymentPayWithCreditCardRequestDto build() {
+      if (!creditCard$set) {
+        throw new IllegalStateException("creditCard is required");
+      }
+      if (!creditCardHolderInfo$set) {
+        throw new IllegalStateException("creditCardHolderInfo is required");
+      }
+      return new ApiPaymentPayWithCreditCardRequestDto(creditCard, creditCardHolderInfo, creditCardToken);
     }
   }
 }

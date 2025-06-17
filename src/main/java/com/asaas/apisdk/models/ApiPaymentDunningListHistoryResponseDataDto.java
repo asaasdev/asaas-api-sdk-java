@@ -63,9 +63,6 @@ public class ApiPaymentDunningListHistoryResponseDataDto {
     public ApiPaymentDunningListHistoryResponseDataDtoBuilder status(
       ApiPaymentDunningListHistoryResponseDataPaymentDunningHistoryStatus value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -74,9 +71,6 @@ public class ApiPaymentDunningListHistoryResponseDataDto {
 
     @JsonProperty("description")
     public ApiPaymentDunningListHistoryResponseDataDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -85,9 +79,6 @@ public class ApiPaymentDunningListHistoryResponseDataDto {
 
     @JsonProperty("eventDate")
     public ApiPaymentDunningListHistoryResponseDataDtoBuilder eventDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("eventDate cannot be null");
-      }
       this.eventDate = JsonNullable.of(value);
       return this;
     }

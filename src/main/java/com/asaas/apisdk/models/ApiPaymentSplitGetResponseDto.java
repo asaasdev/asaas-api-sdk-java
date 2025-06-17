@@ -126,9 +126,6 @@ public class ApiPaymentSplitGetResponseDto {
 
     @JsonProperty("id")
     public ApiPaymentSplitGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +134,6 @@ public class ApiPaymentSplitGetResponseDto {
 
     @JsonProperty("walletId")
     public ApiPaymentSplitGetResponseDtoBuilder walletId(String value) {
-      if (value == null) {
-        throw new IllegalStateException("walletId cannot be null");
-      }
       this.walletId = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +142,6 @@ public class ApiPaymentSplitGetResponseDto {
 
     @JsonProperty("fixedValue")
     public ApiPaymentSplitGetResponseDtoBuilder fixedValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fixedValue cannot be null");
-      }
       this.fixedValue = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +150,6 @@ public class ApiPaymentSplitGetResponseDto {
 
     @JsonProperty("percentualValue")
     public ApiPaymentSplitGetResponseDtoBuilder percentualValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("percentualValue cannot be null");
-      }
       this.percentualValue = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +158,6 @@ public class ApiPaymentSplitGetResponseDto {
 
     @JsonProperty("totalValue")
     public ApiPaymentSplitGetResponseDtoBuilder totalValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalValue cannot be null");
-      }
       this.totalValue = JsonNullable.of(value);
       return this;
     }
@@ -184,9 +169,6 @@ public class ApiPaymentSplitGetResponseDto {
     public ApiPaymentSplitGetResponseDtoBuilder cancellationReason(
       ApiPaymentSplitGetResponsePaymentSplitCancellationReason value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("cancellationReason cannot be null");
-      }
       this.cancellationReason = JsonNullable.of(value);
       return this;
     }
@@ -195,9 +177,6 @@ public class ApiPaymentSplitGetResponseDto {
 
     @JsonProperty("status")
     public ApiPaymentSplitGetResponseDtoBuilder status(ApiPaymentSplitGetResponsePaymentSplitStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -206,9 +185,6 @@ public class ApiPaymentSplitGetResponseDto {
 
     @JsonProperty("externalReference")
     public ApiPaymentSplitGetResponseDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -217,9 +193,6 @@ public class ApiPaymentSplitGetResponseDto {
 
     @JsonProperty("description")
     public ApiPaymentSplitGetResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }

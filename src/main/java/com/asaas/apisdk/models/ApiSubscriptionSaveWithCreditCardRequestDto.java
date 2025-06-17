@@ -3,6 +3,7 @@
 package com.asaas.apisdk.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import lombok.Builder;
@@ -52,10 +53,10 @@ public class ApiSubscriptionSaveWithCreditCardRequestDto {
   @NonNull
   private ApiSubscriptionSaveWithCreditCardRequestCycle cycle;
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCreditCardRequestDto creditCard;
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiCreditCardHolderInfoRequestDto creditCardHolderInfo;
 
   /**
@@ -165,13 +166,34 @@ public class ApiSubscriptionSaveWithCreditCardRequestDto {
   // Overwrite lombok builder methods
   public static class ApiSubscriptionSaveWithCreditCardRequestDtoBuilder {
 
+    /**
+     * Flag to track if the creditCard property has been set.
+     */
+    private boolean creditCard$set = false;
+
+    /**
+     * Flag to track if the creditCardHolderInfo property has been set.
+     */
+    private boolean creditCardHolderInfo$set = false;
+
+    public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder creditCard(ApiCreditCardRequestDto creditCard) {
+      this.creditCard$set = true;
+      this.creditCard = creditCard;
+      return this;
+    }
+
+    public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder creditCardHolderInfo(
+      ApiCreditCardHolderInfoRequestDto creditCardHolderInfo
+    ) {
+      this.creditCardHolderInfo$set = true;
+      this.creditCardHolderInfo = creditCardHolderInfo;
+      return this;
+    }
+
     private JsonNullable<ApiPaymentDiscountDto> discount = JsonNullable.undefined();
 
     @JsonProperty("discount")
     public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder discount(ApiPaymentDiscountDto value) {
-      if (value == null) {
-        throw new IllegalStateException("discount cannot be null");
-      }
       this.discount = JsonNullable.of(value);
       return this;
     }
@@ -180,9 +202,6 @@ public class ApiSubscriptionSaveWithCreditCardRequestDto {
 
     @JsonProperty("interest")
     public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder interest(ApiPaymentInterestRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("interest cannot be null");
-      }
       this.interest = JsonNullable.of(value);
       return this;
     }
@@ -191,9 +210,6 @@ public class ApiSubscriptionSaveWithCreditCardRequestDto {
 
     @JsonProperty("fine")
     public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder fine(ApiPaymentFineRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("fine cannot be null");
-      }
       this.fine = JsonNullable.of(value);
       return this;
     }
@@ -202,9 +218,6 @@ public class ApiSubscriptionSaveWithCreditCardRequestDto {
 
     @JsonProperty("description")
     public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -213,9 +226,6 @@ public class ApiSubscriptionSaveWithCreditCardRequestDto {
 
     @JsonProperty("endDate")
     public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder endDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("endDate cannot be null");
-      }
       this.endDate = JsonNullable.of(value);
       return this;
     }
@@ -224,9 +234,6 @@ public class ApiSubscriptionSaveWithCreditCardRequestDto {
 
     @JsonProperty("maxPayments")
     public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder maxPayments(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("maxPayments cannot be null");
-      }
       this.maxPayments = JsonNullable.of(value);
       return this;
     }
@@ -235,9 +242,6 @@ public class ApiSubscriptionSaveWithCreditCardRequestDto {
 
     @JsonProperty("externalReference")
     public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -246,9 +250,6 @@ public class ApiSubscriptionSaveWithCreditCardRequestDto {
 
     @JsonProperty("split")
     public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder split(List<ApiSubscriptionSplitRequestDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("split cannot be null");
-      }
       this.split = JsonNullable.of(value);
       return this;
     }
@@ -257,9 +258,6 @@ public class ApiSubscriptionSaveWithCreditCardRequestDto {
 
     @JsonProperty("callback")
     public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder callback(ApiPaymentCallbackRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("callback cannot be null");
-      }
       this.callback = JsonNullable.of(value);
       return this;
     }
@@ -268,11 +266,37 @@ public class ApiSubscriptionSaveWithCreditCardRequestDto {
 
     @JsonProperty("creditCardToken")
     public ApiSubscriptionSaveWithCreditCardRequestDtoBuilder creditCardToken(String value) {
-      if (value == null) {
-        throw new IllegalStateException("creditCardToken cannot be null");
-      }
       this.creditCardToken = JsonNullable.of(value);
       return this;
+    }
+
+    public ApiSubscriptionSaveWithCreditCardRequestDto build() {
+      if (!creditCard$set) {
+        throw new IllegalStateException("creditCard is required");
+      }
+      if (!creditCardHolderInfo$set) {
+        throw new IllegalStateException("creditCardHolderInfo is required");
+      }
+      return new ApiSubscriptionSaveWithCreditCardRequestDto(
+        customer,
+        billingType,
+        value,
+        nextDueDate,
+        cycle,
+        creditCard,
+        creditCardHolderInfo,
+        remoteIp,
+        discount,
+        interest,
+        fine,
+        description,
+        endDate,
+        maxPayments,
+        externalReference,
+        split,
+        callback,
+        creditCardToken
+      );
     }
   }
 }

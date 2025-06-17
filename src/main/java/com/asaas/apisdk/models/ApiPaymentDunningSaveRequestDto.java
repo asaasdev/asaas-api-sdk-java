@@ -126,9 +126,6 @@ public class ApiPaymentDunningSaveRequestDto {
 
     @JsonProperty("description")
     public ApiPaymentDunningSaveRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +134,6 @@ public class ApiPaymentDunningSaveRequestDto {
 
     @JsonProperty("customerSecondaryPhone")
     public ApiPaymentDunningSaveRequestDtoBuilder customerSecondaryPhone(String value) {
-      if (value == null) {
-        throw new IllegalStateException("customerSecondaryPhone cannot be null");
-      }
       this.customerSecondaryPhone = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +142,6 @@ public class ApiPaymentDunningSaveRequestDto {
 
     @JsonProperty("customerComplement")
     public ApiPaymentDunningSaveRequestDtoBuilder customerComplement(String value) {
-      if (value == null) {
-        throw new IllegalStateException("customerComplement cannot be null");
-      }
       this.customerComplement = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +150,6 @@ public class ApiPaymentDunningSaveRequestDto {
 
     @JsonProperty("documents")
     public ApiPaymentDunningSaveRequestDtoBuilder documents(byte[] value) {
-      if (value == null) {
-        throw new IllegalStateException("documents cannot be null");
-      }
       this.documents = JsonNullable.of(value);
       return this;
     }

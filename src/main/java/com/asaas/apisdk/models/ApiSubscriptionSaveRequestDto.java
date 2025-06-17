@@ -146,9 +146,6 @@ public class ApiSubscriptionSaveRequestDto {
 
     @JsonProperty("discount")
     public ApiSubscriptionSaveRequestDtoBuilder discount(ApiPaymentDiscountDto value) {
-      if (value == null) {
-        throw new IllegalStateException("discount cannot be null");
-      }
       this.discount = JsonNullable.of(value);
       return this;
     }
@@ -157,9 +154,6 @@ public class ApiSubscriptionSaveRequestDto {
 
     @JsonProperty("interest")
     public ApiSubscriptionSaveRequestDtoBuilder interest(ApiPaymentInterestRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("interest cannot be null");
-      }
       this.interest = JsonNullable.of(value);
       return this;
     }
@@ -168,9 +162,6 @@ public class ApiSubscriptionSaveRequestDto {
 
     @JsonProperty("fine")
     public ApiSubscriptionSaveRequestDtoBuilder fine(ApiPaymentFineRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("fine cannot be null");
-      }
       this.fine = JsonNullable.of(value);
       return this;
     }
@@ -179,9 +170,6 @@ public class ApiSubscriptionSaveRequestDto {
 
     @JsonProperty("description")
     public ApiSubscriptionSaveRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -190,9 +178,6 @@ public class ApiSubscriptionSaveRequestDto {
 
     @JsonProperty("endDate")
     public ApiSubscriptionSaveRequestDtoBuilder endDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("endDate cannot be null");
-      }
       this.endDate = JsonNullable.of(value);
       return this;
     }
@@ -201,9 +186,6 @@ public class ApiSubscriptionSaveRequestDto {
 
     @JsonProperty("maxPayments")
     public ApiSubscriptionSaveRequestDtoBuilder maxPayments(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("maxPayments cannot be null");
-      }
       this.maxPayments = JsonNullable.of(value);
       return this;
     }
@@ -212,9 +194,6 @@ public class ApiSubscriptionSaveRequestDto {
 
     @JsonProperty("externalReference")
     public ApiSubscriptionSaveRequestDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -223,9 +202,6 @@ public class ApiSubscriptionSaveRequestDto {
 
     @JsonProperty("split")
     public ApiSubscriptionSaveRequestDtoBuilder split(List<ApiSubscriptionSplitRequestDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("split cannot be null");
-      }
       this.split = JsonNullable.of(value);
       return this;
     }
@@ -234,9 +210,6 @@ public class ApiSubscriptionSaveRequestDto {
 
     @JsonProperty("callback")
     public ApiSubscriptionSaveRequestDtoBuilder callback(ApiPaymentCallbackRequestDto value) {
-      if (value == null) {
-        throw new IllegalStateException("callback cannot be null");
-      }
       this.callback = JsonNullable.of(value);
       return this;
     }

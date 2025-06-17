@@ -57,9 +57,6 @@ public class ApiBillSimulateResponseDto {
 
     @JsonProperty("minimumScheduleDate")
     public ApiBillSimulateResponseDtoBuilder minimumScheduleDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("minimumScheduleDate cannot be null");
-      }
       this.minimumScheduleDate = JsonNullable.of(value);
       return this;
     }
@@ -68,9 +65,6 @@ public class ApiBillSimulateResponseDto {
 
     @JsonProperty("fee")
     public ApiBillSimulateResponseDtoBuilder fee(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fee cannot be null");
-      }
       this.fee = JsonNullable.of(value);
       return this;
     }
@@ -79,9 +73,6 @@ public class ApiBillSimulateResponseDto {
 
     @JsonProperty("bankSlipInfo")
     public ApiBillSimulateResponseDtoBuilder bankSlipInfo(ApiBillSimulateBankSlipInfoResponseDto value) {
-      if (value == null) {
-        throw new IllegalStateException("bankSlipInfo cannot be null");
-      }
       this.bankSlipInfo = JsonNullable.of(value);
       return this;
     }

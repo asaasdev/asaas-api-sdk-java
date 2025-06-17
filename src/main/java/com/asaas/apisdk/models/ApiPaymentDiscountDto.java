@@ -60,9 +60,6 @@ public class ApiPaymentDiscountDto {
 
     @JsonProperty("value")
     public ApiPaymentDiscountDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiPaymentDiscountDto {
 
     @JsonProperty("dueDateLimitDays")
     public ApiPaymentDiscountDtoBuilder dueDateLimitDays(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("dueDateLimitDays cannot be null");
-      }
       this.dueDateLimitDays = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiPaymentDiscountDto {
 
     @JsonProperty("type")
     public ApiPaymentDiscountDtoBuilder type(ApiPaymentDiscountDiscountType value) {
-      if (value == null) {
-        throw new IllegalStateException("type cannot be null");
-      }
       this.type = JsonNullable.of(value);
       return this;
     }

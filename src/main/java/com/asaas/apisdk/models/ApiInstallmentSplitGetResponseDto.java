@@ -137,9 +137,6 @@ public class ApiInstallmentSplitGetResponseDto {
 
     @JsonProperty("id")
     public ApiInstallmentSplitGetResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +145,6 @@ public class ApiInstallmentSplitGetResponseDto {
 
     @JsonProperty("walletId")
     public ApiInstallmentSplitGetResponseDtoBuilder walletId(String value) {
-      if (value == null) {
-        throw new IllegalStateException("walletId cannot be null");
-      }
       this.walletId = JsonNullable.of(value);
       return this;
     }
@@ -159,9 +153,6 @@ public class ApiInstallmentSplitGetResponseDto {
 
     @JsonProperty("fixedValue")
     public ApiInstallmentSplitGetResponseDtoBuilder fixedValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("fixedValue cannot be null");
-      }
       this.fixedValue = JsonNullable.of(value);
       return this;
     }
@@ -170,9 +161,6 @@ public class ApiInstallmentSplitGetResponseDto {
 
     @JsonProperty("percentualValue")
     public ApiInstallmentSplitGetResponseDtoBuilder percentualValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("percentualValue cannot be null");
-      }
       this.percentualValue = JsonNullable.of(value);
       return this;
     }
@@ -181,9 +169,6 @@ public class ApiInstallmentSplitGetResponseDto {
 
     @JsonProperty("totalValue")
     public ApiInstallmentSplitGetResponseDtoBuilder totalValue(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("totalValue cannot be null");
-      }
       this.totalValue = JsonNullable.of(value);
       return this;
     }
@@ -195,9 +180,6 @@ public class ApiInstallmentSplitGetResponseDto {
     public ApiInstallmentSplitGetResponseDtoBuilder cancellationReason(
       ApiInstallmentSplitGetResponsePaymentSplitCancellationReason value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("cancellationReason cannot be null");
-      }
       this.cancellationReason = JsonNullable.of(value);
       return this;
     }
@@ -206,9 +188,6 @@ public class ApiInstallmentSplitGetResponseDto {
 
     @JsonProperty("status")
     public ApiInstallmentSplitGetResponseDtoBuilder status(ApiInstallmentSplitGetResponsePaymentSplitStatus value) {
-      if (value == null) {
-        throw new IllegalStateException("status cannot be null");
-      }
       this.status = JsonNullable.of(value);
       return this;
     }
@@ -217,9 +196,6 @@ public class ApiInstallmentSplitGetResponseDto {
 
     @JsonProperty("externalReference")
     public ApiInstallmentSplitGetResponseDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
@@ -228,9 +204,6 @@ public class ApiInstallmentSplitGetResponseDto {
 
     @JsonProperty("description")
     public ApiInstallmentSplitGetResponseDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -239,9 +212,6 @@ public class ApiInstallmentSplitGetResponseDto {
 
     @JsonProperty("installmentNumber")
     public ApiInstallmentSplitGetResponseDtoBuilder installmentNumber(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("installmentNumber cannot be null");
-      }
       this.installmentNumber = JsonNullable.of(value);
       return this;
     }

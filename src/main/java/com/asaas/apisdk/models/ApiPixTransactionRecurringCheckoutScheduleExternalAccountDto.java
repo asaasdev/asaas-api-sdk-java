@@ -71,9 +71,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleExternalAccountDto {
 
     @JsonProperty("name")
     public ApiPixTransactionRecurringCheckoutScheduleExternalAccountDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +79,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleExternalAccountDto {
 
     @JsonProperty("financialInstitutionName")
     public ApiPixTransactionRecurringCheckoutScheduleExternalAccountDtoBuilder financialInstitutionName(String value) {
-      if (value == null) {
-        throw new IllegalStateException("financialInstitutionName cannot be null");
-      }
       this.financialInstitutionName = JsonNullable.of(value);
       return this;
     }
@@ -93,9 +87,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleExternalAccountDto {
 
     @JsonProperty("cpfCnpj")
     public ApiPixTransactionRecurringCheckoutScheduleExternalAccountDtoBuilder cpfCnpj(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cpfCnpj cannot be null");
-      }
       this.cpfCnpj = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +95,6 @@ public class ApiPixTransactionRecurringCheckoutScheduleExternalAccountDto {
 
     @JsonProperty("pixKey")
     public ApiPixTransactionRecurringCheckoutScheduleExternalAccountDtoBuilder pixKey(String value) {
-      if (value == null) {
-        throw new IllegalStateException("pixKey cannot be null");
-      }
       this.pixKey = JsonNullable.of(value);
       return this;
     }

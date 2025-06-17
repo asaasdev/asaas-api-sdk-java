@@ -60,9 +60,6 @@ public class ApiPaymentDunningListPartialPaymentsResponseDataDto {
 
     @JsonProperty("value")
     public ApiPaymentDunningListPartialPaymentsResponseDataDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -71,9 +68,6 @@ public class ApiPaymentDunningListPartialPaymentsResponseDataDto {
 
     @JsonProperty("description")
     public ApiPaymentDunningListPartialPaymentsResponseDataDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -82,9 +76,6 @@ public class ApiPaymentDunningListPartialPaymentsResponseDataDto {
 
     @JsonProperty("paymentDate")
     public ApiPaymentDunningListPartialPaymentsResponseDataDtoBuilder paymentDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("paymentDate cannot be null");
-      }
       this.paymentDate = JsonNullable.of(value);
       return this;
     }

@@ -3,6 +3,7 @@
 package com.asaas.apisdk.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +22,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Jacksonized
 public class ApiPixTransactionSaveRequestDto {
 
-  @NonNull
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   private ApiPixTransactionQrCodeSaveRequestDto qrCode;
 
   /**
@@ -55,13 +56,21 @@ public class ApiPixTransactionSaveRequestDto {
   // Overwrite lombok builder methods
   public static class ApiPixTransactionSaveRequestDtoBuilder {
 
+    /**
+     * Flag to track if the qrCode property has been set.
+     */
+    private boolean qrCode$set = false;
+
+    public ApiPixTransactionSaveRequestDtoBuilder qrCode(ApiPixTransactionQrCodeSaveRequestDto qrCode) {
+      this.qrCode$set = true;
+      this.qrCode = qrCode;
+      return this;
+    }
+
     private JsonNullable<String> description = JsonNullable.undefined();
 
     @JsonProperty("description")
     public ApiPixTransactionSaveRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }
@@ -70,11 +79,15 @@ public class ApiPixTransactionSaveRequestDto {
 
     @JsonProperty("scheduleDate")
     public ApiPixTransactionSaveRequestDtoBuilder scheduleDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("scheduleDate cannot be null");
-      }
       this.scheduleDate = JsonNullable.of(value);
       return this;
+    }
+
+    public ApiPixTransactionSaveRequestDto build() {
+      if (!qrCode$set) {
+        throw new IllegalStateException("qrCode is required");
+      }
+      return new ApiPixTransactionSaveRequestDto(qrCode, value, description, scheduleDate);
     }
   }
 }

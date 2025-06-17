@@ -61,9 +61,6 @@ public class ApiPaymentDunningSimulateResponseDto {
 
     @JsonProperty("payment")
     public ApiPaymentDunningSimulateResponseDtoBuilder payment(String value) {
-      if (value == null) {
-        throw new IllegalStateException("payment cannot be null");
-      }
       this.payment = JsonNullable.of(value);
       return this;
     }
@@ -72,9 +69,6 @@ public class ApiPaymentDunningSimulateResponseDto {
 
     @JsonProperty("value")
     public ApiPaymentDunningSimulateResponseDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -86,9 +80,6 @@ public class ApiPaymentDunningSimulateResponseDto {
     public ApiPaymentDunningSimulateResponseDtoBuilder typeSimulations(
       List<ApiPaymentDunningSimulateResponseTypeSimulationItemDto> value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("typeSimulations cannot be null");
-      }
       this.typeSimulations = JsonNullable.of(value);
       return this;
     }

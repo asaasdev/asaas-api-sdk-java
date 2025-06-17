@@ -50,9 +50,6 @@ public class ApiMobilePhoneRechargeFindProviderResponseDto {
 
     @JsonProperty("name")
     public ApiMobilePhoneRechargeFindProviderResponseDtoBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -63,9 +60,6 @@ public class ApiMobilePhoneRechargeFindProviderResponseDto {
     public ApiMobilePhoneRechargeFindProviderResponseDtoBuilder values(
       List<ApiMobilePhoneRechargeFindProviderResponseValuesDto> value
     ) {
-      if (value == null) {
-        throw new IllegalStateException("values cannot be null");
-      }
       this.values = JsonNullable.of(value);
       return this;
     }

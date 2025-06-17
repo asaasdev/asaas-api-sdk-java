@@ -57,9 +57,6 @@ public class SimulateAPaymentDunningParameters {
 
     @JsonProperty("requestBody")
     public SimulateAPaymentDunningParametersBuilder requestBody(Object value) {
-      if (value == null) {
-        throw new IllegalStateException("requestBody cannot be null");
-      }
       this.requestBody = JsonNullable.of(value);
       return this;
     }

@@ -82,9 +82,6 @@ public class ApiBankSlipBillingInfoResponseDto {
 
     @JsonProperty("identificationField")
     public ApiBankSlipBillingInfoResponseDtoBuilder identificationField(String value) {
-      if (value == null) {
-        throw new IllegalStateException("identificationField cannot be null");
-      }
       this.identificationField = JsonNullable.of(value);
       return this;
     }
@@ -93,9 +90,6 @@ public class ApiBankSlipBillingInfoResponseDto {
 
     @JsonProperty("nossoNumero")
     public ApiBankSlipBillingInfoResponseDtoBuilder nossoNumero(String value) {
-      if (value == null) {
-        throw new IllegalStateException("nossoNumero cannot be null");
-      }
       this.nossoNumero = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +98,6 @@ public class ApiBankSlipBillingInfoResponseDto {
 
     @JsonProperty("barCode")
     public ApiBankSlipBillingInfoResponseDtoBuilder barCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("barCode cannot be null");
-      }
       this.barCode = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +106,6 @@ public class ApiBankSlipBillingInfoResponseDto {
 
     @JsonProperty("bankSlipUrl")
     public ApiBankSlipBillingInfoResponseDtoBuilder bankSlipUrl(String value) {
-      if (value == null) {
-        throw new IllegalStateException("bankSlipUrl cannot be null");
-      }
       this.bankSlipUrl = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +114,6 @@ public class ApiBankSlipBillingInfoResponseDto {
 
     @JsonProperty("daysAfterDueDateToRegistrationCancellation")
     public ApiBankSlipBillingInfoResponseDtoBuilder daysAfterDueDateToRegistrationCancellation(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("daysAfterDueDateToRegistrationCancellation cannot be null");
-      }
       this.daysAfterDueDateToRegistrationCancellation = JsonNullable.of(value);
       return this;
     }

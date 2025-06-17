@@ -50,9 +50,6 @@ public class ApiAccountDocumentShowResponseDto {
 
     @JsonProperty("rejectReasons")
     public ApiAccountDocumentShowResponseDtoBuilder rejectReasons(String value) {
-      if (value == null) {
-        throw new IllegalStateException("rejectReasons cannot be null");
-      }
       this.rejectReasons = JsonNullable.of(value);
       return this;
     }
@@ -61,9 +58,6 @@ public class ApiAccountDocumentShowResponseDto {
 
     @JsonProperty("data")
     public ApiAccountDocumentShowResponseDtoBuilder data(List<ApiAccountDocumentGroupResponseDto> value) {
-      if (value == null) {
-        throw new IllegalStateException("data cannot be null");
-      }
       this.data = JsonNullable.of(value);
       return this;
     }

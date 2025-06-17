@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.asaas</groupId>
             <artifactId>api-sdk</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
     </dependencies>
 

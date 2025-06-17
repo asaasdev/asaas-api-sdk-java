@@ -49,9 +49,6 @@ public class ApiPaymentRefundRequestDto {
 
     @JsonProperty("value")
     public ApiPaymentRefundRequestDtoBuilder value(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("value cannot be null");
-      }
       this.value = JsonNullable.of(value);
       return this;
     }
@@ -60,9 +57,6 @@ public class ApiPaymentRefundRequestDto {
 
     @JsonProperty("description")
     public ApiPaymentRefundRequestDtoBuilder description(String value) {
-      if (value == null) {
-        throw new IllegalStateException("description cannot be null");
-      }
       this.description = JsonNullable.of(value);
       return this;
     }

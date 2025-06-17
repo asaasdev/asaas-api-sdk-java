@@ -1,4 +1,4 @@
-# AsaasSdk Java SDK 1.0.0
+# AsaasSdk Java SDK 1.0.1
 
 Welcome to the AsaasSdk SDK documentation. This guide will help you get started with integrating and using the AsaasSdk SDK in your project.
 
@@ -7,7 +7,7 @@ Welcome to the AsaasSdk SDK documentation. This guide will help you get started 
 ## Versions
 
 - API version: `3.0.0`
-- SDK version: `1.0.0`
+- SDK version: `1.0.1`
 
 ## About the API
 
@@ -42,14 +42,14 @@ If you use Maven, place the following within the _dependency_ tag in your `pom.x
 <dependency>
     <groupId>com.asaas</groupId>
     <artifactId>api-sdk</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
 If you use Gradle, paste the next line inside the _dependencies_ block of your `build.gradle` file:
 
 ```Gradle
-implementation group: com.asaas, name: api-sdk, version: 1.0.0
+implementation group: com.asaas, name: api-sdk, version: 1.0.1
 ```
 
 If you use JAR files, package the SDK by running the following command:

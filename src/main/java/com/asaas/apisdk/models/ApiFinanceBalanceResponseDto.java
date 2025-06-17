@@ -38,9 +38,6 @@ public class ApiFinanceBalanceResponseDto {
 
     @JsonProperty("balance")
     public ApiFinanceBalanceResponseDtoBuilder balance(Double value) {
-      if (value == null) {
-        throw new IllegalStateException("balance cannot be null");
-      }
       this.balance = JsonNullable.of(value);
       return this;
     }

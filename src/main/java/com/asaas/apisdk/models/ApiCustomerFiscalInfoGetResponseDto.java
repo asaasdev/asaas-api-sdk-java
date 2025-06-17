@@ -214,9 +214,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("object")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder object(String value) {
-      if (value == null) {
-        throw new IllegalStateException("object cannot be null");
-      }
       this.object = JsonNullable.of(value);
       return this;
     }
@@ -225,9 +222,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("email")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder email(String value) {
-      if (value == null) {
-        throw new IllegalStateException("email cannot be null");
-      }
       this.email = JsonNullable.of(value);
       return this;
     }
@@ -236,9 +230,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("municipalInscription")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder municipalInscription(String value) {
-      if (value == null) {
-        throw new IllegalStateException("municipalInscription cannot be null");
-      }
       this.municipalInscription = JsonNullable.of(value);
       return this;
     }
@@ -247,9 +238,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("simplesNacional")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder simplesNacional(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("simplesNacional cannot be null");
-      }
       this.simplesNacional = JsonNullable.of(value);
       return this;
     }
@@ -258,9 +246,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("culturalProjectsPromoter")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder culturalProjectsPromoter(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("culturalProjectsPromoter cannot be null");
-      }
       this.culturalProjectsPromoter = JsonNullable.of(value);
       return this;
     }
@@ -269,9 +254,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("cnae")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder cnae(String value) {
-      if (value == null) {
-        throw new IllegalStateException("cnae cannot be null");
-      }
       this.cnae = JsonNullable.of(value);
       return this;
     }
@@ -280,9 +262,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("specialTaxRegime")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder specialTaxRegime(String value) {
-      if (value == null) {
-        throw new IllegalStateException("specialTaxRegime cannot be null");
-      }
       this.specialTaxRegime = JsonNullable.of(value);
       return this;
     }
@@ -291,9 +270,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("serviceListItem")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder serviceListItem(String value) {
-      if (value == null) {
-        throw new IllegalStateException("serviceListItem cannot be null");
-      }
       this.serviceListItem = JsonNullable.of(value);
       return this;
     }
@@ -302,9 +278,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("nbsCode")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder nbsCode(String value) {
-      if (value == null) {
-        throw new IllegalStateException("nbsCode cannot be null");
-      }
       this.nbsCode = JsonNullable.of(value);
       return this;
     }
@@ -313,9 +286,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("rpsSerie")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder rpsSerie(String value) {
-      if (value == null) {
-        throw new IllegalStateException("rpsSerie cannot be null");
-      }
       this.rpsSerie = JsonNullable.of(value);
       return this;
     }
@@ -324,9 +294,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("rpsNumber")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder rpsNumber(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("rpsNumber cannot be null");
-      }
       this.rpsNumber = JsonNullable.of(value);
       return this;
     }
@@ -335,9 +302,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("loteNumber")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder loteNumber(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("loteNumber cannot be null");
-      }
       this.loteNumber = JsonNullable.of(value);
       return this;
     }
@@ -346,9 +310,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("username")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder username(String value) {
-      if (value == null) {
-        throw new IllegalStateException("username cannot be null");
-      }
       this.username = JsonNullable.of(value);
       return this;
     }
@@ -357,9 +318,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("passwordSent")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder passwordSent(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("passwordSent cannot be null");
-      }
       this.passwordSent = JsonNullable.of(value);
       return this;
     }
@@ -368,9 +326,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("accessTokenSent")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder accessTokenSent(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("accessTokenSent cannot be null");
-      }
       this.accessTokenSent = JsonNullable.of(value);
       return this;
     }
@@ -379,9 +334,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("certificateSent")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder certificateSent(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("certificateSent cannot be null");
-      }
       this.certificateSent = JsonNullable.of(value);
       return this;
     }
@@ -390,9 +342,6 @@ public class ApiCustomerFiscalInfoGetResponseDto {
 
     @JsonProperty("nationalPortalTaxCalculationRegime")
     public ApiCustomerFiscalInfoGetResponseDtoBuilder nationalPortalTaxCalculationRegime(String value) {
-      if (value == null) {
-        throw new IllegalStateException("nationalPortalTaxCalculationRegime cannot be null");
-      }
       this.nationalPortalTaxCalculationRegime = JsonNullable.of(value);
       return this;
     }

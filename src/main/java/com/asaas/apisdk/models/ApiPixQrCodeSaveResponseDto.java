@@ -93,9 +93,6 @@ public class ApiPixQrCodeSaveResponseDto {
 
     @JsonProperty("id")
     public ApiPixQrCodeSaveResponseDtoBuilder id(String value) {
-      if (value == null) {
-        throw new IllegalStateException("id cannot be null");
-      }
       this.id = JsonNullable.of(value);
       return this;
     }
@@ -104,9 +101,6 @@ public class ApiPixQrCodeSaveResponseDto {
 
     @JsonProperty("encodedImage")
     public ApiPixQrCodeSaveResponseDtoBuilder encodedImage(String value) {
-      if (value == null) {
-        throw new IllegalStateException("encodedImage cannot be null");
-      }
       this.encodedImage = JsonNullable.of(value);
       return this;
     }
@@ -115,9 +109,6 @@ public class ApiPixQrCodeSaveResponseDto {
 
     @JsonProperty("payload")
     public ApiPixQrCodeSaveResponseDtoBuilder payload(String value) {
-      if (value == null) {
-        throw new IllegalStateException("payload cannot be null");
-      }
       this.payload = JsonNullable.of(value);
       return this;
     }
@@ -126,9 +117,6 @@ public class ApiPixQrCodeSaveResponseDto {
 
     @JsonProperty("allowsMultiplePayments")
     public ApiPixQrCodeSaveResponseDtoBuilder allowsMultiplePayments(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("allowsMultiplePayments cannot be null");
-      }
       this.allowsMultiplePayments = JsonNullable.of(value);
       return this;
     }
@@ -137,9 +125,6 @@ public class ApiPixQrCodeSaveResponseDto {
 
     @JsonProperty("expirationDate")
     public ApiPixQrCodeSaveResponseDtoBuilder expirationDate(String value) {
-      if (value == null) {
-        throw new IllegalStateException("expirationDate cannot be null");
-      }
       this.expirationDate = JsonNullable.of(value);
       return this;
     }
@@ -148,9 +133,6 @@ public class ApiPixQrCodeSaveResponseDto {
 
     @JsonProperty("externalReference")
     public ApiPixQrCodeSaveResponseDtoBuilder externalReference(String value) {
-      if (value == null) {
-        throw new IllegalStateException("externalReference cannot be null");
-      }
       this.externalReference = JsonNullable.of(value);
       return this;
     }
