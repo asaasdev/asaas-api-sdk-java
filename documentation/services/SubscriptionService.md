@@ -32,7 +32,7 @@ A list of all methods in the `SubscriptionService` service. Click on the method 
 
 **Return Type**
 
-`ApiSubscriptionListResponseDto`
+`SubscriptionListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -40,10 +40,10 @@ A list of all methods in the `SubscriptionService` service. Click on the method 
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiSubscriptionListRequestBillingType;
-import com.asaas.apisdk.models.ApiSubscriptionListRequestSubscriptionStatus;
-import com.asaas.apisdk.models.ApiSubscriptionListResponseDto;
 import com.asaas.apisdk.models.ListSubscriptionsParameters;
+import com.asaas.apisdk.models.SubscriptionListRequestBillingType;
+import com.asaas.apisdk.models.SubscriptionListRequestSubscriptionStatus;
+import com.asaas.apisdk.models.SubscriptionListResponseDto;
 
 public class Main {
 
@@ -55,12 +55,12 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListSubscriptionsParameters requestParameters = ListSubscriptionsParameters.builder()
-      .offset(1L)
+      .offset(10L)
       .limit(10L)
       .customer("customer")
       .customerGroupName("customerGroupName")
-      .billingType(ApiSubscriptionListRequestBillingType.UNDEFINED)
-      .status(ApiSubscriptionListRequestSubscriptionStatus.ACTIVE)
+      .billingType(SubscriptionListRequestBillingType.UNDEFINED)
+      .status(SubscriptionListRequestSubscriptionStatus.ACTIVE)
       .deletedOnly("deletedOnly")
       .includeDeleted("includeDeleted")
       .externalReference("externalReference")
@@ -68,7 +68,7 @@ public class Main {
       .sort("sort")
       .build();
 
-    ApiSubscriptionListResponseDto response = asaasSdk.subscription.listSubscriptions(requestParameters);
+    SubscriptionListResponseDto response = asaasSdk.subscription.listSubscriptions(requestParameters);
 
     System.out.println(response);
   }
@@ -83,13 +83,13 @@ public class Main {
 
 **Parameters**
 
-| Name                          | Type                                                                        | Required | Description  |
-| :---------------------------- | :-------------------------------------------------------------------------- | :------- | :----------- |
-| apiSubscriptionSaveRequestDto | [ApiSubscriptionSaveRequestDto](../models/ApiSubscriptionSaveRequestDto.md) | ❌       | Request Body |
+| Name                       | Type                                                                  | Required | Description  |
+| :------------------------- | :-------------------------------------------------------------------- | :------- | :----------- |
+| subscriptionSaveRequestDto | [SubscriptionSaveRequestDto](../models/SubscriptionSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiSubscriptionGetResponseDto`
+`SubscriptionGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -97,17 +97,17 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.apisdk.models.ApiPaymentDiscountDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionGetResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionSaveRequestBillingType;
-import com.asaas.apisdk.models.ApiSubscriptionSaveRequestCycle;
-import com.asaas.apisdk.models.ApiSubscriptionSaveRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionSplitRequestDto;
+import com.asaas.apisdk.models.PaymentCallbackRequestDto;
+import com.asaas.apisdk.models.PaymentDiscountDiscountType;
+import com.asaas.apisdk.models.PaymentDiscountDto;
+import com.asaas.apisdk.models.PaymentFineRequestDto;
+import com.asaas.apisdk.models.PaymentFineRequestFineType;
+import com.asaas.apisdk.models.PaymentInterestRequestDto;
+import com.asaas.apisdk.models.SubscriptionGetResponseDto;
+import com.asaas.apisdk.models.SubscriptionSaveRequestBillingType;
+import com.asaas.apisdk.models.SubscriptionSaveRequestCycle;
+import com.asaas.apisdk.models.SubscriptionSaveRequestDto;
+import com.asaas.apisdk.models.SubscriptionSplitRequestDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -120,54 +120,52 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDiscountDto apiPaymentDiscountDto = ApiPaymentDiscountDto.builder()
+    PaymentDiscountDto paymentDiscountDto = PaymentDiscountDto.builder()
       .value(10D)
       .dueDateLimitDays(1L)
-      .type(ApiPaymentDiscountDiscountType.FIXED)
+      .type(PaymentDiscountDiscountType.FIXED)
       .build();
 
-    ApiPaymentInterestRequestDto apiPaymentInterestRequestDto = ApiPaymentInterestRequestDto.builder()
-      .value(4.68D)
-      .build();
+    PaymentInterestRequestDto paymentInterestRequestDto = PaymentInterestRequestDto.builder().value(4.68D).build();
 
-    ApiPaymentFineRequestDto apiPaymentFineRequestDto = ApiPaymentFineRequestDto.builder()
+    PaymentFineRequestDto paymentFineRequestDto = PaymentFineRequestDto.builder()
       .value(8.99D)
-      .type(ApiPaymentFineRequestFineType.FIXED)
+      .type(PaymentFineRequestFineType.FIXED)
       .build();
 
-    ApiSubscriptionSplitRequestDto apiSubscriptionSplitRequestDto = ApiSubscriptionSplitRequestDto.builder()
+    SubscriptionSplitRequestDto subscriptionSplitRequestDto = SubscriptionSplitRequestDto.builder()
       .walletId("walletId")
-      .fixedValue(3.49D)
-      .percentualValue(7.56D)
+      .fixedValue(8.29D)
+      .percentualValue(7.44D)
       .externalReference("externalReference")
       .description("description")
       .build();
 
-    List<ApiSubscriptionSplitRequestDto> splitList = Arrays.asList(apiSubscriptionSplitRequestDto);
+    List<SubscriptionSplitRequestDto> splitList = Arrays.asList(subscriptionSplitRequestDto);
 
-    ApiPaymentCallbackRequestDto apiPaymentCallbackRequestDto = ApiPaymentCallbackRequestDto.builder()
+    PaymentCallbackRequestDto paymentCallbackRequestDto = PaymentCallbackRequestDto.builder()
       .successUrl("successUrl")
       .autoRedirect(true)
       .build();
 
-    ApiSubscriptionSaveRequestDto apiSubscriptionSaveRequestDto = ApiSubscriptionSaveRequestDto.builder()
+    SubscriptionSaveRequestDto subscriptionSaveRequestDto = SubscriptionSaveRequestDto.builder()
       .customer("cus_0T1mdomVMi39")
-      .billingType(ApiSubscriptionSaveRequestBillingType.UNDEFINED)
+      .billingType(SubscriptionSaveRequestBillingType.UNDEFINED)
       .value(19.9D)
       .nextDueDate("2017-05-15")
-      .discount(apiPaymentDiscountDto)
-      .interest(apiPaymentInterestRequestDto)
-      .fine(apiPaymentFineRequestDto)
-      .cycle(ApiSubscriptionSaveRequestCycle.WEEKLY)
+      .discount(paymentDiscountDto)
+      .interest(paymentInterestRequestDto)
+      .fine(paymentFineRequestDto)
+      .cycle(SubscriptionSaveRequestCycle.WEEKLY)
       .description("Pro Plan Subscription")
       .endDate("endDate")
-      .maxPayments(6L)
+      .maxPayments(10L)
       .externalReference("externalReference")
       .split(splitList)
-      .callback(apiPaymentCallbackRequestDto)
+      .callback(paymentCallbackRequestDto)
       .build();
 
-    ApiSubscriptionGetResponseDto response = asaasSdk.subscription.createNewSubscription(apiSubscriptionSaveRequestDto);
+    SubscriptionGetResponseDto response = asaasSdk.subscription.createNewSubscription(subscriptionSaveRequestDto);
 
     System.out.println(response);
   }
@@ -182,13 +180,13 @@ public class Main {
 
 **Parameters**
 
-| Name                                        | Type                                                                                                    | Required | Description  |
-| :------------------------------------------ | :------------------------------------------------------------------------------------------------------ | :------- | :----------- |
-| apiSubscriptionSaveWithCreditCardRequestDto | [ApiSubscriptionSaveWithCreditCardRequestDto](../models/ApiSubscriptionSaveWithCreditCardRequestDto.md) | ❌       | Request Body |
+| Name                                     | Type                                                                                              | Required | Description  |
+| :--------------------------------------- | :------------------------------------------------------------------------------------------------ | :------- | :----------- |
+| subscriptionSaveWithCreditCardRequestDto | [SubscriptionSaveWithCreditCardRequestDto](../models/SubscriptionSaveWithCreditCardRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiSubscriptionSaveWithCreditCardResponseDto`
+`SubscriptionSaveWithCreditCardResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -196,19 +194,19 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCreditCardHolderInfoRequestDto;
-import com.asaas.apisdk.models.ApiCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.apisdk.models.ApiPaymentDiscountDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionSaveWithCreditCardRequestBillingType;
-import com.asaas.apisdk.models.ApiSubscriptionSaveWithCreditCardRequestCycle;
-import com.asaas.apisdk.models.ApiSubscriptionSaveWithCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionSaveWithCreditCardResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionSplitRequestDto;
+import com.asaas.apisdk.models.CreditCardHolderInfoRequestDto;
+import com.asaas.apisdk.models.CreditCardRequestDto;
+import com.asaas.apisdk.models.PaymentCallbackRequestDto;
+import com.asaas.apisdk.models.PaymentDiscountDiscountType;
+import com.asaas.apisdk.models.PaymentDiscountDto;
+import com.asaas.apisdk.models.PaymentFineRequestDto;
+import com.asaas.apisdk.models.PaymentFineRequestFineType;
+import com.asaas.apisdk.models.PaymentInterestRequestDto;
+import com.asaas.apisdk.models.SubscriptionSaveWithCreditCardRequestBillingType;
+import com.asaas.apisdk.models.SubscriptionSaveWithCreditCardRequestCycle;
+import com.asaas.apisdk.models.SubscriptionSaveWithCreditCardRequestDto;
+import com.asaas.apisdk.models.SubscriptionSaveWithCreditCardResponseDto;
+import com.asaas.apisdk.models.SubscriptionSplitRequestDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -221,45 +219,43 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDiscountDto apiPaymentDiscountDto = ApiPaymentDiscountDto.builder()
+    PaymentDiscountDto paymentDiscountDto = PaymentDiscountDto.builder()
       .value(10D)
       .dueDateLimitDays(1L)
-      .type(ApiPaymentDiscountDiscountType.FIXED)
+      .type(PaymentDiscountDiscountType.FIXED)
       .build();
 
-    ApiPaymentInterestRequestDto apiPaymentInterestRequestDto = ApiPaymentInterestRequestDto.builder()
-      .value(4.68D)
-      .build();
+    PaymentInterestRequestDto paymentInterestRequestDto = PaymentInterestRequestDto.builder().value(4.68D).build();
 
-    ApiPaymentFineRequestDto apiPaymentFineRequestDto = ApiPaymentFineRequestDto.builder()
+    PaymentFineRequestDto paymentFineRequestDto = PaymentFineRequestDto.builder()
       .value(8.99D)
-      .type(ApiPaymentFineRequestFineType.FIXED)
+      .type(PaymentFineRequestFineType.FIXED)
       .build();
 
-    ApiSubscriptionSplitRequestDto apiSubscriptionSplitRequestDto = ApiSubscriptionSplitRequestDto.builder()
+    SubscriptionSplitRequestDto subscriptionSplitRequestDto = SubscriptionSplitRequestDto.builder()
       .walletId("walletId")
-      .fixedValue(3.49D)
-      .percentualValue(7.56D)
+      .fixedValue(8.29D)
+      .percentualValue(7.44D)
       .externalReference("externalReference")
       .description("description")
       .build();
 
-    List<ApiSubscriptionSplitRequestDto> splitList = Arrays.asList(apiSubscriptionSplitRequestDto);
+    List<SubscriptionSplitRequestDto> splitList = Arrays.asList(subscriptionSplitRequestDto);
 
-    ApiPaymentCallbackRequestDto apiPaymentCallbackRequestDto = ApiPaymentCallbackRequestDto.builder()
+    PaymentCallbackRequestDto paymentCallbackRequestDto = PaymentCallbackRequestDto.builder()
       .successUrl("successUrl")
       .autoRedirect(true)
       .build();
 
-    ApiCreditCardRequestDto apiCreditCardRequestDto = ApiCreditCardRequestDto.builder()
+    CreditCardRequestDto creditCardRequestDto = CreditCardRequestDto.builder()
       .holderName("John Doe")
       .number("1234567890123456")
-      .expiryMonth("6")
+      .expiryMonth("7")
       .expiryYear("2025")
       .ccv("123")
       .build();
 
-    ApiCreditCardHolderInfoRequestDto apiCreditCardHolderInfoRequestDto = ApiCreditCardHolderInfoRequestDto.builder()
+    CreditCardHolderInfoRequestDto creditCardHolderInfoRequestDto = CreditCardHolderInfoRequestDto.builder()
       .name("John Doe")
       .email("john.doe@asaas.com")
       .cpfCnpj("12345678901")
@@ -270,30 +266,30 @@ public class Main {
       .mobilePhone("mobilePhone")
       .build();
 
-    ApiSubscriptionSaveWithCreditCardRequestDto apiSubscriptionSaveWithCreditCardRequestDto =
-      ApiSubscriptionSaveWithCreditCardRequestDto.builder()
+    SubscriptionSaveWithCreditCardRequestDto subscriptionSaveWithCreditCardRequestDto =
+      SubscriptionSaveWithCreditCardRequestDto.builder()
         .customer("cus_0T1mdomVMi39")
-        .billingType(ApiSubscriptionSaveWithCreditCardRequestBillingType.UNDEFINED)
+        .billingType(SubscriptionSaveWithCreditCardRequestBillingType.UNDEFINED)
         .value(19.9D)
         .nextDueDate("2017-05-15")
-        .discount(apiPaymentDiscountDto)
-        .interest(apiPaymentInterestRequestDto)
-        .fine(apiPaymentFineRequestDto)
-        .cycle(ApiSubscriptionSaveWithCreditCardRequestCycle.WEEKLY)
+        .discount(paymentDiscountDto)
+        .interest(paymentInterestRequestDto)
+        .fine(paymentFineRequestDto)
+        .cycle(SubscriptionSaveWithCreditCardRequestCycle.WEEKLY)
         .description("Pro Plan Subscription")
         .endDate("endDate")
-        .maxPayments(7L)
+        .maxPayments(0L)
         .externalReference("externalReference")
         .split(splitList)
-        .callback(apiPaymentCallbackRequestDto)
-        .creditCard(apiCreditCardRequestDto)
-        .creditCardHolderInfo(apiCreditCardHolderInfoRequestDto)
+        .callback(paymentCallbackRequestDto)
+        .creditCard(creditCardRequestDto)
+        .creditCardHolderInfo(creditCardHolderInfoRequestDto)
         .creditCardToken("a75a1d98-c52d-4a6b-a413-71e00b193c99")
         .remoteIp("remoteIp")
         .build();
 
-    ApiSubscriptionSaveWithCreditCardResponseDto response = asaasSdk.subscription.createSubscriptionWithCreditCard(
-      apiSubscriptionSaveWithCreditCardRequestDto
+    SubscriptionSaveWithCreditCardResponseDto response = asaasSdk.subscription.createSubscriptionWithCreditCard(
+      subscriptionSaveWithCreditCardRequestDto
     );
 
     System.out.println(response);
@@ -315,7 +311,7 @@ public class Main {
 
 **Return Type**
 
-`ApiSubscriptionGetResponseDto`
+`SubscriptionGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -323,7 +319,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiSubscriptionGetResponseDto;
+import com.asaas.apisdk.models.SubscriptionGetResponseDto;
 
 public class Main {
 
@@ -334,7 +330,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiSubscriptionGetResponseDto response = asaasSdk.subscription.retrieveASingleSubscription("sub_VXJBYgP2u0eO");
+    SubscriptionGetResponseDto response = asaasSdk.subscription.retrieveASingleSubscription("sub_VXJBYgP2u0eO");
 
     System.out.println(response);
   }
@@ -349,14 +345,14 @@ public class Main {
 
 **Parameters**
 
-| Name                            | Type                                                                            | Required | Description                             |
-| :------------------------------ | :------------------------------------------------------------------------------ | :------- | :-------------------------------------- |
-| id                              | String                                                                          | ✅       | Unique subscription identifier in Asaas |
-| apiSubscriptionUpdateRequestDto | [ApiSubscriptionUpdateRequestDto](../models/ApiSubscriptionUpdateRequestDto.md) | ❌       | Request Body                            |
+| Name                         | Type                                                                      | Required | Description                             |
+| :--------------------------- | :------------------------------------------------------------------------ | :------- | :-------------------------------------- |
+| id                           | String                                                                    | ✅       | Unique subscription identifier in Asaas |
+| subscriptionUpdateRequestDto | [SubscriptionUpdateRequestDto](../models/SubscriptionUpdateRequestDto.md) | ❌       | Request Body                            |
 
 **Return Type**
 
-`ApiSubscriptionGetResponseDto`
+`SubscriptionGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -364,18 +360,18 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.apisdk.models.ApiPaymentDiscountDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionGetResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionSplitRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionUpdateRequestBillingType;
-import com.asaas.apisdk.models.ApiSubscriptionUpdateRequestCycle;
-import com.asaas.apisdk.models.ApiSubscriptionUpdateRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionUpdateRequestSubscriptionStatus;
+import com.asaas.apisdk.models.PaymentCallbackRequestDto;
+import com.asaas.apisdk.models.PaymentDiscountDiscountType;
+import com.asaas.apisdk.models.PaymentDiscountDto;
+import com.asaas.apisdk.models.PaymentFineRequestDto;
+import com.asaas.apisdk.models.PaymentFineRequestFineType;
+import com.asaas.apisdk.models.PaymentInterestRequestDto;
+import com.asaas.apisdk.models.SubscriptionGetResponseDto;
+import com.asaas.apisdk.models.SubscriptionSplitRequestDto;
+import com.asaas.apisdk.models.SubscriptionUpdateRequestBillingType;
+import com.asaas.apisdk.models.SubscriptionUpdateRequestCycle;
+import com.asaas.apisdk.models.SubscriptionUpdateRequestDto;
+import com.asaas.apisdk.models.SubscriptionUpdateRequestSubscriptionStatus;
 import java.util.Arrays;
 import java.util.List;
 
@@ -388,55 +384,53 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDiscountDto apiPaymentDiscountDto = ApiPaymentDiscountDto.builder()
+    PaymentDiscountDto paymentDiscountDto = PaymentDiscountDto.builder()
       .value(10D)
       .dueDateLimitDays(1L)
-      .type(ApiPaymentDiscountDiscountType.FIXED)
+      .type(PaymentDiscountDiscountType.FIXED)
       .build();
 
-    ApiPaymentInterestRequestDto apiPaymentInterestRequestDto = ApiPaymentInterestRequestDto.builder()
-      .value(4.68D)
-      .build();
+    PaymentInterestRequestDto paymentInterestRequestDto = PaymentInterestRequestDto.builder().value(4.68D).build();
 
-    ApiPaymentFineRequestDto apiPaymentFineRequestDto = ApiPaymentFineRequestDto.builder()
+    PaymentFineRequestDto paymentFineRequestDto = PaymentFineRequestDto.builder()
       .value(8.99D)
-      .type(ApiPaymentFineRequestFineType.FIXED)
+      .type(PaymentFineRequestFineType.FIXED)
       .build();
 
-    ApiSubscriptionSplitRequestDto apiSubscriptionSplitRequestDto = ApiSubscriptionSplitRequestDto.builder()
+    SubscriptionSplitRequestDto subscriptionSplitRequestDto = SubscriptionSplitRequestDto.builder()
       .walletId("walletId")
-      .fixedValue(3.49D)
-      .percentualValue(7.56D)
+      .fixedValue(8.29D)
+      .percentualValue(7.44D)
       .externalReference("externalReference")
       .description("description")
       .build();
 
-    List<ApiSubscriptionSplitRequestDto> splitList = Arrays.asList(apiSubscriptionSplitRequestDto);
+    List<SubscriptionSplitRequestDto> splitList = Arrays.asList(subscriptionSplitRequestDto);
 
-    ApiPaymentCallbackRequestDto apiPaymentCallbackRequestDto = ApiPaymentCallbackRequestDto.builder()
+    PaymentCallbackRequestDto paymentCallbackRequestDto = PaymentCallbackRequestDto.builder()
       .successUrl("successUrl")
       .autoRedirect(true)
       .build();
 
-    ApiSubscriptionUpdateRequestDto apiSubscriptionUpdateRequestDto = ApiSubscriptionUpdateRequestDto.builder()
-      .billingType(ApiSubscriptionUpdateRequestBillingType.UNDEFINED)
-      .status(ApiSubscriptionUpdateRequestSubscriptionStatus.ACTIVE)
+    SubscriptionUpdateRequestDto subscriptionUpdateRequestDto = SubscriptionUpdateRequestDto.builder()
+      .billingType(SubscriptionUpdateRequestBillingType.UNDEFINED)
+      .status(SubscriptionUpdateRequestSubscriptionStatus.ACTIVE)
       .nextDueDate("2017-05-15")
-      .discount(apiPaymentDiscountDto)
-      .interest(apiPaymentInterestRequestDto)
-      .fine(apiPaymentFineRequestDto)
-      .cycle(ApiSubscriptionUpdateRequestCycle.WEEKLY)
+      .discount(paymentDiscountDto)
+      .interest(paymentInterestRequestDto)
+      .fine(paymentFineRequestDto)
+      .cycle(SubscriptionUpdateRequestCycle.WEEKLY)
       .description("Pro Plan Subscription")
       .endDate("endDate")
       .updatePendingPayments(true)
       .externalReference("externalReference")
       .split(splitList)
-      .callback(apiPaymentCallbackRequestDto)
+      .callback(paymentCallbackRequestDto)
       .build();
 
-    ApiSubscriptionGetResponseDto response = asaasSdk.subscription.updateExistingSubscription(
+    SubscriptionGetResponseDto response = asaasSdk.subscription.updateExistingSubscription(
       "sub_VXJBYgP2u0eO",
-      apiSubscriptionUpdateRequestDto
+      subscriptionUpdateRequestDto
     );
 
     System.out.println(response);
@@ -458,7 +452,7 @@ public class Main {
 
 **Return Type**
 
-`ApiSubscriptionDeleteResponseDto`
+`SubscriptionDeleteResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -466,7 +460,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiSubscriptionDeleteResponseDto;
+import com.asaas.apisdk.models.SubscriptionDeleteResponseDto;
 
 public class Main {
 
@@ -477,7 +471,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiSubscriptionDeleteResponseDto response = asaasSdk.subscription.removeSubscription("sub_VXJBYgP2u0eO");
+    SubscriptionDeleteResponseDto response = asaasSdk.subscription.removeSubscription("sub_VXJBYgP2u0eO");
 
     System.out.println(response);
   }
@@ -494,14 +488,14 @@ This endpoint updates the subscription's credit card without triggering an immed
 
 **Parameters**
 
-| Name                                      | Type                                                                                                | Required | Description                             |
-| :---------------------------------------- | :-------------------------------------------------------------------------------------------------- | :------- | :-------------------------------------- |
-| id                                        | String                                                                                              | ✅       | Unique subscription identifier in Asaas |
-| apiSubscriptionUpdateCreditCardRequestDto | [ApiSubscriptionUpdateCreditCardRequestDto](../models/ApiSubscriptionUpdateCreditCardRequestDto.md) | ❌       | Request Body                            |
+| Name                                   | Type                                                                                          | Required | Description                             |
+| :------------------------------------- | :-------------------------------------------------------------------------------------------- | :------- | :-------------------------------------- |
+| id                                     | String                                                                                        | ✅       | Unique subscription identifier in Asaas |
+| subscriptionUpdateCreditCardRequestDto | [SubscriptionUpdateCreditCardRequestDto](../models/SubscriptionUpdateCreditCardRequestDto.md) | ❌       | Request Body                            |
 
 **Return Type**
 
-`ApiSubscriptionGetResponseDto`
+`SubscriptionGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -509,10 +503,10 @@ This endpoint updates the subscription's credit card without triggering an immed
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCreditCardHolderInfoRequestDto;
-import com.asaas.apisdk.models.ApiCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionGetResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionUpdateCreditCardRequestDto;
+import com.asaas.apisdk.models.CreditCardHolderInfoRequestDto;
+import com.asaas.apisdk.models.CreditCardRequestDto;
+import com.asaas.apisdk.models.SubscriptionGetResponseDto;
+import com.asaas.apisdk.models.SubscriptionUpdateCreditCardRequestDto;
 
 public class Main {
 
@@ -523,15 +517,15 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCreditCardRequestDto apiCreditCardRequestDto = ApiCreditCardRequestDto.builder()
+    CreditCardRequestDto creditCardRequestDto = CreditCardRequestDto.builder()
       .holderName("John Doe")
       .number("1234567890123456")
-      .expiryMonth("6")
+      .expiryMonth("7")
       .expiryYear("2025")
       .ccv("123")
       .build();
 
-    ApiCreditCardHolderInfoRequestDto apiCreditCardHolderInfoRequestDto = ApiCreditCardHolderInfoRequestDto.builder()
+    CreditCardHolderInfoRequestDto creditCardHolderInfoRequestDto = CreditCardHolderInfoRequestDto.builder()
       .name("John Doe")
       .email("john.doe@asaas.com")
       .cpfCnpj("12345678901")
@@ -542,17 +536,17 @@ public class Main {
       .mobilePhone("mobilePhone")
       .build();
 
-    ApiSubscriptionUpdateCreditCardRequestDto apiSubscriptionUpdateCreditCardRequestDto =
-      ApiSubscriptionUpdateCreditCardRequestDto.builder()
-        .creditCard(apiCreditCardRequestDto)
-        .creditCardHolderInfo(apiCreditCardHolderInfoRequestDto)
+    SubscriptionUpdateCreditCardRequestDto subscriptionUpdateCreditCardRequestDto =
+      SubscriptionUpdateCreditCardRequestDto.builder()
+        .creditCard(creditCardRequestDto)
+        .creditCardHolderInfo(creditCardHolderInfoRequestDto)
         .creditCardToken("a75a1d98-c52d-4a6b-a413-71e00b193c99")
         .remoteIp("116.213.42.532")
         .build();
 
-    ApiSubscriptionGetResponseDto response = asaasSdk.subscription.updateSubscriptionCreditCard(
+    SubscriptionGetResponseDto response = asaasSdk.subscription.updateSubscriptionCreditCard(
       "sub_VXJBYgP2u0eO",
-      apiSubscriptionUpdateCreditCardRequestDto
+      subscriptionUpdateCreditCardRequestDto
     );
 
     System.out.println(response);
@@ -575,7 +569,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentListResponseDto`
+`PaymentListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -583,9 +577,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentListResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionListPaymentsRequestPaymentStatus;
 import com.asaas.apisdk.models.ListPaymentsOfASubscriptionParameters;
+import com.asaas.apisdk.models.PaymentListResponseDto;
+import com.asaas.apisdk.models.SubscriptionListPaymentsRequestPaymentStatus;
 
 public class Main {
 
@@ -597,10 +591,10 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentsOfASubscriptionParameters requestParameters = ListPaymentsOfASubscriptionParameters.builder()
-      .status(ApiSubscriptionListPaymentsRequestPaymentStatus.PENDING)
+      .status(SubscriptionListPaymentsRequestPaymentStatus.PENDING)
       .build();
 
-    ApiPaymentListResponseDto response = asaasSdk.subscription.listPaymentsOfASubscription(
+    PaymentListResponseDto response = asaasSdk.subscription.listPaymentsOfASubscription(
       "sub_VXJBYgP2u0eO",
       requestParameters
     );
@@ -645,8 +639,8 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     GenerateSignatureBookletParameters requestParameters = GenerateSignatureBookletParameters.builder()
-      .month(10L)
-      .year(10L)
+      .month(2L)
+      .year(5L)
       .sort("sort")
       .order("asc")
       .build();
@@ -672,7 +666,7 @@ public class Main {
 
 **Return Type**
 
-`ApiSubscriptionInvoiceConfigGetResponseDto`
+`SubscriptionInvoiceConfigGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -680,7 +674,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigGetResponseDto;
+import com.asaas.apisdk.models.SubscriptionInvoiceConfigGetResponseDto;
 
 public class Main {
 
@@ -691,8 +685,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiSubscriptionInvoiceConfigGetResponseDto response =
-      asaasSdk.subscription.retrieveConfigurationForIssuanceOfInvoices("sub_VXJBYgP2u0eO");
+    SubscriptionInvoiceConfigGetResponseDto response = asaasSdk.subscription.retrieveConfigurationForIssuanceOfInvoices(
+      "sub_VXJBYgP2u0eO"
+    );
 
     System.out.println(response);
   }
@@ -707,14 +702,14 @@ public class Main {
 
 **Parameters**
 
-| Name                                      | Type                                                                                                | Required | Description                             |
-| :---------------------------------------- | :-------------------------------------------------------------------------------------------------- | :------- | :-------------------------------------- |
-| id                                        | String                                                                                              | ✅       | Unique subscription identifier in Asaas |
-| apiSubscriptionConfigureInvoiceRequestDto | [ApiSubscriptionConfigureInvoiceRequestDto](../models/ApiSubscriptionConfigureInvoiceRequestDto.md) | ❌       | Request Body                            |
+| Name                                   | Type                                                                                          | Required | Description                             |
+| :------------------------------------- | :-------------------------------------------------------------------------------------------- | :------- | :-------------------------------------- |
+| id                                     | String                                                                                        | ✅       | Unique subscription identifier in Asaas |
+| subscriptionConfigureInvoiceRequestDto | [SubscriptionConfigureInvoiceRequestDto](../models/SubscriptionConfigureInvoiceRequestDto.md) | ❌       | Request Body                            |
 
 **Return Type**
 
-`ApiSubscriptionInvoiceConfigGetResponseDto`
+`SubscriptionInvoiceConfigGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -722,10 +717,10 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerInvoiceTaxesDto;
-import com.asaas.apisdk.models.ApiSubscriptionConfigureInvoiceRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionConfigureInvoiceRequestDtoEffectiveDatePeriod;
-import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigGetResponseDto;
+import com.asaas.apisdk.models.InvoiceTaxesDto;
+import com.asaas.apisdk.models.SubscriptionConfigureInvoiceRequestDto;
+import com.asaas.apisdk.models.SubscriptionConfigureInvoiceRequestDtoEffectiveDatePeriod;
+import com.asaas.apisdk.models.SubscriptionInvoiceConfigGetResponseDto;
 
 public class Main {
 
@@ -736,7 +731,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerInvoiceTaxesDto apiCustomerInvoiceTaxesDto = ApiCustomerInvoiceTaxesDto.builder()
+    InvoiceTaxesDto invoiceTaxesDto = InvoiceTaxesDto.builder()
       .retainIss(true)
       .cofins(1D)
       .csll(1D)
@@ -746,25 +741,24 @@ public class Main {
       .iss(1D)
       .build();
 
-    ApiSubscriptionConfigureInvoiceRequestDto apiSubscriptionConfigureInvoiceRequestDto =
-      ApiSubscriptionConfigureInvoiceRequestDto.builder()
+    SubscriptionConfigureInvoiceRequestDto subscriptionConfigureInvoiceRequestDto =
+      SubscriptionConfigureInvoiceRequestDto.builder()
         .municipalServiceId("municipalServiceId")
         .municipalServiceCode("1.01")
         .municipalServiceName("municipalServiceName")
         .updatePayment(true)
         .deductions(55D)
-        .effectiveDatePeriod(ApiSubscriptionConfigureInvoiceRequestDtoEffectiveDatePeriod.ON_PAYMENT_CONFIRMATION)
-        .receivedOnly(false)
-        .daysBeforeDueDate(2L)
+        .effectiveDatePeriod(SubscriptionConfigureInvoiceRequestDtoEffectiveDatePeriod.ON_PAYMENT_CONFIRMATION)
+        .receivedOnly(true)
+        .daysBeforeDueDate(9L)
         .observations("Regarding March work")
-        .taxes(apiCustomerInvoiceTaxesDto)
+        .taxes(invoiceTaxesDto)
         .build();
 
-    ApiSubscriptionInvoiceConfigGetResponseDto response =
-      asaasSdk.subscription.createConfigurationForIssuanceOfInvoices(
-        "sub_VXJBYgP2u0eO",
-        apiSubscriptionConfigureInvoiceRequestDto
-      );
+    SubscriptionInvoiceConfigGetResponseDto response = asaasSdk.subscription.createConfigurationForIssuanceOfInvoices(
+      "sub_VXJBYgP2u0eO",
+      subscriptionConfigureInvoiceRequestDto
+    );
 
     System.out.println(response);
   }
@@ -779,14 +773,14 @@ public class Main {
 
 **Parameters**
 
-| Name                                         | Type                                                                                                      | Required | Description                             |
-| :------------------------------------------- | :-------------------------------------------------------------------------------------------------------- | :------- | :-------------------------------------- |
-| id                                           | String                                                                                                    | ✅       | Unique subscription identifier in Asaas |
-| apiSubscriptionInvoiceConfigUpdateRequestDto | [ApiSubscriptionInvoiceConfigUpdateRequestDto](../models/ApiSubscriptionInvoiceConfigUpdateRequestDto.md) | ❌       | Request Body                            |
+| Name                                      | Type                                                                                                | Required | Description                             |
+| :---------------------------------------- | :-------------------------------------------------------------------------------------------------- | :------- | :-------------------------------------- |
+| id                                        | String                                                                                              | ✅       | Unique subscription identifier in Asaas |
+| subscriptionInvoiceConfigUpdateRequestDto | [SubscriptionInvoiceConfigUpdateRequestDto](../models/SubscriptionInvoiceConfigUpdateRequestDto.md) | ❌       | Request Body                            |
 
 **Return Type**
 
-`ApiSubscriptionInvoiceConfigGetResponseDto`
+`SubscriptionInvoiceConfigGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -794,10 +788,10 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerInvoiceTaxesDto;
-import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigGetResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigUpdateRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigUpdateRequestDtoEffectiveDatePeriod;
+import com.asaas.apisdk.models.InvoiceTaxesDto;
+import com.asaas.apisdk.models.SubscriptionInvoiceConfigGetResponseDto;
+import com.asaas.apisdk.models.SubscriptionInvoiceConfigUpdateRequestDto;
+import com.asaas.apisdk.models.SubscriptionInvoiceConfigUpdateRequestDtoEffectiveDatePeriod;
 
 public class Main {
 
@@ -808,7 +802,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerInvoiceTaxesDto apiCustomerInvoiceTaxesDto = ApiCustomerInvoiceTaxesDto.builder()
+    InvoiceTaxesDto invoiceTaxesDto = InvoiceTaxesDto.builder()
       .retainIss(true)
       .cofins(1D)
       .csll(1D)
@@ -818,21 +812,20 @@ public class Main {
       .iss(1D)
       .build();
 
-    ApiSubscriptionInvoiceConfigUpdateRequestDto apiSubscriptionInvoiceConfigUpdateRequestDto =
-      ApiSubscriptionInvoiceConfigUpdateRequestDto.builder()
+    SubscriptionInvoiceConfigUpdateRequestDto subscriptionInvoiceConfigUpdateRequestDto =
+      SubscriptionInvoiceConfigUpdateRequestDto.builder()
         .deductions(55D)
-        .effectiveDatePeriod(ApiSubscriptionInvoiceConfigUpdateRequestDtoEffectiveDatePeriod.ON_PAYMENT_CONFIRMATION)
+        .effectiveDatePeriod(SubscriptionInvoiceConfigUpdateRequestDtoEffectiveDatePeriod.ON_PAYMENT_CONFIRMATION)
         .receivedOnly(true)
-        .daysBeforeDueDate(2L)
+        .daysBeforeDueDate(10L)
         .observations("Regarding March work")
-        .taxes(apiCustomerInvoiceTaxesDto)
+        .taxes(invoiceTaxesDto)
         .build();
 
-    ApiSubscriptionInvoiceConfigGetResponseDto response =
-      asaasSdk.subscription.updateConfigurationForIssuanceOfInvoices(
-        "sub_VXJBYgP2u0eO",
-        apiSubscriptionInvoiceConfigUpdateRequestDto
-      );
+    SubscriptionInvoiceConfigGetResponseDto response = asaasSdk.subscription.updateConfigurationForIssuanceOfInvoices(
+      "sub_VXJBYgP2u0eO",
+      subscriptionInvoiceConfigUpdateRequestDto
+    );
 
     System.out.println(response);
   }
@@ -853,7 +846,7 @@ public class Main {
 
 **Return Type**
 
-`ApiSubscriptionDeleteInvoiceConfigResponseDto`
+`SubscriptionDeleteInvoiceConfigResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -861,7 +854,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiSubscriptionDeleteInvoiceConfigResponseDto;
+import com.asaas.apisdk.models.SubscriptionDeleteInvoiceConfigResponseDto;
 
 public class Main {
 
@@ -872,7 +865,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiSubscriptionDeleteInvoiceConfigResponseDto response =
+    SubscriptionDeleteInvoiceConfigResponseDto response =
       asaasSdk.subscription.removeConfigurationForIssuanceOfInvoices("sub_VXJBYgP2u0eO");
 
     System.out.println(response);
@@ -895,7 +888,7 @@ public class Main {
 
 **Return Type**
 
-`ApiCustomerInvoiceListResponseDto`
+`InvoiceListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -903,9 +896,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerInvoiceListResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionGetInvoicesRequestInvoiceStatus;
+import com.asaas.apisdk.models.InvoiceListResponseDto;
 import com.asaas.apisdk.models.ListInvoicesForSubscriptionChargesParameters;
+import com.asaas.apisdk.models.SubscriptionGetInvoicesRequestInvoiceStatus;
 
 public class Main {
 
@@ -918,16 +911,16 @@ public class Main {
 
     ListInvoicesForSubscriptionChargesParameters requestParameters =
       ListInvoicesForSubscriptionChargesParameters.builder()
-        .offset(5L)
+        .offset(0L)
         .limit(10L)
         .effectiveDateGe("2024-08-20")
         .effectiveDateLe("2024-08-20")
         .externalReference("externalReference")
-        .status(ApiSubscriptionGetInvoicesRequestInvoiceStatus.SCHEDULED)
+        .status(SubscriptionGetInvoicesRequestInvoiceStatus.SCHEDULED)
         .customer("cus_000000002750")
         .build();
 
-    ApiCustomerInvoiceListResponseDto response = asaasSdk.subscription.listInvoicesForSubscriptionCharges(
+    InvoiceListResponseDto response = asaasSdk.subscription.listInvoicesForSubscriptionCharges(
       "inv_000000000232",
       requestParameters
     );

@@ -15,15 +15,15 @@ A list of all methods in the `ChargebackService` service. Click on the method na
 
 **Parameters**
 
-| Name                               | Type                                                                                  | Required | Description                                                            |
-| :--------------------------------- | :------------------------------------------------------------------------------------ | :------- | :--------------------------------------------------------------------- |
-| id                                 | String                                                                                | ✅       | Unique identifier of chargeback for which the dispute will be created. |
-| apiChargebackSaveDisputeRequestDto | [ApiChargebackSaveDisputeRequestDto](../models/ApiChargebackSaveDisputeRequestDto.md) | ❌       | Request Body                                                           |
-| \_filename                         | [String](../models/String.md)                                                         | ✅       | Filename for the uploaded file                                         |
+| Name                            | Type                                                                            | Required | Description                                                            |
+| :------------------------------ | :------------------------------------------------------------------------------ | :------- | :--------------------------------------------------------------------- |
+| id                              | String                                                                          | ✅       | Unique identifier of chargeback for which the dispute will be created. |
+| chargebackSaveDisputeRequestDto | [ChargebackSaveDisputeRequestDto](../models/ChargebackSaveDisputeRequestDto.md) | ❌       | Request Body                                                           |
+| \_filename                      | [String](../models/String.md)                                                   | ✅       | Filename for the uploaded file                                         |
 
 **Return Type**
 
-`ApiChargebackSaveDisputeResponseDto`
+`ChargebackSaveDisputeResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -31,8 +31,8 @@ A list of all methods in the `ChargebackService` service. Click on the method na
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiChargebackSaveDisputeRequestDto;
-import com.asaas.apisdk.models.ApiChargebackSaveDisputeResponseDto;
+import com.asaas.apisdk.models.ChargebackSaveDisputeRequestDto;
+import com.asaas.apisdk.models.ChargebackSaveDisputeResponseDto;
 
 public class Main {
 
@@ -43,17 +43,17 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiChargebackSaveDisputeRequestDto apiChargebackSaveDisputeRequestDto = ApiChargebackSaveDisputeRequestDto.builder()
+    ChargebackSaveDisputeRequestDto chargebackSaveDisputeRequestDto = ChargebackSaveDisputeRequestDto.builder()
       .files(files)
       .build();
-    ApiChargebackSaveDisputeRequestDto apiChargebackSaveDisputeRequestDto = ApiChargebackSaveDisputeRequestDto.builder()
+    ChargebackSaveDisputeRequestDto chargebackSaveDisputeRequestDto = ChargebackSaveDisputeRequestDto.builder()
       .files(files)
       .build();
 
-    ApiChargebackSaveDisputeResponseDto response = asaasSdk.chargeback.createAChargebackDispute(
+    ChargebackSaveDisputeResponseDto response = asaasSdk.chargeback.createAChargebackDispute(
       "8e784c3e-afe8-4844-bb93-6b445763",
-      apiChargebackSaveDisputeRequestDto,
-      apiChargebackSaveDisputeRequestDto
+      chargebackSaveDisputeRequestDto,
+      chargebackSaveDisputeRequestDto
     );
 
     System.out.println(response);
@@ -77,7 +77,7 @@ This method returns a paginated list of all chargebacks for the specified filter
 
 **Return Type**
 
-`ApiChargebackListResponseDto`
+`ChargebackListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -85,9 +85,9 @@ This method returns a paginated list of all chargebacks for the specified filter
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiChargebackListRequestChargebackStatus;
-import com.asaas.apisdk.models.ApiChargebackListRequestCreditCardBrand;
-import com.asaas.apisdk.models.ApiChargebackListResponseDto;
+import com.asaas.apisdk.models.ChargebackListRequestChargebackStatus;
+import com.asaas.apisdk.models.ChargebackListRequestCreditCardBrand;
+import com.asaas.apisdk.models.ChargebackListResponseDto;
 import com.asaas.apisdk.models.ListChargebacksParameters;
 
 public class Main {
@@ -100,17 +100,17 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListChargebacksParameters requestParameters = ListChargebacksParameters.builder()
-      .offset(4L)
+      .offset(9L)
       .limit(10L)
-      .creditCardBrand(ApiChargebackListRequestCreditCardBrand.VISA)
+      .creditCardBrand(ChargebackListRequestCreditCardBrand.VISA)
       .originDisputeDateLe("2024-12-05")
       .originDisputeDateGe("2023-11-01")
       .originTransactionDateLe("2024-12-05")
       .originTransactionDateGe("2024-10-10")
-      .status(ApiChargebackListRequestChargebackStatus.REQUESTED)
+      .status(ChargebackListRequestChargebackStatus.REQUESTED)
       .build();
 
-    ApiChargebackListResponseDto response = asaasSdk.chargeback.listChargebacks(requestParameters);
+    ChargebackListResponseDto response = asaasSdk.chargeback.listChargebacks(requestParameters);
 
     System.out.println(response);
   }
@@ -133,7 +133,7 @@ This endpoint retrieves a specific chargeback based on the payment or installmen
 
 **Return Type**
 
-`ApiPaymentChargebackResponseDto`
+`PaymentChargebackResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -141,7 +141,7 @@ This endpoint retrieves a specific chargeback based on the payment or installmen
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentChargebackResponseDto;
+import com.asaas.apisdk.models.PaymentChargebackResponseDto;
 
 public class Main {
 
@@ -152,7 +152,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentChargebackResponseDto response = asaasSdk.chargeback.retrieveASingleChargeback("pay_s02s330x4pox1x0y");
+    PaymentChargebackResponseDto response = asaasSdk.chargeback.retrieveASingleChargeback("pay_s02s330x4pox1x0y");
 
     System.out.println(response);
   }

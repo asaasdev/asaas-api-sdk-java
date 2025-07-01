@@ -4,21 +4,21 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiPaymentDeleteResponseDto;
-import com.asaas.apisdk.models.ApiPaymentLeanGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentLeanListResponseDto;
-import com.asaas.apisdk.models.ApiPaymentLeanSaveWithCreditCardResponseDto;
-import com.asaas.apisdk.models.ApiPaymentReceiveInCashRequestDto;
-import com.asaas.apisdk.models.ApiPaymentRefundRequestDto;
-import com.asaas.apisdk.models.ApiPaymentSaveRequestDto;
-import com.asaas.apisdk.models.ApiPaymentSaveWithCreditCardRequestDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListPaymentsWithSummaryDataParameters;
+import com.asaas.apisdk.models.PaymentDeleteResponseDto;
+import com.asaas.apisdk.models.PaymentLeanGetResponseDto;
+import com.asaas.apisdk.models.PaymentLeanListResponseDto;
+import com.asaas.apisdk.models.PaymentLeanSaveWithCreditCardResponseDto;
+import com.asaas.apisdk.models.PaymentReceiveInCashRequestDto;
+import com.asaas.apisdk.models.PaymentRefundRequestDto;
+import com.asaas.apisdk.models.PaymentSaveRequestDto;
+import com.asaas.apisdk.models.PaymentSaveWithCreditCardRequestDto;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
 import com.asaas.apisdk.validation.validators.modelValidators.ListPaymentsWithSummaryDataParametersValidator;
@@ -42,9 +42,9 @@ public class PaymentWithSummaryDataService extends BaseService {
   /**
    * List payments with summary data
    *
-   * @return response of {@code ApiPaymentLeanListResponseDto}
+   * @return response of {@code PaymentLeanListResponseDto}
    */
-  public ApiPaymentLeanListResponseDto listPaymentsWithSummaryData() throws ApiError, ValidationException {
+  public PaymentLeanListResponseDto listPaymentsWithSummaryData() throws ApiError, ValidationException {
     return this.listPaymentsWithSummaryData(ListPaymentsWithSummaryDataParameters.builder().build());
   }
 
@@ -52,23 +52,23 @@ public class PaymentWithSummaryDataService extends BaseService {
    * List payments with summary data
    *
    * @param requestParameters {@link ListPaymentsWithSummaryDataParameters} Request Parameters Object
-   * @return response of {@code ApiPaymentLeanListResponseDto}
+   * @return response of {@code PaymentLeanListResponseDto}
    */
-  public ApiPaymentLeanListResponseDto listPaymentsWithSummaryData(
+  public PaymentLeanListResponseDto listPaymentsWithSummaryData(
     @NonNull ListPaymentsWithSummaryDataParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsWithSummaryDataRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentLeanListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLeanListResponseDto>() {});
   }
 
   /**
    * List payments with summary data
    *
-   * @return response of {@code CompletableFuture<ApiPaymentLeanListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLeanListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentLeanListResponseDto> listPaymentsWithSummaryDataAsync()
+  public CompletableFuture<PaymentLeanListResponseDto> listPaymentsWithSummaryDataAsync()
     throws ApiError, ValidationException {
     return this.listPaymentsWithSummaryDataAsync(ListPaymentsWithSummaryDataParameters.builder().build());
   }
@@ -77,16 +77,16 @@ public class PaymentWithSummaryDataService extends BaseService {
    * List payments with summary data
    *
    * @param requestParameters {@link ListPaymentsWithSummaryDataParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPaymentLeanListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLeanListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentLeanListResponseDto> listPaymentsWithSummaryDataAsync(
+  public CompletableFuture<PaymentLeanListResponseDto> listPaymentsWithSummaryDataAsync(
     @NonNull ListPaymentsWithSummaryDataParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsWithSummaryDataRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentLeanListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLeanListResponseDto>() {})
     );
   }
 
@@ -140,56 +140,55 @@ public class PaymentWithSummaryDataService extends BaseService {
   /**
    * Create new payment with summary data in response
    *
-   * @return response of {@code ApiPaymentLeanGetResponseDto}
+   * @return response of {@code PaymentLeanGetResponseDto}
    */
-  public ApiPaymentLeanGetResponseDto createNewPaymentWithSummaryDataInResponse() throws ApiError {
-    return this.createNewPaymentWithSummaryDataInResponse(ApiPaymentSaveRequestDto.builder().build());
+  public PaymentLeanGetResponseDto createNewPaymentWithSummaryDataInResponse() throws ApiError {
+    return this.createNewPaymentWithSummaryDataInResponse(PaymentSaveRequestDto.builder().build());
   }
 
   /**
    * Create new payment with summary data in response
    *
-   * @param apiPaymentSaveRequestDto {@link ApiPaymentSaveRequestDto} Request Body
-   * @return response of {@code ApiPaymentLeanGetResponseDto}
+   * @param paymentSaveRequestDto {@link PaymentSaveRequestDto} Request Body
+   * @return response of {@code PaymentLeanGetResponseDto}
    */
-  public ApiPaymentLeanGetResponseDto createNewPaymentWithSummaryDataInResponse(
-    @NonNull ApiPaymentSaveRequestDto apiPaymentSaveRequestDto
+  public PaymentLeanGetResponseDto createNewPaymentWithSummaryDataInResponse(
+    @NonNull PaymentSaveRequestDto paymentSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateNewPaymentWithSummaryDataInResponseRequest(apiPaymentSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateNewPaymentWithSummaryDataInResponseRequest(paymentSaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {});
   }
 
   /**
    * Create new payment with summary data in response
    *
-   * @return response of {@code CompletableFuture<ApiPaymentLeanGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLeanGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentLeanGetResponseDto> createNewPaymentWithSummaryDataInResponseAsync()
-    throws ApiError {
-    return this.createNewPaymentWithSummaryDataInResponseAsync(ApiPaymentSaveRequestDto.builder().build());
+  public CompletableFuture<PaymentLeanGetResponseDto> createNewPaymentWithSummaryDataInResponseAsync() throws ApiError {
+    return this.createNewPaymentWithSummaryDataInResponseAsync(PaymentSaveRequestDto.builder().build());
   }
 
   /**
    * Create new payment with summary data in response
    *
-   * @param apiPaymentSaveRequestDto {@link ApiPaymentSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentLeanGetResponseDto>}
+   * @param paymentSaveRequestDto {@link PaymentSaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<PaymentLeanGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentLeanGetResponseDto> createNewPaymentWithSummaryDataInResponseAsync(
-    @NonNull ApiPaymentSaveRequestDto apiPaymentSaveRequestDto
+  public CompletableFuture<PaymentLeanGetResponseDto> createNewPaymentWithSummaryDataInResponseAsync(
+    @NonNull PaymentSaveRequestDto paymentSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateNewPaymentWithSummaryDataInResponseRequest(apiPaymentSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateNewPaymentWithSummaryDataInResponseRequest(paymentSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {})
     );
   }
 
   private Request buildCreateNewPaymentWithSummaryDataInResponseRequest(
-    @NonNull ApiPaymentSaveRequestDto apiPaymentSaveRequestDto
+    @NonNull PaymentSaveRequestDto paymentSaveRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -197,73 +196,73 @@ public class PaymentWithSummaryDataService extends BaseService {
       "v3/lean/payments"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiPaymentSaveRequestDto)
+      .setJsonContent(paymentSaveRequestDto)
       .build();
   }
 
   /**
    * Create new payment with credit card with summary data in response
    *
-   * @return response of {@code ApiPaymentLeanSaveWithCreditCardResponseDto}
+   * @return response of {@code PaymentLeanSaveWithCreditCardResponseDto}
    */
-  public ApiPaymentLeanSaveWithCreditCardResponseDto createNewPaymentWithCreditCardWithSummaryDataInResponse()
+  public PaymentLeanSaveWithCreditCardResponseDto createNewPaymentWithCreditCardWithSummaryDataInResponse()
     throws ApiError {
     return this.createNewPaymentWithCreditCardWithSummaryDataInResponse(
-        ApiPaymentSaveWithCreditCardRequestDto.builder().build()
+        PaymentSaveWithCreditCardRequestDto.builder().build()
       );
   }
 
   /**
    * Create new payment with credit card with summary data in response
    *
-   * @param apiPaymentSaveWithCreditCardRequestDto {@link ApiPaymentSaveWithCreditCardRequestDto} Request Body
-   * @return response of {@code ApiPaymentLeanSaveWithCreditCardResponseDto}
+   * @param paymentSaveWithCreditCardRequestDto {@link PaymentSaveWithCreditCardRequestDto} Request Body
+   * @return response of {@code PaymentLeanSaveWithCreditCardResponseDto}
    */
-  public ApiPaymentLeanSaveWithCreditCardResponseDto createNewPaymentWithCreditCardWithSummaryDataInResponse(
-    @NonNull ApiPaymentSaveWithCreditCardRequestDto apiPaymentSaveWithCreditCardRequestDto
+  public PaymentLeanSaveWithCreditCardResponseDto createNewPaymentWithCreditCardWithSummaryDataInResponse(
+    @NonNull PaymentSaveWithCreditCardRequestDto paymentSaveWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request =
-      this.buildCreateNewPaymentWithCreditCardWithSummaryDataInResponseRequest(apiPaymentSaveWithCreditCardRequestDto);
+      this.buildCreateNewPaymentWithCreditCardWithSummaryDataInResponseRequest(paymentSaveWithCreditCardRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentLeanSaveWithCreditCardResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLeanSaveWithCreditCardResponseDto>() {});
   }
 
   /**
    * Create new payment with credit card with summary data in response
    *
-   * @return response of {@code CompletableFuture<ApiPaymentLeanSaveWithCreditCardResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLeanSaveWithCreditCardResponseDto>}
    */
   public CompletableFuture<
-    ApiPaymentLeanSaveWithCreditCardResponseDto
+    PaymentLeanSaveWithCreditCardResponseDto
   > createNewPaymentWithCreditCardWithSummaryDataInResponseAsync() throws ApiError {
     return this.createNewPaymentWithCreditCardWithSummaryDataInResponseAsync(
-        ApiPaymentSaveWithCreditCardRequestDto.builder().build()
+        PaymentSaveWithCreditCardRequestDto.builder().build()
       );
   }
 
   /**
    * Create new payment with credit card with summary data in response
    *
-   * @param apiPaymentSaveWithCreditCardRequestDto {@link ApiPaymentSaveWithCreditCardRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentLeanSaveWithCreditCardResponseDto>}
+   * @param paymentSaveWithCreditCardRequestDto {@link PaymentSaveWithCreditCardRequestDto} Request Body
+   * @return response of {@code CompletableFuture<PaymentLeanSaveWithCreditCardResponseDto>}
    */
   public CompletableFuture<
-    ApiPaymentLeanSaveWithCreditCardResponseDto
+    PaymentLeanSaveWithCreditCardResponseDto
   > createNewPaymentWithCreditCardWithSummaryDataInResponseAsync(
-    @NonNull ApiPaymentSaveWithCreditCardRequestDto apiPaymentSaveWithCreditCardRequestDto
+    @NonNull PaymentSaveWithCreditCardRequestDto paymentSaveWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request =
-      this.buildCreateNewPaymentWithCreditCardWithSummaryDataInResponseRequest(apiPaymentSaveWithCreditCardRequestDto);
+      this.buildCreateNewPaymentWithCreditCardWithSummaryDataInResponseRequest(paymentSaveWithCreditCardRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentLeanSaveWithCreditCardResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLeanSaveWithCreditCardResponseDto>() {})
     );
   }
 
   private Request buildCreateNewPaymentWithCreditCardWithSummaryDataInResponseRequest(
-    @NonNull ApiPaymentSaveWithCreditCardRequestDto apiPaymentSaveWithCreditCardRequestDto
+    @NonNull PaymentSaveWithCreditCardRequestDto paymentSaveWithCreditCardRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -271,7 +270,7 @@ public class PaymentWithSummaryDataService extends BaseService {
       "v3/lean/payments/"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiPaymentSaveWithCreditCardRequestDto)
+      .setJsonContent(paymentSaveWithCreditCardRequestDto)
       .build();
   }
 
@@ -280,16 +279,16 @@ public class PaymentWithSummaryDataService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code ApiPaymentLeanGetResponseDto}
+   * @return response of {@code PaymentLeanGetResponseDto}
    */
-  public ApiPaymentLeanGetResponseDto capturePaymentWithPreAuthorizationWithSummaryDataInResponse(
+  public PaymentLeanGetResponseDto capturePaymentWithPreAuthorizationWithSummaryDataInResponse(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCapturePaymentWithPreAuthorizationWithSummaryDataInResponseRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {});
   }
 
   /**
@@ -297,17 +296,17 @@ public class PaymentWithSummaryDataService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentLeanGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLeanGetResponseDto>}
    */
-  public CompletableFuture<
-    ApiPaymentLeanGetResponseDto
-  > capturePaymentWithPreAuthorizationWithSummaryDataInResponseAsync(@NonNull String id, @NonNull Object input)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<PaymentLeanGetResponseDto> capturePaymentWithPreAuthorizationWithSummaryDataInResponseAsync(
+    @NonNull String id,
+    @NonNull Object input
+  ) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCapturePaymentWithPreAuthorizationWithSummaryDataInResponseRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {})
     );
   }
 
@@ -330,28 +329,28 @@ public class PaymentWithSummaryDataService extends BaseService {
    * Retrieve a single payment with summary data
    *
    * @param id String Unique payment identifier in Asaas
-   * @return response of {@code ApiPaymentLeanGetResponseDto}
+   * @return response of {@code PaymentLeanGetResponseDto}
    */
-  public ApiPaymentLeanGetResponseDto retrieveASinglePaymentWithSummaryData(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PaymentLeanGetResponseDto retrieveASinglePaymentWithSummaryData(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASinglePaymentWithSummaryDataRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single payment with summary data
    *
    * @param id String Unique payment identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiPaymentLeanGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLeanGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentLeanGetResponseDto> retrieveASinglePaymentWithSummaryDataAsync(@NonNull String id)
+  public CompletableFuture<PaymentLeanGetResponseDto> retrieveASinglePaymentWithSummaryDataAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASinglePaymentWithSummaryDataRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {})
     );
   }
 
@@ -371,16 +370,16 @@ public class PaymentWithSummaryDataService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code ApiPaymentLeanGetResponseDto}
+   * @return response of {@code PaymentLeanGetResponseDto}
    */
-  public ApiPaymentLeanGetResponseDto updateExistingPaymentWithSummaryDataInResponse(
+  public PaymentLeanGetResponseDto updateExistingPaymentWithSummaryDataInResponse(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildUpdateExistingPaymentWithSummaryDataInResponseRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {});
   }
 
   /**
@@ -388,17 +387,17 @@ public class PaymentWithSummaryDataService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentLeanGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLeanGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentLeanGetResponseDto> updateExistingPaymentWithSummaryDataInResponseAsync(
+  public CompletableFuture<PaymentLeanGetResponseDto> updateExistingPaymentWithSummaryDataInResponseAsync(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildUpdateExistingPaymentWithSummaryDataInResponseRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {})
     );
   }
 
@@ -421,28 +420,28 @@ public class PaymentWithSummaryDataService extends BaseService {
    * Delete payment with summary data
    *
    * @param id String Unique payment identifier in Asaas
-   * @return response of {@code ApiPaymentDeleteResponseDto}
+   * @return response of {@code PaymentDeleteResponseDto}
    */
-  public ApiPaymentDeleteResponseDto deletePaymentWithSummaryData(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PaymentDeleteResponseDto deletePaymentWithSummaryData(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildDeletePaymentWithSummaryDataRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentDeleteResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentDeleteResponseDto>() {});
   }
 
   /**
    * Delete payment with summary data
    *
    * @param id String Unique payment identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiPaymentDeleteResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDeleteResponseDto>}
    */
-  public CompletableFuture<ApiPaymentDeleteResponseDto> deletePaymentWithSummaryDataAsync(@NonNull String id)
+  public CompletableFuture<PaymentDeleteResponseDto> deletePaymentWithSummaryDataAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildDeletePaymentWithSummaryDataRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentDeleteResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentDeleteResponseDto>() {})
     );
   }
 
@@ -462,16 +461,16 @@ public class PaymentWithSummaryDataService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code ApiPaymentLeanGetResponseDto}
+   * @return response of {@code PaymentLeanGetResponseDto}
    */
-  public ApiPaymentLeanGetResponseDto restoreRemovedPaymentWithSummaryDataInResponse(
+  public PaymentLeanGetResponseDto restoreRemovedPaymentWithSummaryDataInResponse(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRestoreRemovedPaymentWithSummaryDataInResponseRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {});
   }
 
   /**
@@ -479,17 +478,17 @@ public class PaymentWithSummaryDataService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentLeanGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLeanGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentLeanGetResponseDto> restoreRemovedPaymentWithSummaryDataInResponseAsync(
+  public CompletableFuture<PaymentLeanGetResponseDto> restoreRemovedPaymentWithSummaryDataInResponseAsync(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRestoreRemovedPaymentWithSummaryDataInResponseRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {})
     );
   }
 
@@ -512,41 +511,41 @@ public class PaymentWithSummaryDataService extends BaseService {
    * Refund payment with summary data in response
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentRefundRequestDto {@link ApiPaymentRefundRequestDto} Request Body
-   * @return response of {@code ApiPaymentLeanGetResponseDto}
+   * @param paymentRefundRequestDto {@link PaymentRefundRequestDto} Request Body
+   * @return response of {@code PaymentLeanGetResponseDto}
    */
-  public ApiPaymentLeanGetResponseDto refundPaymentWithSummaryDataInResponse(
+  public PaymentLeanGetResponseDto refundPaymentWithSummaryDataInResponse(
     @NonNull String id,
-    @NonNull ApiPaymentRefundRequestDto apiPaymentRefundRequestDto
+    @NonNull PaymentRefundRequestDto paymentRefundRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildRefundPaymentWithSummaryDataInResponseRequest(id, apiPaymentRefundRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildRefundPaymentWithSummaryDataInResponseRequest(id, paymentRefundRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {});
   }
 
   /**
    * Refund payment with summary data in response
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentRefundRequestDto {@link ApiPaymentRefundRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentLeanGetResponseDto>}
+   * @param paymentRefundRequestDto {@link PaymentRefundRequestDto} Request Body
+   * @return response of {@code CompletableFuture<PaymentLeanGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentLeanGetResponseDto> refundPaymentWithSummaryDataInResponseAsync(
+  public CompletableFuture<PaymentLeanGetResponseDto> refundPaymentWithSummaryDataInResponseAsync(
     @NonNull String id,
-    @NonNull ApiPaymentRefundRequestDto apiPaymentRefundRequestDto
+    @NonNull PaymentRefundRequestDto paymentRefundRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildRefundPaymentWithSummaryDataInResponseRequest(id, apiPaymentRefundRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildRefundPaymentWithSummaryDataInResponseRequest(id, paymentRefundRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {})
     );
   }
 
   private Request buildRefundPaymentWithSummaryDataInResponseRequest(
     @NonNull String id,
-    @NonNull ApiPaymentRefundRequestDto apiPaymentRefundRequestDto
+    @NonNull PaymentRefundRequestDto paymentRefundRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -555,7 +554,7 @@ public class PaymentWithSummaryDataService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiPaymentRefundRequestDto)
+      .setJsonContent(paymentRefundRequestDto)
       .build();
   }
 
@@ -563,43 +562,41 @@ public class PaymentWithSummaryDataService extends BaseService {
    * Confirm cash receipt with summary data in response
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentReceiveInCashRequestDto {@link ApiPaymentReceiveInCashRequestDto} Request Body
-   * @return response of {@code ApiPaymentLeanGetResponseDto}
+   * @param paymentReceiveInCashRequestDto {@link PaymentReceiveInCashRequestDto} Request Body
+   * @return response of {@code PaymentLeanGetResponseDto}
    */
-  public ApiPaymentLeanGetResponseDto confirmCashReceiptWithSummaryDataInResponse(
+  public PaymentLeanGetResponseDto confirmCashReceiptWithSummaryDataInResponse(
     @NonNull String id,
-    @NonNull ApiPaymentReceiveInCashRequestDto apiPaymentReceiveInCashRequestDto
+    @NonNull PaymentReceiveInCashRequestDto paymentReceiveInCashRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request =
-      this.buildConfirmCashReceiptWithSummaryDataInResponseRequest(id, apiPaymentReceiveInCashRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildConfirmCashReceiptWithSummaryDataInResponseRequest(id, paymentReceiveInCashRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {});
   }
 
   /**
    * Confirm cash receipt with summary data in response
    *
    * @param id String Unique payment identifier in Asaas
-   * @param apiPaymentReceiveInCashRequestDto {@link ApiPaymentReceiveInCashRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentLeanGetResponseDto>}
+   * @param paymentReceiveInCashRequestDto {@link PaymentReceiveInCashRequestDto} Request Body
+   * @return response of {@code CompletableFuture<PaymentLeanGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentLeanGetResponseDto> confirmCashReceiptWithSummaryDataInResponseAsync(
+  public CompletableFuture<PaymentLeanGetResponseDto> confirmCashReceiptWithSummaryDataInResponseAsync(
     @NonNull String id,
-    @NonNull ApiPaymentReceiveInCashRequestDto apiPaymentReceiveInCashRequestDto
+    @NonNull PaymentReceiveInCashRequestDto paymentReceiveInCashRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request =
-      this.buildConfirmCashReceiptWithSummaryDataInResponseRequest(id, apiPaymentReceiveInCashRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildConfirmCashReceiptWithSummaryDataInResponseRequest(id, paymentReceiveInCashRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {})
     );
   }
 
   private Request buildConfirmCashReceiptWithSummaryDataInResponseRequest(
     @NonNull String id,
-    @NonNull ApiPaymentReceiveInCashRequestDto apiPaymentReceiveInCashRequestDto
+    @NonNull PaymentReceiveInCashRequestDto paymentReceiveInCashRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -608,7 +605,7 @@ public class PaymentWithSummaryDataService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiPaymentReceiveInCashRequestDto)
+      .setJsonContent(paymentReceiveInCashRequestDto)
       .build();
   }
 
@@ -617,16 +614,16 @@ public class PaymentWithSummaryDataService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code ApiPaymentLeanGetResponseDto}
+   * @return response of {@code PaymentLeanGetResponseDto}
    */
-  public ApiPaymentLeanGetResponseDto undoCashReceiptConfirmationWithSummaryDataInResponse(
+  public PaymentLeanGetResponseDto undoCashReceiptConfirmationWithSummaryDataInResponse(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildUndoCashReceiptConfirmationWithSummaryDataInResponseRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {});
   }
 
   /**
@@ -634,17 +631,17 @@ public class PaymentWithSummaryDataService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentLeanGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLeanGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentLeanGetResponseDto> undoCashReceiptConfirmationWithSummaryDataInResponseAsync(
+  public CompletableFuture<PaymentLeanGetResponseDto> undoCashReceiptConfirmationWithSummaryDataInResponseAsync(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildUndoCashReceiptConfirmationWithSummaryDataInResponseRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentLeanGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLeanGetResponseDto>() {})
     );
   }
 

@@ -23,7 +23,7 @@ A list of all methods in the `MobilePhoneRechargeService` service. Click on the 
 
 **Return Type**
 
-`ApiMobilePhoneRechargeListResponseDto`
+`MobilePhoneRechargeListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -31,8 +31,8 @@ A list of all methods in the `MobilePhoneRechargeService` service. Click on the 
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiMobilePhoneRechargeListResponseDto;
 import com.asaas.apisdk.models.ListMobileRechargesParameters;
+import com.asaas.apisdk.models.MobilePhoneRechargeListResponseDto;
 
 public class Main {
 
@@ -44,13 +44,11 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListMobileRechargesParameters requestParameters = ListMobileRechargesParameters.builder()
-      .offset(2L)
+      .offset(8L)
       .limit(10L)
       .build();
 
-    ApiMobilePhoneRechargeListResponseDto response = asaasSdk.mobilePhoneRecharge.listMobileRecharges(
-      requestParameters
-    );
+    MobilePhoneRechargeListResponseDto response = asaasSdk.mobilePhoneRecharge.listMobileRecharges(requestParameters);
 
     System.out.println(response);
   }
@@ -65,13 +63,13 @@ public class Main {
 
 **Parameters**
 
-| Name                                 | Type                                                                                      | Required | Description  |
-| :----------------------------------- | :---------------------------------------------------------------------------------------- | :------- | :----------- |
-| apiMobilePhoneRechargeSaveRequestDto | [ApiMobilePhoneRechargeSaveRequestDto](../models/ApiMobilePhoneRechargeSaveRequestDto.md) | ❌       | Request Body |
+| Name                              | Type                                                                                | Required | Description  |
+| :-------------------------------- | :---------------------------------------------------------------------------------- | :------- | :----------- |
+| mobilePhoneRechargeSaveRequestDto | [MobilePhoneRechargeSaveRequestDto](../models/MobilePhoneRechargeSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiMobilePhoneRechargeGetResponseDto`
+`MobilePhoneRechargeGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -79,8 +77,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiMobilePhoneRechargeGetResponseDto;
-import com.asaas.apisdk.models.ApiMobilePhoneRechargeSaveRequestDto;
+import com.asaas.apisdk.models.MobilePhoneRechargeGetResponseDto;
+import com.asaas.apisdk.models.MobilePhoneRechargeSaveRequestDto;
 
 public class Main {
 
@@ -91,11 +89,13 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiMobilePhoneRechargeSaveRequestDto apiMobilePhoneRechargeSaveRequestDto =
-      ApiMobilePhoneRechargeSaveRequestDto.builder().value(15D).phoneNumber("63997365512").build();
+    MobilePhoneRechargeSaveRequestDto mobilePhoneRechargeSaveRequestDto = MobilePhoneRechargeSaveRequestDto.builder()
+      .value(15D)
+      .phoneNumber("63997365512")
+      .build();
 
-    ApiMobilePhoneRechargeGetResponseDto response = asaasSdk.mobilePhoneRecharge.requestRecharge(
-      apiMobilePhoneRechargeSaveRequestDto
+    MobilePhoneRechargeGetResponseDto response = asaasSdk.mobilePhoneRecharge.requestRecharge(
+      mobilePhoneRechargeSaveRequestDto
     );
 
     System.out.println(response);
@@ -117,7 +117,7 @@ public class Main {
 
 **Return Type**
 
-`ApiMobilePhoneRechargeGetResponseDto`
+`MobilePhoneRechargeGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -125,7 +125,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiMobilePhoneRechargeGetResponseDto;
+import com.asaas.apisdk.models.MobilePhoneRechargeGetResponseDto;
 
 public class Main {
 
@@ -136,7 +136,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiMobilePhoneRechargeGetResponseDto response = asaasSdk.mobilePhoneRecharge.recoverASingleCellphoneRecharge(
+    MobilePhoneRechargeGetResponseDto response = asaasSdk.mobilePhoneRecharge.recoverASingleCellphoneRecharge(
       "37c22147-4194-11ec-8061-0242ac120002"
     );
 
@@ -162,7 +162,7 @@ Allows canceling the cell phone top-up. Use the canBeCancelled property to verif
 
 **Return Type**
 
-`ApiMobilePhoneRechargeGetResponseDto`
+`MobilePhoneRechargeGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -170,7 +170,7 @@ Allows canceling the cell phone top-up. Use the canBeCancelled property to verif
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiMobilePhoneRechargeGetResponseDto;
+import com.asaas.apisdk.models.MobilePhoneRechargeGetResponseDto;
 
 public class Main {
 
@@ -181,7 +181,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiMobilePhoneRechargeGetResponseDto response = asaasSdk.mobilePhoneRecharge.cancelACellphoneRecharge(
+    MobilePhoneRechargeGetResponseDto response = asaasSdk.mobilePhoneRecharge.cancelACellphoneRecharge(
       "37c22147-4194-11ec-8061-0242ac120002",
       new Object()
     );
@@ -205,7 +205,7 @@ public class Main {
 
 **Return Type**
 
-`ApiMobilePhoneRechargeFindProviderResponseDto`
+`MobilePhoneRechargeFindProviderResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -213,7 +213,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiMobilePhoneRechargeFindProviderResponseDto;
+import com.asaas.apisdk.models.MobilePhoneRechargeFindProviderResponseDto;
 
 public class Main {
 
@@ -224,7 +224,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiMobilePhoneRechargeFindProviderResponseDto response = asaasSdk.mobilePhoneRecharge.searchForCellPhoneProvider(
+    MobilePhoneRechargeFindProviderResponseDto response = asaasSdk.mobilePhoneRecharge.searchForCellPhoneProvider(
       "63997365512"
     );
 

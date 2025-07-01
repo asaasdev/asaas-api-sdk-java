@@ -25,7 +25,7 @@ This method returns a paginated list of all transfers for the specified filter.
 
 **Return Type**
 
-`ApiTransferListResponseDto`
+`TransferListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -33,8 +33,8 @@ This method returns a paginated list of all transfers for the specified filter.
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiTransferListResponseDto;
 import com.asaas.apisdk.models.ListTransfersParameters;
+import com.asaas.apisdk.models.TransferListResponseDto;
 
 public class Main {
 
@@ -53,7 +53,7 @@ public class Main {
       .type("ASAAS_ACCOUNT")
       .build();
 
-    ApiTransferListResponseDto response = asaasSdk.transfer.listTransfers(requestParameters);
+    TransferListResponseDto response = asaasSdk.transfer.listTransfers(requestParameters);
 
     System.out.println(response);
   }
@@ -68,13 +68,13 @@ public class Main {
 
 **Parameters**
 
-| Name                      | Type                                                                | Required | Description  |
-| :------------------------ | :------------------------------------------------------------------ | :------- | :----------- |
-| apiTransferSaveRequestDto | [ApiTransferSaveRequestDto](../models/ApiTransferSaveRequestDto.md) | ❌       | Request Body |
+| Name                   | Type                                                          | Required | Description  |
+| :--------------------- | :------------------------------------------------------------ | :------- | :----------- |
+| transferSaveRequestDto | [TransferSaveRequestDto](../models/TransferSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiTransferGetResponseDto`
+`TransferGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -82,15 +82,15 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiTransferBankAccountSaveRequestBankAccountType;
-import com.asaas.apisdk.models.ApiTransferBankAccountSaveRequestDto;
-import com.asaas.apisdk.models.ApiTransferBankSaveRequestDto;
-import com.asaas.apisdk.models.ApiTransferGetResponseDto;
-import com.asaas.apisdk.models.ApiTransferRecurringSaveRequestDto;
-import com.asaas.apisdk.models.ApiTransferRecurringSaveRequestRecurringCheckoutScheduleFrequency;
-import com.asaas.apisdk.models.ApiTransferSaveRequestDto;
-import com.asaas.apisdk.models.ApiTransferSaveRequestPixAddressKeyType;
-import com.asaas.apisdk.models.ApiTransferSaveRequestTransferType;
+import com.asaas.apisdk.models.TransferBankAccountSaveRequestBankAccountType;
+import com.asaas.apisdk.models.TransferBankAccountSaveRequestDto;
+import com.asaas.apisdk.models.TransferBankSaveRequestDto;
+import com.asaas.apisdk.models.TransferGetResponseDto;
+import com.asaas.apisdk.models.TransferRecurringSaveRequestDto;
+import com.asaas.apisdk.models.TransferRecurringSaveRequestRecurringCheckoutScheduleFrequency;
+import com.asaas.apisdk.models.TransferSaveRequestDto;
+import com.asaas.apisdk.models.TransferSaveRequestPixAddressKeyType;
+import com.asaas.apisdk.models.TransferSaveRequestTransferType;
 
 public class Main {
 
@@ -101,43 +101,40 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiTransferBankSaveRequestDto apiTransferBankSaveRequestDto = ApiTransferBankSaveRequestDto.builder()
-      .code("237")
+    TransferBankSaveRequestDto transferBankSaveRequestDto = TransferBankSaveRequestDto.builder().code("237").build();
+
+    TransferBankAccountSaveRequestDto transferBankAccountSaveRequestDto = TransferBankAccountSaveRequestDto.builder()
+      .bank(transferBankSaveRequestDto)
+      .accountName("Bradesco account")
+      .ownerName("John Doe")
+      .ownerBirthDate("1995-04-12")
+      .cpfCnpj("52233424611")
+      .agency("1263")
+      .account("9999991")
+      .accountDigit("1")
+      .bankAccountType(TransferBankAccountSaveRequestBankAccountType.CONTA_CORRENTE)
+      .ispb("60746948")
       .build();
 
-    ApiTransferBankAccountSaveRequestDto apiTransferBankAccountSaveRequestDto =
-      ApiTransferBankAccountSaveRequestDto.builder()
-        .bank(apiTransferBankSaveRequestDto)
-        .accountName("Bradesco account")
-        .ownerName("John Doe")
-        .ownerBirthDate("1995-04-12")
-        .cpfCnpj("52233424611")
-        .agency("1263")
-        .account("9999991")
-        .accountDigit("1")
-        .bankAccountType(ApiTransferBankAccountSaveRequestBankAccountType.CONTA_CORRENTE)
-        .ispb("60746948")
-        .build();
-
-    ApiTransferRecurringSaveRequestDto apiTransferRecurringSaveRequestDto = ApiTransferRecurringSaveRequestDto.builder()
-      .frequency(ApiTransferRecurringSaveRequestRecurringCheckoutScheduleFrequency.WEEKLY)
+    TransferRecurringSaveRequestDto transferRecurringSaveRequestDto = TransferRecurringSaveRequestDto.builder()
+      .frequency(TransferRecurringSaveRequestRecurringCheckoutScheduleFrequency.WEEKLY)
       .quantity(3L)
       .build();
 
-    ApiTransferSaveRequestDto apiTransferSaveRequestDto = ApiTransferSaveRequestDto.builder()
+    TransferSaveRequestDto transferSaveRequestDto = TransferSaveRequestDto.builder()
       .value(1000D)
-      .bankAccount(apiTransferBankAccountSaveRequestDto)
-      .operationType(ApiTransferSaveRequestTransferType.PIX)
+      .bankAccount(transferBankAccountSaveRequestDto)
+      .operationType(TransferSaveRequestTransferType.PIX)
       .pixAddressKey("pixAddressKey")
-      .pixAddressKeyType(ApiTransferSaveRequestPixAddressKeyType.CPF)
+      .pixAddressKeyType(TransferSaveRequestPixAddressKeyType.CPF)
       .description("Barbecue paid via Pix scheduled")
       .scheduleDate("2018-01-26")
       .externalReference("externalReference")
-      .recurring(apiTransferRecurringSaveRequestDto)
+      .recurring(transferRecurringSaveRequestDto)
       .build();
 
-    ApiTransferGetResponseDto response = asaasSdk.transfer.transferToAnotherInstitutionAccountOrPixKey(
-      apiTransferSaveRequestDto
+    TransferGetResponseDto response = asaasSdk.transfer.transferToAnotherInstitutionAccountOrPixKey(
+      transferSaveRequestDto
     );
 
     System.out.println(response);
@@ -153,13 +150,13 @@ public class Main {
 
 **Parameters**
 
-| Name                                      | Type                                                                                                | Required | Description  |
-| :---------------------------------------- | :-------------------------------------------------------------------------------------------------- | :------- | :----------- |
-| apiTransferSaveInternalTransferRequestDto | [ApiTransferSaveInternalTransferRequestDto](../models/ApiTransferSaveInternalTransferRequestDto.md) | ❌       | Request Body |
+| Name                                   | Type                                                                                          | Required | Description  |
+| :------------------------------------- | :-------------------------------------------------------------------------------------------- | :------- | :----------- |
+| transferSaveInternalTransferRequestDto | [TransferSaveInternalTransferRequestDto](../models/TransferSaveInternalTransferRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiTransferSaveInternalTransferResponseDto`
+`TransferSaveInternalTransferResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -167,8 +164,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiTransferSaveInternalTransferRequestDto;
-import com.asaas.apisdk.models.ApiTransferSaveInternalTransferResponseDto;
+import com.asaas.apisdk.models.TransferSaveInternalTransferRequestDto;
+import com.asaas.apisdk.models.TransferSaveInternalTransferResponseDto;
 
 public class Main {
 
@@ -179,15 +176,15 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiTransferSaveInternalTransferRequestDto apiTransferSaveInternalTransferRequestDto =
-      ApiTransferSaveInternalTransferRequestDto.builder()
+    TransferSaveInternalTransferRequestDto transferSaveInternalTransferRequestDto =
+      TransferSaveInternalTransferRequestDto.builder()
         .value(1000D)
         .walletId("021c712-d963-4d86-a59d-031e7ac51a2e")
         .externalReference("externalReference")
         .build();
 
-    ApiTransferSaveInternalTransferResponseDto response = asaasSdk.transfer.transferToAsaasAccount(
-      apiTransferSaveInternalTransferRequestDto
+    TransferSaveInternalTransferResponseDto response = asaasSdk.transfer.transferToAsaasAccount(
+      transferSaveInternalTransferRequestDto
     );
 
     System.out.println(response);
@@ -209,7 +206,7 @@ public class Main {
 
 **Return Type**
 
-`ApiTransferGetResponseDto`
+`TransferGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -217,7 +214,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiTransferGetResponseDto;
+import com.asaas.apisdk.models.TransferGetResponseDto;
 
 public class Main {
 
@@ -228,9 +225,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiTransferGetResponseDto response = asaasSdk.transfer.retrieveASingleTransfer(
-      "777eb7c8-b1a2-4356-8fd8-a1b0644b528"
-    );
+    TransferGetResponseDto response = asaasSdk.transfer.retrieveASingleTransfer("777eb7c8-b1a2-4356-8fd8-a1b0644b528");
 
     System.out.println(response);
   }
@@ -251,7 +246,7 @@ public class Main {
 
 **Return Type**
 
-`ApiTransferGetResponseDto`
+`TransferGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -259,7 +254,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiTransferGetResponseDto;
+import com.asaas.apisdk.models.TransferGetResponseDto;
 
 public class Main {
 
@@ -270,7 +265,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiTransferGetResponseDto response = asaasSdk.transfer.cancelATransfer("777eb7c8-b1a2-4356-8fd8-a1b0644b5282");
+    TransferGetResponseDto response = asaasSdk.transfer.cancelATransfer("777eb7c8-b1a2-4356-8fd8-a1b0644b5282");
 
     System.out.println(response);
   }

@@ -48,13 +48,13 @@ public class ListSubscriptionsParameters {
    * Filter by billing type
    */
   @JsonProperty("billingType")
-  private JsonNullable<ApiSubscriptionListRequestBillingType> billingType;
+  private JsonNullable<SubscriptionListRequestBillingType> billingType;
 
   /**
    * Filter by status
    */
   @JsonProperty("status")
-  private JsonNullable<ApiSubscriptionListRequestSubscriptionStatus> status;
+  private JsonNullable<SubscriptionListRequestSubscriptionStatus> status;
 
   /**
    * Send true to return only removed subscriptions
@@ -107,12 +107,12 @@ public class ListSubscriptionsParameters {
   }
 
   @JsonIgnore
-  public ApiSubscriptionListRequestBillingType getBillingType() {
+  public SubscriptionListRequestBillingType getBillingType() {
     return billingType.orElse(null);
   }
 
   @JsonIgnore
-  public ApiSubscriptionListRequestSubscriptionStatus getStatus() {
+  public SubscriptionListRequestSubscriptionStatus getStatus() {
     return status.orElse(null);
   }
 
@@ -188,10 +188,10 @@ public class ListSubscriptionsParameters {
       return this;
     }
 
-    private JsonNullable<ApiSubscriptionListRequestBillingType> billingType = JsonNullable.undefined();
+    private JsonNullable<SubscriptionListRequestBillingType> billingType = JsonNullable.undefined();
 
     @JsonProperty("billingType")
-    public ListSubscriptionsParametersBuilder billingType(ApiSubscriptionListRequestBillingType value) {
+    public ListSubscriptionsParametersBuilder billingType(SubscriptionListRequestBillingType value) {
       if (value == null) {
         throw new IllegalStateException("billingType cannot be null");
       }
@@ -199,10 +199,10 @@ public class ListSubscriptionsParameters {
       return this;
     }
 
-    private JsonNullable<ApiSubscriptionListRequestSubscriptionStatus> status = JsonNullable.undefined();
+    private JsonNullable<SubscriptionListRequestSubscriptionStatus> status = JsonNullable.undefined();
 
     @JsonProperty("status")
-    public ListSubscriptionsParametersBuilder status(ApiSubscriptionListRequestSubscriptionStatus value) {
+    public ListSubscriptionsParametersBuilder status(SubscriptionListRequestSubscriptionStatus value) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");
       }

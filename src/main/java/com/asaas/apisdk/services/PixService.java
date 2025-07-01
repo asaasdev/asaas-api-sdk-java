@@ -4,24 +4,24 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiPixAddressKeyGetResponseDto;
-import com.asaas.apisdk.models.ApiPixAddressKeyListResponseDto;
-import com.asaas.apisdk.models.ApiPixAddressKeySaveRequestDto;
-import com.asaas.apisdk.models.ApiPixQrCodeDeleteResponseDto;
-import com.asaas.apisdk.models.ApiPixQrCodeSaveRequestDto;
-import com.asaas.apisdk.models.ApiPixQrCodeSaveResponseDto;
-import com.asaas.apisdk.models.ApiPixTokenBucketGetAddressKeyResponseDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListKeysParameters;
+import com.asaas.apisdk.models.PixAddressKeyGetResponseDto;
+import com.asaas.apisdk.models.PixAddressKeyListResponseDto;
+import com.asaas.apisdk.models.PixAddressKeySaveRequestDto;
+import com.asaas.apisdk.models.PixQrCodeDeleteResponseDto;
+import com.asaas.apisdk.models.PixQrCodeSaveRequestDto;
+import com.asaas.apisdk.models.PixQrCodeSaveResponseDto;
+import com.asaas.apisdk.models.PixTokenBucketGetAddressKeyResponseDto;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
-import com.asaas.apisdk.validation.validators.modelValidators.ApiPixQrCodeSaveRequestDtoValidator;
 import com.asaas.apisdk.validation.validators.modelValidators.ListKeysParametersValidator;
+import com.asaas.apisdk.validation.validators.modelValidators.PixQrCodeSaveRequestDtoValidator;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -42,9 +42,9 @@ public class PixService extends BaseService {
   /**
    * List keys
    *
-   * @return response of {@code ApiPixAddressKeyListResponseDto}
+   * @return response of {@code PixAddressKeyListResponseDto}
    */
-  public ApiPixAddressKeyListResponseDto listKeys() throws ApiError, ValidationException {
+  public PixAddressKeyListResponseDto listKeys() throws ApiError, ValidationException {
     return this.listKeys(ListKeysParameters.builder().build());
   }
 
@@ -52,22 +52,22 @@ public class PixService extends BaseService {
    * List keys
    *
    * @param requestParameters {@link ListKeysParameters} Request Parameters Object
-   * @return response of {@code ApiPixAddressKeyListResponseDto}
+   * @return response of {@code PixAddressKeyListResponseDto}
    */
-  public ApiPixAddressKeyListResponseDto listKeys(@NonNull ListKeysParameters requestParameters)
+  public PixAddressKeyListResponseDto listKeys(@NonNull ListKeysParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListKeysRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixAddressKeyListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixAddressKeyListResponseDto>() {});
   }
 
   /**
    * List keys
    *
-   * @return response of {@code CompletableFuture<ApiPixAddressKeyListResponseDto>}
+   * @return response of {@code CompletableFuture<PixAddressKeyListResponseDto>}
    */
-  public CompletableFuture<ApiPixAddressKeyListResponseDto> listKeysAsync() throws ApiError, ValidationException {
+  public CompletableFuture<PixAddressKeyListResponseDto> listKeysAsync() throws ApiError, ValidationException {
     return this.listKeysAsync(ListKeysParameters.builder().build());
   }
 
@@ -75,16 +75,15 @@ public class PixService extends BaseService {
    * List keys
    *
    * @param requestParameters {@link ListKeysParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPixAddressKeyListResponseDto>}
+   * @return response of {@code CompletableFuture<PixAddressKeyListResponseDto>}
    */
-  public CompletableFuture<ApiPixAddressKeyListResponseDto> listKeysAsync(
-    @NonNull ListKeysParameters requestParameters
-  ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<PixAddressKeyListResponseDto> listKeysAsync(@NonNull ListKeysParameters requestParameters)
+    throws ApiError, ValidationException {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListKeysRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixAddressKeyListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixAddressKeyListResponseDto>() {})
     );
   }
 
@@ -110,61 +109,60 @@ public class PixService extends BaseService {
   /**
    * Create a key
    *
-   * @return response of {@code ApiPixAddressKeyGetResponseDto}
+   * @return response of {@code PixAddressKeyGetResponseDto}
    */
-  public ApiPixAddressKeyGetResponseDto createAKey() throws ApiError {
-    return this.createAKey(ApiPixAddressKeySaveRequestDto.builder().build());
+  public PixAddressKeyGetResponseDto createAKey() throws ApiError {
+    return this.createAKey(PixAddressKeySaveRequestDto.builder().build());
   }
 
   /**
    * Create a key
    *
-   * @param apiPixAddressKeySaveRequestDto {@link ApiPixAddressKeySaveRequestDto} Request Body
-   * @return response of {@code ApiPixAddressKeyGetResponseDto}
+   * @param pixAddressKeySaveRequestDto {@link PixAddressKeySaveRequestDto} Request Body
+   * @return response of {@code PixAddressKeyGetResponseDto}
    */
-  public ApiPixAddressKeyGetResponseDto createAKey(
-    @NonNull ApiPixAddressKeySaveRequestDto apiPixAddressKeySaveRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateAKeyRequest(apiPixAddressKeySaveRequestDto);
+  public PixAddressKeyGetResponseDto createAKey(@NonNull PixAddressKeySaveRequestDto pixAddressKeySaveRequestDto)
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateAKeyRequest(pixAddressKeySaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixAddressKeyGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixAddressKeyGetResponseDto>() {});
   }
 
   /**
    * Create a key
    *
-   * @return response of {@code CompletableFuture<ApiPixAddressKeyGetResponseDto>}
+   * @return response of {@code CompletableFuture<PixAddressKeyGetResponseDto>}
    */
-  public CompletableFuture<ApiPixAddressKeyGetResponseDto> createAKeyAsync() throws ApiError {
-    return this.createAKeyAsync(ApiPixAddressKeySaveRequestDto.builder().build());
+  public CompletableFuture<PixAddressKeyGetResponseDto> createAKeyAsync() throws ApiError {
+    return this.createAKeyAsync(PixAddressKeySaveRequestDto.builder().build());
   }
 
   /**
    * Create a key
    *
-   * @param apiPixAddressKeySaveRequestDto {@link ApiPixAddressKeySaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPixAddressKeyGetResponseDto>}
+   * @param pixAddressKeySaveRequestDto {@link PixAddressKeySaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<PixAddressKeyGetResponseDto>}
    */
-  public CompletableFuture<ApiPixAddressKeyGetResponseDto> createAKeyAsync(
-    @NonNull ApiPixAddressKeySaveRequestDto apiPixAddressKeySaveRequestDto
+  public CompletableFuture<PixAddressKeyGetResponseDto> createAKeyAsync(
+    @NonNull PixAddressKeySaveRequestDto pixAddressKeySaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateAKeyRequest(apiPixAddressKeySaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateAKeyRequest(pixAddressKeySaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixAddressKeyGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixAddressKeyGetResponseDto>() {})
     );
   }
 
-  private Request buildCreateAKeyRequest(@NonNull ApiPixAddressKeySaveRequestDto apiPixAddressKeySaveRequestDto) {
+  private Request buildCreateAKeyRequest(@NonNull PixAddressKeySaveRequestDto pixAddressKeySaveRequestDto) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
       "v3/pix/addressKeys"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiPixAddressKeySaveRequestDto)
+      .setJsonContent(pixAddressKeySaveRequestDto)
       .build();
   }
 
@@ -172,27 +170,27 @@ public class PixService extends BaseService {
    * Retrieve a single key
    *
    * @param id String Unique Pix key identifier in Asaas
-   * @return response of {@code ApiPixAddressKeyGetResponseDto}
+   * @return response of {@code PixAddressKeyGetResponseDto}
    */
-  public ApiPixAddressKeyGetResponseDto retrieveASingleKey(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PixAddressKeyGetResponseDto retrieveASingleKey(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleKeyRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixAddressKeyGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixAddressKeyGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single key
    *
    * @param id String Unique Pix key identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiPixAddressKeyGetResponseDto>}
+   * @return response of {@code CompletableFuture<PixAddressKeyGetResponseDto>}
    */
-  public CompletableFuture<ApiPixAddressKeyGetResponseDto> retrieveASingleKeyAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<PixAddressKeyGetResponseDto> retrieveASingleKeyAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleKeyRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixAddressKeyGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixAddressKeyGetResponseDto>() {})
     );
   }
 
@@ -211,27 +209,27 @@ public class PixService extends BaseService {
    * Remove key
    *
    * @param id String Unique Pix key identifier in Asaas
-   * @return response of {@code ApiPixAddressKeyGetResponseDto}
+   * @return response of {@code PixAddressKeyGetResponseDto}
    */
-  public ApiPixAddressKeyGetResponseDto removeKey(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PixAddressKeyGetResponseDto removeKey(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveKeyRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixAddressKeyGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixAddressKeyGetResponseDto>() {});
   }
 
   /**
    * Remove key
    *
    * @param id String Unique Pix key identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiPixAddressKeyGetResponseDto>}
+   * @return response of {@code CompletableFuture<PixAddressKeyGetResponseDto>}
    */
-  public CompletableFuture<ApiPixAddressKeyGetResponseDto> removeKeyAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<PixAddressKeyGetResponseDto> removeKeyAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveKeyRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixAddressKeyGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixAddressKeyGetResponseDto>() {})
     );
   }
 
@@ -249,60 +247,56 @@ public class PixService extends BaseService {
   /**
    * Create static QRCode
    *
-   * @return response of {@code ApiPixQrCodeSaveResponseDto}
+   * @return response of {@code PixQrCodeSaveResponseDto}
    */
-  public ApiPixQrCodeSaveResponseDto createStaticQrcode() throws ApiError, ValidationException {
-    return this.createStaticQrcode(ApiPixQrCodeSaveRequestDto.builder().build());
+  public PixQrCodeSaveResponseDto createStaticQrcode() throws ApiError, ValidationException {
+    return this.createStaticQrcode(PixQrCodeSaveRequestDto.builder().build());
   }
 
   /**
    * Create static QRCode
    *
-   * @param apiPixQrCodeSaveRequestDto {@link ApiPixQrCodeSaveRequestDto} Request Body
-   * @return response of {@code ApiPixQrCodeSaveResponseDto}
+   * @param pixQrCodeSaveRequestDto {@link PixQrCodeSaveRequestDto} Request Body
+   * @return response of {@code PixQrCodeSaveResponseDto}
    */
-  public ApiPixQrCodeSaveResponseDto createStaticQrcode(@NonNull ApiPixQrCodeSaveRequestDto apiPixQrCodeSaveRequestDto)
+  public PixQrCodeSaveResponseDto createStaticQrcode(@NonNull PixQrCodeSaveRequestDto pixQrCodeSaveRequestDto)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateStaticQrcodeRequest(apiPixQrCodeSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateStaticQrcodeRequest(pixQrCodeSaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixQrCodeSaveResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixQrCodeSaveResponseDto>() {});
   }
 
   /**
    * Create static QRCode
    *
-   * @return response of {@code CompletableFuture<ApiPixQrCodeSaveResponseDto>}
+   * @return response of {@code CompletableFuture<PixQrCodeSaveResponseDto>}
    */
-  public CompletableFuture<ApiPixQrCodeSaveResponseDto> createStaticQrcodeAsync() throws ApiError, ValidationException {
-    return this.createStaticQrcodeAsync(ApiPixQrCodeSaveRequestDto.builder().build());
+  public CompletableFuture<PixQrCodeSaveResponseDto> createStaticQrcodeAsync() throws ApiError, ValidationException {
+    return this.createStaticQrcodeAsync(PixQrCodeSaveRequestDto.builder().build());
   }
 
   /**
    * Create static QRCode
    *
-   * @param apiPixQrCodeSaveRequestDto {@link ApiPixQrCodeSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPixQrCodeSaveResponseDto>}
+   * @param pixQrCodeSaveRequestDto {@link PixQrCodeSaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<PixQrCodeSaveResponseDto>}
    */
-  public CompletableFuture<ApiPixQrCodeSaveResponseDto> createStaticQrcodeAsync(
-    @NonNull ApiPixQrCodeSaveRequestDto apiPixQrCodeSaveRequestDto
+  public CompletableFuture<PixQrCodeSaveResponseDto> createStaticQrcodeAsync(
+    @NonNull PixQrCodeSaveRequestDto pixQrCodeSaveRequestDto
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateStaticQrcodeRequest(apiPixQrCodeSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateStaticQrcodeRequest(pixQrCodeSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixQrCodeSaveResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixQrCodeSaveResponseDto>() {})
     );
   }
 
-  private Request buildCreateStaticQrcodeRequest(@NonNull ApiPixQrCodeSaveRequestDto apiPixQrCodeSaveRequestDto)
+  private Request buildCreateStaticQrcodeRequest(@NonNull PixQrCodeSaveRequestDto pixQrCodeSaveRequestDto)
     throws ValidationException {
     new ViolationAggregator()
-      .add(
-        new ApiPixQrCodeSaveRequestDtoValidator("apiPixQrCodeSaveRequestDto")
-          .optional()
-          .validate(apiPixQrCodeSaveRequestDto)
-      )
+      .add(new PixQrCodeSaveRequestDtoValidator("pixQrCodeSaveRequestDto").optional().validate(pixQrCodeSaveRequestDto))
       .validateAll();
     return new RequestBuilder(
       HttpMethod.POST,
@@ -310,7 +304,7 @@ public class PixService extends BaseService {
       "v3/pix/qrCodes/static"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiPixQrCodeSaveRequestDto)
+      .setJsonContent(pixQrCodeSaveRequestDto)
       .build();
   }
 
@@ -318,27 +312,27 @@ public class PixService extends BaseService {
    * Remove a static QR Code
    *
    * @param id String Identifier of the QR Code that will be deleted.
-   * @return response of {@code ApiPixQrCodeDeleteResponseDto}
+   * @return response of {@code PixQrCodeDeleteResponseDto}
    */
-  public ApiPixQrCodeDeleteResponseDto deleteStaticQrcode(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PixQrCodeDeleteResponseDto deleteStaticQrcode(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildDeleteStaticQrcodeRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixQrCodeDeleteResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixQrCodeDeleteResponseDto>() {});
   }
 
   /**
    * Remove a static QR Code
    *
    * @param id String Identifier of the QR Code that will be deleted.
-   * @return response of {@code CompletableFuture<ApiPixQrCodeDeleteResponseDto>}
+   * @return response of {@code CompletableFuture<PixQrCodeDeleteResponseDto>}
    */
-  public CompletableFuture<ApiPixQrCodeDeleteResponseDto> deleteStaticQrcodeAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<PixQrCodeDeleteResponseDto> deleteStaticQrcodeAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildDeleteStaticQrcodeRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixQrCodeDeleteResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixQrCodeDeleteResponseDto>() {})
     );
   }
 
@@ -356,26 +350,26 @@ public class PixService extends BaseService {
   /**
    * Available Token Bucket Check
    *
-   * @return response of {@code ApiPixTokenBucketGetAddressKeyResponseDto}
+   * @return response of {@code PixTokenBucketGetAddressKeyResponseDto}
    */
-  public ApiPixTokenBucketGetAddressKeyResponseDto availableTokenBucketCheck() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PixTokenBucketGetAddressKeyResponseDto availableTokenBucketCheck() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildAvailableTokenBucketCheckRequest();
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixTokenBucketGetAddressKeyResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixTokenBucketGetAddressKeyResponseDto>() {});
   }
 
   /**
    * Available Token Bucket Check
    *
-   * @return response of {@code CompletableFuture<ApiPixTokenBucketGetAddressKeyResponseDto>}
+   * @return response of {@code CompletableFuture<PixTokenBucketGetAddressKeyResponseDto>}
    */
-  public CompletableFuture<ApiPixTokenBucketGetAddressKeyResponseDto> availableTokenBucketCheckAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<PixTokenBucketGetAddressKeyResponseDto> availableTokenBucketCheckAsync() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildAvailableTokenBucketCheckRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixTokenBucketGetAddressKeyResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixTokenBucketGetAddressKeyResponseDto>() {})
     );
   }
 

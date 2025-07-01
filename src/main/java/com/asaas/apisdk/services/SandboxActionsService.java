@@ -4,13 +4,13 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -33,13 +33,13 @@ public class SandboxActionsService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code ApiPaymentGetResponseDto}
+   * @return response of {@code PaymentGetResponseDto}
    */
-  public ApiPaymentGetResponseDto confirmPayment(@NonNull String id, @NonNull Object input) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PaymentGetResponseDto confirmPayment(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildConfirmPaymentRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentGetResponseDto>() {});
   }
 
   /**
@@ -47,15 +47,15 @@ public class SandboxActionsService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentGetResponseDto> confirmPaymentAsync(@NonNull String id, @NonNull Object input)
+  public CompletableFuture<PaymentGetResponseDto> confirmPaymentAsync(@NonNull String id, @NonNull Object input)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildConfirmPaymentRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentGetResponseDto>() {})
     );
   }
 
@@ -76,13 +76,13 @@ public class SandboxActionsService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code ApiPaymentGetResponseDto}
+   * @return response of {@code PaymentGetResponseDto}
    */
-  public ApiPaymentGetResponseDto forceExpire(@NonNull String id, @NonNull Object input) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PaymentGetResponseDto forceExpire(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildForceExpireRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentGetResponseDto>() {});
   }
 
   /**
@@ -90,15 +90,15 @@ public class SandboxActionsService extends BaseService {
    *
    * @param id String Unique payment identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentGetResponseDto> forceExpireAsync(@NonNull String id, @NonNull Object input)
+  public CompletableFuture<PaymentGetResponseDto> forceExpireAsync(@NonNull String id, @NonNull Object input)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildForceExpireRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentGetResponseDto>() {})
     );
   }
 

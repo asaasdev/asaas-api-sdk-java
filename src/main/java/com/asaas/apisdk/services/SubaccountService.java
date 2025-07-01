@@ -4,18 +4,18 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiCustomerGetResponseDto;
-import com.asaas.apisdk.models.ApiCustomerListResponseDto;
-import com.asaas.apisdk.models.ApiCustomerPaymentCustodyConfigDto;
-import com.asaas.apisdk.models.ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto;
-import com.asaas.apisdk.models.ApiCustomerSaveRequestDto;
-import com.asaas.apisdk.models.ApiCustomerSaveResponseDto;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
+import com.asaas.apisdk.models.AccountGetResponseDto;
+import com.asaas.apisdk.models.AccountListResponseDto;
+import com.asaas.apisdk.models.AccountPaymentEscrowConfigDto;
+import com.asaas.apisdk.models.AccountSaveOrUpdatePaymentEscrowConfigRequestDto;
+import com.asaas.apisdk.models.AccountSaveRequestDto;
+import com.asaas.apisdk.models.AccountSaveResponseDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListSubaccountsParameters;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
@@ -40,9 +40,9 @@ public class SubaccountService extends BaseService {
   /**
    * List subaccounts
    *
-   * @return response of {@code ApiCustomerListResponseDto}
+   * @return response of {@code AccountListResponseDto}
    */
-  public ApiCustomerListResponseDto listSubaccounts() throws ApiError, ValidationException {
+  public AccountListResponseDto listSubaccounts() throws ApiError, ValidationException {
     return this.listSubaccounts(ListSubaccountsParameters.builder().build());
   }
 
@@ -50,22 +50,22 @@ public class SubaccountService extends BaseService {
    * List subaccounts
    *
    * @param requestParameters {@link ListSubaccountsParameters} Request Parameters Object
-   * @return response of {@code ApiCustomerListResponseDto}
+   * @return response of {@code AccountListResponseDto}
    */
-  public ApiCustomerListResponseDto listSubaccounts(@NonNull ListSubaccountsParameters requestParameters)
+  public AccountListResponseDto listSubaccounts(@NonNull ListSubaccountsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListSubaccountsRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AccountListResponseDto>() {});
   }
 
   /**
    * List subaccounts
    *
-   * @return response of {@code CompletableFuture<ApiCustomerListResponseDto>}
+   * @return response of {@code CompletableFuture<AccountListResponseDto>}
    */
-  public CompletableFuture<ApiCustomerListResponseDto> listSubaccountsAsync() throws ApiError, ValidationException {
+  public CompletableFuture<AccountListResponseDto> listSubaccountsAsync() throws ApiError, ValidationException {
     return this.listSubaccountsAsync(ListSubaccountsParameters.builder().build());
   }
 
@@ -73,16 +73,16 @@ public class SubaccountService extends BaseService {
    * List subaccounts
    *
    * @param requestParameters {@link ListSubaccountsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiCustomerListResponseDto>}
+   * @return response of {@code CompletableFuture<AccountListResponseDto>}
    */
-  public CompletableFuture<ApiCustomerListResponseDto> listSubaccountsAsync(
+  public CompletableFuture<AccountListResponseDto> listSubaccountsAsync(
     @NonNull ListSubaccountsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListSubaccountsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AccountListResponseDto>() {})
     );
   }
 
@@ -109,60 +109,59 @@ public class SubaccountService extends BaseService {
   /**
    * Create subaccount
    *
-   * @return response of {@code ApiCustomerSaveResponseDto}
+   * @return response of {@code AccountSaveResponseDto}
    */
-  public ApiCustomerSaveResponseDto createSubaccount() throws ApiError {
-    return this.createSubaccount(ApiCustomerSaveRequestDto.builder().build());
+  public AccountSaveResponseDto createSubaccount() throws ApiError {
+    return this.createSubaccount(AccountSaveRequestDto.builder().build());
   }
 
   /**
    * Create subaccount
    *
-   * @param apiCustomerSaveRequestDto {@link ApiCustomerSaveRequestDto} Request Body
-   * @return response of {@code ApiCustomerSaveResponseDto}
+   * @param accountSaveRequestDto {@link AccountSaveRequestDto} Request Body
+   * @return response of {@code AccountSaveResponseDto}
    */
-  public ApiCustomerSaveResponseDto createSubaccount(@NonNull ApiCustomerSaveRequestDto apiCustomerSaveRequestDto)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateSubaccountRequest(apiCustomerSaveRequestDto);
+  public AccountSaveResponseDto createSubaccount(@NonNull AccountSaveRequestDto accountSaveRequestDto) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateSubaccountRequest(accountSaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerSaveResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AccountSaveResponseDto>() {});
   }
 
   /**
    * Create subaccount
    *
-   * @return response of {@code CompletableFuture<ApiCustomerSaveResponseDto>}
+   * @return response of {@code CompletableFuture<AccountSaveResponseDto>}
    */
-  public CompletableFuture<ApiCustomerSaveResponseDto> createSubaccountAsync() throws ApiError {
-    return this.createSubaccountAsync(ApiCustomerSaveRequestDto.builder().build());
+  public CompletableFuture<AccountSaveResponseDto> createSubaccountAsync() throws ApiError {
+    return this.createSubaccountAsync(AccountSaveRequestDto.builder().build());
   }
 
   /**
    * Create subaccount
    *
-   * @param apiCustomerSaveRequestDto {@link ApiCustomerSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiCustomerSaveResponseDto>}
+   * @param accountSaveRequestDto {@link AccountSaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<AccountSaveResponseDto>}
    */
-  public CompletableFuture<ApiCustomerSaveResponseDto> createSubaccountAsync(
-    @NonNull ApiCustomerSaveRequestDto apiCustomerSaveRequestDto
+  public CompletableFuture<AccountSaveResponseDto> createSubaccountAsync(
+    @NonNull AccountSaveRequestDto accountSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateSubaccountRequest(apiCustomerSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateSubaccountRequest(accountSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerSaveResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AccountSaveResponseDto>() {})
     );
   }
 
-  private Request buildCreateSubaccountRequest(@NonNull ApiCustomerSaveRequestDto apiCustomerSaveRequestDto) {
+  private Request buildCreateSubaccountRequest(@NonNull AccountSaveRequestDto accountSaveRequestDto) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
       "v3/accounts"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiCustomerSaveRequestDto)
+      .setJsonContent(accountSaveRequestDto)
       .build();
   }
 
@@ -170,28 +169,27 @@ public class SubaccountService extends BaseService {
    * Retrieve a single subaccount
    *
    * @param id String Unique subaccount identifier in Asaas
-   * @return response of {@code ApiCustomerGetResponseDto}
+   * @return response of {@code AccountGetResponseDto}
    */
-  public ApiCustomerGetResponseDto retrieveASingleSubaccount(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public AccountGetResponseDto retrieveASingleSubaccount(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleSubaccountRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AccountGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single subaccount
    *
    * @param id String Unique subaccount identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiCustomerGetResponseDto>}
+   * @return response of {@code CompletableFuture<AccountGetResponseDto>}
    */
-  public CompletableFuture<ApiCustomerGetResponseDto> retrieveASingleSubaccountAsync(@NonNull String id)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<AccountGetResponseDto> retrieveASingleSubaccountAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleSubaccountRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AccountGetResponseDto>() {})
     );
   }
 
@@ -210,30 +208,30 @@ public class SubaccountService extends BaseService {
    * Reterive Escrow Account configuration for subaccount
    *
    * @param id String Unique subaccount identifier in Asaas
-   * @return response of {@code ApiCustomerPaymentCustodyConfigDto}
+   * @return response of {@code AccountPaymentEscrowConfigDto}
    */
-  public ApiCustomerPaymentCustodyConfigDto reteriveEscrowAccountConfigurationForSubaccount(@NonNull String id)
+  public AccountPaymentEscrowConfigDto reteriveEscrowAccountConfigurationForSubaccount(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildReteriveEscrowAccountConfigurationForSubaccountRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerPaymentCustodyConfigDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AccountPaymentEscrowConfigDto>() {});
   }
 
   /**
    * Reterive Escrow Account configuration for subaccount
    *
    * @param id String Unique subaccount identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiCustomerPaymentCustodyConfigDto>}
+   * @return response of {@code CompletableFuture<AccountPaymentEscrowConfigDto>}
    */
-  public CompletableFuture<ApiCustomerPaymentCustodyConfigDto> reteriveEscrowAccountConfigurationForSubaccountAsync(
+  public CompletableFuture<AccountPaymentEscrowConfigDto> reteriveEscrowAccountConfigurationForSubaccountAsync(
     @NonNull String id
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildReteriveEscrowAccountConfigurationForSubaccountRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerPaymentCustodyConfigDto>() {})
+      ModelConverter.convert(response, new TypeReference<AccountPaymentEscrowConfigDto>() {})
     );
   }
 
@@ -252,49 +250,49 @@ public class SubaccountService extends BaseService {
    * Save or update Escrow Account configuration for subaccount
    *
    * @param id String Unique subaccount identifier in Asaas
-   * @param apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto {@link ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto} Request Body
-   * @return response of {@code ApiCustomerPaymentCustodyConfigDto}
+   * @param accountSaveOrUpdatePaymentEscrowConfigRequestDto {@link AccountSaveOrUpdatePaymentEscrowConfigRequestDto} Request Body
+   * @return response of {@code AccountPaymentEscrowConfigDto}
    */
-  public ApiCustomerPaymentCustodyConfigDto saveOrUpdateEscrowAccountConfigurationForSubaccount(
+  public AccountPaymentEscrowConfigDto saveOrUpdateEscrowAccountConfigurationForSubaccount(
     @NonNull String id,
-    @NonNull ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto
+    @NonNull AccountSaveOrUpdatePaymentEscrowConfigRequestDto accountSaveOrUpdatePaymentEscrowConfigRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request =
       this.buildSaveOrUpdateEscrowAccountConfigurationForSubaccountRequest(
           id,
-          apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto
+          accountSaveOrUpdatePaymentEscrowConfigRequestDto
         );
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerPaymentCustodyConfigDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AccountPaymentEscrowConfigDto>() {});
   }
 
   /**
    * Save or update Escrow Account configuration for subaccount
    *
    * @param id String Unique subaccount identifier in Asaas
-   * @param apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto {@link ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiCustomerPaymentCustodyConfigDto>}
+   * @param accountSaveOrUpdatePaymentEscrowConfigRequestDto {@link AccountSaveOrUpdatePaymentEscrowConfigRequestDto} Request Body
+   * @return response of {@code CompletableFuture<AccountPaymentEscrowConfigDto>}
    */
-  public CompletableFuture<ApiCustomerPaymentCustodyConfigDto> saveOrUpdateEscrowAccountConfigurationForSubaccountAsync(
+  public CompletableFuture<AccountPaymentEscrowConfigDto> saveOrUpdateEscrowAccountConfigurationForSubaccountAsync(
     @NonNull String id,
-    @NonNull ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto
+    @NonNull AccountSaveOrUpdatePaymentEscrowConfigRequestDto accountSaveOrUpdatePaymentEscrowConfigRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request =
       this.buildSaveOrUpdateEscrowAccountConfigurationForSubaccountRequest(
           id,
-          apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto
+          accountSaveOrUpdatePaymentEscrowConfigRequestDto
         );
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerPaymentCustodyConfigDto>() {})
+      ModelConverter.convert(response, new TypeReference<AccountPaymentEscrowConfigDto>() {})
     );
   }
 
   private Request buildSaveOrUpdateEscrowAccountConfigurationForSubaccountRequest(
     @NonNull String id,
-    @NonNull ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto
+    @NonNull AccountSaveOrUpdatePaymentEscrowConfigRequestDto accountSaveOrUpdatePaymentEscrowConfigRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -303,7 +301,7 @@ public class SubaccountService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto)
+      .setJsonContent(accountSaveOrUpdatePaymentEscrowConfigRequestDto)
       .build();
   }
 }

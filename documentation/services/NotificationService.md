@@ -14,14 +14,14 @@ A list of all methods in the `NotificationService` service. Click on the method 
 
 **Parameters**
 
-| Name                            | Type                                                                            | Required | Description                                         |
-| :------------------------------ | :------------------------------------------------------------------------------ | :------- | :-------------------------------------------------- |
-| id                              | String                                                                          | ✅       | Unique identifier of the notification to be updated |
-| apiNotificationUpdateRequestDto | [ApiNotificationUpdateRequestDto](../models/ApiNotificationUpdateRequestDto.md) | ❌       | Request Body                                        |
+| Name                         | Type                                                                      | Required | Description                                         |
+| :--------------------------- | :------------------------------------------------------------------------ | :------- | :-------------------------------------------------- |
+| id                           | String                                                                    | ✅       | Unique identifier of the notification to be updated |
+| notificationUpdateRequestDto | [NotificationUpdateRequestDto](../models/NotificationUpdateRequestDto.md) | ❌       | Request Body                                        |
 
 **Return Type**
 
-`ApiNotificationGetResponseDto`
+`NotificationGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -29,9 +29,9 @@ A list of all methods in the `NotificationService` service. Click on the method 
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiNotificationGetResponseDto;
-import com.asaas.apisdk.models.ApiNotificationUpdateRequestDto;
-import com.asaas.apisdk.models.ApiNotificationUpdateRequestDtoScheduleOffset;
+import com.asaas.apisdk.models.NotificationGetResponseDto;
+import com.asaas.apisdk.models.NotificationUpdateRequestDto;
+import com.asaas.apisdk.models.NotificationUpdateRequestDtoScheduleOffset;
 
 public class Main {
 
@@ -42,7 +42,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiNotificationUpdateRequestDto apiNotificationUpdateRequestDto = ApiNotificationUpdateRequestDto.builder()
+    NotificationUpdateRequestDto notificationUpdateRequestDto = NotificationUpdateRequestDto.builder()
       .enabled(true)
       .emailEnabledForProvider(true)
       .smsEnabledForProvider(true)
@@ -50,12 +50,12 @@ public class Main {
       .smsEnabledForCustomer(true)
       .phoneCallEnabledForCustomer(true)
       .whatsappEnabledForCustomer(false)
-      .scheduleOffset(ApiNotificationUpdateRequestDtoScheduleOffset._0)
+      .scheduleOffset(NotificationUpdateRequestDtoScheduleOffset._0)
       .build();
 
-    ApiNotificationGetResponseDto response = asaasSdk.notification.updateExistingNotification(
+    NotificationGetResponseDto response = asaasSdk.notification.updateExistingNotification(
       "not_wuGp97JeCr7G",
-      apiNotificationUpdateRequestDto
+      notificationUpdateRequestDto
     );
 
     System.out.println(response);
@@ -73,13 +73,13 @@ It is possible to customize various notifications, regardless of the communicati
 
 **Parameters**
 
-| Name                                 | Type                                                                                      | Required | Description  |
-| :----------------------------------- | :---------------------------------------------------------------------------------------- | :------- | :----------- |
-| apiNotificationBatchUpdateRequestDto | [ApiNotificationBatchUpdateRequestDto](../models/ApiNotificationBatchUpdateRequestDto.md) | ❌       | Request Body |
+| Name                              | Type                                                                                | Required | Description  |
+| :-------------------------------- | :---------------------------------------------------------------------------------- | :------- | :----------- |
+| notificationBatchUpdateRequestDto | [NotificationBatchUpdateRequestDto](../models/NotificationBatchUpdateRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiNotificationBatchUpdateResponseDto`
+`NotificationBatchUpdateResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -87,10 +87,10 @@ It is possible to customize various notifications, regardless of the communicati
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiNotificationBatchUpdateRequestDto;
-import com.asaas.apisdk.models.ApiNotificationBatchUpdateResponseDto;
-import com.asaas.apisdk.models.ApiNotificationUpdateRequestDto;
-import com.asaas.apisdk.models.ApiNotificationUpdateRequestDtoScheduleOffset;
+import com.asaas.apisdk.models.NotificationBatchUpdateRequestDto;
+import com.asaas.apisdk.models.NotificationBatchUpdateResponseDto;
+import com.asaas.apisdk.models.NotificationUpdateRequestDto;
+import com.asaas.apisdk.models.NotificationUpdateRequestDtoScheduleOffset;
 import java.util.Arrays;
 import java.util.List;
 
@@ -103,7 +103,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiNotificationUpdateRequestDto apiNotificationUpdateRequestDto = ApiNotificationUpdateRequestDto.builder()
+    NotificationUpdateRequestDto notificationUpdateRequestDto = NotificationUpdateRequestDto.builder()
       .enabled(true)
       .emailEnabledForProvider(true)
       .smsEnabledForProvider(true)
@@ -111,19 +111,18 @@ public class Main {
       .smsEnabledForCustomer(true)
       .phoneCallEnabledForCustomer(true)
       .whatsappEnabledForCustomer(false)
-      .scheduleOffset(ApiNotificationUpdateRequestDtoScheduleOffset._0)
+      .scheduleOffset(NotificationUpdateRequestDtoScheduleOffset._0)
       .build();
 
-    List<ApiNotificationUpdateRequestDto> notificationsList = Arrays.asList(apiNotificationUpdateRequestDto);
+    List<NotificationUpdateRequestDto> notificationsList = Arrays.asList(notificationUpdateRequestDto);
 
-    ApiNotificationBatchUpdateRequestDto apiNotificationBatchUpdateRequestDto =
-      ApiNotificationBatchUpdateRequestDto.builder()
-        .customer("cus_000005401844")
-        .notifications(notificationsList)
-        .build();
+    NotificationBatchUpdateRequestDto notificationBatchUpdateRequestDto = NotificationBatchUpdateRequestDto.builder()
+      .customer("cus_000005401844")
+      .notifications(notificationsList)
+      .build();
 
-    ApiNotificationBatchUpdateResponseDto response = asaasSdk.notification.updateExistingNotificationsInBatch(
-      apiNotificationBatchUpdateRequestDto
+    NotificationBatchUpdateResponseDto response = asaasSdk.notification.updateExistingNotificationsInBatch(
+      notificationBatchUpdateRequestDto
     );
 
     System.out.println(response);

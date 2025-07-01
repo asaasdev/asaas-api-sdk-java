@@ -20,7 +20,7 @@ A list of all methods in the `EscrowAccountService` service. Click on the method
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -28,7 +28,7 @@ A list of all methods in the `EscrowAccountService` service. Click on the method
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
 
 public class Main {
 
@@ -39,7 +39,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentGetResponseDto response = asaasSdk.escrowAccount.finishPaymentEscrowInTheEscrowAccount(
+    PaymentGetResponseDto response = asaasSdk.escrowAccount.finishPaymentEscrowInTheEscrowAccount(
       "4f468235-cec3-482f-b3d0-348af4c7194",
       new Object()
     );

@@ -4,16 +4,16 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiFinanceBalanceResponseDto;
-import com.asaas.apisdk.models.ApiFinanceGetPaymentStatisticsResponseDto;
-import com.asaas.apisdk.models.ApiFinanceGetSplitStatisticsResponseDto;
 import com.asaas.apisdk.models.BillingStatisticsParameters;
+import com.asaas.apisdk.models.ErrorResponseDto;
+import com.asaas.apisdk.models.FinanceBalanceResponseDto;
+import com.asaas.apisdk.models.FinanceGetPaymentStatisticsResponseDto;
+import com.asaas.apisdk.models.FinanceGetSplitStatisticsResponseDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -34,26 +34,26 @@ public class FinanceService extends BaseService {
   /**
    * Retrieve account balance
    *
-   * @return response of {@code ApiFinanceBalanceResponseDto}
+   * @return response of {@code FinanceBalanceResponseDto}
    */
-  public ApiFinanceBalanceResponseDto retrieveAccountBalance() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public FinanceBalanceResponseDto retrieveAccountBalance() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveAccountBalanceRequest();
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiFinanceBalanceResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<FinanceBalanceResponseDto>() {});
   }
 
   /**
    * Retrieve account balance
    *
-   * @return response of {@code CompletableFuture<ApiFinanceBalanceResponseDto>}
+   * @return response of {@code CompletableFuture<FinanceBalanceResponseDto>}
    */
-  public CompletableFuture<ApiFinanceBalanceResponseDto> retrieveAccountBalanceAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<FinanceBalanceResponseDto> retrieveAccountBalanceAsync() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveAccountBalanceRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiFinanceBalanceResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<FinanceBalanceResponseDto>() {})
     );
   }
 
@@ -70,9 +70,9 @@ public class FinanceService extends BaseService {
   /**
    * Collections statistics
    *
-   * @return response of {@code ApiFinanceGetPaymentStatisticsResponseDto}
+   * @return response of {@code FinanceGetPaymentStatisticsResponseDto}
    */
-  public ApiFinanceGetPaymentStatisticsResponseDto billingStatistics() throws ApiError {
+  public FinanceGetPaymentStatisticsResponseDto billingStatistics() throws ApiError {
     return this.billingStatistics(BillingStatisticsParameters.builder().build());
   }
 
@@ -80,23 +80,23 @@ public class FinanceService extends BaseService {
    * Collections statistics
    *
    * @param requestParameters {@link BillingStatisticsParameters} Request Parameters Object
-   * @return response of {@code ApiFinanceGetPaymentStatisticsResponseDto}
+   * @return response of {@code FinanceGetPaymentStatisticsResponseDto}
    */
-  public ApiFinanceGetPaymentStatisticsResponseDto billingStatistics(
+  public FinanceGetPaymentStatisticsResponseDto billingStatistics(
     @NonNull BillingStatisticsParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildBillingStatisticsRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiFinanceGetPaymentStatisticsResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<FinanceGetPaymentStatisticsResponseDto>() {});
   }
 
   /**
    * Collections statistics
    *
-   * @return response of {@code CompletableFuture<ApiFinanceGetPaymentStatisticsResponseDto>}
+   * @return response of {@code CompletableFuture<FinanceGetPaymentStatisticsResponseDto>}
    */
-  public CompletableFuture<ApiFinanceGetPaymentStatisticsResponseDto> billingStatisticsAsync() throws ApiError {
+  public CompletableFuture<FinanceGetPaymentStatisticsResponseDto> billingStatisticsAsync() throws ApiError {
     return this.billingStatisticsAsync(BillingStatisticsParameters.builder().build());
   }
 
@@ -104,16 +104,16 @@ public class FinanceService extends BaseService {
    * Collections statistics
    *
    * @param requestParameters {@link BillingStatisticsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiFinanceGetPaymentStatisticsResponseDto>}
+   * @return response of {@code CompletableFuture<FinanceGetPaymentStatisticsResponseDto>}
    */
-  public CompletableFuture<ApiFinanceGetPaymentStatisticsResponseDto> billingStatisticsAsync(
+  public CompletableFuture<FinanceGetPaymentStatisticsResponseDto> billingStatisticsAsync(
     @NonNull BillingStatisticsParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildBillingStatisticsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiFinanceGetPaymentStatisticsResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<FinanceGetPaymentStatisticsResponseDto>() {})
     );
   }
 
@@ -145,26 +145,26 @@ public class FinanceService extends BaseService {
   /**
    * Retrieve split values
    *
-   * @return response of {@code ApiFinanceGetSplitStatisticsResponseDto}
+   * @return response of {@code FinanceGetSplitStatisticsResponseDto}
    */
-  public ApiFinanceGetSplitStatisticsResponseDto retrieveSplitValues() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public FinanceGetSplitStatisticsResponseDto retrieveSplitValues() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveSplitValuesRequest();
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiFinanceGetSplitStatisticsResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<FinanceGetSplitStatisticsResponseDto>() {});
   }
 
   /**
    * Retrieve split values
    *
-   * @return response of {@code CompletableFuture<ApiFinanceGetSplitStatisticsResponseDto>}
+   * @return response of {@code CompletableFuture<FinanceGetSplitStatisticsResponseDto>}
    */
-  public CompletableFuture<ApiFinanceGetSplitStatisticsResponseDto> retrieveSplitValuesAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<FinanceGetSplitStatisticsResponseDto> retrieveSplitValuesAsync() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveSplitValuesRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiFinanceGetSplitStatisticsResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<FinanceGetSplitStatisticsResponseDto>() {})
     );
   }
 

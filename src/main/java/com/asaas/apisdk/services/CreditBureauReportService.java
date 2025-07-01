@@ -4,15 +4,15 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiCreditBureauReportGetResponseDto;
-import com.asaas.apisdk.models.ApiCreditBureauReportListResponseDto;
-import com.asaas.apisdk.models.ApiCreditBureauReportSaveRequestDto;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
+import com.asaas.apisdk.models.CreditBureauReportGetResponseDto;
+import com.asaas.apisdk.models.CreditBureauReportListResponseDto;
+import com.asaas.apisdk.models.CreditBureauReportSaveRequestDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListCreditBureauReportsParameters;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
@@ -37,9 +37,9 @@ public class CreditBureauReportService extends BaseService {
   /**
    * List credit bureau reports
    *
-   * @return response of {@code ApiCreditBureauReportListResponseDto}
+   * @return response of {@code CreditBureauReportListResponseDto}
    */
-  public ApiCreditBureauReportListResponseDto listCreditBureauReports() throws ApiError, ValidationException {
+  public CreditBureauReportListResponseDto listCreditBureauReports() throws ApiError, ValidationException {
     return this.listCreditBureauReports(ListCreditBureauReportsParameters.builder().build());
   }
 
@@ -47,23 +47,23 @@ public class CreditBureauReportService extends BaseService {
    * List credit bureau reports
    *
    * @param requestParameters {@link ListCreditBureauReportsParameters} Request Parameters Object
-   * @return response of {@code ApiCreditBureauReportListResponseDto}
+   * @return response of {@code CreditBureauReportListResponseDto}
    */
-  public ApiCreditBureauReportListResponseDto listCreditBureauReports(
+  public CreditBureauReportListResponseDto listCreditBureauReports(
     @NonNull ListCreditBureauReportsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListCreditBureauReportsRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCreditBureauReportListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<CreditBureauReportListResponseDto>() {});
   }
 
   /**
    * List credit bureau reports
    *
-   * @return response of {@code CompletableFuture<ApiCreditBureauReportListResponseDto>}
+   * @return response of {@code CompletableFuture<CreditBureauReportListResponseDto>}
    */
-  public CompletableFuture<ApiCreditBureauReportListResponseDto> listCreditBureauReportsAsync()
+  public CompletableFuture<CreditBureauReportListResponseDto> listCreditBureauReportsAsync()
     throws ApiError, ValidationException {
     return this.listCreditBureauReportsAsync(ListCreditBureauReportsParameters.builder().build());
   }
@@ -72,16 +72,16 @@ public class CreditBureauReportService extends BaseService {
    * List credit bureau reports
    *
    * @param requestParameters {@link ListCreditBureauReportsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiCreditBureauReportListResponseDto>}
+   * @return response of {@code CompletableFuture<CreditBureauReportListResponseDto>}
    */
-  public CompletableFuture<ApiCreditBureauReportListResponseDto> listCreditBureauReportsAsync(
+  public CompletableFuture<CreditBureauReportListResponseDto> listCreditBureauReportsAsync(
     @NonNull ListCreditBureauReportsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListCreditBureauReportsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCreditBureauReportListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<CreditBureauReportListResponseDto>() {})
     );
   }
 
@@ -106,55 +106,55 @@ public class CreditBureauReportService extends BaseService {
   /**
    * Make consultation
    *
-   * @return response of {@code ApiCreditBureauReportGetResponseDto}
+   * @return response of {@code CreditBureauReportGetResponseDto}
    */
-  public ApiCreditBureauReportGetResponseDto makeConsultation() throws ApiError {
-    return this.makeConsultation(ApiCreditBureauReportSaveRequestDto.builder().build());
+  public CreditBureauReportGetResponseDto makeConsultation() throws ApiError {
+    return this.makeConsultation(CreditBureauReportSaveRequestDto.builder().build());
   }
 
   /**
    * Make consultation
    *
-   * @param apiCreditBureauReportSaveRequestDto {@link ApiCreditBureauReportSaveRequestDto} Request Body
-   * @return response of {@code ApiCreditBureauReportGetResponseDto}
+   * @param creditBureauReportSaveRequestDto {@link CreditBureauReportSaveRequestDto} Request Body
+   * @return response of {@code CreditBureauReportGetResponseDto}
    */
-  public ApiCreditBureauReportGetResponseDto makeConsultation(
-    @NonNull ApiCreditBureauReportSaveRequestDto apiCreditBureauReportSaveRequestDto
+  public CreditBureauReportGetResponseDto makeConsultation(
+    @NonNull CreditBureauReportSaveRequestDto creditBureauReportSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildMakeConsultationRequest(apiCreditBureauReportSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildMakeConsultationRequest(creditBureauReportSaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCreditBureauReportGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<CreditBureauReportGetResponseDto>() {});
   }
 
   /**
    * Make consultation
    *
-   * @return response of {@code CompletableFuture<ApiCreditBureauReportGetResponseDto>}
+   * @return response of {@code CompletableFuture<CreditBureauReportGetResponseDto>}
    */
-  public CompletableFuture<ApiCreditBureauReportGetResponseDto> makeConsultationAsync() throws ApiError {
-    return this.makeConsultationAsync(ApiCreditBureauReportSaveRequestDto.builder().build());
+  public CompletableFuture<CreditBureauReportGetResponseDto> makeConsultationAsync() throws ApiError {
+    return this.makeConsultationAsync(CreditBureauReportSaveRequestDto.builder().build());
   }
 
   /**
    * Make consultation
    *
-   * @param apiCreditBureauReportSaveRequestDto {@link ApiCreditBureauReportSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiCreditBureauReportGetResponseDto>}
+   * @param creditBureauReportSaveRequestDto {@link CreditBureauReportSaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<CreditBureauReportGetResponseDto>}
    */
-  public CompletableFuture<ApiCreditBureauReportGetResponseDto> makeConsultationAsync(
-    @NonNull ApiCreditBureauReportSaveRequestDto apiCreditBureauReportSaveRequestDto
+  public CompletableFuture<CreditBureauReportGetResponseDto> makeConsultationAsync(
+    @NonNull CreditBureauReportSaveRequestDto creditBureauReportSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildMakeConsultationRequest(apiCreditBureauReportSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildMakeConsultationRequest(creditBureauReportSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCreditBureauReportGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<CreditBureauReportGetResponseDto>() {})
     );
   }
 
   private Request buildMakeConsultationRequest(
-    @NonNull ApiCreditBureauReportSaveRequestDto apiCreditBureauReportSaveRequestDto
+    @NonNull CreditBureauReportSaveRequestDto creditBureauReportSaveRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -162,7 +162,7 @@ public class CreditBureauReportService extends BaseService {
       "v3/creditBureauReport"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiCreditBureauReportSaveRequestDto)
+      .setJsonContent(creditBureauReportSaveRequestDto)
       .build();
   }
 
@@ -170,28 +170,28 @@ public class CreditBureauReportService extends BaseService {
    * Retrieve a credit bureau report
    *
    * @param id String Unique report identifier in Asaas
-   * @return response of {@code ApiCreditBureauReportGetResponseDto}
+   * @return response of {@code CreditBureauReportGetResponseDto}
    */
-  public ApiCreditBureauReportGetResponseDto retrieveACreditBureauReport(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CreditBureauReportGetResponseDto retrieveACreditBureauReport(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveACreditBureauReportRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCreditBureauReportGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<CreditBureauReportGetResponseDto>() {});
   }
 
   /**
    * Retrieve a credit bureau report
    *
    * @param id String Unique report identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiCreditBureauReportGetResponseDto>}
+   * @return response of {@code CompletableFuture<CreditBureauReportGetResponseDto>}
    */
-  public CompletableFuture<ApiCreditBureauReportGetResponseDto> retrieveACreditBureauReportAsync(@NonNull String id)
+  public CompletableFuture<CreditBureauReportGetResponseDto> retrieveACreditBureauReportAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveACreditBureauReportRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCreditBureauReportGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<CreditBureauReportGetResponseDto>() {})
     );
   }
 

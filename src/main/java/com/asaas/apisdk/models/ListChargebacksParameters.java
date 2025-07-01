@@ -36,7 +36,7 @@ public class ListChargebacksParameters {
    * Filter by used card brand.
    */
   @JsonProperty("creditCardBrand")
-  private JsonNullable<ApiChargebackListRequestCreditCardBrand> creditCardBrand;
+  private JsonNullable<ChargebackListRequestCreditCardBrand> creditCardBrand;
 
   /**
    * Filter up to the chargeback opening date.
@@ -66,7 +66,7 @@ public class ListChargebacksParameters {
    * Filter by chargeback status.
    */
   @JsonProperty("status")
-  private JsonNullable<ApiChargebackListRequestChargebackStatus> status;
+  private JsonNullable<ChargebackListRequestChargebackStatus> status;
 
   @JsonIgnore
   public Long getOffset() {
@@ -79,7 +79,7 @@ public class ListChargebacksParameters {
   }
 
   @JsonIgnore
-  public ApiChargebackListRequestCreditCardBrand getCreditCardBrand() {
+  public ChargebackListRequestCreditCardBrand getCreditCardBrand() {
     return creditCardBrand.orElse(null);
   }
 
@@ -104,7 +104,7 @@ public class ListChargebacksParameters {
   }
 
   @JsonIgnore
-  public ApiChargebackListRequestChargebackStatus getStatus() {
+  public ChargebackListRequestChargebackStatus getStatus() {
     return status.orElse(null);
   }
 
@@ -133,10 +133,10 @@ public class ListChargebacksParameters {
       return this;
     }
 
-    private JsonNullable<ApiChargebackListRequestCreditCardBrand> creditCardBrand = JsonNullable.undefined();
+    private JsonNullable<ChargebackListRequestCreditCardBrand> creditCardBrand = JsonNullable.undefined();
 
     @JsonProperty("creditCardBrand")
-    public ListChargebacksParametersBuilder creditCardBrand(ApiChargebackListRequestCreditCardBrand value) {
+    public ListChargebacksParametersBuilder creditCardBrand(ChargebackListRequestCreditCardBrand value) {
       if (value == null) {
         throw new IllegalStateException("creditCardBrand cannot be null");
       }
@@ -188,10 +188,10 @@ public class ListChargebacksParameters {
       return this;
     }
 
-    private JsonNullable<ApiChargebackListRequestChargebackStatus> status = JsonNullable.undefined();
+    private JsonNullable<ChargebackListRequestChargebackStatus> status = JsonNullable.undefined();
 
     @JsonProperty("status")
-    public ListChargebacksParametersBuilder status(ApiChargebackListRequestChargebackStatus value) {
+    public ListChargebacksParametersBuilder status(ChargebackListRequestChargebackStatus value) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");
       }

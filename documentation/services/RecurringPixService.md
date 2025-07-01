@@ -23,7 +23,7 @@ A list of all methods in the `RecurringPixService` service. Click on the method 
 
 **Return Type**
 
-`ApiPixTransactionRecurringCheckoutScheduleListResponseDto`
+`PixRecurringTransactionListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -31,9 +31,9 @@ A list of all methods in the `RecurringPixService` service. Click on the method 
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleListRequestRecurringCheckoutScheduleStatus;
-import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleListResponseDto;
 import com.asaas.apisdk.models.ListRecurrencesParameters;
+import com.asaas.apisdk.models.PixRecurringTransactionListResponseDto;
+import com.asaas.apisdk.models.RecurringPixTransactionListRequestPixRecurringTransactionStatus;
 
 public class Main {
 
@@ -45,18 +45,14 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListRecurrencesParameters requestParameters = ListRecurrencesParameters.builder()
-      .offset(7L)
+      .offset(6L)
       .limit(10L)
-      .status(
-        ApiPixTransactionRecurringCheckoutScheduleListRequestRecurringCheckoutScheduleStatus.AWAITING_CRITICAL_ACTION_AUTHORIZATION
-      )
+      .status(RecurringPixTransactionListRequestPixRecurringTransactionStatus.AWAITING_CRITICAL_ACTION_AUTHORIZATION)
       .value(100D)
       .searchText("searchText")
       .build();
 
-    ApiPixTransactionRecurringCheckoutScheduleListResponseDto response = asaasSdk.recurringPix.listRecurrences(
-      requestParameters
-    );
+    PixRecurringTransactionListResponseDto response = asaasSdk.recurringPix.listRecurrences(requestParameters);
 
     System.out.println(response);
   }
@@ -77,7 +73,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPixTransactionRecurringCheckoutScheduleGetResponseDto`
+`PixRecurringTransactionGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -85,7 +81,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleGetResponseDto;
+import com.asaas.apisdk.models.PixRecurringTransactionGetResponseDto;
 
 public class Main {
 
@@ -96,7 +92,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixTransactionRecurringCheckoutScheduleGetResponseDto response = asaasSdk.recurringPix.retrieveASingleRecurrence(
+    PixRecurringTransactionGetResponseDto response = asaasSdk.recurringPix.retrieveASingleRecurrence(
       "35363f6e-93e2-11ec-b9d9-96f4053b1bd4"
     );
 
@@ -120,7 +116,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPixTransactionRecurringCheckoutScheduleGetResponseDto`
+`PixRecurringTransactionGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -128,7 +124,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleGetResponseDto;
+import com.asaas.apisdk.models.PixRecurringTransactionGetResponseDto;
 
 public class Main {
 
@@ -139,7 +135,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixTransactionRecurringCheckoutScheduleGetResponseDto response = asaasSdk.recurringPix.cancelARecurrence(
+    PixRecurringTransactionGetResponseDto response = asaasSdk.recurringPix.cancelARecurrence(
       "35363f6e-93e2-11ec-b9d9-96f4053b1bd4",
       new Object()
     );
@@ -164,7 +160,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto`
+`RecurringPixTransactionListItemsResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -172,8 +168,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto;
 import com.asaas.apisdk.models.ListRecurrenceItemsParameters;
+import com.asaas.apisdk.models.RecurringPixTransactionListItemsResponseDto;
 
 public class Main {
 
@@ -185,11 +181,11 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListRecurrenceItemsParameters requestParameters = ListRecurrenceItemsParameters.builder()
-      .offset(6L)
+      .offset(3L)
       .limit(10L)
       .build();
 
-    ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto response = asaasSdk.recurringPix.listRecurrenceItems(
+    RecurringPixTransactionListItemsResponseDto response = asaasSdk.recurringPix.listRecurrenceItems(
       "35363f6e-93e2-11ec-b9d9-96f4053b1bd4",
       requestParameters
     );
@@ -214,7 +210,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto`
+`PixRecurringTransactionGetItemResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -222,7 +218,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto;
+import com.asaas.apisdk.models.PixRecurringTransactionGetItemResponseDto;
 
 public class Main {
 
@@ -233,7 +229,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto response = asaasSdk.recurringPix.cancelARecurrenceItem(
+    PixRecurringTransactionGetItemResponseDto response = asaasSdk.recurringPix.cancelARecurrenceItem(
       "71ae9d73-468f-4d04-8b87-a541128f9c46",
       new Object()
     );

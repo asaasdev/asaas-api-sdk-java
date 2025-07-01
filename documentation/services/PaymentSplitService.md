@@ -22,7 +22,7 @@ A list of all methods in the `PaymentSplitService` service. Click on the method 
 
 **Return Type**
 
-`ApiPaymentSplitGetResponseDto`
+`PaymentSplitGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -30,7 +30,7 @@ A list of all methods in the `PaymentSplitService` service. Click on the method 
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentSplitGetResponseDto;
+import com.asaas.apisdk.models.PaymentSplitGetResponseDto;
 
 public class Main {
 
@@ -41,7 +41,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentSplitGetResponseDto response = asaasSdk.paymentSplit.retrieveASinglePaidSplit("id");
+    PaymentSplitGetResponseDto response = asaasSdk.paymentSplit.retrieveASinglePaidSplit("id");
 
     System.out.println(response);
   }
@@ -62,7 +62,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentSplitListResponseDto`
+`PaymentSplitListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -70,9 +70,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentSplitListPaidRequestPaymentSplitStatus;
-import com.asaas.apisdk.models.ApiPaymentSplitListResponseDto;
 import com.asaas.apisdk.models.ListPaidSplitsParameters;
+import com.asaas.apisdk.models.PaymentSplitListPaidRequestPaymentSplitStatus;
+import com.asaas.apisdk.models.PaymentSplitListResponseDto;
 
 public class Main {
 
@@ -87,14 +87,14 @@ public class Main {
       .offset(5L)
       .limit(10L)
       .paymentId("paymentId")
-      .status(ApiPaymentSplitListPaidRequestPaymentSplitStatus.PENDING)
+      .status(PaymentSplitListPaidRequestPaymentSplitStatus.PENDING)
       .paymentConfirmedDateGe("paymentConfirmedDate[ge]")
       .paymentConfirmedDateLe("paymentConfirmedDate[le]")
       .creditDateGe("creditDate[ge]")
       .creditDateLe("creditDate[le]")
       .build();
 
-    ApiPaymentSplitListResponseDto response = asaasSdk.paymentSplit.listPaidSplits(requestParameters);
+    PaymentSplitListResponseDto response = asaasSdk.paymentSplit.listPaidSplits(requestParameters);
 
     System.out.println(response);
   }
@@ -115,7 +115,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentSplitGetResponseDto`
+`PaymentSplitGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -123,7 +123,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentSplitGetResponseDto;
+import com.asaas.apisdk.models.PaymentSplitGetResponseDto;
 
 public class Main {
 
@@ -134,7 +134,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentSplitGetResponseDto response = asaasSdk.paymentSplit.retrieveASingleReceivedSplit("id");
+    PaymentSplitGetResponseDto response = asaasSdk.paymentSplit.retrieveASingleReceivedSplit("id");
 
     System.out.println(response);
   }
@@ -155,7 +155,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentSplitListResponseDto`
+`PaymentSplitListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -163,9 +163,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentSplitListReceivedRequestPaymentSplitStatus;
-import com.asaas.apisdk.models.ApiPaymentSplitListResponseDto;
 import com.asaas.apisdk.models.ListReceivedSplitsParameters;
+import com.asaas.apisdk.models.PaymentSplitListReceivedRequestPaymentSplitStatus;
+import com.asaas.apisdk.models.PaymentSplitListResponseDto;
 
 public class Main {
 
@@ -180,14 +180,14 @@ public class Main {
       .offset(6L)
       .limit(10L)
       .paymentId("paymentId")
-      .status(ApiPaymentSplitListReceivedRequestPaymentSplitStatus.PENDING)
+      .status(PaymentSplitListReceivedRequestPaymentSplitStatus.PENDING)
       .paymentConfirmedDateGe("paymentConfirmedDate[ge]")
       .paymentConfirmedDateLe("paymentConfirmedDate[le]")
       .creditDateGe("creditDate[ge]")
       .creditDateLe("creditDate[le]")
       .build();
 
-    ApiPaymentSplitListResponseDto response = asaasSdk.paymentSplit.listReceivedSplits(requestParameters);
+    PaymentSplitListResponseDto response = asaasSdk.paymentSplit.listReceivedSplits(requestParameters);
 
     System.out.println(response);
   }

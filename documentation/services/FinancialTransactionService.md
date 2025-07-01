@@ -19,7 +19,7 @@ A list of all methods in the `FinancialTransactionService` service. Click on the
 
 **Return Type**
 
-`ApiFinancialTransactionListResponseDto`
+`FinancialTransactionListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -27,7 +27,7 @@ A list of all methods in the `FinancialTransactionService` service. Click on the
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiFinancialTransactionListResponseDto;
+import com.asaas.apisdk.models.FinancialTransactionListResponseDto;
 import com.asaas.apisdk.models.RetrieveExtractParameters;
 
 public class Main {
@@ -40,14 +40,14 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     RetrieveExtractParameters requestParameters = RetrieveExtractParameters.builder()
-      .offset(10L)
+      .offset(1L)
       .limit(10L)
       .startDate("2023-03-01")
       .finishDate("2023-03-31")
       .order("asc")
       .build();
 
-    ApiFinancialTransactionListResponseDto response = asaasSdk.financialTransaction.retrieveExtract(requestParameters);
+    FinancialTransactionListResponseDto response = asaasSdk.financialTransaction.retrieveExtract(requestParameters);
 
     System.out.println(response);
   }

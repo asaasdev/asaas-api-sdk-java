@@ -4,14 +4,14 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiCreditCardTokenizeRequestDto;
-import com.asaas.apisdk.models.ApiCreditCardTokenizeResponseDto;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
+import com.asaas.apisdk.models.CreditCardTokenizeRequestDto;
+import com.asaas.apisdk.models.CreditCardTokenizeResponseDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -32,55 +32,55 @@ public class CreditCardService extends BaseService {
   /**
    * Credit card tokenization
    *
-   * @return response of {@code ApiCreditCardTokenizeResponseDto}
+   * @return response of {@code CreditCardTokenizeResponseDto}
    */
-  public ApiCreditCardTokenizeResponseDto creditCardTokenization() throws ApiError {
-    return this.creditCardTokenization(ApiCreditCardTokenizeRequestDto.builder().build());
+  public CreditCardTokenizeResponseDto creditCardTokenization() throws ApiError {
+    return this.creditCardTokenization(CreditCardTokenizeRequestDto.builder().build());
   }
 
   /**
    * Credit card tokenization
    *
-   * @param apiCreditCardTokenizeRequestDto {@link ApiCreditCardTokenizeRequestDto} Request Body
-   * @return response of {@code ApiCreditCardTokenizeResponseDto}
+   * @param creditCardTokenizeRequestDto {@link CreditCardTokenizeRequestDto} Request Body
+   * @return response of {@code CreditCardTokenizeResponseDto}
    */
-  public ApiCreditCardTokenizeResponseDto creditCardTokenization(
-    @NonNull ApiCreditCardTokenizeRequestDto apiCreditCardTokenizeRequestDto
+  public CreditCardTokenizeResponseDto creditCardTokenization(
+    @NonNull CreditCardTokenizeRequestDto creditCardTokenizeRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreditCardTokenizationRequest(apiCreditCardTokenizeRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreditCardTokenizationRequest(creditCardTokenizeRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCreditCardTokenizeResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<CreditCardTokenizeResponseDto>() {});
   }
 
   /**
    * Credit card tokenization
    *
-   * @return response of {@code CompletableFuture<ApiCreditCardTokenizeResponseDto>}
+   * @return response of {@code CompletableFuture<CreditCardTokenizeResponseDto>}
    */
-  public CompletableFuture<ApiCreditCardTokenizeResponseDto> creditCardTokenizationAsync() throws ApiError {
-    return this.creditCardTokenizationAsync(ApiCreditCardTokenizeRequestDto.builder().build());
+  public CompletableFuture<CreditCardTokenizeResponseDto> creditCardTokenizationAsync() throws ApiError {
+    return this.creditCardTokenizationAsync(CreditCardTokenizeRequestDto.builder().build());
   }
 
   /**
    * Credit card tokenization
    *
-   * @param apiCreditCardTokenizeRequestDto {@link ApiCreditCardTokenizeRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiCreditCardTokenizeResponseDto>}
+   * @param creditCardTokenizeRequestDto {@link CreditCardTokenizeRequestDto} Request Body
+   * @return response of {@code CompletableFuture<CreditCardTokenizeResponseDto>}
    */
-  public CompletableFuture<ApiCreditCardTokenizeResponseDto> creditCardTokenizationAsync(
-    @NonNull ApiCreditCardTokenizeRequestDto apiCreditCardTokenizeRequestDto
+  public CompletableFuture<CreditCardTokenizeResponseDto> creditCardTokenizationAsync(
+    @NonNull CreditCardTokenizeRequestDto creditCardTokenizeRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreditCardTokenizationRequest(apiCreditCardTokenizeRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreditCardTokenizationRequest(creditCardTokenizeRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCreditCardTokenizeResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<CreditCardTokenizeResponseDto>() {})
     );
   }
 
   private Request buildCreditCardTokenizationRequest(
-    @NonNull ApiCreditCardTokenizeRequestDto apiCreditCardTokenizeRequestDto
+    @NonNull CreditCardTokenizeRequestDto creditCardTokenizeRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -88,7 +88,7 @@ public class CreditCardService extends BaseService {
       "v3/creditCard/tokenizeCreditCard"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiCreditCardTokenizeRequestDto)
+      .setJsonContent(creditCardTokenizeRequestDto)
       .build();
   }
 }

@@ -4,18 +4,18 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto;
-import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleGetResponseDto;
-import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto;
-import com.asaas.apisdk.models.ApiPixTransactionRecurringCheckoutScheduleListResponseDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListRecurrenceItemsParameters;
 import com.asaas.apisdk.models.ListRecurrencesParameters;
+import com.asaas.apisdk.models.PixRecurringTransactionGetItemResponseDto;
+import com.asaas.apisdk.models.PixRecurringTransactionGetResponseDto;
+import com.asaas.apisdk.models.PixRecurringTransactionListResponseDto;
+import com.asaas.apisdk.models.RecurringPixTransactionListItemsResponseDto;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
 import com.asaas.apisdk.validation.validators.modelValidators.ListRecurrenceItemsParametersValidator;
@@ -40,10 +40,9 @@ public class RecurringPixService extends BaseService {
   /**
    * List recurrences
    *
-   * @return response of {@code ApiPixTransactionRecurringCheckoutScheduleListResponseDto}
+   * @return response of {@code PixRecurringTransactionListResponseDto}
    */
-  public ApiPixTransactionRecurringCheckoutScheduleListResponseDto listRecurrences()
-    throws ApiError, ValidationException {
+  public PixRecurringTransactionListResponseDto listRecurrences() throws ApiError, ValidationException {
     return this.listRecurrences(ListRecurrencesParameters.builder().build());
   }
 
@@ -51,26 +50,22 @@ public class RecurringPixService extends BaseService {
    * List recurrences
    *
    * @param requestParameters {@link ListRecurrencesParameters} Request Parameters Object
-   * @return response of {@code ApiPixTransactionRecurringCheckoutScheduleListResponseDto}
+   * @return response of {@code PixRecurringTransactionListResponseDto}
    */
-  public ApiPixTransactionRecurringCheckoutScheduleListResponseDto listRecurrences(
-    @NonNull ListRecurrencesParameters requestParameters
-  ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PixRecurringTransactionListResponseDto listRecurrences(@NonNull ListRecurrencesParameters requestParameters)
+    throws ApiError, ValidationException {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListRecurrencesRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(
-      response,
-      new TypeReference<ApiPixTransactionRecurringCheckoutScheduleListResponseDto>() {}
-    );
+    return ModelConverter.convert(response, new TypeReference<PixRecurringTransactionListResponseDto>() {});
   }
 
   /**
    * List recurrences
    *
-   * @return response of {@code CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleListResponseDto>}
+   * @return response of {@code CompletableFuture<PixRecurringTransactionListResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleListResponseDto> listRecurrencesAsync()
+  public CompletableFuture<PixRecurringTransactionListResponseDto> listRecurrencesAsync()
     throws ApiError, ValidationException {
     return this.listRecurrencesAsync(ListRecurrencesParameters.builder().build());
   }
@@ -79,19 +74,16 @@ public class RecurringPixService extends BaseService {
    * List recurrences
    *
    * @param requestParameters {@link ListRecurrencesParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleListResponseDto>}
+   * @return response of {@code CompletableFuture<PixRecurringTransactionListResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleListResponseDto> listRecurrencesAsync(
+  public CompletableFuture<PixRecurringTransactionListResponseDto> listRecurrencesAsync(
     @NonNull ListRecurrencesParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListRecurrencesRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(
-        response,
-        new TypeReference<ApiPixTransactionRecurringCheckoutScheduleListResponseDto>() {}
-      )
+      ModelConverter.convert(response, new TypeReference<PixRecurringTransactionListResponseDto>() {})
     );
   }
 
@@ -120,33 +112,28 @@ public class RecurringPixService extends BaseService {
    * Retrieve a single recurrence
    *
    * @param id String Unique recurrence identifier in Asaas
-   * @return response of {@code ApiPixTransactionRecurringCheckoutScheduleGetResponseDto}
+   * @return response of {@code PixRecurringTransactionGetResponseDto}
    */
-  public ApiPixTransactionRecurringCheckoutScheduleGetResponseDto retrieveASingleRecurrence(@NonNull String id)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PixRecurringTransactionGetResponseDto retrieveASingleRecurrence(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleRecurrenceRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(
-      response,
-      new TypeReference<ApiPixTransactionRecurringCheckoutScheduleGetResponseDto>() {}
-    );
+    return ModelConverter.convert(response, new TypeReference<PixRecurringTransactionGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single recurrence
    *
    * @param id String Unique recurrence identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleGetResponseDto>}
+   * @return response of {@code CompletableFuture<PixRecurringTransactionGetResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleGetResponseDto> retrieveASingleRecurrenceAsync(
-    @NonNull String id
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<PixRecurringTransactionGetResponseDto> retrieveASingleRecurrenceAsync(@NonNull String id)
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleRecurrenceRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixTransactionRecurringCheckoutScheduleGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixRecurringTransactionGetResponseDto>() {})
     );
   }
 
@@ -166,19 +153,14 @@ public class RecurringPixService extends BaseService {
    *
    * @param id String Unique recurrence identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code ApiPixTransactionRecurringCheckoutScheduleGetResponseDto}
+   * @return response of {@code PixRecurringTransactionGetResponseDto}
    */
-  public ApiPixTransactionRecurringCheckoutScheduleGetResponseDto cancelARecurrence(
-    @NonNull String id,
-    @NonNull Object input
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PixRecurringTransactionGetResponseDto cancelARecurrence(@NonNull String id, @NonNull Object input)
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelARecurrenceRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(
-      response,
-      new TypeReference<ApiPixTransactionRecurringCheckoutScheduleGetResponseDto>() {}
-    );
+    return ModelConverter.convert(response, new TypeReference<PixRecurringTransactionGetResponseDto>() {});
   }
 
   /**
@@ -186,17 +168,17 @@ public class RecurringPixService extends BaseService {
    *
    * @param id String Unique recurrence identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleGetResponseDto>}
+   * @return response of {@code CompletableFuture<PixRecurringTransactionGetResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleGetResponseDto> cancelARecurrenceAsync(
+  public CompletableFuture<PixRecurringTransactionGetResponseDto> cancelARecurrenceAsync(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelARecurrenceRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixTransactionRecurringCheckoutScheduleGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixRecurringTransactionGetResponseDto>() {})
     );
   }
 
@@ -217,19 +199,16 @@ public class RecurringPixService extends BaseService {
    *
    * @param id String Unique recurrence identifier in Asaas
    * @param requestParameters {@link ListRecurrenceItemsParameters} Request Parameters Object
-   * @return response of {@code ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto}
+   * @return response of {@code RecurringPixTransactionListItemsResponseDto}
    */
-  public ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto listRecurrenceItems(
+  public RecurringPixTransactionListItemsResponseDto listRecurrenceItems(
     @NonNull String id,
     @NonNull ListRecurrenceItemsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListRecurrenceItemsRequest(id, requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(
-      response,
-      new TypeReference<ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto>() {}
-    );
+    return ModelConverter.convert(response, new TypeReference<RecurringPixTransactionListItemsResponseDto>() {});
   }
 
   /**
@@ -237,20 +216,17 @@ public class RecurringPixService extends BaseService {
    *
    * @param id String Unique recurrence identifier in Asaas
    * @param requestParameters {@link ListRecurrenceItemsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto>}
+   * @return response of {@code CompletableFuture<RecurringPixTransactionListItemsResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto> listRecurrenceItemsAsync(
+  public CompletableFuture<RecurringPixTransactionListItemsResponseDto> listRecurrenceItemsAsync(
     @NonNull String id,
     @NonNull ListRecurrenceItemsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListRecurrenceItemsRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(
-        response,
-        new TypeReference<ApiPixTransactionRecurringCheckoutScheduleListItemsResponseDto>() {}
-      )
+      ModelConverter.convert(response, new TypeReference<RecurringPixTransactionListItemsResponseDto>() {})
     );
   }
 
@@ -278,19 +254,14 @@ public class RecurringPixService extends BaseService {
    *
    * @param id String Unique recurrence item identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto}
+   * @return response of {@code PixRecurringTransactionGetItemResponseDto}
    */
-  public ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto cancelARecurrenceItem(
-    @NonNull String id,
-    @NonNull Object input
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PixRecurringTransactionGetItemResponseDto cancelARecurrenceItem(@NonNull String id, @NonNull Object input)
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelARecurrenceItemRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(
-      response,
-      new TypeReference<ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto>() {}
-    );
+    return ModelConverter.convert(response, new TypeReference<PixRecurringTransactionGetItemResponseDto>() {});
   }
 
   /**
@@ -298,20 +269,17 @@ public class RecurringPixService extends BaseService {
    *
    * @param id String Unique recurrence item identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto>}
+   * @return response of {@code CompletableFuture<PixRecurringTransactionGetItemResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto> cancelARecurrenceItemAsync(
+  public CompletableFuture<PixRecurringTransactionGetItemResponseDto> cancelARecurrenceItemAsync(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelARecurrenceItemRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(
-        response,
-        new TypeReference<ApiPixTransactionRecurringCheckoutScheduleGetItemResponseDto>() {}
-      )
+      ModelConverter.convert(response, new TypeReference<PixRecurringTransactionGetItemResponseDto>() {})
     );
   }
 

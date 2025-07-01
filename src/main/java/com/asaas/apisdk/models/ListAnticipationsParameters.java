@@ -48,7 +48,7 @@ public class ListAnticipationsParameters {
    * Filter by status
    */
   @JsonProperty("status")
-  private JsonNullable<ApiReceivableAnticipationListRequestReceivableAnticipationStatus> status;
+  private JsonNullable<AnticipationListRequestAnticipationStatus> status;
 
   @JsonIgnore
   public Long getOffset() {
@@ -71,7 +71,7 @@ public class ListAnticipationsParameters {
   }
 
   @JsonIgnore
-  public ApiReceivableAnticipationListRequestReceivableAnticipationStatus getStatus() {
+  public AnticipationListRequestAnticipationStatus getStatus() {
     return status.orElse(null);
   }
 
@@ -122,13 +122,10 @@ public class ListAnticipationsParameters {
       return this;
     }
 
-    private JsonNullable<ApiReceivableAnticipationListRequestReceivableAnticipationStatus> status =
-      JsonNullable.undefined();
+    private JsonNullable<AnticipationListRequestAnticipationStatus> status = JsonNullable.undefined();
 
     @JsonProperty("status")
-    public ListAnticipationsParametersBuilder status(
-      ApiReceivableAnticipationListRequestReceivableAnticipationStatus value
-    ) {
+    public ListAnticipationsParametersBuilder status(AnticipationListRequestAnticipationStatus value) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");
       }

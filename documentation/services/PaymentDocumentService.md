@@ -23,7 +23,7 @@ A list of all methods in the `PaymentDocumentService` service. Click on the meth
 
 **Return Type**
 
-`ApiPaymentDocumentListResponseDto`
+`PaymentDocumentListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -31,7 +31,7 @@ A list of all methods in the `PaymentDocumentService` service. Click on the meth
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDocumentListResponseDto;
+import com.asaas.apisdk.models.PaymentDocumentListResponseDto;
 
 public class Main {
 
@@ -42,7 +42,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDocumentListResponseDto response = asaasSdk.paymentDocument.listDocumentsOfAPayment("id");
+    PaymentDocumentListResponseDto response = asaasSdk.paymentDocument.listDocumentsOfAPayment("id");
 
     System.out.println(response);
   }
@@ -57,15 +57,15 @@ public class Main {
 
 **Parameters**
 
-| Name                             | Type                                                                              | Required | Description                        |
-| :------------------------------- | :-------------------------------------------------------------------------------- | :------- | :--------------------------------- |
-| id                               | String                                                                            | ✅       | Unique payment identifier in Asaas |
-| apiPaymentDocumentSaveRequestDto | [ApiPaymentDocumentSaveRequestDto](../models/ApiPaymentDocumentSaveRequestDto.md) | ❌       | Request Body                       |
-| \_filename                       | [String](../models/String.md)                                                     | ✅       | Filename for the uploaded file     |
+| Name                          | Type                                                                        | Required | Description                        |
+| :---------------------------- | :-------------------------------------------------------------------------- | :------- | :--------------------------------- |
+| id                            | String                                                                      | ✅       | Unique payment identifier in Asaas |
+| paymentDocumentSaveRequestDto | [PaymentDocumentSaveRequestDto](../models/PaymentDocumentSaveRequestDto.md) | ❌       | Request Body                       |
+| \_filename                    | [String](../models/String.md)                                               | ✅       | Filename for the uploaded file     |
 
 **Return Type**
 
-`ApiPaymentDocumentGetResponseDto`
+`PaymentDocumentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -73,9 +73,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDocumentGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentDocumentSaveRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDocumentSaveRequestPaymentDocumentType;
+import com.asaas.apisdk.models.PaymentDocumentGetResponseDto;
+import com.asaas.apisdk.models.PaymentDocumentSaveRequestDto;
+import com.asaas.apisdk.models.PaymentDocumentSaveRequestPaymentDocumentType;
 
 public class Main {
     public static void main(String[] args) {
@@ -89,18 +89,18 @@ public class Main {
 
 		AsaasSdk asaasSdk = new AsaasSdk(config);
 
-		ApiPaymentDocumentSaveRequestDto apiPaymentDocumentSaveRequestDto = ApiPaymentDocumentSaveRequestDto.builder()
+		PaymentDocumentSaveRequestDto paymentDocumentSaveRequestDto = PaymentDocumentSaveRequestDto.builder()
 			.availableAfterPayment(true)
-			.type(ApiPaymentDocumentSaveRequestPaymentDocumentType.INVOICE)
+			.type(PaymentDocumentSaveRequestPaymentDocumentType.INVOICE)
 			.file(tempor Ut)
 			.build();
-		ApiPaymentDocumentSaveRequestDto apiPaymentDocumentSaveRequestDto = ApiPaymentDocumentSaveRequestDto.builder()
+		PaymentDocumentSaveRequestDto paymentDocumentSaveRequestDto = PaymentDocumentSaveRequestDto.builder()
 			.availableAfterPayment(true)
-			.type(ApiPaymentDocumentSaveRequestPaymentDocumentType.INVOICE)
+			.type(PaymentDocumentSaveRequestPaymentDocumentType.INVOICE)
 			.file(tempor Ut)
 			.build();
 
-		ApiPaymentDocumentGetResponseDto response = asaasSdk.paymentDocument.uploadPaymentDocuments("id", apiPaymentDocumentSaveRequestDto, apiPaymentDocumentSaveRequestDto);
+		PaymentDocumentGetResponseDto response = asaasSdk.paymentDocument.uploadPaymentDocuments("id", paymentDocumentSaveRequestDto, paymentDocumentSaveRequestDto);
 
 		System.out.println(response);
     }
@@ -121,7 +121,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentDocumentGetResponseDto`
+`PaymentDocumentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -129,7 +129,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDocumentGetResponseDto;
+import com.asaas.apisdk.models.PaymentDocumentGetResponseDto;
 
 public class Main {
 
@@ -140,7 +140,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDocumentGetResponseDto response = asaasSdk.paymentDocument.retrieveASingleDocumentOfAPayment(
+    PaymentDocumentGetResponseDto response = asaasSdk.paymentDocument.retrieveASingleDocumentOfAPayment(
       "id",
       "documentId"
     );
@@ -158,15 +158,15 @@ public class Main {
 
 **Parameters**
 
-| Name                               | Type                                                                                  | Required | Description                        |
-| :--------------------------------- | :------------------------------------------------------------------------------------ | :------- | :--------------------------------- |
-| id                                 | String                                                                                | ✅       | Unique payment identifier in Asaas |
-| documentId                         | String                                                                                | ✅       | Unique document identifier         |
-| apiPaymentDocumentUpdateRequestDto | [ApiPaymentDocumentUpdateRequestDto](../models/ApiPaymentDocumentUpdateRequestDto.md) | ❌       | Request Body                       |
+| Name                            | Type                                                                            | Required | Description                        |
+| :------------------------------ | :------------------------------------------------------------------------------ | :------- | :--------------------------------- |
+| id                              | String                                                                          | ✅       | Unique payment identifier in Asaas |
+| documentId                      | String                                                                          | ✅       | Unique document identifier         |
+| paymentDocumentUpdateRequestDto | [PaymentDocumentUpdateRequestDto](../models/PaymentDocumentUpdateRequestDto.md) | ❌       | Request Body                       |
 
 **Return Type**
 
-`ApiPaymentDocumentGetResponseDto`
+`PaymentDocumentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -174,9 +174,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDocumentGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentDocumentUpdateRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDocumentUpdateRequestPaymentDocumentType;
+import com.asaas.apisdk.models.PaymentDocumentGetResponseDto;
+import com.asaas.apisdk.models.PaymentDocumentUpdateRequestDto;
+import com.asaas.apisdk.models.PaymentDocumentUpdateRequestPaymentDocumentType;
 
 public class Main {
 
@@ -187,15 +187,15 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDocumentUpdateRequestDto apiPaymentDocumentUpdateRequestDto = ApiPaymentDocumentUpdateRequestDto.builder()
+    PaymentDocumentUpdateRequestDto paymentDocumentUpdateRequestDto = PaymentDocumentUpdateRequestDto.builder()
       .availableAfterPayment(true)
-      .type(ApiPaymentDocumentUpdateRequestPaymentDocumentType.INVOICE)
+      .type(PaymentDocumentUpdateRequestPaymentDocumentType.INVOICE)
       .build();
 
-    ApiPaymentDocumentGetResponseDto response = asaasSdk.paymentDocument.updateSettingsOfADocumentOfAPayment(
+    PaymentDocumentGetResponseDto response = asaasSdk.paymentDocument.updateSettingsOfADocumentOfAPayment(
       "id",
       "documentId",
-      apiPaymentDocumentUpdateRequestDto
+      paymentDocumentUpdateRequestDto
     );
 
     System.out.println(response);
@@ -218,7 +218,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentDocumentDeleteResponseDto`
+`PaymentDocumentDeleteResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -226,7 +226,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDocumentDeleteResponseDto;
+import com.asaas.apisdk.models.PaymentDocumentDeleteResponseDto;
 
 public class Main {
 
@@ -237,10 +237,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDocumentDeleteResponseDto response = asaasSdk.paymentDocument.deleteDocumentFromAPayment(
-      "id",
-      "documentId"
-    );
+    PaymentDocumentDeleteResponseDto response = asaasSdk.paymentDocument.deleteDocumentFromAPayment("id", "documentId");
 
     System.out.println(response);
   }

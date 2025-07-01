@@ -4,21 +4,21 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiTransferGetResponseDto;
-import com.asaas.apisdk.models.ApiTransferListResponseDto;
-import com.asaas.apisdk.models.ApiTransferSaveInternalTransferRequestDto;
-import com.asaas.apisdk.models.ApiTransferSaveInternalTransferResponseDto;
-import com.asaas.apisdk.models.ApiTransferSaveRequestDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListTransfersParameters;
+import com.asaas.apisdk.models.TransferGetResponseDto;
+import com.asaas.apisdk.models.TransferListResponseDto;
+import com.asaas.apisdk.models.TransferSaveInternalTransferRequestDto;
+import com.asaas.apisdk.models.TransferSaveInternalTransferResponseDto;
+import com.asaas.apisdk.models.TransferSaveRequestDto;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
-import com.asaas.apisdk.validation.validators.modelValidators.ApiTransferSaveRequestDtoValidator;
+import com.asaas.apisdk.validation.validators.modelValidators.TransferSaveRequestDtoValidator;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -39,9 +39,9 @@ public class TransferService extends BaseService {
   /**
    * List transfers
    *
-   * @return response of {@code ApiTransferListResponseDto}
+   * @return response of {@code TransferListResponseDto}
    */
-  public ApiTransferListResponseDto listTransfers() throws ApiError {
+  public TransferListResponseDto listTransfers() throws ApiError {
     return this.listTransfers(ListTransfersParameters.builder().build());
   }
 
@@ -49,21 +49,21 @@ public class TransferService extends BaseService {
    * List transfers
    *
    * @param requestParameters {@link ListTransfersParameters} Request Parameters Object
-   * @return response of {@code ApiTransferListResponseDto}
+   * @return response of {@code TransferListResponseDto}
    */
-  public ApiTransferListResponseDto listTransfers(@NonNull ListTransfersParameters requestParameters) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public TransferListResponseDto listTransfers(@NonNull ListTransfersParameters requestParameters) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListTransfersRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiTransferListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<TransferListResponseDto>() {});
   }
 
   /**
    * List transfers
    *
-   * @return response of {@code CompletableFuture<ApiTransferListResponseDto>}
+   * @return response of {@code CompletableFuture<TransferListResponseDto>}
    */
-  public CompletableFuture<ApiTransferListResponseDto> listTransfersAsync() throws ApiError {
+  public CompletableFuture<TransferListResponseDto> listTransfersAsync() throws ApiError {
     return this.listTransfersAsync(ListTransfersParameters.builder().build());
   }
 
@@ -71,16 +71,16 @@ public class TransferService extends BaseService {
    * List transfers
    *
    * @param requestParameters {@link ListTransfersParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiTransferListResponseDto>}
+   * @return response of {@code CompletableFuture<TransferListResponseDto>}
    */
-  public CompletableFuture<ApiTransferListResponseDto> listTransfersAsync(
+  public CompletableFuture<TransferListResponseDto> listTransfersAsync(
     @NonNull ListTransfersParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListTransfersRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiTransferListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<TransferListResponseDto>() {})
     );
   }
 
@@ -102,63 +102,59 @@ public class TransferService extends BaseService {
   /**
    * Transfer to another Institution’s account or Pix key
    *
-   * @return response of {@code ApiTransferGetResponseDto}
+   * @return response of {@code TransferGetResponseDto}
    */
-  public ApiTransferGetResponseDto transferToAnotherInstitutionAccountOrPixKey() throws ApiError, ValidationException {
-    return this.transferToAnotherInstitutionAccountOrPixKey(ApiTransferSaveRequestDto.builder().build());
+  public TransferGetResponseDto transferToAnotherInstitutionAccountOrPixKey() throws ApiError, ValidationException {
+    return this.transferToAnotherInstitutionAccountOrPixKey(TransferSaveRequestDto.builder().build());
   }
 
   /**
    * Transfer to another Institution’s account or Pix key
    *
-   * @param apiTransferSaveRequestDto {@link ApiTransferSaveRequestDto} Request Body
-   * @return response of {@code ApiTransferGetResponseDto}
+   * @param transferSaveRequestDto {@link TransferSaveRequestDto} Request Body
+   * @return response of {@code TransferGetResponseDto}
    */
-  public ApiTransferGetResponseDto transferToAnotherInstitutionAccountOrPixKey(
-    @NonNull ApiTransferSaveRequestDto apiTransferSaveRequestDto
+  public TransferGetResponseDto transferToAnotherInstitutionAccountOrPixKey(
+    @NonNull TransferSaveRequestDto transferSaveRequestDto
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildTransferToAnotherInstitutionAccountOrPixKeyRequest(apiTransferSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildTransferToAnotherInstitutionAccountOrPixKeyRequest(transferSaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiTransferGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<TransferGetResponseDto>() {});
   }
 
   /**
    * Transfer to another Institution’s account or Pix key
    *
-   * @return response of {@code CompletableFuture<ApiTransferGetResponseDto>}
+   * @return response of {@code CompletableFuture<TransferGetResponseDto>}
    */
-  public CompletableFuture<ApiTransferGetResponseDto> transferToAnotherInstitutionAccountOrPixKeyAsync()
+  public CompletableFuture<TransferGetResponseDto> transferToAnotherInstitutionAccountOrPixKeyAsync()
     throws ApiError, ValidationException {
-    return this.transferToAnotherInstitutionAccountOrPixKeyAsync(ApiTransferSaveRequestDto.builder().build());
+    return this.transferToAnotherInstitutionAccountOrPixKeyAsync(TransferSaveRequestDto.builder().build());
   }
 
   /**
    * Transfer to another Institution’s account or Pix key
    *
-   * @param apiTransferSaveRequestDto {@link ApiTransferSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiTransferGetResponseDto>}
+   * @param transferSaveRequestDto {@link TransferSaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<TransferGetResponseDto>}
    */
-  public CompletableFuture<ApiTransferGetResponseDto> transferToAnotherInstitutionAccountOrPixKeyAsync(
-    @NonNull ApiTransferSaveRequestDto apiTransferSaveRequestDto
+  public CompletableFuture<TransferGetResponseDto> transferToAnotherInstitutionAccountOrPixKeyAsync(
+    @NonNull TransferSaveRequestDto transferSaveRequestDto
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildTransferToAnotherInstitutionAccountOrPixKeyRequest(apiTransferSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildTransferToAnotherInstitutionAccountOrPixKeyRequest(transferSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiTransferGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<TransferGetResponseDto>() {})
     );
   }
 
   private Request buildTransferToAnotherInstitutionAccountOrPixKeyRequest(
-    @NonNull ApiTransferSaveRequestDto apiTransferSaveRequestDto
+    @NonNull TransferSaveRequestDto transferSaveRequestDto
   ) throws ValidationException {
     new ViolationAggregator()
-      .add(
-        new ApiTransferSaveRequestDtoValidator("apiTransferSaveRequestDto")
-          .optional()
-          .validate(apiTransferSaveRequestDto)
-      )
+      .add(new TransferSaveRequestDtoValidator("transferSaveRequestDto").optional().validate(transferSaveRequestDto))
       .validateAll();
     return new RequestBuilder(
       HttpMethod.POST,
@@ -166,62 +162,62 @@ public class TransferService extends BaseService {
       "v3/transfers"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiTransferSaveRequestDto)
+      .setJsonContent(transferSaveRequestDto)
       .build();
   }
 
   /**
    * Transfer to Asaas account
    *
-   * @return response of {@code ApiTransferSaveInternalTransferResponseDto}
+   * @return response of {@code TransferSaveInternalTransferResponseDto}
    */
-  public ApiTransferSaveInternalTransferResponseDto transferToAsaasAccount() throws ApiError {
-    return this.transferToAsaasAccount(ApiTransferSaveInternalTransferRequestDto.builder().build());
+  public TransferSaveInternalTransferResponseDto transferToAsaasAccount() throws ApiError {
+    return this.transferToAsaasAccount(TransferSaveInternalTransferRequestDto.builder().build());
   }
 
   /**
    * Transfer to Asaas account
    *
-   * @param apiTransferSaveInternalTransferRequestDto {@link ApiTransferSaveInternalTransferRequestDto} Request Body
-   * @return response of {@code ApiTransferSaveInternalTransferResponseDto}
+   * @param transferSaveInternalTransferRequestDto {@link TransferSaveInternalTransferRequestDto} Request Body
+   * @return response of {@code TransferSaveInternalTransferResponseDto}
    */
-  public ApiTransferSaveInternalTransferResponseDto transferToAsaasAccount(
-    @NonNull ApiTransferSaveInternalTransferRequestDto apiTransferSaveInternalTransferRequestDto
+  public TransferSaveInternalTransferResponseDto transferToAsaasAccount(
+    @NonNull TransferSaveInternalTransferRequestDto transferSaveInternalTransferRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildTransferToAsaasAccountRequest(apiTransferSaveInternalTransferRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildTransferToAsaasAccountRequest(transferSaveInternalTransferRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiTransferSaveInternalTransferResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<TransferSaveInternalTransferResponseDto>() {});
   }
 
   /**
    * Transfer to Asaas account
    *
-   * @return response of {@code CompletableFuture<ApiTransferSaveInternalTransferResponseDto>}
+   * @return response of {@code CompletableFuture<TransferSaveInternalTransferResponseDto>}
    */
-  public CompletableFuture<ApiTransferSaveInternalTransferResponseDto> transferToAsaasAccountAsync() throws ApiError {
-    return this.transferToAsaasAccountAsync(ApiTransferSaveInternalTransferRequestDto.builder().build());
+  public CompletableFuture<TransferSaveInternalTransferResponseDto> transferToAsaasAccountAsync() throws ApiError {
+    return this.transferToAsaasAccountAsync(TransferSaveInternalTransferRequestDto.builder().build());
   }
 
   /**
    * Transfer to Asaas account
    *
-   * @param apiTransferSaveInternalTransferRequestDto {@link ApiTransferSaveInternalTransferRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiTransferSaveInternalTransferResponseDto>}
+   * @param transferSaveInternalTransferRequestDto {@link TransferSaveInternalTransferRequestDto} Request Body
+   * @return response of {@code CompletableFuture<TransferSaveInternalTransferResponseDto>}
    */
-  public CompletableFuture<ApiTransferSaveInternalTransferResponseDto> transferToAsaasAccountAsync(
-    @NonNull ApiTransferSaveInternalTransferRequestDto apiTransferSaveInternalTransferRequestDto
+  public CompletableFuture<TransferSaveInternalTransferResponseDto> transferToAsaasAccountAsync(
+    @NonNull TransferSaveInternalTransferRequestDto transferSaveInternalTransferRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildTransferToAsaasAccountRequest(apiTransferSaveInternalTransferRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildTransferToAsaasAccountRequest(transferSaveInternalTransferRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiTransferSaveInternalTransferResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<TransferSaveInternalTransferResponseDto>() {})
     );
   }
 
   private Request buildTransferToAsaasAccountRequest(
-    @NonNull ApiTransferSaveInternalTransferRequestDto apiTransferSaveInternalTransferRequestDto
+    @NonNull TransferSaveInternalTransferRequestDto transferSaveInternalTransferRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -229,7 +225,7 @@ public class TransferService extends BaseService {
       "v3/transfers/"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiTransferSaveInternalTransferRequestDto)
+      .setJsonContent(transferSaveInternalTransferRequestDto)
       .build();
   }
 
@@ -237,27 +233,27 @@ public class TransferService extends BaseService {
    * Retrieve a single transfer
    *
    * @param id String Unique transfer identifier in Asaas
-   * @return response of {@code ApiTransferGetResponseDto}
+   * @return response of {@code TransferGetResponseDto}
    */
-  public ApiTransferGetResponseDto retrieveASingleTransfer(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public TransferGetResponseDto retrieveASingleTransfer(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleTransferRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiTransferGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<TransferGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single transfer
    *
    * @param id String Unique transfer identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiTransferGetResponseDto>}
+   * @return response of {@code CompletableFuture<TransferGetResponseDto>}
    */
-  public CompletableFuture<ApiTransferGetResponseDto> retrieveASingleTransferAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<TransferGetResponseDto> retrieveASingleTransferAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleTransferRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiTransferGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<TransferGetResponseDto>() {})
     );
   }
 
@@ -276,27 +272,27 @@ public class TransferService extends BaseService {
    * Cancel a transfer
    *
    * @param id String Unique transfer identifier in Asaas
-   * @return response of {@code ApiTransferGetResponseDto}
+   * @return response of {@code TransferGetResponseDto}
    */
-  public ApiTransferGetResponseDto cancelATransfer(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public TransferGetResponseDto cancelATransfer(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelATransferRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiTransferGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<TransferGetResponseDto>() {});
   }
 
   /**
    * Cancel a transfer
    *
    * @param id String Unique transfer identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiTransferGetResponseDto>}
+   * @return response of {@code CompletableFuture<TransferGetResponseDto>}
    */
-  public CompletableFuture<ApiTransferGetResponseDto> cancelATransferAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<TransferGetResponseDto> cancelATransferAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelATransferRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiTransferGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<TransferGetResponseDto>() {})
     );
   }
 

@@ -4,19 +4,19 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiCustomerAccountDeleteResponseDto;
-import com.asaas.apisdk.models.ApiCustomerAccountGetResponseDto;
-import com.asaas.apisdk.models.ApiCustomerAccountListResponseDto;
-import com.asaas.apisdk.models.ApiCustomerAccountSaveRequestDto;
-import com.asaas.apisdk.models.ApiCustomerAccountUpdateRequestDto;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiNotificationListResponseDto;
+import com.asaas.apisdk.models.CustomerDeleteResponseDto;
+import com.asaas.apisdk.models.CustomerGetResponseDto;
+import com.asaas.apisdk.models.CustomerListResponseDto;
+import com.asaas.apisdk.models.CustomerSaveRequestDto;
+import com.asaas.apisdk.models.CustomerUpdateRequestDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListCustomersParameters;
+import com.asaas.apisdk.models.NotificationListResponseDto;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
 import com.asaas.apisdk.validation.validators.modelValidators.ListCustomersParametersValidator;
@@ -40,9 +40,9 @@ public class CustomerService extends BaseService {
   /**
    * List customers
    *
-   * @return response of {@code ApiCustomerAccountListResponseDto}
+   * @return response of {@code CustomerListResponseDto}
    */
-  public ApiCustomerAccountListResponseDto listCustomers() throws ApiError, ValidationException {
+  public CustomerListResponseDto listCustomers() throws ApiError, ValidationException {
     return this.listCustomers(ListCustomersParameters.builder().build());
   }
 
@@ -50,23 +50,22 @@ public class CustomerService extends BaseService {
    * List customers
    *
    * @param requestParameters {@link ListCustomersParameters} Request Parameters Object
-   * @return response of {@code ApiCustomerAccountListResponseDto}
+   * @return response of {@code CustomerListResponseDto}
    */
-  public ApiCustomerAccountListResponseDto listCustomers(@NonNull ListCustomersParameters requestParameters)
+  public CustomerListResponseDto listCustomers(@NonNull ListCustomersParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListCustomersRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerAccountListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<CustomerListResponseDto>() {});
   }
 
   /**
    * List customers
    *
-   * @return response of {@code CompletableFuture<ApiCustomerAccountListResponseDto>}
+   * @return response of {@code CompletableFuture<CustomerListResponseDto>}
    */
-  public CompletableFuture<ApiCustomerAccountListResponseDto> listCustomersAsync()
-    throws ApiError, ValidationException {
+  public CompletableFuture<CustomerListResponseDto> listCustomersAsync() throws ApiError, ValidationException {
     return this.listCustomersAsync(ListCustomersParameters.builder().build());
   }
 
@@ -74,16 +73,16 @@ public class CustomerService extends BaseService {
    * List customers
    *
    * @param requestParameters {@link ListCustomersParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiCustomerAccountListResponseDto>}
+   * @return response of {@code CompletableFuture<CustomerListResponseDto>}
    */
-  public CompletableFuture<ApiCustomerAccountListResponseDto> listCustomersAsync(
+  public CompletableFuture<CustomerListResponseDto> listCustomersAsync(
     @NonNull ListCustomersParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListCustomersRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerAccountListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<CustomerListResponseDto>() {})
     );
   }
 
@@ -111,63 +110,60 @@ public class CustomerService extends BaseService {
   /**
    * Create new customer
    *
-   * @return response of {@code ApiCustomerAccountGetResponseDto}
+   * @return response of {@code CustomerGetResponseDto}
    */
-  public ApiCustomerAccountGetResponseDto createNewCustomer() throws ApiError {
-    return this.createNewCustomer(ApiCustomerAccountSaveRequestDto.builder().build());
+  public CustomerGetResponseDto createNewCustomer() throws ApiError {
+    return this.createNewCustomer(CustomerSaveRequestDto.builder().build());
   }
 
   /**
    * Create new customer
    *
-   * @param apiCustomerAccountSaveRequestDto {@link ApiCustomerAccountSaveRequestDto} Request Body
-   * @return response of {@code ApiCustomerAccountGetResponseDto}
+   * @param customerSaveRequestDto {@link CustomerSaveRequestDto} Request Body
+   * @return response of {@code CustomerGetResponseDto}
    */
-  public ApiCustomerAccountGetResponseDto createNewCustomer(
-    @NonNull ApiCustomerAccountSaveRequestDto apiCustomerAccountSaveRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateNewCustomerRequest(apiCustomerAccountSaveRequestDto);
+  public CustomerGetResponseDto createNewCustomer(@NonNull CustomerSaveRequestDto customerSaveRequestDto)
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateNewCustomerRequest(customerSaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerAccountGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<CustomerGetResponseDto>() {});
   }
 
   /**
    * Create new customer
    *
-   * @return response of {@code CompletableFuture<ApiCustomerAccountGetResponseDto>}
+   * @return response of {@code CompletableFuture<CustomerGetResponseDto>}
    */
-  public CompletableFuture<ApiCustomerAccountGetResponseDto> createNewCustomerAsync() throws ApiError {
-    return this.createNewCustomerAsync(ApiCustomerAccountSaveRequestDto.builder().build());
+  public CompletableFuture<CustomerGetResponseDto> createNewCustomerAsync() throws ApiError {
+    return this.createNewCustomerAsync(CustomerSaveRequestDto.builder().build());
   }
 
   /**
    * Create new customer
    *
-   * @param apiCustomerAccountSaveRequestDto {@link ApiCustomerAccountSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiCustomerAccountGetResponseDto>}
+   * @param customerSaveRequestDto {@link CustomerSaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<CustomerGetResponseDto>}
    */
-  public CompletableFuture<ApiCustomerAccountGetResponseDto> createNewCustomerAsync(
-    @NonNull ApiCustomerAccountSaveRequestDto apiCustomerAccountSaveRequestDto
+  public CompletableFuture<CustomerGetResponseDto> createNewCustomerAsync(
+    @NonNull CustomerSaveRequestDto customerSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateNewCustomerRequest(apiCustomerAccountSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateNewCustomerRequest(customerSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerAccountGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<CustomerGetResponseDto>() {})
     );
   }
 
-  private Request buildCreateNewCustomerRequest(
-    @NonNull ApiCustomerAccountSaveRequestDto apiCustomerAccountSaveRequestDto
-  ) {
+  private Request buildCreateNewCustomerRequest(@NonNull CustomerSaveRequestDto customerSaveRequestDto) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
       "v3/customers"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiCustomerAccountSaveRequestDto)
+      .setJsonContent(customerSaveRequestDto)
       .build();
   }
 
@@ -175,28 +171,27 @@ public class CustomerService extends BaseService {
    * Retrieve a single customer
    *
    * @param id String Unique customer identifier in Asaas
-   * @return response of {@code ApiCustomerAccountGetResponseDto}
+   * @return response of {@code CustomerGetResponseDto}
    */
-  public ApiCustomerAccountGetResponseDto retrieveASingleCustomer(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CustomerGetResponseDto retrieveASingleCustomer(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleCustomerRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerAccountGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<CustomerGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single customer
    *
    * @param id String Unique customer identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiCustomerAccountGetResponseDto>}
+   * @return response of {@code CompletableFuture<CustomerGetResponseDto>}
    */
-  public CompletableFuture<ApiCustomerAccountGetResponseDto> retrieveASingleCustomerAsync(@NonNull String id)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<CustomerGetResponseDto> retrieveASingleCustomerAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleCustomerRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerAccountGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<CustomerGetResponseDto>() {})
     );
   }
 
@@ -215,41 +210,41 @@ public class CustomerService extends BaseService {
    * Update existing customer
    *
    * @param id String Unique identifier of the customer to be updated.
-   * @param apiCustomerAccountUpdateRequestDto {@link ApiCustomerAccountUpdateRequestDto} Request Body
-   * @return response of {@code ApiCustomerAccountGetResponseDto}
+   * @param customerUpdateRequestDto {@link CustomerUpdateRequestDto} Request Body
+   * @return response of {@code CustomerGetResponseDto}
    */
-  public ApiCustomerAccountGetResponseDto updateExistingCustomer(
+  public CustomerGetResponseDto updateExistingCustomer(
     @NonNull String id,
-    @NonNull ApiCustomerAccountUpdateRequestDto apiCustomerAccountUpdateRequestDto
+    @NonNull CustomerUpdateRequestDto customerUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateExistingCustomerRequest(id, apiCustomerAccountUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateExistingCustomerRequest(id, customerUpdateRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerAccountGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<CustomerGetResponseDto>() {});
   }
 
   /**
    * Update existing customer
    *
    * @param id String Unique identifier of the customer to be updated.
-   * @param apiCustomerAccountUpdateRequestDto {@link ApiCustomerAccountUpdateRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiCustomerAccountGetResponseDto>}
+   * @param customerUpdateRequestDto {@link CustomerUpdateRequestDto} Request Body
+   * @return response of {@code CompletableFuture<CustomerGetResponseDto>}
    */
-  public CompletableFuture<ApiCustomerAccountGetResponseDto> updateExistingCustomerAsync(
+  public CompletableFuture<CustomerGetResponseDto> updateExistingCustomerAsync(
     @NonNull String id,
-    @NonNull ApiCustomerAccountUpdateRequestDto apiCustomerAccountUpdateRequestDto
+    @NonNull CustomerUpdateRequestDto customerUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateExistingCustomerRequest(id, apiCustomerAccountUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateExistingCustomerRequest(id, customerUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerAccountGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<CustomerGetResponseDto>() {})
     );
   }
 
   private Request buildUpdateExistingCustomerRequest(
     @NonNull String id,
-    @NonNull ApiCustomerAccountUpdateRequestDto apiCustomerAccountUpdateRequestDto
+    @NonNull CustomerUpdateRequestDto customerUpdateRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.PUT,
@@ -258,7 +253,7 @@ public class CustomerService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiCustomerAccountUpdateRequestDto)
+      .setJsonContent(customerUpdateRequestDto)
       .build();
   }
 
@@ -266,28 +261,27 @@ public class CustomerService extends BaseService {
    * Remove Customer
    *
    * @param id String Unique identifier of the customer to be removed
-   * @return response of {@code ApiCustomerAccountDeleteResponseDto}
+   * @return response of {@code CustomerDeleteResponseDto}
    */
-  public ApiCustomerAccountDeleteResponseDto removeCustomer(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CustomerDeleteResponseDto removeCustomer(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveCustomerRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerAccountDeleteResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<CustomerDeleteResponseDto>() {});
   }
 
   /**
    * Remove Customer
    *
    * @param id String Unique identifier of the customer to be removed
-   * @return response of {@code CompletableFuture<ApiCustomerAccountDeleteResponseDto>}
+   * @return response of {@code CompletableFuture<CustomerDeleteResponseDto>}
    */
-  public CompletableFuture<ApiCustomerAccountDeleteResponseDto> removeCustomerAsync(@NonNull String id)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<CustomerDeleteResponseDto> removeCustomerAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveCustomerRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerAccountDeleteResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<CustomerDeleteResponseDto>() {})
     );
   }
 
@@ -307,14 +301,13 @@ public class CustomerService extends BaseService {
    *
    * @param id String Unique identifier of the client to be restored.
    * @param input Object Request Body
-   * @return response of {@code ApiCustomerAccountGetResponseDto}
+   * @return response of {@code CustomerGetResponseDto}
    */
-  public ApiCustomerAccountGetResponseDto restoreRemovedCustomer(@NonNull String id, @NonNull Object input)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CustomerGetResponseDto restoreRemovedCustomer(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRestoreRemovedCustomerRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerAccountGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<CustomerGetResponseDto>() {});
   }
 
   /**
@@ -322,17 +315,17 @@ public class CustomerService extends BaseService {
    *
    * @param id String Unique identifier of the client to be restored.
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiCustomerAccountGetResponseDto>}
+   * @return response of {@code CompletableFuture<CustomerGetResponseDto>}
    */
-  public CompletableFuture<ApiCustomerAccountGetResponseDto> restoreRemovedCustomerAsync(
+  public CompletableFuture<CustomerGetResponseDto> restoreRemovedCustomerAsync(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRestoreRemovedCustomerRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerAccountGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<CustomerGetResponseDto>() {})
     );
   }
 
@@ -352,28 +345,28 @@ public class CustomerService extends BaseService {
    * Retrieve notifications from a customer
    *
    * @param id String Unique customer identifier in Asaas
-   * @return response of {@code ApiNotificationListResponseDto}
+   * @return response of {@code NotificationListResponseDto}
    */
-  public ApiNotificationListResponseDto retrieveNotificationsFromACustomer(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public NotificationListResponseDto retrieveNotificationsFromACustomer(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveNotificationsFromACustomerRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiNotificationListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<NotificationListResponseDto>() {});
   }
 
   /**
    * Retrieve notifications from a customer
    *
    * @param id String Unique customer identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiNotificationListResponseDto>}
+   * @return response of {@code CompletableFuture<NotificationListResponseDto>}
    */
-  public CompletableFuture<ApiNotificationListResponseDto> retrieveNotificationsFromACustomerAsync(@NonNull String id)
+  public CompletableFuture<NotificationListResponseDto> retrieveNotificationsFromACustomerAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveNotificationsFromACustomerRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiNotificationListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<NotificationListResponseDto>() {})
     );
   }
 

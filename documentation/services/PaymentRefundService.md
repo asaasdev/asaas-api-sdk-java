@@ -20,7 +20,7 @@ A list of all methods in the `PaymentRefundService` service. Click on the method
 
 **Return Type**
 
-`ApiPaymentRefundListResponseDto`
+`PaymentRefundListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -28,7 +28,7 @@ A list of all methods in the `PaymentRefundService` service. Click on the method
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentRefundListResponseDto;
+import com.asaas.apisdk.models.PaymentRefundListResponseDto;
 
 public class Main {
 
@@ -39,7 +39,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentRefundListResponseDto response = asaasSdk.paymentRefund.retrieveRefundsOfASinglePayment("id");
+    PaymentRefundListResponseDto response = asaasSdk.paymentRefund.retrieveRefundsOfASinglePayment("id");
 
     System.out.println(response);
   }
@@ -61,7 +61,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentBankSlipRefundResponseDto`
+`PaymentBankSlipRefundResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -69,7 +69,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentBankSlipRefundResponseDto;
+import com.asaas.apisdk.models.PaymentBankSlipRefundResponseDto;
 
 public class Main {
 
@@ -80,7 +80,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentBankSlipRefundResponseDto response = asaasSdk.paymentRefund.refundBankSlip("id", new Object());
+    PaymentBankSlipRefundResponseDto response = asaasSdk.paymentRefund.refundBankSlip("id", new Object());
 
     System.out.println(response);
   }

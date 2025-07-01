@@ -4,23 +4,24 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiInstallmentDeleteResponseDto;
-import com.asaas.apisdk.models.ApiInstallmentGetResponseDto;
-import com.asaas.apisdk.models.ApiInstallmentListResponseDto;
-import com.asaas.apisdk.models.ApiInstallmentSaveRequestDto;
-import com.asaas.apisdk.models.ApiInstallmentSaveWithCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiInstallmentUpdateSplitRequestDto;
-import com.asaas.apisdk.models.ApiInstallmentUpdateSplitResponseDto;
-import com.asaas.apisdk.models.ApiPaymentListResponseDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.GenerateInstallmentBookletParameters;
+import com.asaas.apisdk.models.InstallmentDeleteResponseDto;
+import com.asaas.apisdk.models.InstallmentGetResponseDto;
+import com.asaas.apisdk.models.InstallmentListResponseDto;
+import com.asaas.apisdk.models.InstallmentPaymentBookResponseDto;
+import com.asaas.apisdk.models.InstallmentSaveRequestDto;
+import com.asaas.apisdk.models.InstallmentSaveWithCreditCardRequestDto;
+import com.asaas.apisdk.models.InstallmentUpdateSplitRequestDto;
+import com.asaas.apisdk.models.InstallmentUpdateSplitResponseDto;
 import com.asaas.apisdk.models.ListInstallmentsParameters;
 import com.asaas.apisdk.models.ListPaymentsOfAInstallmentParameters;
+import com.asaas.apisdk.models.PaymentListResponseDto;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
 import com.asaas.apisdk.validation.validators.modelValidators.ListInstallmentsParametersValidator;
@@ -44,9 +45,9 @@ public class InstallmentService extends BaseService {
   /**
    * List installments
    *
-   * @return response of {@code ApiInstallmentListResponseDto}
+   * @return response of {@code InstallmentListResponseDto}
    */
-  public ApiInstallmentListResponseDto listInstallments() throws ApiError, ValidationException {
+  public InstallmentListResponseDto listInstallments() throws ApiError, ValidationException {
     return this.listInstallments(ListInstallmentsParameters.builder().build());
   }
 
@@ -54,22 +55,22 @@ public class InstallmentService extends BaseService {
    * List installments
    *
    * @param requestParameters {@link ListInstallmentsParameters} Request Parameters Object
-   * @return response of {@code ApiInstallmentListResponseDto}
+   * @return response of {@code InstallmentListResponseDto}
    */
-  public ApiInstallmentListResponseDto listInstallments(@NonNull ListInstallmentsParameters requestParameters)
+  public InstallmentListResponseDto listInstallments(@NonNull ListInstallmentsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListInstallmentsRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiInstallmentListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<InstallmentListResponseDto>() {});
   }
 
   /**
    * List installments
    *
-   * @return response of {@code CompletableFuture<ApiInstallmentListResponseDto>}
+   * @return response of {@code CompletableFuture<InstallmentListResponseDto>}
    */
-  public CompletableFuture<ApiInstallmentListResponseDto> listInstallmentsAsync() throws ApiError, ValidationException {
+  public CompletableFuture<InstallmentListResponseDto> listInstallmentsAsync() throws ApiError, ValidationException {
     return this.listInstallmentsAsync(ListInstallmentsParameters.builder().build());
   }
 
@@ -77,16 +78,16 @@ public class InstallmentService extends BaseService {
    * List installments
    *
    * @param requestParameters {@link ListInstallmentsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiInstallmentListResponseDto>}
+   * @return response of {@code CompletableFuture<InstallmentListResponseDto>}
    */
-  public CompletableFuture<ApiInstallmentListResponseDto> listInstallmentsAsync(
+  public CompletableFuture<InstallmentListResponseDto> listInstallmentsAsync(
     @NonNull ListInstallmentsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListInstallmentsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiInstallmentListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<InstallmentListResponseDto>() {})
     );
   }
 
@@ -109,116 +110,115 @@ public class InstallmentService extends BaseService {
   /**
    * Create Installment
    *
-   * @return response of {@code ApiInstallmentGetResponseDto}
+   * @return response of {@code InstallmentGetResponseDto}
    */
-  public ApiInstallmentGetResponseDto createInstallment() throws ApiError {
-    return this.createInstallment(ApiInstallmentSaveRequestDto.builder().build());
+  public InstallmentGetResponseDto createInstallment() throws ApiError {
+    return this.createInstallment(InstallmentSaveRequestDto.builder().build());
   }
 
   /**
    * Create Installment
    *
-   * @param apiInstallmentSaveRequestDto {@link ApiInstallmentSaveRequestDto} Request Body
-   * @return response of {@code ApiInstallmentGetResponseDto}
+   * @param installmentSaveRequestDto {@link InstallmentSaveRequestDto} Request Body
+   * @return response of {@code InstallmentGetResponseDto}
    */
-  public ApiInstallmentGetResponseDto createInstallment(
-    @NonNull ApiInstallmentSaveRequestDto apiInstallmentSaveRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateInstallmentRequest(apiInstallmentSaveRequestDto);
+  public InstallmentGetResponseDto createInstallment(@NonNull InstallmentSaveRequestDto installmentSaveRequestDto)
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateInstallmentRequest(installmentSaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiInstallmentGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<InstallmentGetResponseDto>() {});
   }
 
   /**
    * Create Installment
    *
-   * @return response of {@code CompletableFuture<ApiInstallmentGetResponseDto>}
+   * @return response of {@code CompletableFuture<InstallmentGetResponseDto>}
    */
-  public CompletableFuture<ApiInstallmentGetResponseDto> createInstallmentAsync() throws ApiError {
-    return this.createInstallmentAsync(ApiInstallmentSaveRequestDto.builder().build());
+  public CompletableFuture<InstallmentGetResponseDto> createInstallmentAsync() throws ApiError {
+    return this.createInstallmentAsync(InstallmentSaveRequestDto.builder().build());
   }
 
   /**
    * Create Installment
    *
-   * @param apiInstallmentSaveRequestDto {@link ApiInstallmentSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiInstallmentGetResponseDto>}
+   * @param installmentSaveRequestDto {@link InstallmentSaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<InstallmentGetResponseDto>}
    */
-  public CompletableFuture<ApiInstallmentGetResponseDto> createInstallmentAsync(
-    @NonNull ApiInstallmentSaveRequestDto apiInstallmentSaveRequestDto
+  public CompletableFuture<InstallmentGetResponseDto> createInstallmentAsync(
+    @NonNull InstallmentSaveRequestDto installmentSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateInstallmentRequest(apiInstallmentSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateInstallmentRequest(installmentSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiInstallmentGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<InstallmentGetResponseDto>() {})
     );
   }
 
-  private Request buildCreateInstallmentRequest(@NonNull ApiInstallmentSaveRequestDto apiInstallmentSaveRequestDto) {
+  private Request buildCreateInstallmentRequest(@NonNull InstallmentSaveRequestDto installmentSaveRequestDto) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
       "v3/installments"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiInstallmentSaveRequestDto)
+      .setJsonContent(installmentSaveRequestDto)
       .build();
   }
 
   /**
    * Create Installment with credit card
    *
-   * @return response of {@code ApiInstallmentGetResponseDto}
+   * @return response of {@code InstallmentGetResponseDto}
    */
-  public ApiInstallmentGetResponseDto createInstallmentWithCreditCard() throws ApiError {
-    return this.createInstallmentWithCreditCard(ApiInstallmentSaveWithCreditCardRequestDto.builder().build());
+  public InstallmentGetResponseDto createInstallmentWithCreditCard() throws ApiError {
+    return this.createInstallmentWithCreditCard(InstallmentSaveWithCreditCardRequestDto.builder().build());
   }
 
   /**
    * Create Installment with credit card
    *
-   * @param apiInstallmentSaveWithCreditCardRequestDto {@link ApiInstallmentSaveWithCreditCardRequestDto} Request Body
-   * @return response of {@code ApiInstallmentGetResponseDto}
+   * @param installmentSaveWithCreditCardRequestDto {@link InstallmentSaveWithCreditCardRequestDto} Request Body
+   * @return response of {@code InstallmentGetResponseDto}
    */
-  public ApiInstallmentGetResponseDto createInstallmentWithCreditCard(
-    @NonNull ApiInstallmentSaveWithCreditCardRequestDto apiInstallmentSaveWithCreditCardRequestDto
+  public InstallmentGetResponseDto createInstallmentWithCreditCard(
+    @NonNull InstallmentSaveWithCreditCardRequestDto installmentSaveWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateInstallmentWithCreditCardRequest(apiInstallmentSaveWithCreditCardRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateInstallmentWithCreditCardRequest(installmentSaveWithCreditCardRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiInstallmentGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<InstallmentGetResponseDto>() {});
   }
 
   /**
    * Create Installment with credit card
    *
-   * @return response of {@code CompletableFuture<ApiInstallmentGetResponseDto>}
+   * @return response of {@code CompletableFuture<InstallmentGetResponseDto>}
    */
-  public CompletableFuture<ApiInstallmentGetResponseDto> createInstallmentWithCreditCardAsync() throws ApiError {
-    return this.createInstallmentWithCreditCardAsync(ApiInstallmentSaveWithCreditCardRequestDto.builder().build());
+  public CompletableFuture<InstallmentGetResponseDto> createInstallmentWithCreditCardAsync() throws ApiError {
+    return this.createInstallmentWithCreditCardAsync(InstallmentSaveWithCreditCardRequestDto.builder().build());
   }
 
   /**
    * Create Installment with credit card
    *
-   * @param apiInstallmentSaveWithCreditCardRequestDto {@link ApiInstallmentSaveWithCreditCardRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiInstallmentGetResponseDto>}
+   * @param installmentSaveWithCreditCardRequestDto {@link InstallmentSaveWithCreditCardRequestDto} Request Body
+   * @return response of {@code CompletableFuture<InstallmentGetResponseDto>}
    */
-  public CompletableFuture<ApiInstallmentGetResponseDto> createInstallmentWithCreditCardAsync(
-    @NonNull ApiInstallmentSaveWithCreditCardRequestDto apiInstallmentSaveWithCreditCardRequestDto
+  public CompletableFuture<InstallmentGetResponseDto> createInstallmentWithCreditCardAsync(
+    @NonNull InstallmentSaveWithCreditCardRequestDto installmentSaveWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateInstallmentWithCreditCardRequest(apiInstallmentSaveWithCreditCardRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateInstallmentWithCreditCardRequest(installmentSaveWithCreditCardRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiInstallmentGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<InstallmentGetResponseDto>() {})
     );
   }
 
   private Request buildCreateInstallmentWithCreditCardRequest(
-    @NonNull ApiInstallmentSaveWithCreditCardRequestDto apiInstallmentSaveWithCreditCardRequestDto
+    @NonNull InstallmentSaveWithCreditCardRequestDto installmentSaveWithCreditCardRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -226,7 +226,7 @@ public class InstallmentService extends BaseService {
       "v3/installments/"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiInstallmentSaveWithCreditCardRequestDto)
+      .setJsonContent(installmentSaveWithCreditCardRequestDto)
       .build();
   }
 
@@ -234,28 +234,28 @@ public class InstallmentService extends BaseService {
    * Retrieve a single installment
    *
    * @param id String Unique installment identifier in Asaas
-   * @return response of {@code ApiInstallmentGetResponseDto}
+   * @return response of {@code InstallmentGetResponseDto}
    */
-  public ApiInstallmentGetResponseDto retrieveASingleInstallment(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public InstallmentGetResponseDto retrieveASingleInstallment(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleInstallmentRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiInstallmentGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<InstallmentGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single installment
    *
    * @param id String Unique installment identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiInstallmentGetResponseDto>}
+   * @return response of {@code CompletableFuture<InstallmentGetResponseDto>}
    */
-  public CompletableFuture<ApiInstallmentGetResponseDto> retrieveASingleInstallmentAsync(@NonNull String id)
+  public CompletableFuture<InstallmentGetResponseDto> retrieveASingleInstallmentAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleInstallmentRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiInstallmentGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<InstallmentGetResponseDto>() {})
     );
   }
 
@@ -274,27 +274,27 @@ public class InstallmentService extends BaseService {
    * Remove installment
    *
    * @param id String Unique identifier of the installment to be removed.
-   * @return response of {@code ApiInstallmentDeleteResponseDto}
+   * @return response of {@code InstallmentDeleteResponseDto}
    */
-  public ApiInstallmentDeleteResponseDto removeInstallment(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public InstallmentDeleteResponseDto removeInstallment(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveInstallmentRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiInstallmentDeleteResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<InstallmentDeleteResponseDto>() {});
   }
 
   /**
    * Remove installment
    *
    * @param id String Unique identifier of the installment to be removed.
-   * @return response of {@code CompletableFuture<ApiInstallmentDeleteResponseDto>}
+   * @return response of {@code CompletableFuture<InstallmentDeleteResponseDto>}
    */
-  public CompletableFuture<ApiInstallmentDeleteResponseDto> removeInstallmentAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<InstallmentDeleteResponseDto> removeInstallmentAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveInstallmentRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiInstallmentDeleteResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<InstallmentDeleteResponseDto>() {})
     );
   }
 
@@ -314,16 +314,16 @@ public class InstallmentService extends BaseService {
    *
    * @param id String Unique installment identifier in Asaas
    * @param requestParameters {@link ListPaymentsOfAInstallmentParameters} Request Parameters Object
-   * @return response of {@code ApiPaymentListResponseDto}
+   * @return response of {@code PaymentListResponseDto}
    */
-  public ApiPaymentListResponseDto listPaymentsOfAInstallment(
+  public PaymentListResponseDto listPaymentsOfAInstallment(
     @NonNull String id,
     @NonNull ListPaymentsOfAInstallmentParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsOfAInstallmentRequest(id, requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentListResponseDto>() {});
   }
 
   /**
@@ -331,17 +331,17 @@ public class InstallmentService extends BaseService {
    *
    * @param id String Unique installment identifier in Asaas
    * @param requestParameters {@link ListPaymentsOfAInstallmentParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPaymentListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentListResponseDto> listPaymentsOfAInstallmentAsync(
+  public CompletableFuture<PaymentListResponseDto> listPaymentsOfAInstallmentAsync(
     @NonNull String id,
     @NonNull ListPaymentsOfAInstallmentParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsOfAInstallmentRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentListResponseDto>() {})
     );
   }
 
@@ -367,16 +367,16 @@ public class InstallmentService extends BaseService {
    *
    * @param id String Unique installment identifier in Asaas
    * @param requestParameters {@link GenerateInstallmentBookletParameters} Request Parameters Object
-   * @return response of {@code Object}
+   * @return response of {@code InstallmentPaymentBookResponseDto}
    */
-  public Object generateInstallmentBooklet(
+  public InstallmentPaymentBookResponseDto generateInstallmentBooklet(
     @NonNull String id,
     @NonNull GenerateInstallmentBookletParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildGenerateInstallmentBookletRequest(id, requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<Object>() {});
+    return ModelConverter.convert(response, new TypeReference<InstallmentPaymentBookResponseDto>() {});
   }
 
   /**
@@ -384,16 +384,18 @@ public class InstallmentService extends BaseService {
    *
    * @param id String Unique installment identifier in Asaas
    * @param requestParameters {@link GenerateInstallmentBookletParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<Object>}
+   * @return response of {@code CompletableFuture<InstallmentPaymentBookResponseDto>}
    */
-  public CompletableFuture<Object> generateInstallmentBookletAsync(
+  public CompletableFuture<InstallmentPaymentBookResponseDto> generateInstallmentBookletAsync(
     @NonNull String id,
     @NonNull GenerateInstallmentBookletParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildGenerateInstallmentBookletRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
-    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Object>() {}));
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<InstallmentPaymentBookResponseDto>() {})
+    );
   }
 
   private Request buildGenerateInstallmentBookletRequest(
@@ -417,13 +419,13 @@ public class InstallmentService extends BaseService {
    *
    * @param id String Unique identifier of the installment to be refunded.
    * @param input Object Request Body
-   * @return response of {@code ApiInstallmentGetResponseDto}
+   * @return response of {@code InstallmentGetResponseDto}
    */
-  public ApiInstallmentGetResponseDto refundInstallment(@NonNull String id, @NonNull Object input) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public InstallmentGetResponseDto refundInstallment(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRefundInstallmentRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiInstallmentGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<InstallmentGetResponseDto>() {});
   }
 
   /**
@@ -431,17 +433,15 @@ public class InstallmentService extends BaseService {
    *
    * @param id String Unique identifier of the installment to be refunded.
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiInstallmentGetResponseDto>}
+   * @return response of {@code CompletableFuture<InstallmentGetResponseDto>}
    */
-  public CompletableFuture<ApiInstallmentGetResponseDto> refundInstallmentAsync(
-    @NonNull String id,
-    @NonNull Object input
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<InstallmentGetResponseDto> refundInstallmentAsync(@NonNull String id, @NonNull Object input)
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRefundInstallmentRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiInstallmentGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<InstallmentGetResponseDto>() {})
     );
   }
 
@@ -461,41 +461,41 @@ public class InstallmentService extends BaseService {
    * Update installment splits
    *
    * @param id String Installment ID
-   * @param apiInstallmentUpdateSplitRequestDto {@link ApiInstallmentUpdateSplitRequestDto} Request Body
-   * @return response of {@code ApiInstallmentUpdateSplitResponseDto}
+   * @param installmentUpdateSplitRequestDto {@link InstallmentUpdateSplitRequestDto} Request Body
+   * @return response of {@code InstallmentUpdateSplitResponseDto}
    */
-  public ApiInstallmentUpdateSplitResponseDto updateInstallmentSplits(
+  public InstallmentUpdateSplitResponseDto updateInstallmentSplits(
     @NonNull String id,
-    @NonNull ApiInstallmentUpdateSplitRequestDto apiInstallmentUpdateSplitRequestDto
+    @NonNull InstallmentUpdateSplitRequestDto installmentUpdateSplitRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateInstallmentSplitsRequest(id, apiInstallmentUpdateSplitRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateInstallmentSplitsRequest(id, installmentUpdateSplitRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiInstallmentUpdateSplitResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<InstallmentUpdateSplitResponseDto>() {});
   }
 
   /**
    * Update installment splits
    *
    * @param id String Installment ID
-   * @param apiInstallmentUpdateSplitRequestDto {@link ApiInstallmentUpdateSplitRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiInstallmentUpdateSplitResponseDto>}
+   * @param installmentUpdateSplitRequestDto {@link InstallmentUpdateSplitRequestDto} Request Body
+   * @return response of {@code CompletableFuture<InstallmentUpdateSplitResponseDto>}
    */
-  public CompletableFuture<ApiInstallmentUpdateSplitResponseDto> updateInstallmentSplitsAsync(
+  public CompletableFuture<InstallmentUpdateSplitResponseDto> updateInstallmentSplitsAsync(
     @NonNull String id,
-    @NonNull ApiInstallmentUpdateSplitRequestDto apiInstallmentUpdateSplitRequestDto
+    @NonNull InstallmentUpdateSplitRequestDto installmentUpdateSplitRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateInstallmentSplitsRequest(id, apiInstallmentUpdateSplitRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateInstallmentSplitsRequest(id, installmentUpdateSplitRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiInstallmentUpdateSplitResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<InstallmentUpdateSplitResponseDto>() {})
     );
   }
 
   private Request buildUpdateInstallmentSplitsRequest(
     @NonNull String id,
-    @NonNull ApiInstallmentUpdateSplitRequestDto apiInstallmentUpdateSplitRequestDto
+    @NonNull InstallmentUpdateSplitRequestDto installmentUpdateSplitRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.PUT,
@@ -504,7 +504,7 @@ public class InstallmentService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiInstallmentUpdateSplitRequestDto)
+      .setJsonContent(installmentUpdateSplitRequestDto)
       .build();
   }
 }

@@ -4,19 +4,19 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiCustomerFiscalInfoGetResponseDto;
-import com.asaas.apisdk.models.ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto;
-import com.asaas.apisdk.models.ApiCustomerFiscalInfoListMunicipalServicesResponseDto;
-import com.asaas.apisdk.models.ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto;
-import com.asaas.apisdk.models.ApiCustomerFiscalInfoSaveRequestDto;
-import com.asaas.apisdk.models.ApiCustomerFiscalInfoUpdateUseNationalPortalRequestDto;
-import com.asaas.apisdk.models.ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
+import com.asaas.apisdk.models.FiscalInfoGetResponseDto;
+import com.asaas.apisdk.models.FiscalInfoListInvoiceNbsCodesResponseDto;
+import com.asaas.apisdk.models.FiscalInfoListMunicipalServicesResponseDto;
+import com.asaas.apisdk.models.FiscalInfoMunicipalOptionsGetResponseDto;
+import com.asaas.apisdk.models.FiscalInfoSaveRequestDto;
+import com.asaas.apisdk.models.FiscalInfoUpdateUseNationalPortalRequestDto;
+import com.asaas.apisdk.models.FiscalInfoUpdateUseNationalPortalResponseDto;
 import com.asaas.apisdk.models.ListMunicipalServicesParameters;
 import com.asaas.apisdk.models.ListNbsCodesParameters;
 import com.asaas.apisdk.validation.ViolationAggregator;
@@ -46,30 +46,27 @@ public class FiscalInfoService extends BaseService {
   /**
    * List municipal configurations
    *
-   * @return response of {@code ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto}
+   * @return response of {@code FiscalInfoMunicipalOptionsGetResponseDto}
    */
-  public ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto listMunicipalConfigurations() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public FiscalInfoMunicipalOptionsGetResponseDto listMunicipalConfigurations() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListMunicipalConfigurationsRequest();
     Response response = this.execute(request);
-    return ModelConverter.convert(
-      response,
-      new TypeReference<ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto>() {}
-    );
+    return ModelConverter.convert(response, new TypeReference<FiscalInfoMunicipalOptionsGetResponseDto>() {});
   }
 
   /**
    * List municipal configurations
    *
-   * @return response of {@code CompletableFuture<ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto>}
+   * @return response of {@code CompletableFuture<FiscalInfoMunicipalOptionsGetResponseDto>}
    */
-  public CompletableFuture<ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto> listMunicipalConfigurationsAsync()
+  public CompletableFuture<FiscalInfoMunicipalOptionsGetResponseDto> listMunicipalConfigurationsAsync()
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListMunicipalConfigurationsRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerFiscalInfoMunicipalOptionsGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<FiscalInfoMunicipalOptionsGetResponseDto>() {})
     );
   }
 
@@ -86,26 +83,26 @@ public class FiscalInfoService extends BaseService {
   /**
    * Retrieve tax information
    *
-   * @return response of {@code ApiCustomerFiscalInfoGetResponseDto}
+   * @return response of {@code FiscalInfoGetResponseDto}
    */
-  public ApiCustomerFiscalInfoGetResponseDto retrieveTaxInformation() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public FiscalInfoGetResponseDto retrieveTaxInformation() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveTaxInformationRequest();
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerFiscalInfoGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<FiscalInfoGetResponseDto>() {});
   }
 
   /**
    * Retrieve tax information
    *
-   * @return response of {@code CompletableFuture<ApiCustomerFiscalInfoGetResponseDto>}
+   * @return response of {@code CompletableFuture<FiscalInfoGetResponseDto>}
    */
-  public CompletableFuture<ApiCustomerFiscalInfoGetResponseDto> retrieveTaxInformationAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<FiscalInfoGetResponseDto> retrieveTaxInformationAsync() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveTaxInformationRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerFiscalInfoGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<FiscalInfoGetResponseDto>() {})
     );
   }
 
@@ -122,84 +119,78 @@ public class FiscalInfoService extends BaseService {
   /**
    * Create and update tax information
    *
-   * @param apiCustomerFiscalInfoSaveRequestDto {@link ApiCustomerFiscalInfoSaveRequestDto} Request Body
+   * @param fiscalInfoSaveRequestDto {@link FiscalInfoSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code ApiCustomerFiscalInfoGetResponseDto}
+   * @return response of {@code FiscalInfoGetResponseDto}
    */
-  public ApiCustomerFiscalInfoGetResponseDto createAndUpdateTaxInformation(
-    @NonNull ApiCustomerFiscalInfoSaveRequestDto apiCustomerFiscalInfoSaveRequestDto,
+  public FiscalInfoGetResponseDto createAndUpdateTaxInformation(
+    @NonNull FiscalInfoSaveRequestDto fiscalInfoSaveRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateAndUpdateTaxInformationRequest(apiCustomerFiscalInfoSaveRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateAndUpdateTaxInformationRequest(fiscalInfoSaveRequestDto, _filename);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerFiscalInfoGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<FiscalInfoGetResponseDto>() {});
   }
 
   /**
    * Create and update tax information
    *
-   * @param apiCustomerFiscalInfoSaveRequestDto {@link ApiCustomerFiscalInfoSaveRequestDto} Request Body
+   * @param fiscalInfoSaveRequestDto {@link FiscalInfoSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code CompletableFuture<ApiCustomerFiscalInfoGetResponseDto>}
+   * @return response of {@code CompletableFuture<FiscalInfoGetResponseDto>}
    */
-  public CompletableFuture<ApiCustomerFiscalInfoGetResponseDto> createAndUpdateTaxInformationAsync(
-    @NonNull ApiCustomerFiscalInfoSaveRequestDto apiCustomerFiscalInfoSaveRequestDto,
+  public CompletableFuture<FiscalInfoGetResponseDto> createAndUpdateTaxInformationAsync(
+    @NonNull FiscalInfoSaveRequestDto fiscalInfoSaveRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateAndUpdateTaxInformationRequest(apiCustomerFiscalInfoSaveRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateAndUpdateTaxInformationRequest(fiscalInfoSaveRequestDto, _filename);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerFiscalInfoGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<FiscalInfoGetResponseDto>() {})
     );
   }
 
   private Request buildCreateAndUpdateTaxInformationRequest(
-    @NonNull ApiCustomerFiscalInfoSaveRequestDto apiCustomerFiscalInfoSaveRequestDto,
+    @NonNull FiscalInfoSaveRequestDto fiscalInfoSaveRequestDto,
     @NonNull String _filename
   ) {
     MultipartBody.Builder multipartBodyBuilder = new MultipartBody.Builder()
       .setType(MultipartBody.FORM)
-      .addFormDataPart("email", apiCustomerFiscalInfoSaveRequestDto.getEmail())
-      .addFormDataPart("municipalInscription", apiCustomerFiscalInfoSaveRequestDto.getMunicipalInscription())
-      .addFormDataPart("simplesNacional", apiCustomerFiscalInfoSaveRequestDto.getSimplesNacional().toString())
-      .addFormDataPart("cnae", apiCustomerFiscalInfoSaveRequestDto.getCnae())
-      .addFormDataPart("specialTaxRegime", apiCustomerFiscalInfoSaveRequestDto.getSpecialTaxRegime())
-      .addFormDataPart("serviceListItem", apiCustomerFiscalInfoSaveRequestDto.getServiceListItem())
-      .addFormDataPart("nbsCode", apiCustomerFiscalInfoSaveRequestDto.getNbsCode())
-      .addFormDataPart("rpsSerie", apiCustomerFiscalInfoSaveRequestDto.getRpsSerie())
-      .addFormDataPart("username", apiCustomerFiscalInfoSaveRequestDto.getUsername())
-      .addFormDataPart("password", apiCustomerFiscalInfoSaveRequestDto.getPassword())
-      .addFormDataPart("accessToken", apiCustomerFiscalInfoSaveRequestDto.getAccessToken())
-      .addFormDataPart("certificatePassword", apiCustomerFiscalInfoSaveRequestDto.getCertificatePassword())
+      .addFormDataPart("email", fiscalInfoSaveRequestDto.getEmail())
+      .addFormDataPart("municipalInscription", fiscalInfoSaveRequestDto.getMunicipalInscription())
+      .addFormDataPart("simplesNacional", fiscalInfoSaveRequestDto.getSimplesNacional().toString())
+      .addFormDataPart("cnae", fiscalInfoSaveRequestDto.getCnae())
+      .addFormDataPart("specialTaxRegime", fiscalInfoSaveRequestDto.getSpecialTaxRegime())
+      .addFormDataPart("serviceListItem", fiscalInfoSaveRequestDto.getServiceListItem())
+      .addFormDataPart("nbsCode", fiscalInfoSaveRequestDto.getNbsCode())
+      .addFormDataPart("rpsSerie", fiscalInfoSaveRequestDto.getRpsSerie())
+      .addFormDataPart("username", fiscalInfoSaveRequestDto.getUsername())
+      .addFormDataPart("password", fiscalInfoSaveRequestDto.getPassword())
+      .addFormDataPart("accessToken", fiscalInfoSaveRequestDto.getAccessToken())
+      .addFormDataPart("certificatePassword", fiscalInfoSaveRequestDto.getCertificatePassword())
       .addFormDataPart(
         "nationalPortalTaxCalculationRegime",
-        apiCustomerFiscalInfoSaveRequestDto.getNationalPortalTaxCalculationRegime()
+        fiscalInfoSaveRequestDto.getNationalPortalTaxCalculationRegime()
       );
-    if (apiCustomerFiscalInfoSaveRequestDto.getCulturalProjectsPromoter() != null) {
+    if (fiscalInfoSaveRequestDto.getCulturalProjectsPromoter() != null) {
       multipartBodyBuilder.addFormDataPart(
         "culturalProjectsPromoter",
-        apiCustomerFiscalInfoSaveRequestDto.getCulturalProjectsPromoter().toString()
+        fiscalInfoSaveRequestDto.getCulturalProjectsPromoter().toString()
       );
     }
-    if (apiCustomerFiscalInfoSaveRequestDto.getRpsNumber() != null) {
-      multipartBodyBuilder.addFormDataPart("rpsNumber", apiCustomerFiscalInfoSaveRequestDto.getRpsNumber().toString());
+    if (fiscalInfoSaveRequestDto.getRpsNumber() != null) {
+      multipartBodyBuilder.addFormDataPart("rpsNumber", fiscalInfoSaveRequestDto.getRpsNumber().toString());
     }
-    if (apiCustomerFiscalInfoSaveRequestDto.getLoteNumber() != null) {
-      multipartBodyBuilder.addFormDataPart(
-        "loteNumber",
-        apiCustomerFiscalInfoSaveRequestDto.getLoteNumber().toString()
-      );
+    if (fiscalInfoSaveRequestDto.getLoteNumber() != null) {
+      multipartBodyBuilder.addFormDataPart("loteNumber", fiscalInfoSaveRequestDto.getLoteNumber().toString());
     }
-    if (apiCustomerFiscalInfoSaveRequestDto.getCertificateFile() != null) {
+    if (fiscalInfoSaveRequestDto.getCertificateFile() != null) {
       multipartBodyBuilder.addFormDataPart(
         "certificateFile",
         _filename,
-        RequestBody.create(
-          apiCustomerFiscalInfoSaveRequestDto.getCertificateFile(),
-          MediaType.parse("application/octet-stream")
-        )
+        RequestBody.create(fiscalInfoSaveRequestDto.getCertificateFile(), MediaType.parse("application/octet-stream"))
       );
     }
     return new RequestBuilder(
@@ -215,10 +206,9 @@ public class FiscalInfoService extends BaseService {
   /**
    * List municipal services
    *
-   * @return response of {@code ApiCustomerFiscalInfoListMunicipalServicesResponseDto}
+   * @return response of {@code FiscalInfoListMunicipalServicesResponseDto}
    */
-  public ApiCustomerFiscalInfoListMunicipalServicesResponseDto listMunicipalServices()
-    throws ApiError, ValidationException {
+  public FiscalInfoListMunicipalServicesResponseDto listMunicipalServices() throws ApiError, ValidationException {
     return this.listMunicipalServices(ListMunicipalServicesParameters.builder().build());
   }
 
@@ -226,26 +216,23 @@ public class FiscalInfoService extends BaseService {
    * List municipal services
    *
    * @param requestParameters {@link ListMunicipalServicesParameters} Request Parameters Object
-   * @return response of {@code ApiCustomerFiscalInfoListMunicipalServicesResponseDto}
+   * @return response of {@code FiscalInfoListMunicipalServicesResponseDto}
    */
-  public ApiCustomerFiscalInfoListMunicipalServicesResponseDto listMunicipalServices(
+  public FiscalInfoListMunicipalServicesResponseDto listMunicipalServices(
     @NonNull ListMunicipalServicesParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListMunicipalServicesRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(
-      response,
-      new TypeReference<ApiCustomerFiscalInfoListMunicipalServicesResponseDto>() {}
-    );
+    return ModelConverter.convert(response, new TypeReference<FiscalInfoListMunicipalServicesResponseDto>() {});
   }
 
   /**
    * List municipal services
    *
-   * @return response of {@code CompletableFuture<ApiCustomerFiscalInfoListMunicipalServicesResponseDto>}
+   * @return response of {@code CompletableFuture<FiscalInfoListMunicipalServicesResponseDto>}
    */
-  public CompletableFuture<ApiCustomerFiscalInfoListMunicipalServicesResponseDto> listMunicipalServicesAsync()
+  public CompletableFuture<FiscalInfoListMunicipalServicesResponseDto> listMunicipalServicesAsync()
     throws ApiError, ValidationException {
     return this.listMunicipalServicesAsync(ListMunicipalServicesParameters.builder().build());
   }
@@ -254,16 +241,16 @@ public class FiscalInfoService extends BaseService {
    * List municipal services
    *
    * @param requestParameters {@link ListMunicipalServicesParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiCustomerFiscalInfoListMunicipalServicesResponseDto>}
+   * @return response of {@code CompletableFuture<FiscalInfoListMunicipalServicesResponseDto>}
    */
-  public CompletableFuture<ApiCustomerFiscalInfoListMunicipalServicesResponseDto> listMunicipalServicesAsync(
+  public CompletableFuture<FiscalInfoListMunicipalServicesResponseDto> listMunicipalServicesAsync(
     @NonNull ListMunicipalServicesParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListMunicipalServicesRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerFiscalInfoListMunicipalServicesResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<FiscalInfoListMunicipalServicesResponseDto>() {})
     );
   }
 
@@ -287,9 +274,9 @@ public class FiscalInfoService extends BaseService {
   /**
    * List NBS codes
    *
-   * @return response of {@code ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto}
+   * @return response of {@code FiscalInfoListInvoiceNbsCodesResponseDto}
    */
-  public ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto listNbsCodes() throws ApiError, ValidationException {
+  public FiscalInfoListInvoiceNbsCodesResponseDto listNbsCodes() throws ApiError, ValidationException {
     return this.listNbsCodes(ListNbsCodesParameters.builder().build());
   }
 
@@ -297,26 +284,22 @@ public class FiscalInfoService extends BaseService {
    * List NBS codes
    *
    * @param requestParameters {@link ListNbsCodesParameters} Request Parameters Object
-   * @return response of {@code ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto}
+   * @return response of {@code FiscalInfoListInvoiceNbsCodesResponseDto}
    */
-  public ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto listNbsCodes(
-    @NonNull ListNbsCodesParameters requestParameters
-  ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public FiscalInfoListInvoiceNbsCodesResponseDto listNbsCodes(@NonNull ListNbsCodesParameters requestParameters)
+    throws ApiError, ValidationException {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListNbsCodesRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(
-      response,
-      new TypeReference<ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto>() {}
-    );
+    return ModelConverter.convert(response, new TypeReference<FiscalInfoListInvoiceNbsCodesResponseDto>() {});
   }
 
   /**
    * List NBS codes
    *
-   * @return response of {@code CompletableFuture<ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto>}
+   * @return response of {@code CompletableFuture<FiscalInfoListInvoiceNbsCodesResponseDto>}
    */
-  public CompletableFuture<ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto> listNbsCodesAsync()
+  public CompletableFuture<FiscalInfoListInvoiceNbsCodesResponseDto> listNbsCodesAsync()
     throws ApiError, ValidationException {
     return this.listNbsCodesAsync(ListNbsCodesParameters.builder().build());
   }
@@ -325,16 +308,16 @@ public class FiscalInfoService extends BaseService {
    * List NBS codes
    *
    * @param requestParameters {@link ListNbsCodesParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto>}
+   * @return response of {@code CompletableFuture<FiscalInfoListInvoiceNbsCodesResponseDto>}
    */
-  public CompletableFuture<ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto> listNbsCodesAsync(
+  public CompletableFuture<FiscalInfoListInvoiceNbsCodesResponseDto> listNbsCodesAsync(
     @NonNull ListNbsCodesParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListNbsCodesRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerFiscalInfoListInvoiceNbsCodesResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<FiscalInfoListInvoiceNbsCodesResponseDto>() {})
     );
   }
 
@@ -358,64 +341,56 @@ public class FiscalInfoService extends BaseService {
   /**
    * Configure invoice issuing portal
    *
-   * @return response of {@code ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto}
+   * @return response of {@code FiscalInfoUpdateUseNationalPortalResponseDto}
    */
-  public ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto configureInvoiceIssuingPortal() throws ApiError {
-    return this.configureInvoiceIssuingPortal(ApiCustomerFiscalInfoUpdateUseNationalPortalRequestDto.builder().build());
+  public FiscalInfoUpdateUseNationalPortalResponseDto configureInvoiceIssuingPortal() throws ApiError {
+    return this.configureInvoiceIssuingPortal(FiscalInfoUpdateUseNationalPortalRequestDto.builder().build());
   }
 
   /**
    * Configure invoice issuing portal
    *
-   * @param apiCustomerFiscalInfoUpdateUseNationalPortalRequestDto {@link ApiCustomerFiscalInfoUpdateUseNationalPortalRequestDto} Request Body
-   * @return response of {@code ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto}
+   * @param fiscalInfoUpdateUseNationalPortalRequestDto {@link FiscalInfoUpdateUseNationalPortalRequestDto} Request Body
+   * @return response of {@code FiscalInfoUpdateUseNationalPortalResponseDto}
    */
-  public ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto configureInvoiceIssuingPortal(
-    @NonNull ApiCustomerFiscalInfoUpdateUseNationalPortalRequestDto apiCustomerFiscalInfoUpdateUseNationalPortalRequestDto
+  public FiscalInfoUpdateUseNationalPortalResponseDto configureInvoiceIssuingPortal(
+    @NonNull FiscalInfoUpdateUseNationalPortalRequestDto fiscalInfoUpdateUseNationalPortalRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request =
-      this.buildConfigureInvoiceIssuingPortalRequest(apiCustomerFiscalInfoUpdateUseNationalPortalRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildConfigureInvoiceIssuingPortalRequest(fiscalInfoUpdateUseNationalPortalRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(
-      response,
-      new TypeReference<ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto>() {}
-    );
+    return ModelConverter.convert(response, new TypeReference<FiscalInfoUpdateUseNationalPortalResponseDto>() {});
   }
 
   /**
    * Configure invoice issuing portal
    *
-   * @return response of {@code CompletableFuture<ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto>}
+   * @return response of {@code CompletableFuture<FiscalInfoUpdateUseNationalPortalResponseDto>}
    */
-  public CompletableFuture<
-    ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto
-  > configureInvoiceIssuingPortalAsync() throws ApiError {
-    return this.configureInvoiceIssuingPortalAsync(
-        ApiCustomerFiscalInfoUpdateUseNationalPortalRequestDto.builder().build()
-      );
+  public CompletableFuture<FiscalInfoUpdateUseNationalPortalResponseDto> configureInvoiceIssuingPortalAsync()
+    throws ApiError {
+    return this.configureInvoiceIssuingPortalAsync(FiscalInfoUpdateUseNationalPortalRequestDto.builder().build());
   }
 
   /**
    * Configure invoice issuing portal
    *
-   * @param apiCustomerFiscalInfoUpdateUseNationalPortalRequestDto {@link ApiCustomerFiscalInfoUpdateUseNationalPortalRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto>}
+   * @param fiscalInfoUpdateUseNationalPortalRequestDto {@link FiscalInfoUpdateUseNationalPortalRequestDto} Request Body
+   * @return response of {@code CompletableFuture<FiscalInfoUpdateUseNationalPortalResponseDto>}
    */
-  public CompletableFuture<ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto> configureInvoiceIssuingPortalAsync(
-    @NonNull ApiCustomerFiscalInfoUpdateUseNationalPortalRequestDto apiCustomerFiscalInfoUpdateUseNationalPortalRequestDto
+  public CompletableFuture<FiscalInfoUpdateUseNationalPortalResponseDto> configureInvoiceIssuingPortalAsync(
+    @NonNull FiscalInfoUpdateUseNationalPortalRequestDto fiscalInfoUpdateUseNationalPortalRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request =
-      this.buildConfigureInvoiceIssuingPortalRequest(apiCustomerFiscalInfoUpdateUseNationalPortalRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildConfigureInvoiceIssuingPortalRequest(fiscalInfoUpdateUseNationalPortalRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerFiscalInfoUpdateUseNationalPortalResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<FiscalInfoUpdateUseNationalPortalResponseDto>() {})
     );
   }
 
   private Request buildConfigureInvoiceIssuingPortalRequest(
-    @NonNull ApiCustomerFiscalInfoUpdateUseNationalPortalRequestDto apiCustomerFiscalInfoUpdateUseNationalPortalRequestDto
+    @NonNull FiscalInfoUpdateUseNationalPortalRequestDto fiscalInfoUpdateUseNationalPortalRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -423,7 +398,7 @@ public class FiscalInfoService extends BaseService {
       "v3/fiscalInfo/nationalPortal"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiCustomerFiscalInfoUpdateUseNationalPortalRequestDto)
+      .setJsonContent(fiscalInfoUpdateUseNationalPortalRequestDto)
       .build();
   }
 }

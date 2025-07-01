@@ -54,13 +54,13 @@ public class ListPaymentsParameters {
    * Filter by billing type
    */
   @JsonProperty("billingType")
-  private JsonNullable<ApiPaymentListRequestBillingType> billingType;
+  private JsonNullable<PaymentListRequestBillingType> billingType;
 
   /**
    * Filter by status
    */
   @JsonProperty("status")
-  private JsonNullable<ApiPaymentListRequestPaymentStatus> status;
+  private JsonNullable<PaymentListRequestPaymentStatus> status;
 
   /**
    * Filter by unique subscription identifier
@@ -84,7 +84,7 @@ public class ListPaymentsParameters {
    * Filter to return charges that have or do not have an invoice
    */
   @JsonProperty("invoiceStatus")
-  private JsonNullable<ApiPaymentListRequestInvoiceStatus> invoiceStatus;
+  private JsonNullable<PaymentListRequestInvoiceStatus> invoiceStatus;
 
   /**
    * Filter by estimated credit date
@@ -190,12 +190,12 @@ public class ListPaymentsParameters {
   }
 
   @JsonIgnore
-  public ApiPaymentListRequestBillingType getBillingType() {
+  public PaymentListRequestBillingType getBillingType() {
     return billingType.orElse(null);
   }
 
   @JsonIgnore
-  public ApiPaymentListRequestPaymentStatus getStatus() {
+  public PaymentListRequestPaymentStatus getStatus() {
     return status.orElse(null);
   }
 
@@ -215,7 +215,7 @@ public class ListPaymentsParameters {
   }
 
   @JsonIgnore
-  public ApiPaymentListRequestInvoiceStatus getInvoiceStatus() {
+  public PaymentListRequestInvoiceStatus getInvoiceStatus() {
     return invoiceStatus.orElse(null);
   }
 
@@ -342,10 +342,10 @@ public class ListPaymentsParameters {
       return this;
     }
 
-    private JsonNullable<ApiPaymentListRequestBillingType> billingType = JsonNullable.undefined();
+    private JsonNullable<PaymentListRequestBillingType> billingType = JsonNullable.undefined();
 
     @JsonProperty("billingType")
-    public ListPaymentsParametersBuilder billingType(ApiPaymentListRequestBillingType value) {
+    public ListPaymentsParametersBuilder billingType(PaymentListRequestBillingType value) {
       if (value == null) {
         throw new IllegalStateException("billingType cannot be null");
       }
@@ -353,10 +353,10 @@ public class ListPaymentsParameters {
       return this;
     }
 
-    private JsonNullable<ApiPaymentListRequestPaymentStatus> status = JsonNullable.undefined();
+    private JsonNullable<PaymentListRequestPaymentStatus> status = JsonNullable.undefined();
 
     @JsonProperty("status")
-    public ListPaymentsParametersBuilder status(ApiPaymentListRequestPaymentStatus value) {
+    public ListPaymentsParametersBuilder status(PaymentListRequestPaymentStatus value) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");
       }
@@ -397,10 +397,10 @@ public class ListPaymentsParameters {
       return this;
     }
 
-    private JsonNullable<ApiPaymentListRequestInvoiceStatus> invoiceStatus = JsonNullable.undefined();
+    private JsonNullable<PaymentListRequestInvoiceStatus> invoiceStatus = JsonNullable.undefined();
 
     @JsonProperty("invoiceStatus")
-    public ListPaymentsParametersBuilder invoiceStatus(ApiPaymentListRequestInvoiceStatus value) {
+    public ListPaymentsParametersBuilder invoiceStatus(PaymentListRequestInvoiceStatus value) {
       if (value == null) {
         throw new IllegalStateException("invoiceStatus cannot be null");
       }

@@ -38,7 +38,7 @@ A list of all methods in the `PaymentService` service. Click on the method name 
 
 **Return Type**
 
-`ApiPaymentListResponseDto`
+`PaymentListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -46,11 +46,11 @@ A list of all methods in the `PaymentService` service. Click on the method name 
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentListRequestBillingType;
-import com.asaas.apisdk.models.ApiPaymentListRequestInvoiceStatus;
-import com.asaas.apisdk.models.ApiPaymentListRequestPaymentStatus;
-import com.asaas.apisdk.models.ApiPaymentListResponseDto;
 import com.asaas.apisdk.models.ListPaymentsParameters;
+import com.asaas.apisdk.models.PaymentListRequestBillingType;
+import com.asaas.apisdk.models.PaymentListRequestInvoiceStatus;
+import com.asaas.apisdk.models.PaymentListRequestPaymentStatus;
+import com.asaas.apisdk.models.PaymentListResponseDto;
 
 public class Main {
 
@@ -67,12 +67,12 @@ public class Main {
       .limit(10L)
       .customer("customer")
       .customerGroupName("customerGroupName")
-      .billingType(ApiPaymentListRequestBillingType.UNDEFINED)
-      .status(ApiPaymentListRequestPaymentStatus.PENDING)
+      .billingType(PaymentListRequestBillingType.UNDEFINED)
+      .status(PaymentListRequestPaymentStatus.PENDING)
       .subscription("subscription")
       .externalReference("externalReference")
       .paymentDate("paymentDate")
-      .invoiceStatus(ApiPaymentListRequestInvoiceStatus.SCHEDULED)
+      .invoiceStatus(PaymentListRequestInvoiceStatus.SCHEDULED)
       .estimatedCreditDate("estimatedCreditDate")
       .pixQrCodeId("pixQrCodeId")
       .anticipated(false)
@@ -88,7 +88,7 @@ public class Main {
       .user("user")
       .build();
 
-    ApiPaymentListResponseDto response = asaasSdk.payment.listPayments(requestParameters);
+    PaymentListResponseDto response = asaasSdk.payment.listPayments(requestParameters);
 
     System.out.println(response);
   }
@@ -103,13 +103,13 @@ public class Main {
 
 **Parameters**
 
-| Name                     | Type                                                              | Required | Description  |
-| :----------------------- | :---------------------------------------------------------------- | :------- | :----------- |
-| apiPaymentSaveRequestDto | [ApiPaymentSaveRequestDto](../models/ApiPaymentSaveRequestDto.md) | ❌       | Request Body |
+| Name                  | Type                                                        | Required | Description  |
+| :-------------------- | :---------------------------------------------------------- | :------- | :----------- |
+| paymentSaveRequestDto | [PaymentSaveRequestDto](../models/PaymentSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -117,16 +117,16 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.apisdk.models.ApiPaymentDiscountDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
-import com.asaas.apisdk.models.ApiPaymentSaveRequestBillingType;
-import com.asaas.apisdk.models.ApiPaymentSaveRequestDto;
-import com.asaas.apisdk.models.ApiPaymentSplitRequestDto;
+import com.asaas.apisdk.models.PaymentCallbackRequestDto;
+import com.asaas.apisdk.models.PaymentDiscountDiscountType;
+import com.asaas.apisdk.models.PaymentDiscountDto;
+import com.asaas.apisdk.models.PaymentFineRequestDto;
+import com.asaas.apisdk.models.PaymentFineRequestFineType;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentInterestRequestDto;
+import com.asaas.apisdk.models.PaymentSaveRequestBillingType;
+import com.asaas.apisdk.models.PaymentSaveRequestDto;
+import com.asaas.apisdk.models.PaymentSplitRequestDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -139,22 +139,20 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDiscountDto apiPaymentDiscountDto = ApiPaymentDiscountDto.builder()
+    PaymentDiscountDto paymentDiscountDto = PaymentDiscountDto.builder()
       .value(10D)
       .dueDateLimitDays(1L)
-      .type(ApiPaymentDiscountDiscountType.FIXED)
+      .type(PaymentDiscountDiscountType.FIXED)
       .build();
 
-    ApiPaymentInterestRequestDto apiPaymentInterestRequestDto = ApiPaymentInterestRequestDto.builder()
-      .value(4.68D)
-      .build();
+    PaymentInterestRequestDto paymentInterestRequestDto = PaymentInterestRequestDto.builder().value(4.68D).build();
 
-    ApiPaymentFineRequestDto apiPaymentFineRequestDto = ApiPaymentFineRequestDto.builder()
+    PaymentFineRequestDto paymentFineRequestDto = PaymentFineRequestDto.builder()
       .value(8.99D)
-      .type(ApiPaymentFineRequestFineType.FIXED)
+      .type(PaymentFineRequestFineType.FIXED)
       .build();
 
-    ApiPaymentSplitRequestDto apiPaymentSplitRequestDto = ApiPaymentSplitRequestDto.builder()
+    PaymentSplitRequestDto paymentSplitRequestDto = PaymentSplitRequestDto.builder()
       .walletId("walletId")
       .fixedValue(6.62D)
       .percentualValue(6.01D)
@@ -163,16 +161,16 @@ public class Main {
       .description("description")
       .build();
 
-    List<ApiPaymentSplitRequestDto> splitList = Arrays.asList(apiPaymentSplitRequestDto);
+    List<PaymentSplitRequestDto> splitList = Arrays.asList(paymentSplitRequestDto);
 
-    ApiPaymentCallbackRequestDto apiPaymentCallbackRequestDto = ApiPaymentCallbackRequestDto.builder()
+    PaymentCallbackRequestDto paymentCallbackRequestDto = PaymentCallbackRequestDto.builder()
       .successUrl("successUrl")
       .autoRedirect(true)
       .build();
 
-    ApiPaymentSaveRequestDto apiPaymentSaveRequestDto = ApiPaymentSaveRequestDto.builder()
+    PaymentSaveRequestDto paymentSaveRequestDto = PaymentSaveRequestDto.builder()
       .customer("cus_G7Dvo4iphUNk")
-      .billingType(ApiPaymentSaveRequestBillingType.UNDEFINED)
+      .billingType(PaymentSaveRequestBillingType.UNDEFINED)
       .value(129.9D)
       .dueDate("2017-06-10")
       .description("Pedido 056984")
@@ -181,15 +179,15 @@ public class Main {
       .installmentCount(7L)
       .totalValue(7.91D)
       .installmentValue(8.76D)
-      .discount(apiPaymentDiscountDto)
-      .interest(apiPaymentInterestRequestDto)
-      .fine(apiPaymentFineRequestDto)
+      .discount(paymentDiscountDto)
+      .interest(paymentInterestRequestDto)
+      .fine(paymentFineRequestDto)
       .postalService(true)
       .split(splitList)
-      .callback(apiPaymentCallbackRequestDto)
+      .callback(paymentCallbackRequestDto)
       .build();
 
-    ApiPaymentGetResponseDto response = asaasSdk.payment.createNewPayment(apiPaymentSaveRequestDto);
+    PaymentGetResponseDto response = asaasSdk.payment.createNewPayment(paymentSaveRequestDto);
 
     System.out.println(response);
   }
@@ -204,13 +202,13 @@ public class Main {
 
 **Parameters**
 
-| Name                                   | Type                                                                                          | Required | Description  |
-| :------------------------------------- | :-------------------------------------------------------------------------------------------- | :------- | :----------- |
-| apiPaymentSaveWithCreditCardRequestDto | [ApiPaymentSaveWithCreditCardRequestDto](../models/ApiPaymentSaveWithCreditCardRequestDto.md) | ❌       | Request Body |
+| Name                                | Type                                                                                    | Required | Description  |
+| :---------------------------------- | :-------------------------------------------------------------------------------------- | :------- | :----------- |
+| paymentSaveWithCreditCardRequestDto | [PaymentSaveWithCreditCardRequestDto](../models/PaymentSaveWithCreditCardRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -218,18 +216,18 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCreditCardHolderInfoRequestDto;
-import com.asaas.apisdk.models.ApiCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.apisdk.models.ApiPaymentDiscountDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
-import com.asaas.apisdk.models.ApiPaymentSaveWithCreditCardRequestBillingType;
-import com.asaas.apisdk.models.ApiPaymentSaveWithCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiPaymentSplitRequestDto;
+import com.asaas.apisdk.models.CreditCardHolderInfoRequestDto;
+import com.asaas.apisdk.models.CreditCardRequestDto;
+import com.asaas.apisdk.models.PaymentCallbackRequestDto;
+import com.asaas.apisdk.models.PaymentDiscountDiscountType;
+import com.asaas.apisdk.models.PaymentDiscountDto;
+import com.asaas.apisdk.models.PaymentFineRequestDto;
+import com.asaas.apisdk.models.PaymentFineRequestFineType;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentInterestRequestDto;
+import com.asaas.apisdk.models.PaymentSaveWithCreditCardRequestBillingType;
+import com.asaas.apisdk.models.PaymentSaveWithCreditCardRequestDto;
+import com.asaas.apisdk.models.PaymentSplitRequestDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -242,22 +240,20 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDiscountDto apiPaymentDiscountDto = ApiPaymentDiscountDto.builder()
+    PaymentDiscountDto paymentDiscountDto = PaymentDiscountDto.builder()
       .value(10D)
       .dueDateLimitDays(1L)
-      .type(ApiPaymentDiscountDiscountType.FIXED)
+      .type(PaymentDiscountDiscountType.FIXED)
       .build();
 
-    ApiPaymentInterestRequestDto apiPaymentInterestRequestDto = ApiPaymentInterestRequestDto.builder()
-      .value(4.68D)
-      .build();
+    PaymentInterestRequestDto paymentInterestRequestDto = PaymentInterestRequestDto.builder().value(4.68D).build();
 
-    ApiPaymentFineRequestDto apiPaymentFineRequestDto = ApiPaymentFineRequestDto.builder()
+    PaymentFineRequestDto paymentFineRequestDto = PaymentFineRequestDto.builder()
       .value(8.99D)
-      .type(ApiPaymentFineRequestFineType.FIXED)
+      .type(PaymentFineRequestFineType.FIXED)
       .build();
 
-    ApiPaymentSplitRequestDto apiPaymentSplitRequestDto = ApiPaymentSplitRequestDto.builder()
+    PaymentSplitRequestDto paymentSplitRequestDto = PaymentSplitRequestDto.builder()
       .walletId("walletId")
       .fixedValue(6.62D)
       .percentualValue(6.01D)
@@ -266,22 +262,22 @@ public class Main {
       .description("description")
       .build();
 
-    List<ApiPaymentSplitRequestDto> splitList = Arrays.asList(apiPaymentSplitRequestDto);
+    List<PaymentSplitRequestDto> splitList = Arrays.asList(paymentSplitRequestDto);
 
-    ApiPaymentCallbackRequestDto apiPaymentCallbackRequestDto = ApiPaymentCallbackRequestDto.builder()
+    PaymentCallbackRequestDto paymentCallbackRequestDto = PaymentCallbackRequestDto.builder()
       .successUrl("successUrl")
       .autoRedirect(true)
       .build();
 
-    ApiCreditCardRequestDto apiCreditCardRequestDto = ApiCreditCardRequestDto.builder()
+    CreditCardRequestDto creditCardRequestDto = CreditCardRequestDto.builder()
       .holderName("John Doe")
       .number("1234567890123456")
-      .expiryMonth("6")
+      .expiryMonth("7")
       .expiryYear("2025")
       .ccv("123")
       .build();
 
-    ApiCreditCardHolderInfoRequestDto apiCreditCardHolderInfoRequestDto = ApiCreditCardHolderInfoRequestDto.builder()
+    CreditCardHolderInfoRequestDto creditCardHolderInfoRequestDto = CreditCardHolderInfoRequestDto.builder()
       .name("John Doe")
       .email("john.doe@asaas.com")
       .cpfCnpj("12345678901")
@@ -292,10 +288,10 @@ public class Main {
       .mobilePhone("mobilePhone")
       .build();
 
-    ApiPaymentSaveWithCreditCardRequestDto apiPaymentSaveWithCreditCardRequestDto =
-      ApiPaymentSaveWithCreditCardRequestDto.builder()
+    PaymentSaveWithCreditCardRequestDto paymentSaveWithCreditCardRequestDto =
+      PaymentSaveWithCreditCardRequestDto.builder()
         .customer("cus_G7Dvo4iphUNk")
-        .billingType(ApiPaymentSaveWithCreditCardRequestBillingType.UNDEFINED)
+        .billingType(PaymentSaveWithCreditCardRequestBillingType.UNDEFINED)
         .value(129.9D)
         .dueDate("2017-06-10")
         .description("Pedido 056984")
@@ -304,21 +300,21 @@ public class Main {
         .installmentCount(6L)
         .totalValue(3.41D)
         .installmentValue(8.68D)
-        .discount(apiPaymentDiscountDto)
-        .interest(apiPaymentInterestRequestDto)
-        .fine(apiPaymentFineRequestDto)
+        .discount(paymentDiscountDto)
+        .interest(paymentInterestRequestDto)
+        .fine(paymentFineRequestDto)
         .postalService(true)
         .split(splitList)
-        .callback(apiPaymentCallbackRequestDto)
-        .creditCard(apiCreditCardRequestDto)
-        .creditCardHolderInfo(apiCreditCardHolderInfoRequestDto)
+        .callback(paymentCallbackRequestDto)
+        .creditCard(creditCardRequestDto)
+        .creditCardHolderInfo(creditCardHolderInfoRequestDto)
         .creditCardToken("creditCardToken")
         .authorizeOnly(false)
         .remoteIp("remoteIp")
         .build();
 
-    ApiPaymentGetResponseDto response = asaasSdk.payment.createNewPaymentWithCreditCard(
-      apiPaymentSaveWithCreditCardRequestDto
+    PaymentGetResponseDto response = asaasSdk.payment.createNewPaymentWithCreditCard(
+      paymentSaveWithCreditCardRequestDto
     );
 
     System.out.println(response);
@@ -341,7 +337,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -349,7 +345,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
 
 public class Main {
 
@@ -360,7 +356,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentGetResponseDto response = asaasSdk.payment.capturePaymentWithPreAuthorization("id", new Object());
+    PaymentGetResponseDto response = asaasSdk.payment.capturePaymentWithPreAuthorization("id", new Object());
 
     System.out.println(response);
   }
@@ -375,14 +371,14 @@ public class Main {
 
 **Parameters**
 
-| Name                                  | Type                                                                                        | Required | Description                        |
-| :------------------------------------ | :------------------------------------------------------------------------------------------ | :------- | :--------------------------------- |
-| id                                    | String                                                                                      | ✅       | Unique payment identifier in Asaas |
-| apiPaymentPayWithCreditCardRequestDto | [ApiPaymentPayWithCreditCardRequestDto](../models/ApiPaymentPayWithCreditCardRequestDto.md) | ❌       | Request Body                       |
+| Name                               | Type                                                                                  | Required | Description                        |
+| :--------------------------------- | :------------------------------------------------------------------------------------ | :------- | :--------------------------------- |
+| id                                 | String                                                                                | ✅       | Unique payment identifier in Asaas |
+| paymentPayWithCreditCardRequestDto | [PaymentPayWithCreditCardRequestDto](../models/PaymentPayWithCreditCardRequestDto.md) | ❌       | Request Body                       |
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -390,10 +386,10 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCreditCardHolderInfoRequestDto;
-import com.asaas.apisdk.models.ApiCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentPayWithCreditCardRequestDto;
+import com.asaas.apisdk.models.CreditCardHolderInfoRequestDto;
+import com.asaas.apisdk.models.CreditCardRequestDto;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentPayWithCreditCardRequestDto;
 
 public class Main {
 
@@ -404,15 +400,15 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCreditCardRequestDto apiCreditCardRequestDto = ApiCreditCardRequestDto.builder()
+    CreditCardRequestDto creditCardRequestDto = CreditCardRequestDto.builder()
       .holderName("John Doe")
       .number("1234567890123456")
-      .expiryMonth("6")
+      .expiryMonth("7")
       .expiryYear("2025")
       .ccv("123")
       .build();
 
-    ApiCreditCardHolderInfoRequestDto apiCreditCardHolderInfoRequestDto = ApiCreditCardHolderInfoRequestDto.builder()
+    CreditCardHolderInfoRequestDto creditCardHolderInfoRequestDto = CreditCardHolderInfoRequestDto.builder()
       .name("John Doe")
       .email("john.doe@asaas.com")
       .cpfCnpj("12345678901")
@@ -423,16 +419,15 @@ public class Main {
       .mobilePhone("mobilePhone")
       .build();
 
-    ApiPaymentPayWithCreditCardRequestDto apiPaymentPayWithCreditCardRequestDto =
-      ApiPaymentPayWithCreditCardRequestDto.builder()
-        .creditCard(apiCreditCardRequestDto)
-        .creditCardHolderInfo(apiCreditCardHolderInfoRequestDto)
-        .creditCardToken("creditCardToken")
-        .build();
+    PaymentPayWithCreditCardRequestDto paymentPayWithCreditCardRequestDto = PaymentPayWithCreditCardRequestDto.builder()
+      .creditCard(creditCardRequestDto)
+      .creditCardHolderInfo(creditCardHolderInfoRequestDto)
+      .creditCardToken("creditCardToken")
+      .build();
 
-    ApiPaymentGetResponseDto response = asaasSdk.payment.payAChargeWithCreditCard(
+    PaymentGetResponseDto response = asaasSdk.payment.payAChargeWithCreditCard(
       "id",
-      apiPaymentPayWithCreditCardRequestDto
+      paymentPayWithCreditCardRequestDto
     );
 
     System.out.println(response);
@@ -454,7 +449,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentBillingInfoResponseDto`
+`PaymentBillingInfoResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -462,7 +457,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentBillingInfoResponseDto;
+import com.asaas.apisdk.models.PaymentBillingInfoResponseDto;
 
 public class Main {
 
@@ -473,7 +468,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentBillingInfoResponseDto response = asaasSdk.payment.retrievePaymentBillingInformation("id");
+    PaymentBillingInfoResponseDto response = asaasSdk.payment.retrievePaymentBillingInformation("id");
 
     System.out.println(response);
   }
@@ -494,7 +489,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentViewingInfoResponseDto`
+`PaymentViewingInfoResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -502,7 +497,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentViewingInfoResponseDto;
+import com.asaas.apisdk.models.PaymentViewingInfoResponseDto;
 
 public class Main {
 
@@ -513,7 +508,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentViewingInfoResponseDto response = asaasSdk.payment.paymentViewingInformation("id");
+    PaymentViewingInfoResponseDto response = asaasSdk.payment.paymentViewingInformation("id");
 
     System.out.println(response);
   }
@@ -534,7 +529,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -542,7 +537,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
 
 public class Main {
 
@@ -553,7 +548,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentGetResponseDto response = asaasSdk.payment.retrieveASinglePayment("id");
+    PaymentGetResponseDto response = asaasSdk.payment.retrieveASinglePayment("id");
 
     System.out.println(response);
   }
@@ -568,14 +563,14 @@ public class Main {
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description                        |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :--------------------------------- |
-| id                         | String                                                                | ✅       | Unique payment identifier in Asaas |
-| apiPaymentUpdateRequestDto | [ApiPaymentUpdateRequestDto](../models/ApiPaymentUpdateRequestDto.md) | ❌       | Request Body                       |
+| Name                    | Type                                                            | Required | Description                        |
+| :---------------------- | :-------------------------------------------------------------- | :------- | :--------------------------------- |
+| id                      | String                                                          | ✅       | Unique payment identifier in Asaas |
+| paymentUpdateRequestDto | [PaymentUpdateRequestDto](../models/PaymentUpdateRequestDto.md) | ❌       | Request Body                       |
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -583,16 +578,16 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.apisdk.models.ApiPaymentDiscountDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
-import com.asaas.apisdk.models.ApiPaymentSplitRequestDto;
-import com.asaas.apisdk.models.ApiPaymentUpdateRequestBillingType;
-import com.asaas.apisdk.models.ApiPaymentUpdateRequestDto;
+import com.asaas.apisdk.models.PaymentCallbackRequestDto;
+import com.asaas.apisdk.models.PaymentDiscountDiscountType;
+import com.asaas.apisdk.models.PaymentDiscountDto;
+import com.asaas.apisdk.models.PaymentFineRequestDto;
+import com.asaas.apisdk.models.PaymentFineRequestFineType;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentInterestRequestDto;
+import com.asaas.apisdk.models.PaymentSplitRequestDto;
+import com.asaas.apisdk.models.PaymentUpdateRequestBillingType;
+import com.asaas.apisdk.models.PaymentUpdateRequestDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -605,22 +600,20 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDiscountDto apiPaymentDiscountDto = ApiPaymentDiscountDto.builder()
+    PaymentDiscountDto paymentDiscountDto = PaymentDiscountDto.builder()
       .value(10D)
       .dueDateLimitDays(1L)
-      .type(ApiPaymentDiscountDiscountType.FIXED)
+      .type(PaymentDiscountDiscountType.FIXED)
       .build();
 
-    ApiPaymentInterestRequestDto apiPaymentInterestRequestDto = ApiPaymentInterestRequestDto.builder()
-      .value(4.68D)
-      .build();
+    PaymentInterestRequestDto paymentInterestRequestDto = PaymentInterestRequestDto.builder().value(4.68D).build();
 
-    ApiPaymentFineRequestDto apiPaymentFineRequestDto = ApiPaymentFineRequestDto.builder()
+    PaymentFineRequestDto paymentFineRequestDto = PaymentFineRequestDto.builder()
       .value(8.99D)
-      .type(ApiPaymentFineRequestFineType.FIXED)
+      .type(PaymentFineRequestFineType.FIXED)
       .build();
 
-    ApiPaymentSplitRequestDto apiPaymentSplitRequestDto = ApiPaymentSplitRequestDto.builder()
+    PaymentSplitRequestDto paymentSplitRequestDto = PaymentSplitRequestDto.builder()
       .walletId("walletId")
       .fixedValue(6.62D)
       .percentualValue(6.01D)
@@ -629,31 +622,31 @@ public class Main {
       .description("description")
       .build();
 
-    List<ApiPaymentSplitRequestDto> splitList = Arrays.asList(apiPaymentSplitRequestDto);
+    List<PaymentSplitRequestDto> splitList = Arrays.asList(paymentSplitRequestDto);
 
-    ApiPaymentCallbackRequestDto apiPaymentCallbackRequestDto = ApiPaymentCallbackRequestDto.builder()
+    PaymentCallbackRequestDto paymentCallbackRequestDto = PaymentCallbackRequestDto.builder()
       .successUrl("successUrl")
       .autoRedirect(true)
       .build();
 
-    ApiPaymentUpdateRequestDto apiPaymentUpdateRequestDto = ApiPaymentUpdateRequestDto.builder()
-      .billingType(ApiPaymentUpdateRequestBillingType.UNDEFINED)
+    PaymentUpdateRequestDto paymentUpdateRequestDto = PaymentUpdateRequestDto.builder()
+      .billingType(PaymentUpdateRequestBillingType.UNDEFINED)
       .value(129.9D)
       .dueDate("2017-06-10")
       .description("Pedido 056984")
       .daysAfterDueDateToRegistrationCancellation(1L)
       .externalReference("056984")
-      .discount(apiPaymentDiscountDto)
-      .interest(apiPaymentInterestRequestDto)
-      .fine(apiPaymentFineRequestDto)
+      .discount(paymentDiscountDto)
+      .interest(paymentInterestRequestDto)
+      .fine(paymentFineRequestDto)
       .postalService(false)
       .split(splitList)
-      .callback(apiPaymentCallbackRequestDto)
+      .callback(paymentCallbackRequestDto)
       .build();
 
-    ApiPaymentGetResponseDto response = asaasSdk.payment.updateExistingPayment(
+    PaymentGetResponseDto response = asaasSdk.payment.updateExistingPayment(
       "pay_080225913252",
-      apiPaymentUpdateRequestDto
+      paymentUpdateRequestDto
     );
 
     System.out.println(response);
@@ -675,7 +668,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentDeleteResponseDto`
+`PaymentDeleteResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -683,7 +676,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDeleteResponseDto;
+import com.asaas.apisdk.models.PaymentDeleteResponseDto;
 
 public class Main {
 
@@ -694,7 +687,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDeleteResponseDto response = asaasSdk.payment.deletePayment("id");
+    PaymentDeleteResponseDto response = asaasSdk.payment.deletePayment("id");
 
     System.out.println(response);
   }
@@ -716,7 +709,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -724,7 +717,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
 
 public class Main {
 
@@ -735,7 +728,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentGetResponseDto response = asaasSdk.payment.restoreRemovedPayment("id", new Object());
+    PaymentGetResponseDto response = asaasSdk.payment.restoreRemovedPayment("id", new Object());
 
     System.out.println(response);
   }
@@ -756,7 +749,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentStatusResponseDto`
+`PaymentStatusResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -764,7 +757,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentStatusResponseDto;
+import com.asaas.apisdk.models.PaymentStatusResponseDto;
 
 public class Main {
 
@@ -775,7 +768,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentStatusResponseDto response = asaasSdk.payment.retrieveStatusOfAPayment("id");
+    PaymentStatusResponseDto response = asaasSdk.payment.retrieveStatusOfAPayment("id");
 
     System.out.println(response);
   }
@@ -790,14 +783,14 @@ public class Main {
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description                        |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :--------------------------------- |
-| id                         | String                                                                | ✅       | Unique payment identifier in Asaas |
-| apiPaymentRefundRequestDto | [ApiPaymentRefundRequestDto](../models/ApiPaymentRefundRequestDto.md) | ❌       | Request Body                       |
+| Name                    | Type                                                            | Required | Description                        |
+| :---------------------- | :-------------------------------------------------------------- | :------- | :--------------------------------- |
+| id                      | String                                                          | ✅       | Unique payment identifier in Asaas |
+| paymentRefundRequestDto | [PaymentRefundRequestDto](../models/PaymentRefundRequestDto.md) | ❌       | Request Body                       |
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -805,8 +798,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentRefundRequestDto;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentRefundRequestDto;
 
 public class Main {
 
@@ -817,12 +810,12 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentRefundRequestDto apiPaymentRefundRequestDto = ApiPaymentRefundRequestDto.builder()
+    PaymentRefundRequestDto paymentRefundRequestDto = PaymentRefundRequestDto.builder()
       .value(5D)
       .description("Valor a mais")
       .build();
 
-    ApiPaymentGetResponseDto response = asaasSdk.payment.refundPayment("id", apiPaymentRefundRequestDto);
+    PaymentGetResponseDto response = asaasSdk.payment.refundPayment("id", paymentRefundRequestDto);
 
     System.out.println(response);
   }
@@ -843,7 +836,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentIdentificationFieldResponseDto`
+`PaymentIdentificationFieldResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -851,7 +844,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentIdentificationFieldResponseDto;
+import com.asaas.apisdk.models.PaymentIdentificationFieldResponseDto;
 
 public class Main {
 
@@ -862,7 +855,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentIdentificationFieldResponseDto response = asaasSdk.payment.getDigitableBillLine("id");
+    PaymentIdentificationFieldResponseDto response = asaasSdk.payment.getDigitableBillLine("id");
 
     System.out.println(response);
   }
@@ -883,7 +876,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentPixQrCodeResponseDto`
+`PaymentPixQrCodeResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -891,7 +884,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentPixQrCodeResponseDto;
+import com.asaas.apisdk.models.PaymentPixQrCodeResponseDto;
 
 public class Main {
 
@@ -902,7 +895,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentPixQrCodeResponseDto response = asaasSdk.payment.getQrCodeForPixPayments("id");
+    PaymentPixQrCodeResponseDto response = asaasSdk.payment.getQrCodeForPixPayments("id");
 
     System.out.println(response);
   }
@@ -917,14 +910,14 @@ public class Main {
 
 **Parameters**
 
-| Name                              | Type                                                                                | Required | Description                        |
-| :-------------------------------- | :---------------------------------------------------------------------------------- | :------- | :--------------------------------- |
-| id                                | String                                                                              | ✅       | Unique payment identifier in Asaas |
-| apiPaymentReceiveInCashRequestDto | [ApiPaymentReceiveInCashRequestDto](../models/ApiPaymentReceiveInCashRequestDto.md) | ❌       | Request Body                       |
+| Name                           | Type                                                                          | Required | Description                        |
+| :----------------------------- | :---------------------------------------------------------------------------- | :------- | :--------------------------------- |
+| id                             | String                                                                        | ✅       | Unique payment identifier in Asaas |
+| paymentReceiveInCashRequestDto | [PaymentReceiveInCashRequestDto](../models/PaymentReceiveInCashRequestDto.md) | ❌       | Request Body                       |
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -932,8 +925,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentReceiveInCashRequestDto;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentReceiveInCashRequestDto;
 
 public class Main {
 
@@ -944,13 +937,13 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentReceiveInCashRequestDto apiPaymentReceiveInCashRequestDto = ApiPaymentReceiveInCashRequestDto.builder()
+    PaymentReceiveInCashRequestDto paymentReceiveInCashRequestDto = PaymentReceiveInCashRequestDto.builder()
       .paymentDate("2025-05-30")
       .value(129.9D)
       .notifyCustomer(true)
       .build();
 
-    ApiPaymentGetResponseDto response = asaasSdk.payment.confirmCashReceipt("id", apiPaymentReceiveInCashRequestDto);
+    PaymentGetResponseDto response = asaasSdk.payment.confirmCashReceipt("id", paymentReceiveInCashRequestDto);
 
     System.out.println(response);
   }
@@ -972,7 +965,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -980,7 +973,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
 
 public class Main {
 
@@ -991,7 +984,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentGetResponseDto response = asaasSdk.payment.undoCashReceiptConfirmation("id", new Object());
+    PaymentGetResponseDto response = asaasSdk.payment.undoCashReceiptConfirmation("id", new Object());
 
     System.out.println(response);
   }
@@ -1006,13 +999,13 @@ public class Main {
 
 **Parameters**
 
-| Name                         | Type                                                                      | Required | Description  |
-| :--------------------------- | :------------------------------------------------------------------------ | :------- | :----------- |
-| apiPaymentSimulateRequestDto | [ApiPaymentSimulateRequestDto](../models/ApiPaymentSimulateRequestDto.md) | ❌       | Request Body |
+| Name                      | Type                                                                | Required | Description  |
+| :------------------------ | :------------------------------------------------------------------ | :------- | :----------- |
+| paymentSimulateRequestDto | [PaymentSimulateRequestDto](../models/PaymentSimulateRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiPaymentSimulateResponseDto`
+`PaymentSimulateResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -1020,8 +1013,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentSimulateRequestDto;
-import com.asaas.apisdk.models.ApiPaymentSimulateResponseDto;
+import com.asaas.apisdk.models.PaymentSimulateRequestBillingType;
+import com.asaas.apisdk.models.PaymentSimulateRequestDto;
+import com.asaas.apisdk.models.PaymentSimulateResponseDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -1034,15 +1028,17 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    List<String> billingTypesList = Arrays.asList("billingTypes");
+    List<PaymentSimulateRequestBillingType> billingTypesList = Arrays.asList(
+      PaymentSimulateRequestBillingType.UNDEFINED
+    );
 
-    ApiPaymentSimulateRequestDto apiPaymentSimulateRequestDto = ApiPaymentSimulateRequestDto.builder()
+    PaymentSimulateRequestDto paymentSimulateRequestDto = PaymentSimulateRequestDto.builder()
       .value(100D)
       .installmentCount(2L)
       .billingTypes(billingTypesList)
       .build();
 
-    ApiPaymentSimulateResponseDto response = asaasSdk.payment.salesSimulator(apiPaymentSimulateRequestDto);
+    PaymentSimulateResponseDto response = asaasSdk.payment.salesSimulator(paymentSimulateRequestDto);
 
     System.out.println(response);
   }
@@ -1063,7 +1059,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentCustodyGetResponseDto`
+`PaymentEscrowGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -1071,7 +1067,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCustodyGetResponseDto;
+import com.asaas.apisdk.models.PaymentEscrowGetResponseDto;
 
 public class Main {
 
@@ -1082,7 +1078,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCustodyGetResponseDto response = asaasSdk.payment.retrievePaymentEscrowInTheEscrowAccount("id");
+    PaymentEscrowGetResponseDto response = asaasSdk.payment.retrievePaymentEscrowInTheEscrowAccount("id");
 
     System.out.println(response);
   }
@@ -1097,7 +1093,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentLimitsResponseDto`
+`PaymentLimitsResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -1105,7 +1101,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentLimitsResponseDto;
+import com.asaas.apisdk.models.PaymentLimitsResponseDto;
 
 public class Main {
 
@@ -1116,7 +1112,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentLimitsResponseDto response = asaasSdk.payment.recoveringPaymentLimits();
+    PaymentLimitsResponseDto response = asaasSdk.payment.recoveringPaymentLimits();
 
     System.out.println(response);
   }

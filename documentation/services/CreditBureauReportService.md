@@ -21,7 +21,7 @@ A list of all methods in the `CreditBureauReportService` service. Click on the m
 
 **Return Type**
 
-`ApiCreditBureauReportListResponseDto`
+`CreditBureauReportListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -29,7 +29,7 @@ A list of all methods in the `CreditBureauReportService` service. Click on the m
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCreditBureauReportListResponseDto;
+import com.asaas.apisdk.models.CreditBureauReportListResponseDto;
 import com.asaas.apisdk.models.ListCreditBureauReportsParameters;
 
 public class Main {
@@ -42,15 +42,13 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListCreditBureauReportsParameters requestParameters = ListCreditBureauReportsParameters.builder()
-      .offset(3L)
+      .offset(0L)
       .limit(10L)
       .startDate("startDate")
       .endDate("endDate")
       .build();
 
-    ApiCreditBureauReportListResponseDto response = asaasSdk.creditBureauReport.listCreditBureauReports(
-      requestParameters
-    );
+    CreditBureauReportListResponseDto response = asaasSdk.creditBureauReport.listCreditBureauReports(requestParameters);
 
     System.out.println(response);
   }
@@ -65,13 +63,13 @@ public class Main {
 
 **Parameters**
 
-| Name                                | Type                                                                                    | Required | Description  |
-| :---------------------------------- | :-------------------------------------------------------------------------------------- | :------- | :----------- |
-| apiCreditBureauReportSaveRequestDto | [ApiCreditBureauReportSaveRequestDto](../models/ApiCreditBureauReportSaveRequestDto.md) | ❌       | Request Body |
+| Name                             | Type                                                                              | Required | Description  |
+| :------------------------------- | :-------------------------------------------------------------------------------- | :------- | :----------- |
+| creditBureauReportSaveRequestDto | [CreditBureauReportSaveRequestDto](../models/CreditBureauReportSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiCreditBureauReportGetResponseDto`
+`CreditBureauReportGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -79,8 +77,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCreditBureauReportGetResponseDto;
-import com.asaas.apisdk.models.ApiCreditBureauReportSaveRequestDto;
+import com.asaas.apisdk.models.CreditBureauReportGetResponseDto;
+import com.asaas.apisdk.models.CreditBureauReportSaveRequestDto;
 
 public class Main {
 
@@ -91,11 +89,13 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCreditBureauReportSaveRequestDto apiCreditBureauReportSaveRequestDto =
-      ApiCreditBureauReportSaveRequestDto.builder().customer("customer").cpfCnpj("05666663755").build();
+    CreditBureauReportSaveRequestDto creditBureauReportSaveRequestDto = CreditBureauReportSaveRequestDto.builder()
+      .customer("customer")
+      .cpfCnpj("05666663755")
+      .build();
 
-    ApiCreditBureauReportGetResponseDto response = asaasSdk.creditBureauReport.makeConsultation(
-      apiCreditBureauReportSaveRequestDto
+    CreditBureauReportGetResponseDto response = asaasSdk.creditBureauReport.makeConsultation(
+      creditBureauReportSaveRequestDto
     );
 
     System.out.println(response);
@@ -117,7 +117,7 @@ public class Main {
 
 **Return Type**
 
-`ApiCreditBureauReportGetResponseDto`
+`CreditBureauReportGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -125,7 +125,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCreditBureauReportGetResponseDto;
+import com.asaas.apisdk.models.CreditBureauReportGetResponseDto;
 
 public class Main {
 
@@ -136,7 +136,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCreditBureauReportGetResponseDto response = asaasSdk.creditBureauReport.retrieveACreditBureauReport(
+    CreditBureauReportGetResponseDto response = asaasSdk.creditBureauReport.retrieveACreditBureauReport(
       "6c5e73fa-9efd-4a75-b60c-1cafb8d1c7ed"
     );
 
