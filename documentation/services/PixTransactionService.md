@@ -17,13 +17,13 @@ A list of all methods in the `PixTransactionService` service. Click on the metho
 
 **Parameters**
 
-| Name                            | Type                                                                            | Required | Description  |
-| :------------------------------ | :------------------------------------------------------------------------------ | :------- | :----------- |
-| apiPixTransactionSaveRequestDto | [ApiPixTransactionSaveRequestDto](../models/ApiPixTransactionSaveRequestDto.md) | ❌       | Request Body |
+| Name                         | Type                                                                      | Required | Description  |
+| :--------------------------- | :------------------------------------------------------------------------ | :------- | :----------- |
+| pixTransactionSaveRequestDto | [PixTransactionSaveRequestDto](../models/PixTransactionSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiPixTransactionGetResponseDto`
+`PixTransactionGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -31,9 +31,9 @@ A list of all methods in the `PixTransactionService` service. Click on the metho
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixTransactionGetResponseDto;
-import com.asaas.apisdk.models.ApiPixTransactionQrCodeSaveRequestDto;
-import com.asaas.apisdk.models.ApiPixTransactionSaveRequestDto;
+import com.asaas.apisdk.models.PixTransactionGetResponseDto;
+import com.asaas.apisdk.models.PixTransactionQrCodeSaveRequestDto;
+import com.asaas.apisdk.models.PixTransactionSaveRequestDto;
 
 public class Main {
 
@@ -44,17 +44,19 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixTransactionQrCodeSaveRequestDto apiPixTransactionQrCodeSaveRequestDto =
-      ApiPixTransactionQrCodeSaveRequestDto.builder().payload("payload").changeValue(8.23D).build();
+    PixTransactionQrCodeSaveRequestDto pixTransactionQrCodeSaveRequestDto = PixTransactionQrCodeSaveRequestDto.builder()
+      .payload("payload")
+      .changeValue(4.89D)
+      .build();
 
-    ApiPixTransactionSaveRequestDto apiPixTransactionSaveRequestDto = ApiPixTransactionSaveRequestDto.builder()
-      .qrCode(apiPixTransactionQrCodeSaveRequestDto)
+    PixTransactionSaveRequestDto pixTransactionSaveRequestDto = PixTransactionSaveRequestDto.builder()
+      .qrCode(pixTransactionQrCodeSaveRequestDto)
       .value(100D)
       .description("Barbecue")
       .scheduleDate("2022-03-15")
       .build();
 
-    ApiPixTransactionGetResponseDto response = asaasSdk.pixTransaction.payAQrcode(apiPixTransactionSaveRequestDto);
+    PixTransactionGetResponseDto response = asaasSdk.pixTransaction.payAQrcode(pixTransactionSaveRequestDto);
 
     System.out.println(response);
   }
@@ -69,13 +71,13 @@ public class Main {
 
 **Parameters**
 
-| Name                         | Type                                                                      | Required | Description  |
-| :--------------------------- | :------------------------------------------------------------------------ | :------- | :----------- |
-| apiPixQrCodeDecodeRequestDto | [ApiPixQrCodeDecodeRequestDto](../models/ApiPixQrCodeDecodeRequestDto.md) | ❌       | Request Body |
+| Name                      | Type                                                                | Required | Description  |
+| :------------------------ | :------------------------------------------------------------------ | :------- | :----------- |
+| pixQrCodeDecodeRequestDto | [PixQrCodeDecodeRequestDto](../models/PixQrCodeDecodeRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiPixQrCodeDecodeResponseDto`
+`PixQrCodeDecodeResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -83,8 +85,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixQrCodeDecodeRequestDto;
-import com.asaas.apisdk.models.ApiPixQrCodeDecodeResponseDto;
+import com.asaas.apisdk.models.PixQrCodeDecodeRequestDto;
+import com.asaas.apisdk.models.PixQrCodeDecodeResponseDto;
 
 public class Main {
 
@@ -95,16 +97,14 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixQrCodeDecodeRequestDto apiPixQrCodeDecodeRequestDto = ApiPixQrCodeDecodeRequestDto.builder()
+    PixQrCodeDecodeRequestDto pixQrCodeDecodeRequestDto = PixQrCodeDecodeRequestDto.builder()
       .payload(
         "00020101021226730014br.gov.bcb.pix2551pix-h.asaas.com/pixqrcode/cobv/pay_76575613967995145204000053039865802BR5905ASAAS6009Joinville61088922827162070503***63045E7A"
       )
-      .changeValue(7.59D)
+      .changeValue(7.29D)
       .build();
 
-    ApiPixQrCodeDecodeResponseDto response = asaasSdk.pixTransaction.decodeAQrcodeForPayment(
-      apiPixQrCodeDecodeRequestDto
-    );
+    PixQrCodeDecodeResponseDto response = asaasSdk.pixTransaction.decodeAQrcodeForPayment(pixQrCodeDecodeRequestDto);
 
     System.out.println(response);
   }
@@ -125,7 +125,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPixTransactionGetResponseDto`
+`PixTransactionGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -133,7 +133,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixTransactionGetResponseDto;
+import com.asaas.apisdk.models.PixTransactionGetResponseDto;
 
 public class Main {
 
@@ -144,7 +144,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixTransactionGetResponseDto response = asaasSdk.pixTransaction.retrieveASingleTransaction(
+    PixTransactionGetResponseDto response = asaasSdk.pixTransaction.retrieveASingleTransaction(
       "35363f6e-93e2-11ec-b9d9-96f4053b1bd4"
     );
 
@@ -167,7 +167,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPixTransactionListResponseDto`
+`PixTransactionListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -175,10 +175,10 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixTransactionListRequestPixTransactionStatus;
-import com.asaas.apisdk.models.ApiPixTransactionListRequestPixTransactionType;
-import com.asaas.apisdk.models.ApiPixTransactionListResponseDto;
 import com.asaas.apisdk.models.ListTransactionsParameters;
+import com.asaas.apisdk.models.PixTransactionListRequestPixTransactionStatus;
+import com.asaas.apisdk.models.PixTransactionListRequestPixTransactionType;
+import com.asaas.apisdk.models.PixTransactionListResponseDto;
 
 public class Main {
 
@@ -190,14 +190,14 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListTransactionsParameters requestParameters = ListTransactionsParameters.builder()
-      .offset(1L)
+      .offset(4L)
       .limit(10L)
-      .status(ApiPixTransactionListRequestPixTransactionStatus.AWAITING_BALANCE_VALIDATION)
-      .type(ApiPixTransactionListRequestPixTransactionType.DEBIT)
+      .status(PixTransactionListRequestPixTransactionStatus.AWAITING_BALANCE_VALIDATION)
+      .type(PixTransactionListRequestPixTransactionType.DEBIT)
       .endToEndIdentifier("endToEndIdentifier")
       .build();
 
-    ApiPixTransactionListResponseDto response = asaasSdk.pixTransaction.listTransactions(requestParameters);
+    PixTransactionListResponseDto response = asaasSdk.pixTransaction.listTransactions(requestParameters);
 
     System.out.println(response);
   }
@@ -219,7 +219,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPixTransactionGetResponseDto`
+`PixTransactionGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -227,7 +227,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixTransactionGetResponseDto;
+import com.asaas.apisdk.models.PixTransactionGetResponseDto;
 
 public class Main {
 
@@ -238,7 +238,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixTransactionGetResponseDto response = asaasSdk.pixTransaction.cancelAScheduledTransaction("id", new Object());
+    PixTransactionGetResponseDto response = asaasSdk.pixTransaction.cancelAScheduledTransaction("id", new Object());
 
     System.out.println(response);
   }

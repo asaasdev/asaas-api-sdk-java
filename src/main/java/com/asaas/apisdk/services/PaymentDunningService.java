@@ -4,27 +4,27 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiPaymentDunningCancelResponseDto;
-import com.asaas.apisdk.models.ApiPaymentDunningListHistoryResponseDto;
-import com.asaas.apisdk.models.ApiPaymentDunningListPartialPaymentsResponseDto;
-import com.asaas.apisdk.models.ApiPaymentDunningListResponseDto;
-import com.asaas.apisdk.models.ApiPaymentDunningPaymentsAvailableForDunningResponseDto;
-import com.asaas.apisdk.models.ApiPaymentDunningSaveDocumentsRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDunningSaveDocumentsResponseDto;
-import com.asaas.apisdk.models.ApiPaymentDunningSaveRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDunningSaveRequestPaymentDunningType;
-import com.asaas.apisdk.models.ApiPaymentDunningShowResponseDto;
-import com.asaas.apisdk.models.ApiPaymentDunningSimulateResponseDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.EventHistoryListsParameters;
 import com.asaas.apisdk.models.ListPaymentDunningsParameters;
 import com.asaas.apisdk.models.ListPaymentsAvailableForPaymentDunningParameters;
 import com.asaas.apisdk.models.ListPaymentsReceivedParameters;
+import com.asaas.apisdk.models.PaymentDunningCancelResponseDto;
+import com.asaas.apisdk.models.PaymentDunningListHistoryResponseDto;
+import com.asaas.apisdk.models.PaymentDunningListPartialPaymentsResponseDto;
+import com.asaas.apisdk.models.PaymentDunningListResponseDto;
+import com.asaas.apisdk.models.PaymentDunningPaymentsAvailableForDunningResponseDto;
+import com.asaas.apisdk.models.PaymentDunningSaveDocumentsRequestDto;
+import com.asaas.apisdk.models.PaymentDunningSaveDocumentsResponseDto;
+import com.asaas.apisdk.models.PaymentDunningSaveRequestDto;
+import com.asaas.apisdk.models.PaymentDunningSaveRequestPaymentDunningType;
+import com.asaas.apisdk.models.PaymentDunningShowResponseDto;
+import com.asaas.apisdk.models.PaymentDunningSimulateResponseDto;
 import com.asaas.apisdk.models.SimulateAPaymentDunningParameters;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
@@ -55,9 +55,9 @@ public class PaymentDunningService extends BaseService {
   /**
    * List payment dunnings
    *
-   * @return response of {@code ApiPaymentDunningListResponseDto}
+   * @return response of {@code PaymentDunningListResponseDto}
    */
-  public ApiPaymentDunningListResponseDto listPaymentDunnings() throws ApiError, ValidationException {
+  public PaymentDunningListResponseDto listPaymentDunnings() throws ApiError, ValidationException {
     return this.listPaymentDunnings(ListPaymentDunningsParameters.builder().build());
   }
 
@@ -65,22 +65,22 @@ public class PaymentDunningService extends BaseService {
    * List payment dunnings
    *
    * @param requestParameters {@link ListPaymentDunningsParameters} Request Parameters Object
-   * @return response of {@code ApiPaymentDunningListResponseDto}
+   * @return response of {@code PaymentDunningListResponseDto}
    */
-  public ApiPaymentDunningListResponseDto listPaymentDunnings(@NonNull ListPaymentDunningsParameters requestParameters)
+  public PaymentDunningListResponseDto listPaymentDunnings(@NonNull ListPaymentDunningsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentDunningsRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentDunningListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentDunningListResponseDto>() {});
   }
 
   /**
    * List payment dunnings
    *
-   * @return response of {@code CompletableFuture<ApiPaymentDunningListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentDunningListResponseDto> listPaymentDunningsAsync()
+  public CompletableFuture<PaymentDunningListResponseDto> listPaymentDunningsAsync()
     throws ApiError, ValidationException {
     return this.listPaymentDunningsAsync(ListPaymentDunningsParameters.builder().build());
   }
@@ -89,16 +89,16 @@ public class PaymentDunningService extends BaseService {
    * List payment dunnings
    *
    * @param requestParameters {@link ListPaymentDunningsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPaymentDunningListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentDunningListResponseDto> listPaymentDunningsAsync(
+  public CompletableFuture<PaymentDunningListResponseDto> listPaymentDunningsAsync(
     @NonNull ListPaymentDunningsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentDunningsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentDunningListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentDunningListResponseDto>() {})
     );
   }
 
@@ -130,62 +130,62 @@ public class PaymentDunningService extends BaseService {
   /**
    * Create a payment dunning
    *
-   * @param apiPaymentDunningSaveRequestDto {@link ApiPaymentDunningSaveRequestDto} Request Body
+   * @param paymentDunningSaveRequestDto {@link PaymentDunningSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code ApiPaymentDunningShowResponseDto}
+   * @return response of {@code PaymentDunningShowResponseDto}
    */
-  public ApiPaymentDunningShowResponseDto createAPaymentDunning(
-    @NonNull ApiPaymentDunningSaveRequestDto apiPaymentDunningSaveRequestDto,
+  public PaymentDunningShowResponseDto createAPaymentDunning(
+    @NonNull PaymentDunningSaveRequestDto paymentDunningSaveRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateAPaymentDunningRequest(apiPaymentDunningSaveRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateAPaymentDunningRequest(paymentDunningSaveRequestDto, _filename);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentDunningShowResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentDunningShowResponseDto>() {});
   }
 
   /**
    * Create a payment dunning
    *
-   * @param apiPaymentDunningSaveRequestDto {@link ApiPaymentDunningSaveRequestDto} Request Body
+   * @param paymentDunningSaveRequestDto {@link PaymentDunningSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code CompletableFuture<ApiPaymentDunningShowResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningShowResponseDto>}
    */
-  public CompletableFuture<ApiPaymentDunningShowResponseDto> createAPaymentDunningAsync(
-    @NonNull ApiPaymentDunningSaveRequestDto apiPaymentDunningSaveRequestDto,
+  public CompletableFuture<PaymentDunningShowResponseDto> createAPaymentDunningAsync(
+    @NonNull PaymentDunningSaveRequestDto paymentDunningSaveRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateAPaymentDunningRequest(apiPaymentDunningSaveRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateAPaymentDunningRequest(paymentDunningSaveRequestDto, _filename);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentDunningShowResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentDunningShowResponseDto>() {})
     );
   }
 
   private Request buildCreateAPaymentDunningRequest(
-    @NonNull ApiPaymentDunningSaveRequestDto apiPaymentDunningSaveRequestDto,
+    @NonNull PaymentDunningSaveRequestDto paymentDunningSaveRequestDto,
     @NonNull String _filename
   ) {
     MultipartBody.Builder multipartBodyBuilder = new MultipartBody.Builder()
       .setType(MultipartBody.FORM)
-      .addFormDataPart("payment", apiPaymentDunningSaveRequestDto.getPayment())
-      .addFormDataPart("type", apiPaymentDunningSaveRequestDto.getType().getValue())
-      .addFormDataPart("description", apiPaymentDunningSaveRequestDto.getDescription())
-      .addFormDataPart("customerName", apiPaymentDunningSaveRequestDto.getCustomerName())
-      .addFormDataPart("customerCpfCnpj", apiPaymentDunningSaveRequestDto.getCustomerCpfCnpj())
-      .addFormDataPart("customerPrimaryPhone", apiPaymentDunningSaveRequestDto.getCustomerPrimaryPhone())
-      .addFormDataPart("customerSecondaryPhone", apiPaymentDunningSaveRequestDto.getCustomerSecondaryPhone())
-      .addFormDataPart("customerPostalCode", apiPaymentDunningSaveRequestDto.getCustomerPostalCode())
-      .addFormDataPart("customerAddress", apiPaymentDunningSaveRequestDto.getCustomerAddress())
-      .addFormDataPart("customerAddressNumber", apiPaymentDunningSaveRequestDto.getCustomerAddressNumber())
-      .addFormDataPart("customerComplement", apiPaymentDunningSaveRequestDto.getCustomerComplement())
-      .addFormDataPart("customerProvince", apiPaymentDunningSaveRequestDto.getCustomerProvince());
-    if (apiPaymentDunningSaveRequestDto.getDocuments() != null) {
+      .addFormDataPart("payment", paymentDunningSaveRequestDto.getPayment())
+      .addFormDataPart("type", paymentDunningSaveRequestDto.getType().getValue())
+      .addFormDataPart("description", paymentDunningSaveRequestDto.getDescription())
+      .addFormDataPart("customerName", paymentDunningSaveRequestDto.getCustomerName())
+      .addFormDataPart("customerCpfCnpj", paymentDunningSaveRequestDto.getCustomerCpfCnpj())
+      .addFormDataPart("customerPrimaryPhone", paymentDunningSaveRequestDto.getCustomerPrimaryPhone())
+      .addFormDataPart("customerSecondaryPhone", paymentDunningSaveRequestDto.getCustomerSecondaryPhone())
+      .addFormDataPart("customerPostalCode", paymentDunningSaveRequestDto.getCustomerPostalCode())
+      .addFormDataPart("customerAddress", paymentDunningSaveRequestDto.getCustomerAddress())
+      .addFormDataPart("customerAddressNumber", paymentDunningSaveRequestDto.getCustomerAddressNumber())
+      .addFormDataPart("customerComplement", paymentDunningSaveRequestDto.getCustomerComplement())
+      .addFormDataPart("customerProvince", paymentDunningSaveRequestDto.getCustomerProvince());
+    if (paymentDunningSaveRequestDto.getDocuments() != null) {
       multipartBodyBuilder.addFormDataPart(
         "documents",
         _filename,
-        RequestBody.create(apiPaymentDunningSaveRequestDto.getDocuments(), MediaType.parse("application/octet-stream"))
+        RequestBody.create(paymentDunningSaveRequestDto.getDocuments(), MediaType.parse("application/octet-stream"))
       );
     }
     return new RequestBuilder(
@@ -201,9 +201,9 @@ public class PaymentDunningService extends BaseService {
   /**
    * Simulate a payment dunning
    *
-   * @return response of {@code ApiPaymentDunningSimulateResponseDto}
+   * @return response of {@code PaymentDunningSimulateResponseDto}
    */
-  public ApiPaymentDunningSimulateResponseDto simulateAPaymentDunning() throws ApiError {
+  public PaymentDunningSimulateResponseDto simulateAPaymentDunning() throws ApiError {
     return this.simulateAPaymentDunning(SimulateAPaymentDunningParameters.builder().build());
   }
 
@@ -211,23 +211,23 @@ public class PaymentDunningService extends BaseService {
    * Simulate a payment dunning
    *
    * @param requestParameters {@link SimulateAPaymentDunningParameters} Request Parameters Object
-   * @return response of {@code ApiPaymentDunningSimulateResponseDto}
+   * @return response of {@code PaymentDunningSimulateResponseDto}
    */
-  public ApiPaymentDunningSimulateResponseDto simulateAPaymentDunning(
+  public PaymentDunningSimulateResponseDto simulateAPaymentDunning(
     @NonNull SimulateAPaymentDunningParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildSimulateAPaymentDunningRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentDunningSimulateResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentDunningSimulateResponseDto>() {});
   }
 
   /**
    * Simulate a payment dunning
    *
-   * @return response of {@code CompletableFuture<ApiPaymentDunningSimulateResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningSimulateResponseDto>}
    */
-  public CompletableFuture<ApiPaymentDunningSimulateResponseDto> simulateAPaymentDunningAsync() throws ApiError {
+  public CompletableFuture<PaymentDunningSimulateResponseDto> simulateAPaymentDunningAsync() throws ApiError {
     return this.simulateAPaymentDunningAsync(SimulateAPaymentDunningParameters.builder().build());
   }
 
@@ -235,16 +235,16 @@ public class PaymentDunningService extends BaseService {
    * Simulate a payment dunning
    *
    * @param requestParameters {@link SimulateAPaymentDunningParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPaymentDunningSimulateResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningSimulateResponseDto>}
    */
-  public CompletableFuture<ApiPaymentDunningSimulateResponseDto> simulateAPaymentDunningAsync(
+  public CompletableFuture<PaymentDunningSimulateResponseDto> simulateAPaymentDunningAsync(
     @NonNull SimulateAPaymentDunningParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildSimulateAPaymentDunningRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentDunningSimulateResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentDunningSimulateResponseDto>() {})
     );
   }
 
@@ -264,28 +264,28 @@ public class PaymentDunningService extends BaseService {
    * Recover a single payment dunning
    *
    * @param id String Unique identifier of the payment dunning in Asaas
-   * @return response of {@code ApiPaymentDunningShowResponseDto}
+   * @return response of {@code PaymentDunningShowResponseDto}
    */
-  public ApiPaymentDunningShowResponseDto recoverASinglePaymentDunning(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PaymentDunningShowResponseDto recoverASinglePaymentDunning(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRecoverASinglePaymentDunningRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentDunningShowResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentDunningShowResponseDto>() {});
   }
 
   /**
    * Recover a single payment dunning
    *
    * @param id String Unique identifier of the payment dunning in Asaas
-   * @return response of {@code CompletableFuture<ApiPaymentDunningShowResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningShowResponseDto>}
    */
-  public CompletableFuture<ApiPaymentDunningShowResponseDto> recoverASinglePaymentDunningAsync(@NonNull String id)
+  public CompletableFuture<PaymentDunningShowResponseDto> recoverASinglePaymentDunningAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRecoverASinglePaymentDunningRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentDunningShowResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentDunningShowResponseDto>() {})
     );
   }
 
@@ -305,16 +305,16 @@ public class PaymentDunningService extends BaseService {
    *
    * @param id String Unique identifier of the payment dunning in Asaas
    * @param requestParameters {@link EventHistoryListsParameters} Request Parameters Object
-   * @return response of {@code ApiPaymentDunningListHistoryResponseDto}
+   * @return response of {@code PaymentDunningListHistoryResponseDto}
    */
-  public ApiPaymentDunningListHistoryResponseDto eventHistoryLists(
+  public PaymentDunningListHistoryResponseDto eventHistoryLists(
     @NonNull String id,
     @NonNull EventHistoryListsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildEventHistoryListsRequest(id, requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentDunningListHistoryResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentDunningListHistoryResponseDto>() {});
   }
 
   /**
@@ -322,17 +322,17 @@ public class PaymentDunningService extends BaseService {
    *
    * @param id String Unique identifier of the payment dunning in Asaas
    * @param requestParameters {@link EventHistoryListsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPaymentDunningListHistoryResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningListHistoryResponseDto>}
    */
-  public CompletableFuture<ApiPaymentDunningListHistoryResponseDto> eventHistoryListsAsync(
+  public CompletableFuture<PaymentDunningListHistoryResponseDto> eventHistoryListsAsync(
     @NonNull String id,
     @NonNull EventHistoryListsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildEventHistoryListsRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentDunningListHistoryResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentDunningListHistoryResponseDto>() {})
     );
   }
 
@@ -360,16 +360,16 @@ public class PaymentDunningService extends BaseService {
    *
    * @param id String Unique identifier of the payment dunning in Asaas
    * @param requestParameters {@link ListPaymentsReceivedParameters} Request Parameters Object
-   * @return response of {@code ApiPaymentDunningListPartialPaymentsResponseDto}
+   * @return response of {@code PaymentDunningListPartialPaymentsResponseDto}
    */
-  public ApiPaymentDunningListPartialPaymentsResponseDto listPaymentsReceived(
+  public PaymentDunningListPartialPaymentsResponseDto listPaymentsReceived(
     @NonNull String id,
     @NonNull ListPaymentsReceivedParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsReceivedRequest(id, requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentDunningListPartialPaymentsResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentDunningListPartialPaymentsResponseDto>() {});
   }
 
   /**
@@ -377,17 +377,17 @@ public class PaymentDunningService extends BaseService {
    *
    * @param id String Unique identifier of the payment dunning in Asaas
    * @param requestParameters {@link ListPaymentsReceivedParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPaymentDunningListPartialPaymentsResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningListPartialPaymentsResponseDto>}
    */
-  public CompletableFuture<ApiPaymentDunningListPartialPaymentsResponseDto> listPaymentsReceivedAsync(
+  public CompletableFuture<PaymentDunningListPartialPaymentsResponseDto> listPaymentsReceivedAsync(
     @NonNull String id,
     @NonNull ListPaymentsReceivedParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsReceivedRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentDunningListPartialPaymentsResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentDunningListPartialPaymentsResponseDto>() {})
     );
   }
 
@@ -413,9 +413,9 @@ public class PaymentDunningService extends BaseService {
   /**
    * List payments available for payment dunning
    *
-   * @return response of {@code ApiPaymentDunningPaymentsAvailableForDunningResponseDto}
+   * @return response of {@code PaymentDunningPaymentsAvailableForDunningResponseDto}
    */
-  public ApiPaymentDunningPaymentsAvailableForDunningResponseDto listPaymentsAvailableForPaymentDunning()
+  public PaymentDunningPaymentsAvailableForDunningResponseDto listPaymentsAvailableForPaymentDunning()
     throws ApiError, ValidationException {
     return this.listPaymentsAvailableForPaymentDunning(
         ListPaymentsAvailableForPaymentDunningParameters.builder().build()
@@ -426,27 +426,27 @@ public class PaymentDunningService extends BaseService {
    * List payments available for payment dunning
    *
    * @param requestParameters {@link ListPaymentsAvailableForPaymentDunningParameters} Request Parameters Object
-   * @return response of {@code ApiPaymentDunningPaymentsAvailableForDunningResponseDto}
+   * @return response of {@code PaymentDunningPaymentsAvailableForDunningResponseDto}
    */
-  public ApiPaymentDunningPaymentsAvailableForDunningResponseDto listPaymentsAvailableForPaymentDunning(
+  public PaymentDunningPaymentsAvailableForDunningResponseDto listPaymentsAvailableForPaymentDunning(
     @NonNull ListPaymentsAvailableForPaymentDunningParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsAvailableForPaymentDunningRequest(requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(
       response,
-      new TypeReference<ApiPaymentDunningPaymentsAvailableForDunningResponseDto>() {}
+      new TypeReference<PaymentDunningPaymentsAvailableForDunningResponseDto>() {}
     );
   }
 
   /**
    * List payments available for payment dunning
    *
-   * @return response of {@code CompletableFuture<ApiPaymentDunningPaymentsAvailableForDunningResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningPaymentsAvailableForDunningResponseDto>}
    */
   public CompletableFuture<
-    ApiPaymentDunningPaymentsAvailableForDunningResponseDto
+    PaymentDunningPaymentsAvailableForDunningResponseDto
   > listPaymentsAvailableForPaymentDunningAsync() throws ApiError, ValidationException {
     return this.listPaymentsAvailableForPaymentDunningAsync(
         ListPaymentsAvailableForPaymentDunningParameters.builder().build()
@@ -457,18 +457,18 @@ public class PaymentDunningService extends BaseService {
    * List payments available for payment dunning
    *
    * @param requestParameters {@link ListPaymentsAvailableForPaymentDunningParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPaymentDunningPaymentsAvailableForDunningResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningPaymentsAvailableForDunningResponseDto>}
    */
   public CompletableFuture<
-    ApiPaymentDunningPaymentsAvailableForDunningResponseDto
+    PaymentDunningPaymentsAvailableForDunningResponseDto
   > listPaymentsAvailableForPaymentDunningAsync(
     @NonNull ListPaymentsAvailableForPaymentDunningParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsAvailableForPaymentDunningRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentDunningPaymentsAvailableForDunningResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentDunningPaymentsAvailableForDunningResponseDto>() {})
     );
   }
 
@@ -497,45 +497,45 @@ public class PaymentDunningService extends BaseService {
    * Resend documents
    *
    * @param id String Unique identifier of the payment dunning in Asaas
-   * @param apiPaymentDunningSaveDocumentsRequestDto {@link ApiPaymentDunningSaveDocumentsRequestDto} Request Body
+   * @param paymentDunningSaveDocumentsRequestDto {@link PaymentDunningSaveDocumentsRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code ApiPaymentDunningSaveDocumentsResponseDto}
+   * @return response of {@code PaymentDunningSaveDocumentsResponseDto}
    */
-  public ApiPaymentDunningSaveDocumentsResponseDto resendDocuments(
+  public PaymentDunningSaveDocumentsResponseDto resendDocuments(
     @NonNull String id,
-    @NonNull ApiPaymentDunningSaveDocumentsRequestDto apiPaymentDunningSaveDocumentsRequestDto,
+    @NonNull PaymentDunningSaveDocumentsRequestDto paymentDunningSaveDocumentsRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildResendDocumentsRequest(id, apiPaymentDunningSaveDocumentsRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildResendDocumentsRequest(id, paymentDunningSaveDocumentsRequestDto, _filename);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentDunningSaveDocumentsResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentDunningSaveDocumentsResponseDto>() {});
   }
 
   /**
    * Resend documents
    *
    * @param id String Unique identifier of the payment dunning in Asaas
-   * @param apiPaymentDunningSaveDocumentsRequestDto {@link ApiPaymentDunningSaveDocumentsRequestDto} Request Body
+   * @param paymentDunningSaveDocumentsRequestDto {@link PaymentDunningSaveDocumentsRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code CompletableFuture<ApiPaymentDunningSaveDocumentsResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningSaveDocumentsResponseDto>}
    */
-  public CompletableFuture<ApiPaymentDunningSaveDocumentsResponseDto> resendDocumentsAsync(
+  public CompletableFuture<PaymentDunningSaveDocumentsResponseDto> resendDocumentsAsync(
     @NonNull String id,
-    @NonNull ApiPaymentDunningSaveDocumentsRequestDto apiPaymentDunningSaveDocumentsRequestDto,
+    @NonNull PaymentDunningSaveDocumentsRequestDto paymentDunningSaveDocumentsRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildResendDocumentsRequest(id, apiPaymentDunningSaveDocumentsRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildResendDocumentsRequest(id, paymentDunningSaveDocumentsRequestDto, _filename);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentDunningSaveDocumentsResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentDunningSaveDocumentsResponseDto>() {})
     );
   }
 
   private Request buildResendDocumentsRequest(
     @NonNull String id,
-    @NonNull ApiPaymentDunningSaveDocumentsRequestDto apiPaymentDunningSaveDocumentsRequestDto,
+    @NonNull PaymentDunningSaveDocumentsRequestDto paymentDunningSaveDocumentsRequestDto,
     @NonNull String _filename
   ) {
     return new RequestBuilder(
@@ -552,7 +552,7 @@ public class PaymentDunningService extends BaseService {
             "documents",
             _filename,
             RequestBody.create(
-              apiPaymentDunningSaveDocumentsRequestDto.getDocuments(),
+              paymentDunningSaveDocumentsRequestDto.getDocuments(),
               MediaType.parse("application/octet-stream")
             )
           )
@@ -566,14 +566,14 @@ public class PaymentDunningService extends BaseService {
    *
    * @param id String Unique identifier of the payment dunning to be cancelled.
    * @param input Object Request Body
-   * @return response of {@code ApiPaymentDunningCancelResponseDto}
+   * @return response of {@code PaymentDunningCancelResponseDto}
    */
-  public ApiPaymentDunningCancelResponseDto cancelPaymentDunning(@NonNull String id, @NonNull Object input)
+  public PaymentDunningCancelResponseDto cancelPaymentDunning(@NonNull String id, @NonNull Object input)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelPaymentDunningRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentDunningCancelResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentDunningCancelResponseDto>() {});
   }
 
   /**
@@ -581,17 +581,17 @@ public class PaymentDunningService extends BaseService {
    *
    * @param id String Unique identifier of the payment dunning to be cancelled.
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentDunningCancelResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentDunningCancelResponseDto>}
    */
-  public CompletableFuture<ApiPaymentDunningCancelResponseDto> cancelPaymentDunningAsync(
+  public CompletableFuture<PaymentDunningCancelResponseDto> cancelPaymentDunningAsync(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelPaymentDunningRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentDunningCancelResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentDunningCancelResponseDto>() {})
     );
   }
 

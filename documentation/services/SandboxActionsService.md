@@ -23,7 +23,7 @@ This endpoint confirms the payment of a charge in the sandbox environment.
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -31,7 +31,7 @@ This endpoint confirms the payment of a charge in the sandbox environment.
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
 
 public class Main {
 
@@ -42,7 +42,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentGetResponseDto response = asaasSdk.sandboxActions.confirmPayment("id", new Object());
+    PaymentGetResponseDto response = asaasSdk.sandboxActions.confirmPayment("id", new Object());
 
     System.out.println(response);
   }
@@ -66,7 +66,7 @@ This endpoint forces a charge to become overdue in the sandbox environment.
 
 **Return Type**
 
-`ApiPaymentGetResponseDto`
+`PaymentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -74,7 +74,7 @@ This endpoint forces a charge to become overdue in the sandbox environment.
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentGetResponseDto;
+import com.asaas.apisdk.models.PaymentGetResponseDto;
 
 public class Main {
 
@@ -85,7 +85,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentGetResponseDto response = asaasSdk.sandboxActions.forceExpire("id", new Object());
+    PaymentGetResponseDto response = asaasSdk.sandboxActions.forceExpire("id", new Object());
 
     System.out.println(response);
   }

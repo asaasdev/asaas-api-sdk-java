@@ -4,22 +4,22 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignDeleteResponseDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignFileDeleteResponseDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignFileGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignFileListResponseDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignFileSaveRequestDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignListResponseDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignSaveRequestDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignUpdateRequestDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListPaymentsLinksParameters;
+import com.asaas.apisdk.models.PaymentLinkDeleteResponseDto;
+import com.asaas.apisdk.models.PaymentLinkFileDeleteResponseDto;
+import com.asaas.apisdk.models.PaymentLinkFileGetResponseDto;
+import com.asaas.apisdk.models.PaymentLinkFileListResponseDto;
+import com.asaas.apisdk.models.PaymentLinkFileSaveRequestDto;
+import com.asaas.apisdk.models.PaymentLinkGetResponseDto;
+import com.asaas.apisdk.models.PaymentLinkListResponseDto;
+import com.asaas.apisdk.models.PaymentLinkSaveRequestDto;
+import com.asaas.apisdk.models.PaymentLinkUpdateRequestDto;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
 import com.asaas.apisdk.validation.validators.modelValidators.ListPaymentsLinksParametersValidator;
@@ -46,9 +46,9 @@ public class PaymentLinkService extends BaseService {
   /**
    * List payments links
    *
-   * @return response of {@code ApiPaymentCampaignListResponseDto}
+   * @return response of {@code PaymentLinkListResponseDto}
    */
-  public ApiPaymentCampaignListResponseDto listPaymentsLinks() throws ApiError, ValidationException {
+  public PaymentLinkListResponseDto listPaymentsLinks() throws ApiError, ValidationException {
     return this.listPaymentsLinks(ListPaymentsLinksParameters.builder().build());
   }
 
@@ -56,23 +56,22 @@ public class PaymentLinkService extends BaseService {
    * List payments links
    *
    * @param requestParameters {@link ListPaymentsLinksParameters} Request Parameters Object
-   * @return response of {@code ApiPaymentCampaignListResponseDto}
+   * @return response of {@code PaymentLinkListResponseDto}
    */
-  public ApiPaymentCampaignListResponseDto listPaymentsLinks(@NonNull ListPaymentsLinksParameters requestParameters)
+  public PaymentLinkListResponseDto listPaymentsLinks(@NonNull ListPaymentsLinksParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsLinksRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLinkListResponseDto>() {});
   }
 
   /**
    * List payments links
    *
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLinkListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignListResponseDto> listPaymentsLinksAsync()
-    throws ApiError, ValidationException {
+  public CompletableFuture<PaymentLinkListResponseDto> listPaymentsLinksAsync() throws ApiError, ValidationException {
     return this.listPaymentsLinksAsync(ListPaymentsLinksParameters.builder().build());
   }
 
@@ -80,16 +79,16 @@ public class PaymentLinkService extends BaseService {
    * List payments links
    *
    * @param requestParameters {@link ListPaymentsLinksParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLinkListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignListResponseDto> listPaymentsLinksAsync(
+  public CompletableFuture<PaymentLinkListResponseDto> listPaymentsLinksAsync(
     @NonNull ListPaymentsLinksParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsLinksRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLinkListResponseDto>() {})
     );
   }
 
@@ -116,63 +115,60 @@ public class PaymentLinkService extends BaseService {
   /**
    * Create a payments link
    *
-   * @return response of {@code ApiPaymentCampaignGetResponseDto}
+   * @return response of {@code PaymentLinkGetResponseDto}
    */
-  public ApiPaymentCampaignGetResponseDto createAPaymentsLink() throws ApiError {
-    return this.createAPaymentsLink(ApiPaymentCampaignSaveRequestDto.builder().build());
+  public PaymentLinkGetResponseDto createAPaymentsLink() throws ApiError {
+    return this.createAPaymentsLink(PaymentLinkSaveRequestDto.builder().build());
   }
 
   /**
    * Create a payments link
    *
-   * @param apiPaymentCampaignSaveRequestDto {@link ApiPaymentCampaignSaveRequestDto} Request Body
-   * @return response of {@code ApiPaymentCampaignGetResponseDto}
+   * @param paymentLinkSaveRequestDto {@link PaymentLinkSaveRequestDto} Request Body
+   * @return response of {@code PaymentLinkGetResponseDto}
    */
-  public ApiPaymentCampaignGetResponseDto createAPaymentsLink(
-    @NonNull ApiPaymentCampaignSaveRequestDto apiPaymentCampaignSaveRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateAPaymentsLinkRequest(apiPaymentCampaignSaveRequestDto);
+  public PaymentLinkGetResponseDto createAPaymentsLink(@NonNull PaymentLinkSaveRequestDto paymentLinkSaveRequestDto)
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateAPaymentsLinkRequest(paymentLinkSaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLinkGetResponseDto>() {});
   }
 
   /**
    * Create a payments link
    *
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLinkGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignGetResponseDto> createAPaymentsLinkAsync() throws ApiError {
-    return this.createAPaymentsLinkAsync(ApiPaymentCampaignSaveRequestDto.builder().build());
+  public CompletableFuture<PaymentLinkGetResponseDto> createAPaymentsLinkAsync() throws ApiError {
+    return this.createAPaymentsLinkAsync(PaymentLinkSaveRequestDto.builder().build());
   }
 
   /**
    * Create a payments link
    *
-   * @param apiPaymentCampaignSaveRequestDto {@link ApiPaymentCampaignSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignGetResponseDto>}
+   * @param paymentLinkSaveRequestDto {@link PaymentLinkSaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<PaymentLinkGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignGetResponseDto> createAPaymentsLinkAsync(
-    @NonNull ApiPaymentCampaignSaveRequestDto apiPaymentCampaignSaveRequestDto
+  public CompletableFuture<PaymentLinkGetResponseDto> createAPaymentsLinkAsync(
+    @NonNull PaymentLinkSaveRequestDto paymentLinkSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateAPaymentsLinkRequest(apiPaymentCampaignSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateAPaymentsLinkRequest(paymentLinkSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLinkGetResponseDto>() {})
     );
   }
 
-  private Request buildCreateAPaymentsLinkRequest(
-    @NonNull ApiPaymentCampaignSaveRequestDto apiPaymentCampaignSaveRequestDto
-  ) {
+  private Request buildCreateAPaymentsLinkRequest(@NonNull PaymentLinkSaveRequestDto paymentLinkSaveRequestDto) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
       "v3/paymentLinks"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiPaymentCampaignSaveRequestDto)
+      .setJsonContent(paymentLinkSaveRequestDto)
       .build();
   }
 
@@ -180,28 +176,28 @@ public class PaymentLinkService extends BaseService {
    * Retrieve a single payments link
    *
    * @param id String Unique identifier for your payments link in Asaas
-   * @return response of {@code ApiPaymentCampaignGetResponseDto}
+   * @return response of {@code PaymentLinkGetResponseDto}
    */
-  public ApiPaymentCampaignGetResponseDto retrieveASinglePaymentsLink(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PaymentLinkGetResponseDto retrieveASinglePaymentsLink(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASinglePaymentsLinkRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLinkGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single payments link
    *
    * @param id String Unique identifier for your payments link in Asaas
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLinkGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignGetResponseDto> retrieveASinglePaymentsLinkAsync(@NonNull String id)
+  public CompletableFuture<PaymentLinkGetResponseDto> retrieveASinglePaymentsLinkAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASinglePaymentsLinkRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLinkGetResponseDto>() {})
     );
   }
 
@@ -220,41 +216,41 @@ public class PaymentLinkService extends BaseService {
    * Update a payments link
    *
    * @param id String Unique identifier for your payments link in Asaas
-   * @param apiPaymentCampaignUpdateRequestDto {@link ApiPaymentCampaignUpdateRequestDto} Request Body
-   * @return response of {@code ApiPaymentCampaignGetResponseDto}
+   * @param paymentLinkUpdateRequestDto {@link PaymentLinkUpdateRequestDto} Request Body
+   * @return response of {@code PaymentLinkGetResponseDto}
    */
-  public ApiPaymentCampaignGetResponseDto updateAPaymentsLink(
+  public PaymentLinkGetResponseDto updateAPaymentsLink(
     @NonNull String id,
-    @NonNull ApiPaymentCampaignUpdateRequestDto apiPaymentCampaignUpdateRequestDto
+    @NonNull PaymentLinkUpdateRequestDto paymentLinkUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateAPaymentsLinkRequest(id, apiPaymentCampaignUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateAPaymentsLinkRequest(id, paymentLinkUpdateRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLinkGetResponseDto>() {});
   }
 
   /**
    * Update a payments link
    *
    * @param id String Unique identifier for your payments link in Asaas
-   * @param apiPaymentCampaignUpdateRequestDto {@link ApiPaymentCampaignUpdateRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignGetResponseDto>}
+   * @param paymentLinkUpdateRequestDto {@link PaymentLinkUpdateRequestDto} Request Body
+   * @return response of {@code CompletableFuture<PaymentLinkGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignGetResponseDto> updateAPaymentsLinkAsync(
+  public CompletableFuture<PaymentLinkGetResponseDto> updateAPaymentsLinkAsync(
     @NonNull String id,
-    @NonNull ApiPaymentCampaignUpdateRequestDto apiPaymentCampaignUpdateRequestDto
+    @NonNull PaymentLinkUpdateRequestDto paymentLinkUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateAPaymentsLinkRequest(id, apiPaymentCampaignUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateAPaymentsLinkRequest(id, paymentLinkUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLinkGetResponseDto>() {})
     );
   }
 
   private Request buildUpdateAPaymentsLinkRequest(
     @NonNull String id,
-    @NonNull ApiPaymentCampaignUpdateRequestDto apiPaymentCampaignUpdateRequestDto
+    @NonNull PaymentLinkUpdateRequestDto paymentLinkUpdateRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.PUT,
@@ -263,7 +259,7 @@ public class PaymentLinkService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiPaymentCampaignUpdateRequestDto)
+      .setJsonContent(paymentLinkUpdateRequestDto)
       .build();
   }
 
@@ -271,28 +267,27 @@ public class PaymentLinkService extends BaseService {
    * Remove a payments link
    *
    * @param id String Unique identifier for your payments link in Asaas
-   * @return response of {@code ApiPaymentCampaignDeleteResponseDto}
+   * @return response of {@code PaymentLinkDeleteResponseDto}
    */
-  public ApiPaymentCampaignDeleteResponseDto removeAPaymentsLink(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PaymentLinkDeleteResponseDto removeAPaymentsLink(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveAPaymentsLinkRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignDeleteResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLinkDeleteResponseDto>() {});
   }
 
   /**
    * Remove a payments link
    *
    * @param id String Unique identifier for your payments link in Asaas
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignDeleteResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLinkDeleteResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignDeleteResponseDto> removeAPaymentsLinkAsync(@NonNull String id)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<PaymentLinkDeleteResponseDto> removeAPaymentsLinkAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveAPaymentsLinkRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignDeleteResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLinkDeleteResponseDto>() {})
     );
   }
 
@@ -312,14 +307,13 @@ public class PaymentLinkService extends BaseService {
    *
    * @param id String Unique identifier for your payments link in Asaas
    * @param input Object Request Body
-   * @return response of {@code ApiPaymentCampaignGetResponseDto}
+   * @return response of {@code PaymentLinkGetResponseDto}
    */
-  public ApiPaymentCampaignGetResponseDto restoreAPaymentsLink(@NonNull String id, @NonNull Object input)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PaymentLinkGetResponseDto restoreAPaymentsLink(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRestoreAPaymentsLinkRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLinkGetResponseDto>() {});
   }
 
   /**
@@ -327,17 +321,17 @@ public class PaymentLinkService extends BaseService {
    *
    * @param id String Unique identifier for your payments link in Asaas
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLinkGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignGetResponseDto> restoreAPaymentsLinkAsync(
+  public CompletableFuture<PaymentLinkGetResponseDto> restoreAPaymentsLinkAsync(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRestoreAPaymentsLinkRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLinkGetResponseDto>() {})
     );
   }
 
@@ -357,28 +351,28 @@ public class PaymentLinkService extends BaseService {
    * List images from a payments link
    *
    * @param id String Unique identifier for your payments link in Asaas
-   * @return response of {@code ApiPaymentCampaignFileListResponseDto}
+   * @return response of {@code PaymentLinkFileListResponseDto}
    */
-  public ApiPaymentCampaignFileListResponseDto listImagesFromAPaymentsLink(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PaymentLinkFileListResponseDto listImagesFromAPaymentsLink(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListImagesFromAPaymentsLinkRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignFileListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLinkFileListResponseDto>() {});
   }
 
   /**
    * List images from a payments link
    *
    * @param id String Unique identifier for your payments link in Asaas
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignFileListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLinkFileListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignFileListResponseDto> listImagesFromAPaymentsLinkAsync(@NonNull String id)
+  public CompletableFuture<PaymentLinkFileListResponseDto> listImagesFromAPaymentsLinkAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListImagesFromAPaymentsLinkRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignFileListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLinkFileListResponseDto>() {})
     );
   }
 
@@ -397,56 +391,56 @@ public class PaymentLinkService extends BaseService {
    * Add an image to a payments link
    *
    * @param id String Unique identifier for your payments link in Asaas
-   * @param apiPaymentCampaignFileSaveRequestDto {@link ApiPaymentCampaignFileSaveRequestDto} Request Body
+   * @param paymentLinkFileSaveRequestDto {@link PaymentLinkFileSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code ApiPaymentCampaignFileGetResponseDto}
+   * @return response of {@code PaymentLinkFileGetResponseDto}
    */
-  public ApiPaymentCampaignFileGetResponseDto addAnImageToAPaymentsLink(
+  public PaymentLinkFileGetResponseDto addAnImageToAPaymentsLink(
     @NonNull String id,
-    @NonNull ApiPaymentCampaignFileSaveRequestDto apiPaymentCampaignFileSaveRequestDto,
+    @NonNull PaymentLinkFileSaveRequestDto paymentLinkFileSaveRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildAddAnImageToAPaymentsLinkRequest(id, apiPaymentCampaignFileSaveRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildAddAnImageToAPaymentsLinkRequest(id, paymentLinkFileSaveRequestDto, _filename);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignFileGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLinkFileGetResponseDto>() {});
   }
 
   /**
    * Add an image to a payments link
    *
    * @param id String Unique identifier for your payments link in Asaas
-   * @param apiPaymentCampaignFileSaveRequestDto {@link ApiPaymentCampaignFileSaveRequestDto} Request Body
+   * @param paymentLinkFileSaveRequestDto {@link PaymentLinkFileSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignFileGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLinkFileGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignFileGetResponseDto> addAnImageToAPaymentsLinkAsync(
+  public CompletableFuture<PaymentLinkFileGetResponseDto> addAnImageToAPaymentsLinkAsync(
     @NonNull String id,
-    @NonNull ApiPaymentCampaignFileSaveRequestDto apiPaymentCampaignFileSaveRequestDto,
+    @NonNull PaymentLinkFileSaveRequestDto paymentLinkFileSaveRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildAddAnImageToAPaymentsLinkRequest(id, apiPaymentCampaignFileSaveRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildAddAnImageToAPaymentsLinkRequest(id, paymentLinkFileSaveRequestDto, _filename);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignFileGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLinkFileGetResponseDto>() {})
     );
   }
 
   private Request buildAddAnImageToAPaymentsLinkRequest(
     @NonNull String id,
-    @NonNull ApiPaymentCampaignFileSaveRequestDto apiPaymentCampaignFileSaveRequestDto,
+    @NonNull PaymentLinkFileSaveRequestDto paymentLinkFileSaveRequestDto,
     @NonNull String _filename
   ) {
     MultipartBody.Builder multipartBodyBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
-    if (apiPaymentCampaignFileSaveRequestDto.getMain() != null) {
-      multipartBodyBuilder.addFormDataPart("main", apiPaymentCampaignFileSaveRequestDto.getMain().toString());
+    if (paymentLinkFileSaveRequestDto.getMain() != null) {
+      multipartBodyBuilder.addFormDataPart("main", paymentLinkFileSaveRequestDto.getMain().toString());
     }
-    if (apiPaymentCampaignFileSaveRequestDto.getImage() != null) {
+    if (paymentLinkFileSaveRequestDto.getImage() != null) {
       multipartBodyBuilder.addFormDataPart(
         "image",
         _filename,
-        RequestBody.create(apiPaymentCampaignFileSaveRequestDto.getImage(), MediaType.parse("application/octet-stream"))
+        RequestBody.create(paymentLinkFileSaveRequestDto.getImage(), MediaType.parse("application/octet-stream"))
       );
     }
     return new RequestBuilder(
@@ -465,16 +459,16 @@ public class PaymentLinkService extends BaseService {
    *
    * @param paymentLinkId String Unique identifier for your payments link in Asaas
    * @param imageId String Unique payment link image identifier in Asaas
-   * @return response of {@code ApiPaymentCampaignFileGetResponseDto}
+   * @return response of {@code PaymentLinkFileGetResponseDto}
    */
-  public ApiPaymentCampaignFileGetResponseDto retrieveASinglePaymentsLinkImage(
+  public PaymentLinkFileGetResponseDto retrieveASinglePaymentsLinkImage(
     @NonNull String paymentLinkId,
     @NonNull String imageId
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASinglePaymentsLinkImageRequest(paymentLinkId, imageId);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignFileGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLinkFileGetResponseDto>() {});
   }
 
   /**
@@ -482,17 +476,17 @@ public class PaymentLinkService extends BaseService {
    *
    * @param paymentLinkId String Unique identifier for your payments link in Asaas
    * @param imageId String Unique payment link image identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignFileGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLinkFileGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignFileGetResponseDto> retrieveASinglePaymentsLinkImageAsync(
+  public CompletableFuture<PaymentLinkFileGetResponseDto> retrieveASinglePaymentsLinkImageAsync(
     @NonNull String paymentLinkId,
     @NonNull String imageId
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASinglePaymentsLinkImageRequest(paymentLinkId, imageId);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignFileGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLinkFileGetResponseDto>() {})
     );
   }
 
@@ -513,16 +507,16 @@ public class PaymentLinkService extends BaseService {
    *
    * @param paymentLinkId String Unique identifier for your payments link in Asaas
    * @param imageId String Unique payment link image identifier in Asaas
-   * @return response of {@code ApiPaymentCampaignFileDeleteResponseDto}
+   * @return response of {@code PaymentLinkFileDeleteResponseDto}
    */
-  public ApiPaymentCampaignFileDeleteResponseDto removeAnImageFromPaymentsLink(
+  public PaymentLinkFileDeleteResponseDto removeAnImageFromPaymentsLink(
     @NonNull String paymentLinkId,
     @NonNull String imageId
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveAnImageFromPaymentsLinkRequest(paymentLinkId, imageId);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignFileDeleteResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLinkFileDeleteResponseDto>() {});
   }
 
   /**
@@ -530,17 +524,17 @@ public class PaymentLinkService extends BaseService {
    *
    * @param paymentLinkId String Unique identifier for your payments link in Asaas
    * @param imageId String Unique payment link image identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignFileDeleteResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLinkFileDeleteResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignFileDeleteResponseDto> removeAnImageFromPaymentsLinkAsync(
+  public CompletableFuture<PaymentLinkFileDeleteResponseDto> removeAnImageFromPaymentsLinkAsync(
     @NonNull String paymentLinkId,
     @NonNull String imageId
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveAnImageFromPaymentsLinkRequest(paymentLinkId, imageId);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignFileDeleteResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLinkFileDeleteResponseDto>() {})
     );
   }
 
@@ -562,17 +556,17 @@ public class PaymentLinkService extends BaseService {
    * @param paymentLinkId String Unique identifier for your payments link in Asaas
    * @param imageId String Unique payment link image identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code ApiPaymentCampaignFileGetResponseDto}
+   * @return response of {@code PaymentLinkFileGetResponseDto}
    */
-  public ApiPaymentCampaignFileGetResponseDto setPaymentsLinkMainImage(
+  public PaymentLinkFileGetResponseDto setPaymentsLinkMainImage(
     @NonNull String paymentLinkId,
     @NonNull String imageId,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildSetPaymentsLinkMainImageRequest(paymentLinkId, imageId, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignFileGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentLinkFileGetResponseDto>() {});
   }
 
   /**
@@ -581,18 +575,18 @@ public class PaymentLinkService extends BaseService {
    * @param paymentLinkId String Unique identifier for your payments link in Asaas
    * @param imageId String Unique payment link image identifier in Asaas
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPaymentCampaignFileGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentLinkFileGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentCampaignFileGetResponseDto> setPaymentsLinkMainImageAsync(
+  public CompletableFuture<PaymentLinkFileGetResponseDto> setPaymentsLinkMainImageAsync(
     @NonNull String paymentLinkId,
     @NonNull String imageId,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildSetPaymentsLinkMainImageRequest(paymentLinkId, imageId, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentCampaignFileGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentLinkFileGetResponseDto>() {})
     );
   }
 

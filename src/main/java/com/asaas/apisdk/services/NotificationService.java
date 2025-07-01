@@ -4,16 +4,16 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiNotificationBatchUpdateRequestDto;
-import com.asaas.apisdk.models.ApiNotificationBatchUpdateResponseDto;
-import com.asaas.apisdk.models.ApiNotificationGetResponseDto;
-import com.asaas.apisdk.models.ApiNotificationUpdateRequestDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
+import com.asaas.apisdk.models.NotificationBatchUpdateRequestDto;
+import com.asaas.apisdk.models.NotificationBatchUpdateResponseDto;
+import com.asaas.apisdk.models.NotificationGetResponseDto;
+import com.asaas.apisdk.models.NotificationUpdateRequestDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -35,41 +35,41 @@ public class NotificationService extends BaseService {
    * Update existing notification
    *
    * @param id String Unique identifier of the notification to be updated
-   * @param apiNotificationUpdateRequestDto {@link ApiNotificationUpdateRequestDto} Request Body
-   * @return response of {@code ApiNotificationGetResponseDto}
+   * @param notificationUpdateRequestDto {@link NotificationUpdateRequestDto} Request Body
+   * @return response of {@code NotificationGetResponseDto}
    */
-  public ApiNotificationGetResponseDto updateExistingNotification(
+  public NotificationGetResponseDto updateExistingNotification(
     @NonNull String id,
-    @NonNull ApiNotificationUpdateRequestDto apiNotificationUpdateRequestDto
+    @NonNull NotificationUpdateRequestDto notificationUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateExistingNotificationRequest(id, apiNotificationUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateExistingNotificationRequest(id, notificationUpdateRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiNotificationGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<NotificationGetResponseDto>() {});
   }
 
   /**
    * Update existing notification
    *
    * @param id String Unique identifier of the notification to be updated
-   * @param apiNotificationUpdateRequestDto {@link ApiNotificationUpdateRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiNotificationGetResponseDto>}
+   * @param notificationUpdateRequestDto {@link NotificationUpdateRequestDto} Request Body
+   * @return response of {@code CompletableFuture<NotificationGetResponseDto>}
    */
-  public CompletableFuture<ApiNotificationGetResponseDto> updateExistingNotificationAsync(
+  public CompletableFuture<NotificationGetResponseDto> updateExistingNotificationAsync(
     @NonNull String id,
-    @NonNull ApiNotificationUpdateRequestDto apiNotificationUpdateRequestDto
+    @NonNull NotificationUpdateRequestDto notificationUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateExistingNotificationRequest(id, apiNotificationUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateExistingNotificationRequest(id, notificationUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiNotificationGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<NotificationGetResponseDto>() {})
     );
   }
 
   private Request buildUpdateExistingNotificationRequest(
     @NonNull String id,
-    @NonNull ApiNotificationUpdateRequestDto apiNotificationUpdateRequestDto
+    @NonNull NotificationUpdateRequestDto notificationUpdateRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.PUT,
@@ -78,63 +78,63 @@ public class NotificationService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiNotificationUpdateRequestDto)
+      .setJsonContent(notificationUpdateRequestDto)
       .build();
   }
 
   /**
    * Update existing notifications in batch
    *
-   * @return response of {@code ApiNotificationBatchUpdateResponseDto}
+   * @return response of {@code NotificationBatchUpdateResponseDto}
    */
-  public ApiNotificationBatchUpdateResponseDto updateExistingNotificationsInBatch() throws ApiError {
-    return this.updateExistingNotificationsInBatch(ApiNotificationBatchUpdateRequestDto.builder().build());
+  public NotificationBatchUpdateResponseDto updateExistingNotificationsInBatch() throws ApiError {
+    return this.updateExistingNotificationsInBatch(NotificationBatchUpdateRequestDto.builder().build());
   }
 
   /**
    * Update existing notifications in batch
    *
-   * @param apiNotificationBatchUpdateRequestDto {@link ApiNotificationBatchUpdateRequestDto} Request Body
-   * @return response of {@code ApiNotificationBatchUpdateResponseDto}
+   * @param notificationBatchUpdateRequestDto {@link NotificationBatchUpdateRequestDto} Request Body
+   * @return response of {@code NotificationBatchUpdateResponseDto}
    */
-  public ApiNotificationBatchUpdateResponseDto updateExistingNotificationsInBatch(
-    @NonNull ApiNotificationBatchUpdateRequestDto apiNotificationBatchUpdateRequestDto
+  public NotificationBatchUpdateResponseDto updateExistingNotificationsInBatch(
+    @NonNull NotificationBatchUpdateRequestDto notificationBatchUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateExistingNotificationsInBatchRequest(apiNotificationBatchUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateExistingNotificationsInBatchRequest(notificationBatchUpdateRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiNotificationBatchUpdateResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<NotificationBatchUpdateResponseDto>() {});
   }
 
   /**
    * Update existing notifications in batch
    *
-   * @return response of {@code CompletableFuture<ApiNotificationBatchUpdateResponseDto>}
+   * @return response of {@code CompletableFuture<NotificationBatchUpdateResponseDto>}
    */
-  public CompletableFuture<ApiNotificationBatchUpdateResponseDto> updateExistingNotificationsInBatchAsync()
+  public CompletableFuture<NotificationBatchUpdateResponseDto> updateExistingNotificationsInBatchAsync()
     throws ApiError {
-    return this.updateExistingNotificationsInBatchAsync(ApiNotificationBatchUpdateRequestDto.builder().build());
+    return this.updateExistingNotificationsInBatchAsync(NotificationBatchUpdateRequestDto.builder().build());
   }
 
   /**
    * Update existing notifications in batch
    *
-   * @param apiNotificationBatchUpdateRequestDto {@link ApiNotificationBatchUpdateRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiNotificationBatchUpdateResponseDto>}
+   * @param notificationBatchUpdateRequestDto {@link NotificationBatchUpdateRequestDto} Request Body
+   * @return response of {@code CompletableFuture<NotificationBatchUpdateResponseDto>}
    */
-  public CompletableFuture<ApiNotificationBatchUpdateResponseDto> updateExistingNotificationsInBatchAsync(
-    @NonNull ApiNotificationBatchUpdateRequestDto apiNotificationBatchUpdateRequestDto
+  public CompletableFuture<NotificationBatchUpdateResponseDto> updateExistingNotificationsInBatchAsync(
+    @NonNull NotificationBatchUpdateRequestDto notificationBatchUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateExistingNotificationsInBatchRequest(apiNotificationBatchUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateExistingNotificationsInBatchRequest(notificationBatchUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiNotificationBatchUpdateResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<NotificationBatchUpdateResponseDto>() {})
     );
   }
 
   private Request buildUpdateExistingNotificationsInBatchRequest(
-    @NonNull ApiNotificationBatchUpdateRequestDto apiNotificationBatchUpdateRequestDto
+    @NonNull NotificationBatchUpdateRequestDto notificationBatchUpdateRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.PUT,
@@ -142,7 +142,7 @@ public class NotificationService extends BaseService {
       "v3/notifications/batch"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiNotificationBatchUpdateRequestDto)
+      .setJsonContent(notificationBatchUpdateRequestDto)
       .build();
   }
 }

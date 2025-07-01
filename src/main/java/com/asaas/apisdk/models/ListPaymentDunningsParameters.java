@@ -36,13 +36,13 @@ public class ListPaymentDunningsParameters {
    * Filter by payment dunning status
    */
   @JsonProperty("status")
-  private JsonNullable<ApiPaymentDunningListRequestPaymentDunningStatus> status;
+  private JsonNullable<PaymentDunningListRequestPaymentDunningStatus> status;
 
   /**
    * Filter by type of payment dunning
    */
   @JsonProperty("type")
-  private JsonNullable<ApiPaymentDunningListRequestPaymentDunningType> type;
+  private JsonNullable<PaymentDunningListRequestPaymentDunningType> type;
 
   /**
    * Filter by dunnings for a specific payment
@@ -73,12 +73,12 @@ public class ListPaymentDunningsParameters {
   }
 
   @JsonIgnore
-  public ApiPaymentDunningListRequestPaymentDunningStatus getStatus() {
+  public PaymentDunningListRequestPaymentDunningStatus getStatus() {
     return status.orElse(null);
   }
 
   @JsonIgnore
-  public ApiPaymentDunningListRequestPaymentDunningType getType() {
+  public PaymentDunningListRequestPaymentDunningType getType() {
     return type.orElse(null);
   }
 
@@ -122,10 +122,10 @@ public class ListPaymentDunningsParameters {
       return this;
     }
 
-    private JsonNullable<ApiPaymentDunningListRequestPaymentDunningStatus> status = JsonNullable.undefined();
+    private JsonNullable<PaymentDunningListRequestPaymentDunningStatus> status = JsonNullable.undefined();
 
     @JsonProperty("status")
-    public ListPaymentDunningsParametersBuilder status(ApiPaymentDunningListRequestPaymentDunningStatus value) {
+    public ListPaymentDunningsParametersBuilder status(PaymentDunningListRequestPaymentDunningStatus value) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");
       }
@@ -133,10 +133,10 @@ public class ListPaymentDunningsParameters {
       return this;
     }
 
-    private JsonNullable<ApiPaymentDunningListRequestPaymentDunningType> type = JsonNullable.undefined();
+    private JsonNullable<PaymentDunningListRequestPaymentDunningType> type = JsonNullable.undefined();
 
     @JsonProperty("type")
-    public ListPaymentDunningsParametersBuilder type(ApiPaymentDunningListRequestPaymentDunningType value) {
+    public ListPaymentDunningsParametersBuilder type(PaymentDunningListRequestPaymentDunningType value) {
       if (value == null) {
         throw new IllegalStateException("type cannot be null");
       }

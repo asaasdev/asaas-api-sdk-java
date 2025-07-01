@@ -27,7 +27,7 @@ A list of all methods in the `InstallmentService` service. Click on the method n
 
 **Return Type**
 
-`ApiInstallmentListResponseDto`
+`InstallmentListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -35,7 +35,7 @@ A list of all methods in the `InstallmentService` service. Click on the method n
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiInstallmentListResponseDto;
+import com.asaas.apisdk.models.InstallmentListResponseDto;
 import com.asaas.apisdk.models.ListInstallmentsParameters;
 
 public class Main {
@@ -49,7 +49,7 @@ public class Main {
 
     ListInstallmentsParameters requestParameters = ListInstallmentsParameters.builder().offset(10L).limit(10L).build();
 
-    ApiInstallmentListResponseDto response = asaasSdk.installment.listInstallments(requestParameters);
+    InstallmentListResponseDto response = asaasSdk.installment.listInstallments(requestParameters);
 
     System.out.println(response);
   }
@@ -64,13 +64,13 @@ public class Main {
 
 **Parameters**
 
-| Name                         | Type                                                                      | Required | Description  |
-| :--------------------------- | :------------------------------------------------------------------------ | :------- | :----------- |
-| apiInstallmentSaveRequestDto | [ApiInstallmentSaveRequestDto](../models/ApiInstallmentSaveRequestDto.md) | ❌       | Request Body |
+| Name                      | Type                                                                | Required | Description  |
+| :------------------------ | :------------------------------------------------------------------ | :------- | :----------- |
+| installmentSaveRequestDto | [InstallmentSaveRequestDto](../models/InstallmentSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiInstallmentGetResponseDto`
+`InstallmentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -78,15 +78,15 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiInstallmentGetResponseDto;
-import com.asaas.apisdk.models.ApiInstallmentSaveRequestBillingType;
-import com.asaas.apisdk.models.ApiInstallmentSaveRequestDto;
-import com.asaas.apisdk.models.ApiInstallmentSplitRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.apisdk.models.ApiPaymentDiscountDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
+import com.asaas.apisdk.models.InstallmentGetResponseDto;
+import com.asaas.apisdk.models.InstallmentSaveRequestBillingType;
+import com.asaas.apisdk.models.InstallmentSaveRequestDto;
+import com.asaas.apisdk.models.InstallmentSplitRequestDto;
+import com.asaas.apisdk.models.PaymentDiscountDiscountType;
+import com.asaas.apisdk.models.PaymentDiscountDto;
+import com.asaas.apisdk.models.PaymentFineRequestDto;
+import com.asaas.apisdk.models.PaymentFineRequestFineType;
+import com.asaas.apisdk.models.PaymentInterestRequestDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -99,22 +99,20 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDiscountDto apiPaymentDiscountDto = ApiPaymentDiscountDto.builder()
+    PaymentDiscountDto paymentDiscountDto = PaymentDiscountDto.builder()
       .value(10D)
       .dueDateLimitDays(1L)
-      .type(ApiPaymentDiscountDiscountType.FIXED)
+      .type(PaymentDiscountDiscountType.FIXED)
       .build();
 
-    ApiPaymentInterestRequestDto apiPaymentInterestRequestDto = ApiPaymentInterestRequestDto.builder()
-      .value(4.68D)
-      .build();
+    PaymentInterestRequestDto paymentInterestRequestDto = PaymentInterestRequestDto.builder().value(4.68D).build();
 
-    ApiPaymentFineRequestDto apiPaymentFineRequestDto = ApiPaymentFineRequestDto.builder()
+    PaymentFineRequestDto paymentFineRequestDto = PaymentFineRequestDto.builder()
       .value(8.99D)
-      .type(ApiPaymentFineRequestFineType.FIXED)
+      .type(PaymentFineRequestFineType.FIXED)
       .build();
 
-    ApiInstallmentSplitRequestDto apiInstallmentSplitRequestDto = ApiInstallmentSplitRequestDto.builder()
+    InstallmentSplitRequestDto installmentSplitRequestDto = InstallmentSplitRequestDto.builder()
       .walletId("walletId")
       .fixedValue(2.11D)
       .percentualValue(0.03D)
@@ -124,26 +122,26 @@ public class Main {
       .installmentNumber(1L)
       .build();
 
-    List<ApiInstallmentSplitRequestDto> splitsList = Arrays.asList(apiInstallmentSplitRequestDto);
+    List<InstallmentSplitRequestDto> splitsList = Arrays.asList(installmentSplitRequestDto);
 
-    ApiInstallmentSaveRequestDto apiInstallmentSaveRequestDto = ApiInstallmentSaveRequestDto.builder()
+    InstallmentSaveRequestDto installmentSaveRequestDto = InstallmentSaveRequestDto.builder()
       .installmentCount(3L)
       .customer("cus_G7Dvo4iphUNk")
       .value(100D)
       .totalValue(150D)
-      .billingType(ApiInstallmentSaveRequestBillingType.UNDEFINED)
+      .billingType(InstallmentSaveRequestBillingType.UNDEFINED)
       .dueDate("2025-07-08")
       .description("Installment 08652")
       .postalService(true)
       .daysAfterDueDateToRegistrationCancellation(1L)
       .paymentExternalReference("056984")
-      .discount(apiPaymentDiscountDto)
-      .interest(apiPaymentInterestRequestDto)
-      .fine(apiPaymentFineRequestDto)
+      .discount(paymentDiscountDto)
+      .interest(paymentInterestRequestDto)
+      .fine(paymentFineRequestDto)
       .splits(splitsList)
       .build();
 
-    ApiInstallmentGetResponseDto response = asaasSdk.installment.createInstallment(apiInstallmentSaveRequestDto);
+    InstallmentGetResponseDto response = asaasSdk.installment.createInstallment(installmentSaveRequestDto);
 
     System.out.println(response);
   }
@@ -158,13 +156,13 @@ public class Main {
 
 **Parameters**
 
-| Name                                       | Type                                                                                                  | Required | Description  |
-| :----------------------------------------- | :---------------------------------------------------------------------------------------------------- | :------- | :----------- |
-| apiInstallmentSaveWithCreditCardRequestDto | [ApiInstallmentSaveWithCreditCardRequestDto](../models/ApiInstallmentSaveWithCreditCardRequestDto.md) | ❌       | Request Body |
+| Name                                    | Type                                                                                            | Required | Description  |
+| :-------------------------------------- | :---------------------------------------------------------------------------------------------- | :------- | :----------- |
+| installmentSaveWithCreditCardRequestDto | [InstallmentSaveWithCreditCardRequestDto](../models/InstallmentSaveWithCreditCardRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiInstallmentGetResponseDto`
+`InstallmentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -172,17 +170,17 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCreditCardHolderInfoRequestDto;
-import com.asaas.apisdk.models.ApiCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiInstallmentGetResponseDto;
-import com.asaas.apisdk.models.ApiInstallmentSaveWithCreditCardRequestBillingType;
-import com.asaas.apisdk.models.ApiInstallmentSaveWithCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiInstallmentSplitRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDiscountDiscountType;
-import com.asaas.apisdk.models.ApiPaymentDiscountDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestDto;
-import com.asaas.apisdk.models.ApiPaymentFineRequestFineType;
-import com.asaas.apisdk.models.ApiPaymentInterestRequestDto;
+import com.asaas.apisdk.models.CreditCardHolderInfoRequestDto;
+import com.asaas.apisdk.models.CreditCardRequestDto;
+import com.asaas.apisdk.models.InstallmentGetResponseDto;
+import com.asaas.apisdk.models.InstallmentSaveWithCreditCardRequestBillingType;
+import com.asaas.apisdk.models.InstallmentSaveWithCreditCardRequestDto;
+import com.asaas.apisdk.models.InstallmentSplitRequestDto;
+import com.asaas.apisdk.models.PaymentDiscountDiscountType;
+import com.asaas.apisdk.models.PaymentDiscountDto;
+import com.asaas.apisdk.models.PaymentFineRequestDto;
+import com.asaas.apisdk.models.PaymentFineRequestFineType;
+import com.asaas.apisdk.models.PaymentInterestRequestDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -195,22 +193,20 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDiscountDto apiPaymentDiscountDto = ApiPaymentDiscountDto.builder()
+    PaymentDiscountDto paymentDiscountDto = PaymentDiscountDto.builder()
       .value(10D)
       .dueDateLimitDays(1L)
-      .type(ApiPaymentDiscountDiscountType.FIXED)
+      .type(PaymentDiscountDiscountType.FIXED)
       .build();
 
-    ApiPaymentInterestRequestDto apiPaymentInterestRequestDto = ApiPaymentInterestRequestDto.builder()
-      .value(4.68D)
-      .build();
+    PaymentInterestRequestDto paymentInterestRequestDto = PaymentInterestRequestDto.builder().value(4.68D).build();
 
-    ApiPaymentFineRequestDto apiPaymentFineRequestDto = ApiPaymentFineRequestDto.builder()
+    PaymentFineRequestDto paymentFineRequestDto = PaymentFineRequestDto.builder()
       .value(8.99D)
-      .type(ApiPaymentFineRequestFineType.FIXED)
+      .type(PaymentFineRequestFineType.FIXED)
       .build();
 
-    ApiInstallmentSplitRequestDto apiInstallmentSplitRequestDto = ApiInstallmentSplitRequestDto.builder()
+    InstallmentSplitRequestDto installmentSplitRequestDto = InstallmentSplitRequestDto.builder()
       .walletId("walletId")
       .fixedValue(2.11D)
       .percentualValue(0.03D)
@@ -220,17 +216,17 @@ public class Main {
       .installmentNumber(1L)
       .build();
 
-    List<ApiInstallmentSplitRequestDto> splitsList = Arrays.asList(apiInstallmentSplitRequestDto);
+    List<InstallmentSplitRequestDto> splitsList = Arrays.asList(installmentSplitRequestDto);
 
-    ApiCreditCardRequestDto apiCreditCardRequestDto = ApiCreditCardRequestDto.builder()
+    CreditCardRequestDto creditCardRequestDto = CreditCardRequestDto.builder()
       .holderName("John Doe")
       .number("1234567890123456")
-      .expiryMonth("6")
+      .expiryMonth("7")
       .expiryYear("2025")
       .ccv("123")
       .build();
 
-    ApiCreditCardHolderInfoRequestDto apiCreditCardHolderInfoRequestDto = ApiCreditCardHolderInfoRequestDto.builder()
+    CreditCardHolderInfoRequestDto creditCardHolderInfoRequestDto = CreditCardHolderInfoRequestDto.builder()
       .name("John Doe")
       .email("john.doe@asaas.com")
       .cpfCnpj("12345678901")
@@ -241,31 +237,31 @@ public class Main {
       .mobilePhone("mobilePhone")
       .build();
 
-    ApiInstallmentSaveWithCreditCardRequestDto apiInstallmentSaveWithCreditCardRequestDto =
-      ApiInstallmentSaveWithCreditCardRequestDto.builder()
+    InstallmentSaveWithCreditCardRequestDto installmentSaveWithCreditCardRequestDto =
+      InstallmentSaveWithCreditCardRequestDto.builder()
         .installmentCount(3L)
         .customer("cus_G7Dvo4iphUNk")
         .value(100D)
         .totalValue(150D)
-        .billingType(ApiInstallmentSaveWithCreditCardRequestBillingType.UNDEFINED)
+        .billingType(InstallmentSaveWithCreditCardRequestBillingType.UNDEFINED)
         .dueDate("2025-07-08")
         .description("Installment 08652")
         .postalService(false)
         .daysAfterDueDateToRegistrationCancellation(1L)
         .paymentExternalReference("056984")
-        .discount(apiPaymentDiscountDto)
-        .interest(apiPaymentInterestRequestDto)
-        .fine(apiPaymentFineRequestDto)
+        .discount(paymentDiscountDto)
+        .interest(paymentInterestRequestDto)
+        .fine(paymentFineRequestDto)
         .splits(splitsList)
-        .creditCard(apiCreditCardRequestDto)
-        .creditCardHolderInfo(apiCreditCardHolderInfoRequestDto)
+        .creditCard(creditCardRequestDto)
+        .creditCardHolderInfo(creditCardHolderInfoRequestDto)
         .creditCardToken("a75a1d98-c52d-4a6b-a413-71e00b193c99")
         .authorizeOnly(false)
         .remoteIp("remoteIp")
         .build();
 
-    ApiInstallmentGetResponseDto response = asaasSdk.installment.createInstallmentWithCreditCard(
-      apiInstallmentSaveWithCreditCardRequestDto
+    InstallmentGetResponseDto response = asaasSdk.installment.createInstallmentWithCreditCard(
+      installmentSaveWithCreditCardRequestDto
     );
 
     System.out.println(response);
@@ -287,7 +283,7 @@ public class Main {
 
 **Return Type**
 
-`ApiInstallmentGetResponseDto`
+`InstallmentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -295,7 +291,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiInstallmentGetResponseDto;
+import com.asaas.apisdk.models.InstallmentGetResponseDto;
 
 public class Main {
 
@@ -306,7 +302,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiInstallmentGetResponseDto response = asaasSdk.installment.retrieveASingleInstallment(
+    InstallmentGetResponseDto response = asaasSdk.installment.retrieveASingleInstallment(
       "2765d086-c7c5-5cca-898a-4262d212587c"
     );
 
@@ -329,7 +325,7 @@ public class Main {
 
 **Return Type**
 
-`ApiInstallmentDeleteResponseDto`
+`InstallmentDeleteResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -337,7 +333,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiInstallmentDeleteResponseDto;
+import com.asaas.apisdk.models.InstallmentDeleteResponseDto;
 
 public class Main {
 
@@ -348,7 +344,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiInstallmentDeleteResponseDto response = asaasSdk.installment.removeInstallment(
+    InstallmentDeleteResponseDto response = asaasSdk.installment.removeInstallment(
       "5a2c890b-dd63-4b5a-9169-96c8d7828f4c"
     );
 
@@ -372,7 +368,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentListResponseDto`
+`PaymentListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -380,9 +376,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiInstallmentListPaymentsRequestPaymentStatus;
-import com.asaas.apisdk.models.ApiPaymentListResponseDto;
+import com.asaas.apisdk.models.InstallmentListPaymentsRequestPaymentStatus;
 import com.asaas.apisdk.models.ListPaymentsOfAInstallmentParameters;
+import com.asaas.apisdk.models.PaymentListResponseDto;
 
 public class Main {
 
@@ -394,10 +390,10 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentsOfAInstallmentParameters requestParameters = ListPaymentsOfAInstallmentParameters.builder()
-      .status(ApiInstallmentListPaymentsRequestPaymentStatus.PENDING)
+      .status(InstallmentListPaymentsRequestPaymentStatus.PENDING)
       .build();
 
-    ApiPaymentListResponseDto response = asaasSdk.installment.listPaymentsOfAInstallment(
+    PaymentListResponseDto response = asaasSdk.installment.listPaymentsOfAInstallment(
       "2765d086-c7c5-5cca-898a-4262d212587c",
       requestParameters
     );
@@ -422,7 +418,7 @@ public class Main {
 
 **Return Type**
 
-`Object`
+`InstallmentPaymentBookResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -431,6 +427,7 @@ import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.models.GenerateInstallmentBookletParameters;
+import com.asaas.apisdk.models.InstallmentPaymentBookResponseDto;
 
 public class Main {
 
@@ -446,7 +443,7 @@ public class Main {
       .order("asc")
       .build();
 
-    Object response = asaasSdk.installment.generateInstallmentBooklet(
+    InstallmentPaymentBookResponseDto response = asaasSdk.installment.generateInstallmentBooklet(
       "2765d086-c7c5-5cca-898a-4262d212587c",
       requestParameters
     );
@@ -473,7 +470,7 @@ It is possible to refund an installment received or confirmed via credit card. J
 
 **Return Type**
 
-`ApiInstallmentGetResponseDto`
+`InstallmentGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -481,7 +478,7 @@ It is possible to refund an installment received or confirmed via credit card. J
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiInstallmentGetResponseDto;
+import com.asaas.apisdk.models.InstallmentGetResponseDto;
 
 public class Main {
 
@@ -492,7 +489,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiInstallmentGetResponseDto response = asaasSdk.installment.refundInstallment(
+    InstallmentGetResponseDto response = asaasSdk.installment.refundInstallment(
       "2765d086-c7c5-5cca-898a-4262d212587c",
       new Object()
     );
@@ -510,14 +507,14 @@ public class Main {
 
 **Parameters**
 
-| Name                                | Type                                                                                    | Required | Description    |
-| :---------------------------------- | :-------------------------------------------------------------------------------------- | :------- | :------------- |
-| id                                  | String                                                                                  | ✅       | Installment ID |
-| apiInstallmentUpdateSplitRequestDto | [ApiInstallmentUpdateSplitRequestDto](../models/ApiInstallmentUpdateSplitRequestDto.md) | ❌       | Request Body   |
+| Name                             | Type                                                                              | Required | Description    |
+| :------------------------------- | :-------------------------------------------------------------------------------- | :------- | :------------- |
+| id                               | String                                                                            | ✅       | Installment ID |
+| installmentUpdateSplitRequestDto | [InstallmentUpdateSplitRequestDto](../models/InstallmentUpdateSplitRequestDto.md) | ❌       | Request Body   |
 
 **Return Type**
 
-`ApiInstallmentUpdateSplitResponseDto`
+`InstallmentUpdateSplitResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -525,9 +522,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiInstallmentSplitRequestDto;
-import com.asaas.apisdk.models.ApiInstallmentUpdateSplitRequestDto;
-import com.asaas.apisdk.models.ApiInstallmentUpdateSplitResponseDto;
+import com.asaas.apisdk.models.InstallmentSplitRequestDto;
+import com.asaas.apisdk.models.InstallmentUpdateSplitRequestDto;
+import com.asaas.apisdk.models.InstallmentUpdateSplitResponseDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -540,7 +537,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiInstallmentSplitRequestDto apiInstallmentSplitRequestDto = ApiInstallmentSplitRequestDto.builder()
+    InstallmentSplitRequestDto installmentSplitRequestDto = InstallmentSplitRequestDto.builder()
       .walletId("walletId")
       .fixedValue(2.11D)
       .percentualValue(0.03D)
@@ -550,14 +547,15 @@ public class Main {
       .installmentNumber(1L)
       .build();
 
-    List<ApiInstallmentSplitRequestDto> splitsList = Arrays.asList(apiInstallmentSplitRequestDto);
+    List<InstallmentSplitRequestDto> splitsList = Arrays.asList(installmentSplitRequestDto);
 
-    ApiInstallmentUpdateSplitRequestDto apiInstallmentUpdateSplitRequestDto =
-      ApiInstallmentUpdateSplitRequestDto.builder().splits(splitsList).build();
+    InstallmentUpdateSplitRequestDto installmentUpdateSplitRequestDto = InstallmentUpdateSplitRequestDto.builder()
+      .splits(splitsList)
+      .build();
 
-    ApiInstallmentUpdateSplitResponseDto response = asaasSdk.installment.updateInstallmentSplits(
+    InstallmentUpdateSplitResponseDto response = asaasSdk.installment.updateInstallmentSplits(
       "2765d086-c7c5-5cca-898a-4262d212587c",
-      apiInstallmentUpdateSplitRequestDto
+      installmentUpdateSplitRequestDto
     );
 
     System.out.println(response);

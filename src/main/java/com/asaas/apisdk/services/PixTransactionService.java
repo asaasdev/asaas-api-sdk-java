@@ -4,18 +4,18 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiPixQrCodeDecodeRequestDto;
-import com.asaas.apisdk.models.ApiPixQrCodeDecodeResponseDto;
-import com.asaas.apisdk.models.ApiPixTransactionGetResponseDto;
-import com.asaas.apisdk.models.ApiPixTransactionListResponseDto;
-import com.asaas.apisdk.models.ApiPixTransactionSaveRequestDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListTransactionsParameters;
+import com.asaas.apisdk.models.PixQrCodeDecodeRequestDto;
+import com.asaas.apisdk.models.PixQrCodeDecodeResponseDto;
+import com.asaas.apisdk.models.PixTransactionGetResponseDto;
+import com.asaas.apisdk.models.PixTransactionListResponseDto;
+import com.asaas.apisdk.models.PixTransactionSaveRequestDto;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
 import com.asaas.apisdk.validation.validators.modelValidators.ListTransactionsParametersValidator;
@@ -39,124 +39,121 @@ public class PixTransactionService extends BaseService {
   /**
    * Pay a QRCode
    *
-   * @return response of {@code ApiPixTransactionGetResponseDto}
+   * @return response of {@code PixTransactionGetResponseDto}
    */
-  public ApiPixTransactionGetResponseDto payAQrcode() throws ApiError {
-    return this.payAQrcode(ApiPixTransactionSaveRequestDto.builder().build());
+  public PixTransactionGetResponseDto payAQrcode() throws ApiError {
+    return this.payAQrcode(PixTransactionSaveRequestDto.builder().build());
   }
 
   /**
    * Pay a QRCode
    *
-   * @param apiPixTransactionSaveRequestDto {@link ApiPixTransactionSaveRequestDto} Request Body
-   * @return response of {@code ApiPixTransactionGetResponseDto}
+   * @param pixTransactionSaveRequestDto {@link PixTransactionSaveRequestDto} Request Body
+   * @return response of {@code PixTransactionGetResponseDto}
    */
-  public ApiPixTransactionGetResponseDto payAQrcode(
-    @NonNull ApiPixTransactionSaveRequestDto apiPixTransactionSaveRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildPayAQrcodeRequest(apiPixTransactionSaveRequestDto);
+  public PixTransactionGetResponseDto payAQrcode(@NonNull PixTransactionSaveRequestDto pixTransactionSaveRequestDto)
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildPayAQrcodeRequest(pixTransactionSaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixTransactionGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixTransactionGetResponseDto>() {});
   }
 
   /**
    * Pay a QRCode
    *
-   * @return response of {@code CompletableFuture<ApiPixTransactionGetResponseDto>}
+   * @return response of {@code CompletableFuture<PixTransactionGetResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionGetResponseDto> payAQrcodeAsync() throws ApiError {
-    return this.payAQrcodeAsync(ApiPixTransactionSaveRequestDto.builder().build());
+  public CompletableFuture<PixTransactionGetResponseDto> payAQrcodeAsync() throws ApiError {
+    return this.payAQrcodeAsync(PixTransactionSaveRequestDto.builder().build());
   }
 
   /**
    * Pay a QRCode
    *
-   * @param apiPixTransactionSaveRequestDto {@link ApiPixTransactionSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPixTransactionGetResponseDto>}
+   * @param pixTransactionSaveRequestDto {@link PixTransactionSaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<PixTransactionGetResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionGetResponseDto> payAQrcodeAsync(
-    @NonNull ApiPixTransactionSaveRequestDto apiPixTransactionSaveRequestDto
+  public CompletableFuture<PixTransactionGetResponseDto> payAQrcodeAsync(
+    @NonNull PixTransactionSaveRequestDto pixTransactionSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildPayAQrcodeRequest(apiPixTransactionSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildPayAQrcodeRequest(pixTransactionSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixTransactionGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixTransactionGetResponseDto>() {})
     );
   }
 
-  private Request buildPayAQrcodeRequest(@NonNull ApiPixTransactionSaveRequestDto apiPixTransactionSaveRequestDto) {
+  private Request buildPayAQrcodeRequest(@NonNull PixTransactionSaveRequestDto pixTransactionSaveRequestDto) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
       "v3/pix/qrCodes/pay"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiPixTransactionSaveRequestDto)
+      .setJsonContent(pixTransactionSaveRequestDto)
       .build();
   }
 
   /**
    * Decode a QRCode for payment
    *
-   * @return response of {@code ApiPixQrCodeDecodeResponseDto}
+   * @return response of {@code PixQrCodeDecodeResponseDto}
    */
-  public ApiPixQrCodeDecodeResponseDto decodeAQrcodeForPayment() throws ApiError {
-    return this.decodeAQrcodeForPayment(ApiPixQrCodeDecodeRequestDto.builder().build());
+  public PixQrCodeDecodeResponseDto decodeAQrcodeForPayment() throws ApiError {
+    return this.decodeAQrcodeForPayment(PixQrCodeDecodeRequestDto.builder().build());
   }
 
   /**
    * Decode a QRCode for payment
    *
-   * @param apiPixQrCodeDecodeRequestDto {@link ApiPixQrCodeDecodeRequestDto} Request Body
-   * @return response of {@code ApiPixQrCodeDecodeResponseDto}
+   * @param pixQrCodeDecodeRequestDto {@link PixQrCodeDecodeRequestDto} Request Body
+   * @return response of {@code PixQrCodeDecodeResponseDto}
    */
-  public ApiPixQrCodeDecodeResponseDto decodeAQrcodeForPayment(
-    @NonNull ApiPixQrCodeDecodeRequestDto apiPixQrCodeDecodeRequestDto
+  public PixQrCodeDecodeResponseDto decodeAQrcodeForPayment(
+    @NonNull PixQrCodeDecodeRequestDto pixQrCodeDecodeRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildDecodeAQrcodeForPaymentRequest(apiPixQrCodeDecodeRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildDecodeAQrcodeForPaymentRequest(pixQrCodeDecodeRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixQrCodeDecodeResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixQrCodeDecodeResponseDto>() {});
   }
 
   /**
    * Decode a QRCode for payment
    *
-   * @return response of {@code CompletableFuture<ApiPixQrCodeDecodeResponseDto>}
+   * @return response of {@code CompletableFuture<PixQrCodeDecodeResponseDto>}
    */
-  public CompletableFuture<ApiPixQrCodeDecodeResponseDto> decodeAQrcodeForPaymentAsync() throws ApiError {
-    return this.decodeAQrcodeForPaymentAsync(ApiPixQrCodeDecodeRequestDto.builder().build());
+  public CompletableFuture<PixQrCodeDecodeResponseDto> decodeAQrcodeForPaymentAsync() throws ApiError {
+    return this.decodeAQrcodeForPaymentAsync(PixQrCodeDecodeRequestDto.builder().build());
   }
 
   /**
    * Decode a QRCode for payment
    *
-   * @param apiPixQrCodeDecodeRequestDto {@link ApiPixQrCodeDecodeRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPixQrCodeDecodeResponseDto>}
+   * @param pixQrCodeDecodeRequestDto {@link PixQrCodeDecodeRequestDto} Request Body
+   * @return response of {@code CompletableFuture<PixQrCodeDecodeResponseDto>}
    */
-  public CompletableFuture<ApiPixQrCodeDecodeResponseDto> decodeAQrcodeForPaymentAsync(
-    @NonNull ApiPixQrCodeDecodeRequestDto apiPixQrCodeDecodeRequestDto
+  public CompletableFuture<PixQrCodeDecodeResponseDto> decodeAQrcodeForPaymentAsync(
+    @NonNull PixQrCodeDecodeRequestDto pixQrCodeDecodeRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildDecodeAQrcodeForPaymentRequest(apiPixQrCodeDecodeRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildDecodeAQrcodeForPaymentRequest(pixQrCodeDecodeRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixQrCodeDecodeResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixQrCodeDecodeResponseDto>() {})
     );
   }
 
-  private Request buildDecodeAQrcodeForPaymentRequest(
-    @NonNull ApiPixQrCodeDecodeRequestDto apiPixQrCodeDecodeRequestDto
-  ) {
+  private Request buildDecodeAQrcodeForPaymentRequest(@NonNull PixQrCodeDecodeRequestDto pixQrCodeDecodeRequestDto) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
       "v3/pix/qrCodes/decode"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiPixQrCodeDecodeRequestDto)
+      .setJsonContent(pixQrCodeDecodeRequestDto)
       .build();
   }
 
@@ -164,28 +161,28 @@ public class PixTransactionService extends BaseService {
    * Retrieve a single transaction
    *
    * @param id String Unique identifier of the Pix transaction in Asaas
-   * @return response of {@code ApiPixTransactionGetResponseDto}
+   * @return response of {@code PixTransactionGetResponseDto}
    */
-  public ApiPixTransactionGetResponseDto retrieveASingleTransaction(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PixTransactionGetResponseDto retrieveASingleTransaction(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleTransactionRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixTransactionGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixTransactionGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single transaction
    *
    * @param id String Unique identifier of the Pix transaction in Asaas
-   * @return response of {@code CompletableFuture<ApiPixTransactionGetResponseDto>}
+   * @return response of {@code CompletableFuture<PixTransactionGetResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionGetResponseDto> retrieveASingleTransactionAsync(@NonNull String id)
+  public CompletableFuture<PixTransactionGetResponseDto> retrieveASingleTransactionAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleTransactionRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixTransactionGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixTransactionGetResponseDto>() {})
     );
   }
 
@@ -203,9 +200,9 @@ public class PixTransactionService extends BaseService {
   /**
    * List transactions
    *
-   * @return response of {@code ApiPixTransactionListResponseDto}
+   * @return response of {@code PixTransactionListResponseDto}
    */
-  public ApiPixTransactionListResponseDto listTransactions() throws ApiError, ValidationException {
+  public PixTransactionListResponseDto listTransactions() throws ApiError, ValidationException {
     return this.listTransactions(ListTransactionsParameters.builder().build());
   }
 
@@ -213,23 +210,22 @@ public class PixTransactionService extends BaseService {
    * List transactions
    *
    * @param requestParameters {@link ListTransactionsParameters} Request Parameters Object
-   * @return response of {@code ApiPixTransactionListResponseDto}
+   * @return response of {@code PixTransactionListResponseDto}
    */
-  public ApiPixTransactionListResponseDto listTransactions(@NonNull ListTransactionsParameters requestParameters)
+  public PixTransactionListResponseDto listTransactions(@NonNull ListTransactionsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListTransactionsRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixTransactionListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixTransactionListResponseDto>() {});
   }
 
   /**
    * List transactions
    *
-   * @return response of {@code CompletableFuture<ApiPixTransactionListResponseDto>}
+   * @return response of {@code CompletableFuture<PixTransactionListResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionListResponseDto> listTransactionsAsync()
-    throws ApiError, ValidationException {
+  public CompletableFuture<PixTransactionListResponseDto> listTransactionsAsync() throws ApiError, ValidationException {
     return this.listTransactionsAsync(ListTransactionsParameters.builder().build());
   }
 
@@ -237,16 +233,16 @@ public class PixTransactionService extends BaseService {
    * List transactions
    *
    * @param requestParameters {@link ListTransactionsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPixTransactionListResponseDto>}
+   * @return response of {@code CompletableFuture<PixTransactionListResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionListResponseDto> listTransactionsAsync(
+  public CompletableFuture<PixTransactionListResponseDto> listTransactionsAsync(
     @NonNull ListTransactionsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListTransactionsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixTransactionListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixTransactionListResponseDto>() {})
     );
   }
 
@@ -278,14 +274,14 @@ public class PixTransactionService extends BaseService {
    *
    * @param id String Unique identifier of the Pix transaction scheduled to be canceled.
    * @param input Object Request Body
-   * @return response of {@code ApiPixTransactionGetResponseDto}
+   * @return response of {@code PixTransactionGetResponseDto}
    */
-  public ApiPixTransactionGetResponseDto cancelAScheduledTransaction(@NonNull String id, @NonNull Object input)
+  public PixTransactionGetResponseDto cancelAScheduledTransaction(@NonNull String id, @NonNull Object input)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelAScheduledTransactionRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPixTransactionGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PixTransactionGetResponseDto>() {});
   }
 
   /**
@@ -293,17 +289,17 @@ public class PixTransactionService extends BaseService {
    *
    * @param id String Unique identifier of the Pix transaction scheduled to be canceled.
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiPixTransactionGetResponseDto>}
+   * @return response of {@code CompletableFuture<PixTransactionGetResponseDto>}
    */
-  public CompletableFuture<ApiPixTransactionGetResponseDto> cancelAScheduledTransactionAsync(
+  public CompletableFuture<PixTransactionGetResponseDto> cancelAScheduledTransactionAsync(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelAScheduledTransactionRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPixTransactionGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PixTransactionGetResponseDto>() {})
     );
   }
 

@@ -4,18 +4,18 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiAccountDocumentDeleteResponseDto;
-import com.asaas.apisdk.models.ApiAccountDocumentGetResponseDto;
-import com.asaas.apisdk.models.ApiAccountDocumentSaveRequestCustomerDocumentType;
-import com.asaas.apisdk.models.ApiAccountDocumentSaveRequestDto;
-import com.asaas.apisdk.models.ApiAccountDocumentShowResponseDto;
-import com.asaas.apisdk.models.ApiAccountDocumentUpdateRequestDto;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
+import com.asaas.apisdk.models.AccountDocumentDeleteResponseDto;
+import com.asaas.apisdk.models.AccountDocumentGetResponseDto;
+import com.asaas.apisdk.models.AccountDocumentSaveRequestAccountDocumentType;
+import com.asaas.apisdk.models.AccountDocumentSaveRequestDto;
+import com.asaas.apisdk.models.AccountDocumentShowResponseDto;
+import com.asaas.apisdk.models.AccountDocumentUpdateRequestDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -39,26 +39,26 @@ public class AccountDocumentService extends BaseService {
   /**
    * Check pending documents
    *
-   * @return response of {@code ApiAccountDocumentShowResponseDto}
+   * @return response of {@code AccountDocumentShowResponseDto}
    */
-  public ApiAccountDocumentShowResponseDto checkPendingDocuments() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public AccountDocumentShowResponseDto checkPendingDocuments() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCheckPendingDocumentsRequest();
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiAccountDocumentShowResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AccountDocumentShowResponseDto>() {});
   }
 
   /**
    * Check pending documents
    *
-   * @return response of {@code CompletableFuture<ApiAccountDocumentShowResponseDto>}
+   * @return response of {@code CompletableFuture<AccountDocumentShowResponseDto>}
    */
-  public CompletableFuture<ApiAccountDocumentShowResponseDto> checkPendingDocumentsAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<AccountDocumentShowResponseDto> checkPendingDocumentsAsync() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCheckPendingDocumentsRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiAccountDocumentShowResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AccountDocumentShowResponseDto>() {})
     );
   }
 
@@ -73,63 +73,60 @@ public class AccountDocumentService extends BaseService {
   }
 
   /**
-   * Send documents via API
+   * Send documents
    *
    * @param id String Unique document identifier in Asaas
-   * @param apiAccountDocumentSaveRequestDto {@link ApiAccountDocumentSaveRequestDto} Request Body
+   * @param accountDocumentSaveRequestDto {@link AccountDocumentSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code ApiAccountDocumentGetResponseDto}
+   * @return response of {@code AccountDocumentGetResponseDto}
    */
-  public ApiAccountDocumentGetResponseDto sendDocumentsViaApi(
+  public AccountDocumentGetResponseDto sendDocuments(
     @NonNull String id,
-    @NonNull ApiAccountDocumentSaveRequestDto apiAccountDocumentSaveRequestDto,
+    @NonNull AccountDocumentSaveRequestDto accountDocumentSaveRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildSendDocumentsViaApiRequest(id, apiAccountDocumentSaveRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildSendDocumentsRequest(id, accountDocumentSaveRequestDto, _filename);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiAccountDocumentGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AccountDocumentGetResponseDto>() {});
   }
 
   /**
-   * Send documents via API
+   * Send documents
    *
    * @param id String Unique document identifier in Asaas
-   * @param apiAccountDocumentSaveRequestDto {@link ApiAccountDocumentSaveRequestDto} Request Body
+   * @param accountDocumentSaveRequestDto {@link AccountDocumentSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code CompletableFuture<ApiAccountDocumentGetResponseDto>}
+   * @return response of {@code CompletableFuture<AccountDocumentGetResponseDto>}
    */
-  public CompletableFuture<ApiAccountDocumentGetResponseDto> sendDocumentsViaApiAsync(
+  public CompletableFuture<AccountDocumentGetResponseDto> sendDocumentsAsync(
     @NonNull String id,
-    @NonNull ApiAccountDocumentSaveRequestDto apiAccountDocumentSaveRequestDto,
+    @NonNull AccountDocumentSaveRequestDto accountDocumentSaveRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildSendDocumentsViaApiRequest(id, apiAccountDocumentSaveRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildSendDocumentsRequest(id, accountDocumentSaveRequestDto, _filename);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiAccountDocumentGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AccountDocumentGetResponseDto>() {})
     );
   }
 
-  private Request buildSendDocumentsViaApiRequest(
+  private Request buildSendDocumentsRequest(
     @NonNull String id,
-    @NonNull ApiAccountDocumentSaveRequestDto apiAccountDocumentSaveRequestDto,
+    @NonNull AccountDocumentSaveRequestDto accountDocumentSaveRequestDto,
     @NonNull String _filename
   ) {
     MultipartBody.Builder multipartBodyBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
-    if (apiAccountDocumentSaveRequestDto.getDocumentFile() != null) {
+    if (accountDocumentSaveRequestDto.getDocumentFile() != null) {
       multipartBodyBuilder.addFormDataPart(
         "documentFile",
         _filename,
-        RequestBody.create(
-          apiAccountDocumentSaveRequestDto.getDocumentFile(),
-          MediaType.parse("application/octet-stream")
-        )
+        RequestBody.create(accountDocumentSaveRequestDto.getDocumentFile(), MediaType.parse("application/octet-stream"))
       );
     }
-    if (apiAccountDocumentSaveRequestDto.getType() != null) {
-      multipartBodyBuilder.addFormDataPart("type", apiAccountDocumentSaveRequestDto.getType().getValue());
+    if (accountDocumentSaveRequestDto.getType() != null) {
+      multipartBodyBuilder.addFormDataPart("type", accountDocumentSaveRequestDto.getType().getValue());
     }
     return new RequestBuilder(
       HttpMethod.POST,
@@ -146,27 +143,27 @@ public class AccountDocumentService extends BaseService {
    * View document sent
    *
    * @param id String Unique document identifier in Asaas
-   * @return response of {@code ApiAccountDocumentGetResponseDto}
+   * @return response of {@code AccountDocumentGetResponseDto}
    */
-  public ApiAccountDocumentGetResponseDto viewDocumentSent(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public AccountDocumentGetResponseDto viewDocumentSent(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildViewDocumentSentRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiAccountDocumentGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AccountDocumentGetResponseDto>() {});
   }
 
   /**
    * View document sent
    *
    * @param id String Unique document identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiAccountDocumentGetResponseDto>}
+   * @return response of {@code CompletableFuture<AccountDocumentGetResponseDto>}
    */
-  public CompletableFuture<ApiAccountDocumentGetResponseDto> viewDocumentSentAsync(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<AccountDocumentGetResponseDto> viewDocumentSentAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildViewDocumentSentRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiAccountDocumentGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AccountDocumentGetResponseDto>() {})
     );
   }
 
@@ -185,45 +182,45 @@ public class AccountDocumentService extends BaseService {
    * Update sent document
    *
    * @param id String Unique document identifier in Asaas
-   * @param apiAccountDocumentUpdateRequestDto {@link ApiAccountDocumentUpdateRequestDto} Request Body
+   * @param accountDocumentUpdateRequestDto {@link AccountDocumentUpdateRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code ApiAccountDocumentGetResponseDto}
+   * @return response of {@code AccountDocumentGetResponseDto}
    */
-  public ApiAccountDocumentGetResponseDto updateSentDocument(
+  public AccountDocumentGetResponseDto updateSentDocument(
     @NonNull String id,
-    @NonNull ApiAccountDocumentUpdateRequestDto apiAccountDocumentUpdateRequestDto,
+    @NonNull AccountDocumentUpdateRequestDto accountDocumentUpdateRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateSentDocumentRequest(id, apiAccountDocumentUpdateRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateSentDocumentRequest(id, accountDocumentUpdateRequestDto, _filename);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiAccountDocumentGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AccountDocumentGetResponseDto>() {});
   }
 
   /**
    * Update sent document
    *
    * @param id String Unique document identifier in Asaas
-   * @param apiAccountDocumentUpdateRequestDto {@link ApiAccountDocumentUpdateRequestDto} Request Body
+   * @param accountDocumentUpdateRequestDto {@link AccountDocumentUpdateRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code CompletableFuture<ApiAccountDocumentGetResponseDto>}
+   * @return response of {@code CompletableFuture<AccountDocumentGetResponseDto>}
    */
-  public CompletableFuture<ApiAccountDocumentGetResponseDto> updateSentDocumentAsync(
+  public CompletableFuture<AccountDocumentGetResponseDto> updateSentDocumentAsync(
     @NonNull String id,
-    @NonNull ApiAccountDocumentUpdateRequestDto apiAccountDocumentUpdateRequestDto,
+    @NonNull AccountDocumentUpdateRequestDto accountDocumentUpdateRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateSentDocumentRequest(id, apiAccountDocumentUpdateRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateSentDocumentRequest(id, accountDocumentUpdateRequestDto, _filename);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiAccountDocumentGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AccountDocumentGetResponseDto>() {})
     );
   }
 
   private Request buildUpdateSentDocumentRequest(
     @NonNull String id,
-    @NonNull ApiAccountDocumentUpdateRequestDto apiAccountDocumentUpdateRequestDto,
+    @NonNull AccountDocumentUpdateRequestDto accountDocumentUpdateRequestDto,
     @NonNull String _filename
   ) {
     return new RequestBuilder(
@@ -240,7 +237,7 @@ public class AccountDocumentService extends BaseService {
             "documentFile",
             _filename,
             RequestBody.create(
-              apiAccountDocumentUpdateRequestDto.getDocumentFile(),
+              accountDocumentUpdateRequestDto.getDocumentFile(),
               MediaType.parse("application/octet-stream")
             )
           )
@@ -253,28 +250,28 @@ public class AccountDocumentService extends BaseService {
    * Remove sent document
    *
    * @param id String Unique document identifier in Asaas
-   * @return response of {@code ApiAccountDocumentDeleteResponseDto}
+   * @return response of {@code AccountDocumentDeleteResponseDto}
    */
-  public ApiAccountDocumentDeleteResponseDto removeSentDocument(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public AccountDocumentDeleteResponseDto removeSentDocument(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveSentDocumentRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiAccountDocumentDeleteResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AccountDocumentDeleteResponseDto>() {});
   }
 
   /**
    * Remove sent document
    *
    * @param id String Unique document identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiAccountDocumentDeleteResponseDto>}
+   * @return response of {@code CompletableFuture<AccountDocumentDeleteResponseDto>}
    */
-  public CompletableFuture<ApiAccountDocumentDeleteResponseDto> removeSentDocumentAsync(@NonNull String id)
+  public CompletableFuture<AccountDocumentDeleteResponseDto> removeSentDocumentAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveSentDocumentRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiAccountDocumentDeleteResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AccountDocumentDeleteResponseDto>() {})
     );
   }
 

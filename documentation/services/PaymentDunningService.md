@@ -27,7 +27,7 @@ A list of all methods in the `PaymentDunningService` service. Click on the metho
 
 **Return Type**
 
-`ApiPaymentDunningListResponseDto`
+`PaymentDunningListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -35,10 +35,10 @@ A list of all methods in the `PaymentDunningService` service. Click on the metho
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDunningListRequestPaymentDunningStatus;
-import com.asaas.apisdk.models.ApiPaymentDunningListRequestPaymentDunningType;
-import com.asaas.apisdk.models.ApiPaymentDunningListResponseDto;
 import com.asaas.apisdk.models.ListPaymentDunningsParameters;
+import com.asaas.apisdk.models.PaymentDunningListRequestPaymentDunningStatus;
+import com.asaas.apisdk.models.PaymentDunningListRequestPaymentDunningType;
+import com.asaas.apisdk.models.PaymentDunningListResponseDto;
 
 public class Main {
 
@@ -50,16 +50,16 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentDunningsParameters requestParameters = ListPaymentDunningsParameters.builder()
-      .offset(6L)
+      .offset(4L)
       .limit(10L)
-      .status(ApiPaymentDunningListRequestPaymentDunningStatus.PENDING)
-      .type(ApiPaymentDunningListRequestPaymentDunningType.CREDIT_BUREAU)
+      .status(PaymentDunningListRequestPaymentDunningStatus.PENDING)
+      .type(PaymentDunningListRequestPaymentDunningType.CREDIT_BUREAU)
       .payment("payment")
       .requestStartDate("requestStartDate")
       .requestEndDate("requestEndDate")
       .build();
 
-    ApiPaymentDunningListResponseDto response = asaasSdk.paymentDunning.listPaymentDunnings(requestParameters);
+    PaymentDunningListResponseDto response = asaasSdk.paymentDunning.listPaymentDunnings(requestParameters);
 
     System.out.println(response);
   }
@@ -74,14 +74,14 @@ public class Main {
 
 **Parameters**
 
-| Name                            | Type                                                                            | Required | Description                    |
-| :------------------------------ | :------------------------------------------------------------------------------ | :------- | :----------------------------- |
-| apiPaymentDunningSaveRequestDto | [ApiPaymentDunningSaveRequestDto](../models/ApiPaymentDunningSaveRequestDto.md) | ❌       | Request Body                   |
-| \_filename                      | [String](../models/String.md)                                                   | ✅       | Filename for the uploaded file |
+| Name                         | Type                                                                      | Required | Description                    |
+| :--------------------------- | :------------------------------------------------------------------------ | :------- | :----------------------------- |
+| paymentDunningSaveRequestDto | [PaymentDunningSaveRequestDto](../models/PaymentDunningSaveRequestDto.md) | ❌       | Request Body                   |
+| \_filename                   | [String](../models/String.md)                                             | ✅       | Filename for the uploaded file |
 
 **Return Type**
 
-`ApiPaymentDunningShowResponseDto`
+`PaymentDunningShowResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -89,9 +89,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDunningSaveRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDunningSaveRequestPaymentDunningType;
-import com.asaas.apisdk.models.ApiPaymentDunningShowResponseDto;
+import com.asaas.apisdk.models.PaymentDunningSaveRequestDto;
+import com.asaas.apisdk.models.PaymentDunningSaveRequestPaymentDunningType;
+import com.asaas.apisdk.models.PaymentDunningShowResponseDto;
 
 public class Main {
 
@@ -102,9 +102,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDunningSaveRequestDto apiPaymentDunningSaveRequestDto = ApiPaymentDunningSaveRequestDto.builder()
+    PaymentDunningSaveRequestDto paymentDunningSaveRequestDto = PaymentDunningSaveRequestDto.builder()
       .payment("pay_080225913252")
-      .type(ApiPaymentDunningSaveRequestPaymentDunningType.CREDIT_BUREAU)
+      .type(PaymentDunningSaveRequestPaymentDunningType.CREDIT_BUREAU)
       .description("Duas mesas com 8 cadeiras solicitadas via encomenda no dia 01/05/2018")
       .customerName("John Doe")
       .customerCpfCnpj("378.285.120-07")
@@ -117,9 +117,9 @@ public class Main {
       .customerProvince("Petrópolis")
       .documents(documents)
       .build();
-    ApiPaymentDunningSaveRequestDto apiPaymentDunningSaveRequestDto = ApiPaymentDunningSaveRequestDto.builder()
+    PaymentDunningSaveRequestDto paymentDunningSaveRequestDto = PaymentDunningSaveRequestDto.builder()
       .payment("pay_080225913252")
-      .type(ApiPaymentDunningSaveRequestPaymentDunningType.CREDIT_BUREAU)
+      .type(PaymentDunningSaveRequestPaymentDunningType.CREDIT_BUREAU)
       .description("Duas mesas com 8 cadeiras solicitadas via encomenda no dia 01/05/2018")
       .customerName("John Doe")
       .customerCpfCnpj("378.285.120-07")
@@ -133,9 +133,9 @@ public class Main {
       .documents(documents)
       .build();
 
-    ApiPaymentDunningShowResponseDto response = asaasSdk.paymentDunning.createAPaymentDunning(
-      apiPaymentDunningSaveRequestDto,
-      apiPaymentDunningSaveRequestDto
+    PaymentDunningShowResponseDto response = asaasSdk.paymentDunning.createAPaymentDunning(
+      paymentDunningSaveRequestDto,
+      paymentDunningSaveRequestDto
     );
 
     System.out.println(response);
@@ -157,7 +157,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentDunningSimulateResponseDto`
+`PaymentDunningSimulateResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -165,7 +165,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDunningSimulateResponseDto;
+import com.asaas.apisdk.models.PaymentDunningSimulateResponseDto;
 import com.asaas.apisdk.models.SimulateAPaymentDunningParameters;
 
 public class Main {
@@ -182,7 +182,7 @@ public class Main {
       .requestBody(new Object())
       .build();
 
-    ApiPaymentDunningSimulateResponseDto response = asaasSdk.paymentDunning.simulateAPaymentDunning(requestParameters);
+    PaymentDunningSimulateResponseDto response = asaasSdk.paymentDunning.simulateAPaymentDunning(requestParameters);
 
     System.out.println(response);
   }
@@ -203,7 +203,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentDunningShowResponseDto`
+`PaymentDunningShowResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -211,7 +211,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDunningShowResponseDto;
+import com.asaas.apisdk.models.PaymentDunningShowResponseDto;
 
 public class Main {
 
@@ -222,7 +222,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDunningShowResponseDto response = asaasSdk.paymentDunning.recoverASinglePaymentDunning(
+    PaymentDunningShowResponseDto response = asaasSdk.paymentDunning.recoverASinglePaymentDunning(
       "ce35702d-0d9f-475a-ba46-e251ad265c91"
     );
 
@@ -248,7 +248,7 @@ Returns a paginated list of events that have occurred since the charge was denie
 
 **Return Type**
 
-`ApiPaymentDunningListHistoryResponseDto`
+`PaymentDunningListHistoryResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -256,8 +256,8 @@ Returns a paginated list of events that have occurred since the charge was denie
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDunningListHistoryResponseDto;
 import com.asaas.apisdk.models.EventHistoryListsParameters;
+import com.asaas.apisdk.models.PaymentDunningListHistoryResponseDto;
 
 public class Main {
 
@@ -268,9 +268,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    EventHistoryListsParameters requestParameters = EventHistoryListsParameters.builder().offset(8L).limit(10L).build();
+    EventHistoryListsParameters requestParameters = EventHistoryListsParameters.builder().offset(2L).limit(10L).build();
 
-    ApiPaymentDunningListHistoryResponseDto response = asaasSdk.paymentDunning.eventHistoryLists(
+    PaymentDunningListHistoryResponseDto response = asaasSdk.paymentDunning.eventHistoryLists(
       "ce35702d-0d9f-475a-ba46-e251ad265c91",
       requestParameters
     );
@@ -297,7 +297,7 @@ Returns a paginated list of payments received through debt renegotiation.
 
 **Return Type**
 
-`ApiPaymentDunningListPartialPaymentsResponseDto`
+`PaymentDunningListPartialPaymentsResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -305,8 +305,8 @@ Returns a paginated list of payments received through debt renegotiation.
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDunningListPartialPaymentsResponseDto;
 import com.asaas.apisdk.models.ListPaymentsReceivedParameters;
+import com.asaas.apisdk.models.PaymentDunningListPartialPaymentsResponseDto;
 
 public class Main {
 
@@ -318,11 +318,11 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentsReceivedParameters requestParameters = ListPaymentsReceivedParameters.builder()
-      .offset(5L)
+      .offset(1L)
       .limit(10L)
       .build();
 
-    ApiPaymentDunningListPartialPaymentsResponseDto response = asaasSdk.paymentDunning.listPaymentsReceived(
+    PaymentDunningListPartialPaymentsResponseDto response = asaasSdk.paymentDunning.listPaymentsReceived(
       "ce35702d-0d9f-475a-ba46-e251ad265c91",
       requestParameters
     );
@@ -348,7 +348,7 @@ Returns a paginated list of possible negative charges together with a simulation
 
 **Return Type**
 
-`ApiPaymentDunningPaymentsAvailableForDunningResponseDto`
+`PaymentDunningPaymentsAvailableForDunningResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -356,8 +356,8 @@ Returns a paginated list of possible negative charges together with a simulation
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDunningPaymentsAvailableForDunningResponseDto;
 import com.asaas.apisdk.models.ListPaymentsAvailableForPaymentDunningParameters;
+import com.asaas.apisdk.models.PaymentDunningPaymentsAvailableForDunningResponseDto;
 
 public class Main {
 
@@ -369,9 +369,9 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentsAvailableForPaymentDunningParameters requestParameters =
-      ListPaymentsAvailableForPaymentDunningParameters.builder().offset(0L).limit(10L).build();
+      ListPaymentsAvailableForPaymentDunningParameters.builder().offset(4L).limit(10L).build();
 
-    ApiPaymentDunningPaymentsAvailableForDunningResponseDto response =
+    PaymentDunningPaymentsAvailableForDunningResponseDto response =
       asaasSdk.paymentDunning.listPaymentsAvailableForPaymentDunning(requestParameters);
 
     System.out.println(response);
@@ -389,15 +389,15 @@ Use the `isNecessaryResendDocumentation` property returned in the delinquency ob
 
 **Parameters**
 
-| Name                                     | Type                                                                                              | Required | Description                                       |
-| :--------------------------------------- | :------------------------------------------------------------------------------------------------ | :------- | :------------------------------------------------ |
-| id                                       | String                                                                                            | ✅       | Unique identifier of the payment dunning in Asaas |
-| apiPaymentDunningSaveDocumentsRequestDto | [ApiPaymentDunningSaveDocumentsRequestDto](../models/ApiPaymentDunningSaveDocumentsRequestDto.md) | ❌       | Request Body                                      |
-| \_filename                               | [String](../models/String.md)                                                                     | ✅       | Filename for the uploaded file                    |
+| Name                                  | Type                                                                                        | Required | Description                                       |
+| :------------------------------------ | :------------------------------------------------------------------------------------------ | :------- | :------------------------------------------------ |
+| id                                    | String                                                                                      | ✅       | Unique identifier of the payment dunning in Asaas |
+| paymentDunningSaveDocumentsRequestDto | [PaymentDunningSaveDocumentsRequestDto](../models/PaymentDunningSaveDocumentsRequestDto.md) | ❌       | Request Body                                      |
+| \_filename                            | [String](../models/String.md)                                                               | ✅       | Filename for the uploaded file                    |
 
 **Return Type**
 
-`ApiPaymentDunningSaveDocumentsResponseDto`
+`PaymentDunningSaveDocumentsResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -405,8 +405,8 @@ Use the `isNecessaryResendDocumentation` property returned in the delinquency ob
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDunningSaveDocumentsRequestDto;
-import com.asaas.apisdk.models.ApiPaymentDunningSaveDocumentsResponseDto;
+import com.asaas.apisdk.models.PaymentDunningSaveDocumentsRequestDto;
+import com.asaas.apisdk.models.PaymentDunningSaveDocumentsResponseDto;
 
 public class Main {
 
@@ -417,15 +417,15 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDunningSaveDocumentsRequestDto apiPaymentDunningSaveDocumentsRequestDto =
-      ApiPaymentDunningSaveDocumentsRequestDto.builder().documents(documents).build();
-    ApiPaymentDunningSaveDocumentsRequestDto apiPaymentDunningSaveDocumentsRequestDto =
-      ApiPaymentDunningSaveDocumentsRequestDto.builder().documents(documents).build();
+    PaymentDunningSaveDocumentsRequestDto paymentDunningSaveDocumentsRequestDto =
+      PaymentDunningSaveDocumentsRequestDto.builder().documents(documents).build();
+    PaymentDunningSaveDocumentsRequestDto paymentDunningSaveDocumentsRequestDto =
+      PaymentDunningSaveDocumentsRequestDto.builder().documents(documents).build();
 
-    ApiPaymentDunningSaveDocumentsResponseDto response = asaasSdk.paymentDunning.resendDocuments(
+    PaymentDunningSaveDocumentsResponseDto response = asaasSdk.paymentDunning.resendDocuments(
       "ce35702d-0d9f-475a-ba46-e251ad265c91",
-      apiPaymentDunningSaveDocumentsRequestDto,
-      apiPaymentDunningSaveDocumentsRequestDto
+      paymentDunningSaveDocumentsRequestDto,
+      paymentDunningSaveDocumentsRequestDto
     );
 
     System.out.println(response);
@@ -450,7 +450,7 @@ Allows the cancellation of a delinquency. Use the `canBeCancelled` property retu
 
 **Return Type**
 
-`ApiPaymentDunningCancelResponseDto`
+`PaymentDunningCancelResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -458,7 +458,7 @@ Allows the cancellation of a delinquency. Use the `canBeCancelled` property retu
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentDunningCancelResponseDto;
+import com.asaas.apisdk.models.PaymentDunningCancelResponseDto;
 
 public class Main {
 
@@ -469,7 +469,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentDunningCancelResponseDto response = asaasSdk.paymentDunning.cancelPaymentDunning(
+    PaymentDunningCancelResponseDto response = asaasSdk.paymentDunning.cancelPaymentDunning(
       "ce35702d-0d9f-475a-ba46-e251ad265c91",
       new Object()
     );

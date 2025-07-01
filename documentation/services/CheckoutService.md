@@ -14,13 +14,13 @@ A list of all methods in the `CheckoutService` service. Click on the method name
 
 **Parameters**
 
-| Name                             | Type                                                                              | Required | Description  |
-| :------------------------------- | :-------------------------------------------------------------------------------- | :------- | :----------- |
-| apiCheckoutSessionSaveRequestDto | [ApiCheckoutSessionSaveRequestDto](../models/ApiCheckoutSessionSaveRequestDto.md) | ❌       | Request Body |
+| Name                          | Type                                                                        | Required | Description  |
+| :---------------------------- | :-------------------------------------------------------------------------- | :------- | :----------- |
+| checkoutSessionSaveRequestDto | [CheckoutSessionSaveRequestDto](../models/CheckoutSessionSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiCheckoutSessionResponseDto`
+`CheckoutSessionResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -28,15 +28,17 @@ A list of all methods in the `CheckoutService` service. Click on the method name
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCheckoutSessionCallbackDto;
-import com.asaas.apisdk.models.ApiCheckoutSessionCustomerDataDto;
-import com.asaas.apisdk.models.ApiCheckoutSessionInstallmentDto;
-import com.asaas.apisdk.models.ApiCheckoutSessionItemsDto;
-import com.asaas.apisdk.models.ApiCheckoutSessionResponseDto;
-import com.asaas.apisdk.models.ApiCheckoutSessionSaveRequestDto;
-import com.asaas.apisdk.models.ApiCheckoutSessionSplitDto;
-import com.asaas.apisdk.models.ApiCheckoutSessionSubscriptionCycle;
-import com.asaas.apisdk.models.ApiCheckoutSessionSubscriptionDto;
+import com.asaas.apisdk.models.CheckoutSessionCallbackDto;
+import com.asaas.apisdk.models.CheckoutSessionCustomerDataDto;
+import com.asaas.apisdk.models.CheckoutSessionInstallmentDto;
+import com.asaas.apisdk.models.CheckoutSessionItemsDto;
+import com.asaas.apisdk.models.CheckoutSessionResponseDto;
+import com.asaas.apisdk.models.CheckoutSessionSaveRequestBillingType;
+import com.asaas.apisdk.models.CheckoutSessionSaveRequestChargeType;
+import com.asaas.apisdk.models.CheckoutSessionSaveRequestDto;
+import com.asaas.apisdk.models.CheckoutSessionSplitDto;
+import com.asaas.apisdk.models.CheckoutSessionSubscriptionCycle;
+import com.asaas.apisdk.models.CheckoutSessionSubscriptionDto;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,17 +54,17 @@ public class Main {
 
 		AsaasSdk asaasSdk = new AsaasSdk(config);
 
-		List<String> billingTypesList = Arrays.asList("billingTypes");
+		List<CheckoutSessionSaveRequestBillingType> billingTypesList = Arrays.asList(CheckoutSessionSaveRequestBillingType.CREDIT_CARD);
 
-		List<String> chargeTypesList = Arrays.asList("chargeTypes");
+		List<CheckoutSessionSaveRequestChargeType> chargeTypesList = Arrays.asList(CheckoutSessionSaveRequestChargeType.DETACHED);
 
-		ApiCheckoutSessionCallbackDto apiCheckoutSessionCallbackDto = ApiCheckoutSessionCallbackDto.builder()
+		CheckoutSessionCallbackDto checkoutSessionCallbackDto = CheckoutSessionCallbackDto.builder()
 			.successUrl("https://example.com/asaas/checkout/success")
 			.cancelUrl("https://example.com/asaas/checkout/cancel")
 			.expiredUrl("https://example.com/asaas/checkout/expired")
 			.build();
 
-		ApiCheckoutSessionItemsDto apiCheckoutSessionItemsDto = ApiCheckoutSessionItemsDto.builder()
+		CheckoutSessionItemsDto checkoutSessionItemsDto = CheckoutSessionItemsDto.builder()
 			.description("Camisetas")
 			.imageBase64("IMAGE IN BASE64")
 			.name("Roupas")
@@ -70,9 +72,9 @@ public class Main {
 			.value(100D)
 			.build();
 
-		List<ApiCheckoutSessionItemsDto> itemsList = Arrays.asList(apiCheckoutSessionItemsDto);
+		List<CheckoutSessionItemsDto> itemsList = Arrays.asList(checkoutSessionItemsDto);
 
-		ApiCheckoutSessionCustomerDataDto apiCheckoutSessionCustomerDataDto = ApiCheckoutSessionCustomerDataDto.builder()
+		CheckoutSessionCustomerDataDto checkoutSessionCustomerDataDto = CheckoutSessionCustomerDataDto.builder()
 			.name("John Doe")
 			.cpfCnpj("24971563792")
 			.email("john.doe@asaas.com.br")
@@ -85,38 +87,38 @@ public class Main {
 			.city(12987382L)
 			.build();
 
-		ApiCheckoutSessionSubscriptionDto apiCheckoutSessionSubscriptionDto = ApiCheckoutSessionSubscriptionDto.builder()
-			.cycle(ApiCheckoutSessionSubscriptionCycle.WEEKLY)
+		CheckoutSessionSubscriptionDto checkoutSessionSubscriptionDto = CheckoutSessionSubscriptionDto.builder()
+			.cycle(CheckoutSessionSubscriptionCycle.WEEKLY)
 			.endDate("2025-01-01")
 			.nextDueDate("2025-01-01")
 			.build();
 
-		ApiCheckoutSessionInstallmentDto apiCheckoutSessionInstallmentDto = ApiCheckoutSessionInstallmentDto.builder()
+		CheckoutSessionInstallmentDto checkoutSessionInstallmentDto = CheckoutSessionInstallmentDto.builder()
 			.maxInstallmentCount(1L)
 			.build();
 
-		ApiCheckoutSessionSplitDto apiCheckoutSessionSplitDto = ApiCheckoutSessionSplitDto.builder()
+		CheckoutSessionSplitDto checkoutSessionSplitDto = CheckoutSessionSplitDto.builder()
 			.walletId("7bafd95a-e783-4a62-9be1-23999af742c6")
 			.fixedValue(Comissão referente ao serviço utilizadoD)
 			.percentageValue(10D)
 			.totalFixedValue(15D)
 			.build();
 
-		List<ApiCheckoutSessionSplitDto> splitsList = Arrays.asList(apiCheckoutSessionSplitDto);
+		List<CheckoutSessionSplitDto> splitsList = Arrays.asList(checkoutSessionSplitDto);
 
-		ApiCheckoutSessionSaveRequestDto apiCheckoutSessionSaveRequestDto = ApiCheckoutSessionSaveRequestDto.builder()
+		CheckoutSessionSaveRequestDto checkoutSessionSaveRequestDto = CheckoutSessionSaveRequestDto.builder()
 			.billingTypes(billingTypesList)
 			.chargeTypes(chargeTypesList)
 			.minutesToExpire(10L)
-			.callback(apiCheckoutSessionCallbackDto)
+			.callback(checkoutSessionCallbackDto)
 			.items(itemsList)
-			.customerData(apiCheckoutSessionCustomerDataDto)
-			.subscription(apiCheckoutSessionSubscriptionDto)
-			.installment(apiCheckoutSessionInstallmentDto)
+			.customerData(checkoutSessionCustomerDataDto)
+			.subscription(checkoutSessionSubscriptionDto)
+			.installment(checkoutSessionInstallmentDto)
 			.splits(splitsList)
 			.build();
 
-		ApiCheckoutSessionResponseDto response = asaasSdk.checkout.createNewCheckout(apiCheckoutSessionSaveRequestDto);
+		CheckoutSessionResponseDto response = asaasSdk.checkout.createNewCheckout(checkoutSessionSaveRequestDto);
 
 		System.out.println(response);
     }
@@ -137,7 +139,7 @@ public class Main {
 
 **Return Type**
 
-`ApiCheckoutSessionResponseDto`
+`CheckoutSessionResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -145,7 +147,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCheckoutSessionResponseDto;
+import com.asaas.apisdk.models.CheckoutSessionResponseDto;
 
 public class Main {
 
@@ -156,7 +158,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCheckoutSessionResponseDto response = asaasSdk.checkout.cancelACheckout(
+    CheckoutSessionResponseDto response = asaasSdk.checkout.cancelACheckout(
       "131ca662-56c8-4479-b5b3-fd61a413fce7",
       new Object()
     );

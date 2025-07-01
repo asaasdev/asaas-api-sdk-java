@@ -24,20 +24,20 @@ public class ListPaymentsOfASubscriptionParameters {
    * Filter by payment status
    */
   @JsonProperty("status")
-  private JsonNullable<ApiSubscriptionListPaymentsRequestPaymentStatus> status;
+  private JsonNullable<SubscriptionListPaymentsRequestPaymentStatus> status;
 
   @JsonIgnore
-  public ApiSubscriptionListPaymentsRequestPaymentStatus getStatus() {
+  public SubscriptionListPaymentsRequestPaymentStatus getStatus() {
     return status.orElse(null);
   }
 
   // Overwrite lombok builder methods
   public static class ListPaymentsOfASubscriptionParametersBuilder {
 
-    private JsonNullable<ApiSubscriptionListPaymentsRequestPaymentStatus> status = JsonNullable.undefined();
+    private JsonNullable<SubscriptionListPaymentsRequestPaymentStatus> status = JsonNullable.undefined();
 
     @JsonProperty("status")
-    public ListPaymentsOfASubscriptionParametersBuilder status(ApiSubscriptionListPaymentsRequestPaymentStatus value) {
+    public ListPaymentsOfASubscriptionParametersBuilder status(SubscriptionListPaymentsRequestPaymentStatus value) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");
       }

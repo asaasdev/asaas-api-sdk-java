@@ -4,13 +4,13 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiFinancialTransactionListResponseDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
+import com.asaas.apisdk.models.FinancialTransactionListResponseDto;
 import com.asaas.apisdk.models.RetrieveExtractParameters;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
@@ -35,9 +35,9 @@ public class FinancialTransactionService extends BaseService {
   /**
    * Retrieve extract
    *
-   * @return response of {@code ApiFinancialTransactionListResponseDto}
+   * @return response of {@code FinancialTransactionListResponseDto}
    */
-  public ApiFinancialTransactionListResponseDto retrieveExtract() throws ApiError, ValidationException {
+  public FinancialTransactionListResponseDto retrieveExtract() throws ApiError, ValidationException {
     return this.retrieveExtract(RetrieveExtractParameters.builder().build());
   }
 
@@ -45,22 +45,22 @@ public class FinancialTransactionService extends BaseService {
    * Retrieve extract
    *
    * @param requestParameters {@link RetrieveExtractParameters} Request Parameters Object
-   * @return response of {@code ApiFinancialTransactionListResponseDto}
+   * @return response of {@code FinancialTransactionListResponseDto}
    */
-  public ApiFinancialTransactionListResponseDto retrieveExtract(@NonNull RetrieveExtractParameters requestParameters)
+  public FinancialTransactionListResponseDto retrieveExtract(@NonNull RetrieveExtractParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveExtractRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiFinancialTransactionListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<FinancialTransactionListResponseDto>() {});
   }
 
   /**
    * Retrieve extract
    *
-   * @return response of {@code CompletableFuture<ApiFinancialTransactionListResponseDto>}
+   * @return response of {@code CompletableFuture<FinancialTransactionListResponseDto>}
    */
-  public CompletableFuture<ApiFinancialTransactionListResponseDto> retrieveExtractAsync()
+  public CompletableFuture<FinancialTransactionListResponseDto> retrieveExtractAsync()
     throws ApiError, ValidationException {
     return this.retrieveExtractAsync(RetrieveExtractParameters.builder().build());
   }
@@ -69,16 +69,16 @@ public class FinancialTransactionService extends BaseService {
    * Retrieve extract
    *
    * @param requestParameters {@link RetrieveExtractParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiFinancialTransactionListResponseDto>}
+   * @return response of {@code CompletableFuture<FinancialTransactionListResponseDto>}
    */
-  public CompletableFuture<ApiFinancialTransactionListResponseDto> retrieveExtractAsync(
+  public CompletableFuture<FinancialTransactionListResponseDto> retrieveExtractAsync(
     @NonNull RetrieveExtractParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveExtractRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiFinancialTransactionListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<FinancialTransactionListResponseDto>() {})
     );
   }
 

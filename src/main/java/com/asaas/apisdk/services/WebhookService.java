@@ -4,18 +4,18 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiPushNotificationConfigDeleteResponseDto;
-import com.asaas.apisdk.models.ApiPushNotificationConfigGetResponseDto;
-import com.asaas.apisdk.models.ApiPushNotificationConfigListResponseDto;
-import com.asaas.apisdk.models.ApiPushNotificationConfigSaveRequestDto;
-import com.asaas.apisdk.models.ApiPushNotificationConfigUpdateRequestDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListWebhooksParameters;
+import com.asaas.apisdk.models.WebhookConfigDeleteResponseDto;
+import com.asaas.apisdk.models.WebhookConfigGetResponseDto;
+import com.asaas.apisdk.models.WebhookConfigListResponseDto;
+import com.asaas.apisdk.models.WebhookConfigSaveRequestDto;
+import com.asaas.apisdk.models.WebhookConfigUpdateRequestDto;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
 import com.asaas.apisdk.validation.validators.modelValidators.ListWebhooksParametersValidator;
@@ -39,9 +39,9 @@ public class WebhookService extends BaseService {
   /**
    * List Webhooks
    *
-   * @return response of {@code ApiPushNotificationConfigListResponseDto}
+   * @return response of {@code WebhookConfigListResponseDto}
    */
-  public ApiPushNotificationConfigListResponseDto listWebhooks() throws ApiError, ValidationException {
+  public WebhookConfigListResponseDto listWebhooks() throws ApiError, ValidationException {
     return this.listWebhooks(ListWebhooksParameters.builder().build());
   }
 
@@ -49,23 +49,22 @@ public class WebhookService extends BaseService {
    * List Webhooks
    *
    * @param requestParameters {@link ListWebhooksParameters} Request Parameters Object
-   * @return response of {@code ApiPushNotificationConfigListResponseDto}
+   * @return response of {@code WebhookConfigListResponseDto}
    */
-  public ApiPushNotificationConfigListResponseDto listWebhooks(@NonNull ListWebhooksParameters requestParameters)
+  public WebhookConfigListResponseDto listWebhooks(@NonNull ListWebhooksParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListWebhooksRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPushNotificationConfigListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<WebhookConfigListResponseDto>() {});
   }
 
   /**
    * List Webhooks
    *
-   * @return response of {@code CompletableFuture<ApiPushNotificationConfigListResponseDto>}
+   * @return response of {@code CompletableFuture<WebhookConfigListResponseDto>}
    */
-  public CompletableFuture<ApiPushNotificationConfigListResponseDto> listWebhooksAsync()
-    throws ApiError, ValidationException {
+  public CompletableFuture<WebhookConfigListResponseDto> listWebhooksAsync() throws ApiError, ValidationException {
     return this.listWebhooksAsync(ListWebhooksParameters.builder().build());
   }
 
@@ -73,16 +72,16 @@ public class WebhookService extends BaseService {
    * List Webhooks
    *
    * @param requestParameters {@link ListWebhooksParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPushNotificationConfigListResponseDto>}
+   * @return response of {@code CompletableFuture<WebhookConfigListResponseDto>}
    */
-  public CompletableFuture<ApiPushNotificationConfigListResponseDto> listWebhooksAsync(
+  public CompletableFuture<WebhookConfigListResponseDto> listWebhooksAsync(
     @NonNull ListWebhooksParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListWebhooksRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPushNotificationConfigListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<WebhookConfigListResponseDto>() {})
     );
   }
 
@@ -105,63 +104,60 @@ public class WebhookService extends BaseService {
   /**
    * Create new Webhook
    *
-   * @return response of {@code ApiPushNotificationConfigGetResponseDto}
+   * @return response of {@code WebhookConfigGetResponseDto}
    */
-  public ApiPushNotificationConfigGetResponseDto createNewWebhook() throws ApiError {
-    return this.createNewWebhook(ApiPushNotificationConfigSaveRequestDto.builder().build());
+  public WebhookConfigGetResponseDto createNewWebhook() throws ApiError {
+    return this.createNewWebhook(WebhookConfigSaveRequestDto.builder().build());
   }
 
   /**
    * Create new Webhook
    *
-   * @param apiPushNotificationConfigSaveRequestDto {@link ApiPushNotificationConfigSaveRequestDto} Request Body
-   * @return response of {@code ApiPushNotificationConfigGetResponseDto}
+   * @param webhookConfigSaveRequestDto {@link WebhookConfigSaveRequestDto} Request Body
+   * @return response of {@code WebhookConfigGetResponseDto}
    */
-  public ApiPushNotificationConfigGetResponseDto createNewWebhook(
-    @NonNull ApiPushNotificationConfigSaveRequestDto apiPushNotificationConfigSaveRequestDto
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateNewWebhookRequest(apiPushNotificationConfigSaveRequestDto);
+  public WebhookConfigGetResponseDto createNewWebhook(@NonNull WebhookConfigSaveRequestDto webhookConfigSaveRequestDto)
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateNewWebhookRequest(webhookConfigSaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPushNotificationConfigGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<WebhookConfigGetResponseDto>() {});
   }
 
   /**
    * Create new Webhook
    *
-   * @return response of {@code CompletableFuture<ApiPushNotificationConfigGetResponseDto>}
+   * @return response of {@code CompletableFuture<WebhookConfigGetResponseDto>}
    */
-  public CompletableFuture<ApiPushNotificationConfigGetResponseDto> createNewWebhookAsync() throws ApiError {
-    return this.createNewWebhookAsync(ApiPushNotificationConfigSaveRequestDto.builder().build());
+  public CompletableFuture<WebhookConfigGetResponseDto> createNewWebhookAsync() throws ApiError {
+    return this.createNewWebhookAsync(WebhookConfigSaveRequestDto.builder().build());
   }
 
   /**
    * Create new Webhook
    *
-   * @param apiPushNotificationConfigSaveRequestDto {@link ApiPushNotificationConfigSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPushNotificationConfigGetResponseDto>}
+   * @param webhookConfigSaveRequestDto {@link WebhookConfigSaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<WebhookConfigGetResponseDto>}
    */
-  public CompletableFuture<ApiPushNotificationConfigGetResponseDto> createNewWebhookAsync(
-    @NonNull ApiPushNotificationConfigSaveRequestDto apiPushNotificationConfigSaveRequestDto
+  public CompletableFuture<WebhookConfigGetResponseDto> createNewWebhookAsync(
+    @NonNull WebhookConfigSaveRequestDto webhookConfigSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateNewWebhookRequest(apiPushNotificationConfigSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateNewWebhookRequest(webhookConfigSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPushNotificationConfigGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<WebhookConfigGetResponseDto>() {})
     );
   }
 
-  private Request buildCreateNewWebhookRequest(
-    @NonNull ApiPushNotificationConfigSaveRequestDto apiPushNotificationConfigSaveRequestDto
-  ) {
+  private Request buildCreateNewWebhookRequest(@NonNull WebhookConfigSaveRequestDto webhookConfigSaveRequestDto) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
       "v3/webhooks"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiPushNotificationConfigSaveRequestDto)
+      .setJsonContent(webhookConfigSaveRequestDto)
       .build();
   }
 
@@ -169,28 +165,28 @@ public class WebhookService extends BaseService {
    * Retrieve a single Webhook
    *
    * @param id String Unique Webhook Identifier
-   * @return response of {@code ApiPushNotificationConfigGetResponseDto}
+   * @return response of {@code WebhookConfigGetResponseDto}
    */
-  public ApiPushNotificationConfigGetResponseDto retrieveASingleWebhook(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public WebhookConfigGetResponseDto retrieveASingleWebhook(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleWebhookRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPushNotificationConfigGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<WebhookConfigGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single Webhook
    *
    * @param id String Unique Webhook Identifier
-   * @return response of {@code CompletableFuture<ApiPushNotificationConfigGetResponseDto>}
+   * @return response of {@code CompletableFuture<WebhookConfigGetResponseDto>}
    */
-  public CompletableFuture<ApiPushNotificationConfigGetResponseDto> retrieveASingleWebhookAsync(@NonNull String id)
+  public CompletableFuture<WebhookConfigGetResponseDto> retrieveASingleWebhookAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleWebhookRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPushNotificationConfigGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<WebhookConfigGetResponseDto>() {})
     );
   }
 
@@ -209,41 +205,41 @@ public class WebhookService extends BaseService {
    * Update Existing Webhook
    *
    * @param id String Unique Webhook Identifier
-   * @param apiPushNotificationConfigUpdateRequestDto {@link ApiPushNotificationConfigUpdateRequestDto} Request Body
-   * @return response of {@code ApiPushNotificationConfigGetResponseDto}
+   * @param webhookConfigUpdateRequestDto {@link WebhookConfigUpdateRequestDto} Request Body
+   * @return response of {@code WebhookConfigGetResponseDto}
    */
-  public ApiPushNotificationConfigGetResponseDto updateExistingWebhook(
+  public WebhookConfigGetResponseDto updateExistingWebhook(
     @NonNull String id,
-    @NonNull ApiPushNotificationConfigUpdateRequestDto apiPushNotificationConfigUpdateRequestDto
+    @NonNull WebhookConfigUpdateRequestDto webhookConfigUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateExistingWebhookRequest(id, apiPushNotificationConfigUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateExistingWebhookRequest(id, webhookConfigUpdateRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPushNotificationConfigGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<WebhookConfigGetResponseDto>() {});
   }
 
   /**
    * Update Existing Webhook
    *
    * @param id String Unique Webhook Identifier
-   * @param apiPushNotificationConfigUpdateRequestDto {@link ApiPushNotificationConfigUpdateRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiPushNotificationConfigGetResponseDto>}
+   * @param webhookConfigUpdateRequestDto {@link WebhookConfigUpdateRequestDto} Request Body
+   * @return response of {@code CompletableFuture<WebhookConfigGetResponseDto>}
    */
-  public CompletableFuture<ApiPushNotificationConfigGetResponseDto> updateExistingWebhookAsync(
+  public CompletableFuture<WebhookConfigGetResponseDto> updateExistingWebhookAsync(
     @NonNull String id,
-    @NonNull ApiPushNotificationConfigUpdateRequestDto apiPushNotificationConfigUpdateRequestDto
+    @NonNull WebhookConfigUpdateRequestDto webhookConfigUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateExistingWebhookRequest(id, apiPushNotificationConfigUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateExistingWebhookRequest(id, webhookConfigUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPushNotificationConfigGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<WebhookConfigGetResponseDto>() {})
     );
   }
 
   private Request buildUpdateExistingWebhookRequest(
     @NonNull String id,
-    @NonNull ApiPushNotificationConfigUpdateRequestDto apiPushNotificationConfigUpdateRequestDto
+    @NonNull WebhookConfigUpdateRequestDto webhookConfigUpdateRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.PUT,
@@ -252,7 +248,7 @@ public class WebhookService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiPushNotificationConfigUpdateRequestDto)
+      .setJsonContent(webhookConfigUpdateRequestDto)
       .build();
   }
 
@@ -260,28 +256,27 @@ public class WebhookService extends BaseService {
    * Remove Webhook
    *
    * @param id String Unique Webhook Identifier
-   * @return response of {@code ApiPushNotificationConfigDeleteResponseDto}
+   * @return response of {@code WebhookConfigDeleteResponseDto}
    */
-  public ApiPushNotificationConfigDeleteResponseDto removeWebhook(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public WebhookConfigDeleteResponseDto removeWebhook(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveWebhookRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPushNotificationConfigDeleteResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<WebhookConfigDeleteResponseDto>() {});
   }
 
   /**
    * Remove Webhook
    *
    * @param id String Unique Webhook Identifier
-   * @return response of {@code CompletableFuture<ApiPushNotificationConfigDeleteResponseDto>}
+   * @return response of {@code CompletableFuture<WebhookConfigDeleteResponseDto>}
    */
-  public CompletableFuture<ApiPushNotificationConfigDeleteResponseDto> removeWebhookAsync(@NonNull String id)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<WebhookConfigDeleteResponseDto> removeWebhookAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveWebhookRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPushNotificationConfigDeleteResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<WebhookConfigDeleteResponseDto>() {})
     );
   }
 

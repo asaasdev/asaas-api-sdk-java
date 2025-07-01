@@ -4,20 +4,20 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiReceivableAnticipationConfigurationGetResponseDto;
-import com.asaas.apisdk.models.ApiReceivableAnticipationConfigurationUpdateRequestDto;
-import com.asaas.apisdk.models.ApiReceivableAnticipationGetResponseDto;
-import com.asaas.apisdk.models.ApiReceivableAnticipationLimitsResponseDto;
-import com.asaas.apisdk.models.ApiReceivableAnticipationListResponseDto;
-import com.asaas.apisdk.models.ApiReceivableAnticipationSaveRequestDto;
-import com.asaas.apisdk.models.ApiReceivableAnticipationSimulateRequestDto;
-import com.asaas.apisdk.models.ApiReceivableAnticipationSimulateResponseDto;
+import com.asaas.apisdk.models.AnticipationConfigurationGetResponseDto;
+import com.asaas.apisdk.models.AnticipationConfigurationUpdateRequestDto;
+import com.asaas.apisdk.models.AnticipationGetResponseDto;
+import com.asaas.apisdk.models.AnticipationLimitsResponseDto;
+import com.asaas.apisdk.models.AnticipationListResponseDto;
+import com.asaas.apisdk.models.AnticipationSaveRequestDto;
+import com.asaas.apisdk.models.AnticipationSimulateRequestDto;
+import com.asaas.apisdk.models.AnticipationSimulateResponseDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListAnticipationsParameters;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
@@ -46,29 +46,28 @@ public class AnticipationService extends BaseService {
    * Retrieve a single anticipation
    *
    * @param id String Unique identifier of anticipation in Asaas
-   * @return response of {@code ApiReceivableAnticipationGetResponseDto}
+   * @return response of {@code AnticipationGetResponseDto}
    */
-  public ApiReceivableAnticipationGetResponseDto retrieveASingleAnticipation(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public AnticipationGetResponseDto retrieveASingleAnticipation(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleAnticipationRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AnticipationGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single anticipation
    *
    * @param id String Unique identifier of anticipation in Asaas
-   * @return response of {@code CompletableFuture<ApiReceivableAnticipationGetResponseDto>}
+   * @return response of {@code CompletableFuture<AnticipationGetResponseDto>}
    */
-  public CompletableFuture<ApiReceivableAnticipationGetResponseDto> retrieveASingleAnticipationAsync(
-    @NonNull String id
-  ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<AnticipationGetResponseDto> retrieveASingleAnticipationAsync(@NonNull String id)
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleAnticipationRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AnticipationGetResponseDto>() {})
     );
   }
 
@@ -86,9 +85,9 @@ public class AnticipationService extends BaseService {
   /**
    * List anticipations
    *
-   * @return response of {@code ApiReceivableAnticipationListResponseDto}
+   * @return response of {@code AnticipationListResponseDto}
    */
-  public ApiReceivableAnticipationListResponseDto listAnticipations() throws ApiError, ValidationException {
+  public AnticipationListResponseDto listAnticipations() throws ApiError, ValidationException {
     return this.listAnticipations(ListAnticipationsParameters.builder().build());
   }
 
@@ -96,24 +95,22 @@ public class AnticipationService extends BaseService {
    * List anticipations
    *
    * @param requestParameters {@link ListAnticipationsParameters} Request Parameters Object
-   * @return response of {@code ApiReceivableAnticipationListResponseDto}
+   * @return response of {@code AnticipationListResponseDto}
    */
-  public ApiReceivableAnticipationListResponseDto listAnticipations(
-    @NonNull ListAnticipationsParameters requestParameters
-  ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public AnticipationListResponseDto listAnticipations(@NonNull ListAnticipationsParameters requestParameters)
+    throws ApiError, ValidationException {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListAnticipationsRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AnticipationListResponseDto>() {});
   }
 
   /**
    * List anticipations
    *
-   * @return response of {@code CompletableFuture<ApiReceivableAnticipationListResponseDto>}
+   * @return response of {@code CompletableFuture<AnticipationListResponseDto>}
    */
-  public CompletableFuture<ApiReceivableAnticipationListResponseDto> listAnticipationsAsync()
-    throws ApiError, ValidationException {
+  public CompletableFuture<AnticipationListResponseDto> listAnticipationsAsync() throws ApiError, ValidationException {
     return this.listAnticipationsAsync(ListAnticipationsParameters.builder().build());
   }
 
@@ -121,16 +118,16 @@ public class AnticipationService extends BaseService {
    * List anticipations
    *
    * @param requestParameters {@link ListAnticipationsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiReceivableAnticipationListResponseDto>}
+   * @return response of {@code CompletableFuture<AnticipationListResponseDto>}
    */
-  public CompletableFuture<ApiReceivableAnticipationListResponseDto> listAnticipationsAsync(
+  public CompletableFuture<AnticipationListResponseDto> listAnticipationsAsync(
     @NonNull ListAnticipationsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListAnticipationsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AnticipationListResponseDto>() {})
     );
   }
 
@@ -158,55 +155,52 @@ public class AnticipationService extends BaseService {
   /**
    * Request anticipation
    *
-   * @param apiReceivableAnticipationSaveRequestDto {@link ApiReceivableAnticipationSaveRequestDto} Request Body
+   * @param anticipationSaveRequestDto {@link AnticipationSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code ApiReceivableAnticipationGetResponseDto}
+   * @return response of {@code AnticipationGetResponseDto}
    */
-  public ApiReceivableAnticipationGetResponseDto requestAnticipation(
-    @NonNull ApiReceivableAnticipationSaveRequestDto apiReceivableAnticipationSaveRequestDto,
+  public AnticipationGetResponseDto requestAnticipation(
+    @NonNull AnticipationSaveRequestDto anticipationSaveRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildRequestAnticipationRequest(apiReceivableAnticipationSaveRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildRequestAnticipationRequest(anticipationSaveRequestDto, _filename);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AnticipationGetResponseDto>() {});
   }
 
   /**
    * Request anticipation
    *
-   * @param apiReceivableAnticipationSaveRequestDto {@link ApiReceivableAnticipationSaveRequestDto} Request Body
+   * @param anticipationSaveRequestDto {@link AnticipationSaveRequestDto} Request Body
    * @param _filename String Filename for the uploaded file
-   * @return response of {@code CompletableFuture<ApiReceivableAnticipationGetResponseDto>}
+   * @return response of {@code CompletableFuture<AnticipationGetResponseDto>}
    */
-  public CompletableFuture<ApiReceivableAnticipationGetResponseDto> requestAnticipationAsync(
-    @NonNull ApiReceivableAnticipationSaveRequestDto apiReceivableAnticipationSaveRequestDto,
+  public CompletableFuture<AnticipationGetResponseDto> requestAnticipationAsync(
+    @NonNull AnticipationSaveRequestDto anticipationSaveRequestDto,
     @NonNull String _filename
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildRequestAnticipationRequest(apiReceivableAnticipationSaveRequestDto, _filename);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildRequestAnticipationRequest(anticipationSaveRequestDto, _filename);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AnticipationGetResponseDto>() {})
     );
   }
 
   private Request buildRequestAnticipationRequest(
-    @NonNull ApiReceivableAnticipationSaveRequestDto apiReceivableAnticipationSaveRequestDto,
+    @NonNull AnticipationSaveRequestDto anticipationSaveRequestDto,
     @NonNull String _filename
   ) {
     MultipartBody.Builder multipartBodyBuilder = new MultipartBody.Builder()
       .setType(MultipartBody.FORM)
-      .addFormDataPart("installment", apiReceivableAnticipationSaveRequestDto.getInstallment())
-      .addFormDataPart("payment", apiReceivableAnticipationSaveRequestDto.getPayment());
-    if (apiReceivableAnticipationSaveRequestDto.getDocuments() != null) {
+      .addFormDataPart("installment", anticipationSaveRequestDto.getInstallment())
+      .addFormDataPart("payment", anticipationSaveRequestDto.getPayment());
+    if (anticipationSaveRequestDto.getDocuments() != null) {
       multipartBodyBuilder.addFormDataPart(
         "documents",
         _filename,
-        RequestBody.create(
-          apiReceivableAnticipationSaveRequestDto.getDocuments(),
-          MediaType.parse("application/octet-stream")
-        )
+        RequestBody.create(anticipationSaveRequestDto.getDocuments(), MediaType.parse("application/octet-stream"))
       );
     }
     return new RequestBuilder(
@@ -222,55 +216,55 @@ public class AnticipationService extends BaseService {
   /**
    * Simulate anticipation
    *
-   * @return response of {@code ApiReceivableAnticipationSimulateResponseDto}
+   * @return response of {@code AnticipationSimulateResponseDto}
    */
-  public ApiReceivableAnticipationSimulateResponseDto simulateAnticipation() throws ApiError {
-    return this.simulateAnticipation(ApiReceivableAnticipationSimulateRequestDto.builder().build());
+  public AnticipationSimulateResponseDto simulateAnticipation() throws ApiError {
+    return this.simulateAnticipation(AnticipationSimulateRequestDto.builder().build());
   }
 
   /**
    * Simulate anticipation
    *
-   * @param apiReceivableAnticipationSimulateRequestDto {@link ApiReceivableAnticipationSimulateRequestDto} Request Body
-   * @return response of {@code ApiReceivableAnticipationSimulateResponseDto}
+   * @param anticipationSimulateRequestDto {@link AnticipationSimulateRequestDto} Request Body
+   * @return response of {@code AnticipationSimulateResponseDto}
    */
-  public ApiReceivableAnticipationSimulateResponseDto simulateAnticipation(
-    @NonNull ApiReceivableAnticipationSimulateRequestDto apiReceivableAnticipationSimulateRequestDto
+  public AnticipationSimulateResponseDto simulateAnticipation(
+    @NonNull AnticipationSimulateRequestDto anticipationSimulateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildSimulateAnticipationRequest(apiReceivableAnticipationSimulateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildSimulateAnticipationRequest(anticipationSimulateRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationSimulateResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AnticipationSimulateResponseDto>() {});
   }
 
   /**
    * Simulate anticipation
    *
-   * @return response of {@code CompletableFuture<ApiReceivableAnticipationSimulateResponseDto>}
+   * @return response of {@code CompletableFuture<AnticipationSimulateResponseDto>}
    */
-  public CompletableFuture<ApiReceivableAnticipationSimulateResponseDto> simulateAnticipationAsync() throws ApiError {
-    return this.simulateAnticipationAsync(ApiReceivableAnticipationSimulateRequestDto.builder().build());
+  public CompletableFuture<AnticipationSimulateResponseDto> simulateAnticipationAsync() throws ApiError {
+    return this.simulateAnticipationAsync(AnticipationSimulateRequestDto.builder().build());
   }
 
   /**
    * Simulate anticipation
    *
-   * @param apiReceivableAnticipationSimulateRequestDto {@link ApiReceivableAnticipationSimulateRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiReceivableAnticipationSimulateResponseDto>}
+   * @param anticipationSimulateRequestDto {@link AnticipationSimulateRequestDto} Request Body
+   * @return response of {@code CompletableFuture<AnticipationSimulateResponseDto>}
    */
-  public CompletableFuture<ApiReceivableAnticipationSimulateResponseDto> simulateAnticipationAsync(
-    @NonNull ApiReceivableAnticipationSimulateRequestDto apiReceivableAnticipationSimulateRequestDto
+  public CompletableFuture<AnticipationSimulateResponseDto> simulateAnticipationAsync(
+    @NonNull AnticipationSimulateRequestDto anticipationSimulateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildSimulateAnticipationRequest(apiReceivableAnticipationSimulateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildSimulateAnticipationRequest(anticipationSimulateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationSimulateResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AnticipationSimulateResponseDto>() {})
     );
   }
 
   private Request buildSimulateAnticipationRequest(
-    @NonNull ApiReceivableAnticipationSimulateRequestDto apiReceivableAnticipationSimulateRequestDto
+    @NonNull AnticipationSimulateRequestDto anticipationSimulateRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -278,38 +272,34 @@ public class AnticipationService extends BaseService {
       "v3/anticipations/simulate"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiReceivableAnticipationSimulateRequestDto)
+      .setJsonContent(anticipationSimulateRequestDto)
       .build();
   }
 
   /**
    * Retrieve status of automatic anticipation
    *
-   * @return response of {@code ApiReceivableAnticipationConfigurationGetResponseDto}
+   * @return response of {@code AnticipationConfigurationGetResponseDto}
    */
-  public ApiReceivableAnticipationConfigurationGetResponseDto retrieveStatusOfAutomaticAnticipation() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public AnticipationConfigurationGetResponseDto retrieveStatusOfAutomaticAnticipation() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveStatusOfAutomaticAnticipationRequest();
     Response response = this.execute(request);
-    return ModelConverter.convert(
-      response,
-      new TypeReference<ApiReceivableAnticipationConfigurationGetResponseDto>() {}
-    );
+    return ModelConverter.convert(response, new TypeReference<AnticipationConfigurationGetResponseDto>() {});
   }
 
   /**
    * Retrieve status of automatic anticipation
    *
-   * @return response of {@code CompletableFuture<ApiReceivableAnticipationConfigurationGetResponseDto>}
+   * @return response of {@code CompletableFuture<AnticipationConfigurationGetResponseDto>}
    */
-  public CompletableFuture<
-    ApiReceivableAnticipationConfigurationGetResponseDto
-  > retrieveStatusOfAutomaticAnticipationAsync() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<AnticipationConfigurationGetResponseDto> retrieveStatusOfAutomaticAnticipationAsync()
+    throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveStatusOfAutomaticAnticipationRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationConfigurationGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AnticipationConfigurationGetResponseDto>() {})
     );
   }
 
@@ -326,68 +316,56 @@ public class AnticipationService extends BaseService {
   /**
    * Update status of automatic anticipation
    *
-   * @return response of {@code ApiReceivableAnticipationConfigurationGetResponseDto}
+   * @return response of {@code AnticipationConfigurationGetResponseDto}
    */
-  public ApiReceivableAnticipationConfigurationGetResponseDto updateStatusOfAutomaticAnticipation() throws ApiError {
-    return this.updateStatusOfAutomaticAnticipation(
-        ApiReceivableAnticipationConfigurationUpdateRequestDto.builder().build()
-      );
+  public AnticipationConfigurationGetResponseDto updateStatusOfAutomaticAnticipation() throws ApiError {
+    return this.updateStatusOfAutomaticAnticipation(AnticipationConfigurationUpdateRequestDto.builder().build());
   }
 
   /**
    * Update status of automatic anticipation
    *
-   * @param apiReceivableAnticipationConfigurationUpdateRequestDto {@link ApiReceivableAnticipationConfigurationUpdateRequestDto} Request Body
-   * @return response of {@code ApiReceivableAnticipationConfigurationGetResponseDto}
+   * @param anticipationConfigurationUpdateRequestDto {@link AnticipationConfigurationUpdateRequestDto} Request Body
+   * @return response of {@code AnticipationConfigurationGetResponseDto}
    */
-  public ApiReceivableAnticipationConfigurationGetResponseDto updateStatusOfAutomaticAnticipation(
-    @NonNull ApiReceivableAnticipationConfigurationUpdateRequestDto apiReceivableAnticipationConfigurationUpdateRequestDto
+  public AnticipationConfigurationGetResponseDto updateStatusOfAutomaticAnticipation(
+    @NonNull AnticipationConfigurationUpdateRequestDto anticipationConfigurationUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request =
-      this.buildUpdateStatusOfAutomaticAnticipationRequest(apiReceivableAnticipationConfigurationUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateStatusOfAutomaticAnticipationRequest(anticipationConfigurationUpdateRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(
-      response,
-      new TypeReference<ApiReceivableAnticipationConfigurationGetResponseDto>() {}
-    );
+    return ModelConverter.convert(response, new TypeReference<AnticipationConfigurationGetResponseDto>() {});
   }
 
   /**
    * Update status of automatic anticipation
    *
-   * @return response of {@code CompletableFuture<ApiReceivableAnticipationConfigurationGetResponseDto>}
+   * @return response of {@code CompletableFuture<AnticipationConfigurationGetResponseDto>}
    */
-  public CompletableFuture<
-    ApiReceivableAnticipationConfigurationGetResponseDto
-  > updateStatusOfAutomaticAnticipationAsync() throws ApiError {
-    return this.updateStatusOfAutomaticAnticipationAsync(
-        ApiReceivableAnticipationConfigurationUpdateRequestDto.builder().build()
-      );
+  public CompletableFuture<AnticipationConfigurationGetResponseDto> updateStatusOfAutomaticAnticipationAsync()
+    throws ApiError {
+    return this.updateStatusOfAutomaticAnticipationAsync(AnticipationConfigurationUpdateRequestDto.builder().build());
   }
 
   /**
    * Update status of automatic anticipation
    *
-   * @param apiReceivableAnticipationConfigurationUpdateRequestDto {@link ApiReceivableAnticipationConfigurationUpdateRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiReceivableAnticipationConfigurationGetResponseDto>}
+   * @param anticipationConfigurationUpdateRequestDto {@link AnticipationConfigurationUpdateRequestDto} Request Body
+   * @return response of {@code CompletableFuture<AnticipationConfigurationGetResponseDto>}
    */
-  public CompletableFuture<
-    ApiReceivableAnticipationConfigurationGetResponseDto
-  > updateStatusOfAutomaticAnticipationAsync(
-    @NonNull ApiReceivableAnticipationConfigurationUpdateRequestDto apiReceivableAnticipationConfigurationUpdateRequestDto
+  public CompletableFuture<AnticipationConfigurationGetResponseDto> updateStatusOfAutomaticAnticipationAsync(
+    @NonNull AnticipationConfigurationUpdateRequestDto anticipationConfigurationUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request =
-      this.buildUpdateStatusOfAutomaticAnticipationRequest(apiReceivableAnticipationConfigurationUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateStatusOfAutomaticAnticipationRequest(anticipationConfigurationUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationConfigurationGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AnticipationConfigurationGetResponseDto>() {})
     );
   }
 
   private Request buildUpdateStatusOfAutomaticAnticipationRequest(
-    @NonNull ApiReceivableAnticipationConfigurationUpdateRequestDto apiReceivableAnticipationConfigurationUpdateRequestDto
+    @NonNull AnticipationConfigurationUpdateRequestDto anticipationConfigurationUpdateRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.PUT,
@@ -395,34 +373,33 @@ public class AnticipationService extends BaseService {
       "v3/anticipations/configurations"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiReceivableAnticipationConfigurationUpdateRequestDto)
+      .setJsonContent(anticipationConfigurationUpdateRequestDto)
       .build();
   }
 
   /**
    * Retrieve anticipation limits
    *
-   * @return response of {@code ApiReceivableAnticipationLimitsResponseDto}
+   * @return response of {@code AnticipationLimitsResponseDto}
    */
-  public ApiReceivableAnticipationLimitsResponseDto retrieveAnticipationLimits() throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public AnticipationLimitsResponseDto retrieveAnticipationLimits() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveAnticipationLimitsRequest();
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationLimitsResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AnticipationLimitsResponseDto>() {});
   }
 
   /**
    * Retrieve anticipation limits
    *
-   * @return response of {@code CompletableFuture<ApiReceivableAnticipationLimitsResponseDto>}
+   * @return response of {@code CompletableFuture<AnticipationLimitsResponseDto>}
    */
-  public CompletableFuture<ApiReceivableAnticipationLimitsResponseDto> retrieveAnticipationLimitsAsync()
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<AnticipationLimitsResponseDto> retrieveAnticipationLimitsAsync() throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveAnticipationLimitsRequest();
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationLimitsResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AnticipationLimitsResponseDto>() {})
     );
   }
 
@@ -441,14 +418,13 @@ public class AnticipationService extends BaseService {
    *
    * @param id String Unique identifier of anticipation in Asaas
    * @param input Object Request Body
-   * @return response of {@code ApiReceivableAnticipationGetResponseDto}
+   * @return response of {@code AnticipationGetResponseDto}
    */
-  public ApiReceivableAnticipationGetResponseDto cancelAnticipation(@NonNull String id, @NonNull Object input)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public AnticipationGetResponseDto cancelAnticipation(@NonNull String id, @NonNull Object input) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelAnticipationRequest(id, input);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<AnticipationGetResponseDto>() {});
   }
 
   /**
@@ -456,17 +432,17 @@ public class AnticipationService extends BaseService {
    *
    * @param id String Unique identifier of anticipation in Asaas
    * @param input Object Request Body
-   * @return response of {@code CompletableFuture<ApiReceivableAnticipationGetResponseDto>}
+   * @return response of {@code CompletableFuture<AnticipationGetResponseDto>}
    */
-  public CompletableFuture<ApiReceivableAnticipationGetResponseDto> cancelAnticipationAsync(
+  public CompletableFuture<AnticipationGetResponseDto> cancelAnticipationAsync(
     @NonNull String id,
     @NonNull Object input
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildCancelAnticipationRequest(id, input);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiReceivableAnticipationGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<AnticipationGetResponseDto>() {})
     );
   }
 

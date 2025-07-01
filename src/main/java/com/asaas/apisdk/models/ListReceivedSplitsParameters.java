@@ -42,7 +42,7 @@ public class ListReceivedSplitsParameters {
    * Filter by status
    */
   @JsonProperty("status")
-  private JsonNullable<ApiPaymentSplitListReceivedRequestPaymentSplitStatus> status;
+  private JsonNullable<PaymentSplitListReceivedRequestPaymentSplitStatus> status;
 
   /**
    * Filter from the initial payment confirmation date
@@ -84,7 +84,7 @@ public class ListReceivedSplitsParameters {
   }
 
   @JsonIgnore
-  public ApiPaymentSplitListReceivedRequestPaymentSplitStatus getStatus() {
+  public PaymentSplitListReceivedRequestPaymentSplitStatus getStatus() {
     return status.orElse(null);
   }
 
@@ -144,10 +144,10 @@ public class ListReceivedSplitsParameters {
       return this;
     }
 
-    private JsonNullable<ApiPaymentSplitListReceivedRequestPaymentSplitStatus> status = JsonNullable.undefined();
+    private JsonNullable<PaymentSplitListReceivedRequestPaymentSplitStatus> status = JsonNullable.undefined();
 
     @JsonProperty("status")
-    public ListReceivedSplitsParametersBuilder status(ApiPaymentSplitListReceivedRequestPaymentSplitStatus value) {
+    public ListReceivedSplitsParametersBuilder status(PaymentSplitListReceivedRequestPaymentSplitStatus value) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");
       }

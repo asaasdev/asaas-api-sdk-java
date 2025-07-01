@@ -13,13 +13,13 @@ A list of all methods in the `CreditCardService` service. Click on the method na
 
 **Parameters**
 
-| Name                            | Type                                                                            | Required | Description  |
-| :------------------------------ | :------------------------------------------------------------------------------ | :------- | :----------- |
-| apiCreditCardTokenizeRequestDto | [ApiCreditCardTokenizeRequestDto](../models/ApiCreditCardTokenizeRequestDto.md) | ❌       | Request Body |
+| Name                         | Type                                                                      | Required | Description  |
+| :--------------------------- | :------------------------------------------------------------------------ | :------- | :----------- |
+| creditCardTokenizeRequestDto | [CreditCardTokenizeRequestDto](../models/CreditCardTokenizeRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiCreditCardTokenizeResponseDto`
+`CreditCardTokenizeResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -27,10 +27,10 @@ A list of all methods in the `CreditCardService` service. Click on the method na
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCreditCardHolderInfoRequestDto;
-import com.asaas.apisdk.models.ApiCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiCreditCardTokenizeRequestDto;
-import com.asaas.apisdk.models.ApiCreditCardTokenizeResponseDto;
+import com.asaas.apisdk.models.CreditCardHolderInfoRequestDto;
+import com.asaas.apisdk.models.CreditCardRequestDto;
+import com.asaas.apisdk.models.CreditCardTokenizeRequestDto;
+import com.asaas.apisdk.models.CreditCardTokenizeResponseDto;
 
 public class Main {
 
@@ -41,15 +41,15 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCreditCardRequestDto apiCreditCardRequestDto = ApiCreditCardRequestDto.builder()
+    CreditCardRequestDto creditCardRequestDto = CreditCardRequestDto.builder()
       .holderName("John Doe")
       .number("1234567890123456")
-      .expiryMonth("6")
+      .expiryMonth("7")
       .expiryYear("2025")
       .ccv("123")
       .build();
 
-    ApiCreditCardHolderInfoRequestDto apiCreditCardHolderInfoRequestDto = ApiCreditCardHolderInfoRequestDto.builder()
+    CreditCardHolderInfoRequestDto creditCardHolderInfoRequestDto = CreditCardHolderInfoRequestDto.builder()
       .name("John Doe")
       .email("john.doe@asaas.com")
       .cpfCnpj("12345678901")
@@ -60,16 +60,14 @@ public class Main {
       .mobilePhone("mobilePhone")
       .build();
 
-    ApiCreditCardTokenizeRequestDto apiCreditCardTokenizeRequestDto = ApiCreditCardTokenizeRequestDto.builder()
+    CreditCardTokenizeRequestDto creditCardTokenizeRequestDto = CreditCardTokenizeRequestDto.builder()
       .customer("cus_G7Dvo4iphUNk")
-      .creditCard(apiCreditCardRequestDto)
-      .creditCardHolderInfo(apiCreditCardHolderInfoRequestDto)
+      .creditCard(creditCardRequestDto)
+      .creditCardHolderInfo(creditCardHolderInfoRequestDto)
       .remoteIp("116.213.42.532")
       .build();
 
-    ApiCreditCardTokenizeResponseDto response = asaasSdk.creditCard.creditCardTokenization(
-      apiCreditCardTokenizeRequestDto
-    );
+    CreditCardTokenizeResponseDto response = asaasSdk.creditCard.creditCardTokenization(creditCardTokenizeRequestDto);
 
     System.out.println(response);
   }

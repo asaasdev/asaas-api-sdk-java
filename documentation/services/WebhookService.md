@@ -25,7 +25,7 @@ Endpoint to list all Webhooks registered in your account.
 
 **Return Type**
 
-`ApiPushNotificationConfigListResponseDto`
+`WebhookConfigListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -33,8 +33,8 @@ Endpoint to list all Webhooks registered in your account.
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPushNotificationConfigListResponseDto;
 import com.asaas.apisdk.models.ListWebhooksParameters;
+import com.asaas.apisdk.models.WebhookConfigListResponseDto;
 
 public class Main {
 
@@ -45,9 +45,9 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ListWebhooksParameters requestParameters = ListWebhooksParameters.builder().offset(5L).limit(10L).build();
+    ListWebhooksParameters requestParameters = ListWebhooksParameters.builder().offset(10L).limit(10L).build();
 
-    ApiPushNotificationConfigListResponseDto response = asaasSdk.webhook.listWebhooks(requestParameters);
+    WebhookConfigListResponseDto response = asaasSdk.webhook.listWebhooks(requestParameters);
 
     System.out.println(response);
   }
@@ -62,13 +62,13 @@ public class Main {
 
 **Parameters**
 
-| Name                                    | Type                                                                                            | Required | Description  |
-| :-------------------------------------- | :---------------------------------------------------------------------------------------------- | :------- | :----------- |
-| apiPushNotificationConfigSaveRequestDto | [ApiPushNotificationConfigSaveRequestDto](../models/ApiPushNotificationConfigSaveRequestDto.md) | ❌       | Request Body |
+| Name                        | Type                                                                    | Required | Description  |
+| :-------------------------- | :---------------------------------------------------------------------- | :------- | :----------- |
+| webhookConfigSaveRequestDto | [WebhookConfigSaveRequestDto](../models/WebhookConfigSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiPushNotificationConfigGetResponseDto`
+`WebhookConfigGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -76,9 +76,10 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPushNotificationConfigGetResponseDto;
-import com.asaas.apisdk.models.ApiPushNotificationConfigSaveRequestDto;
-import com.asaas.apisdk.models.ApiPushNotificationConfigSaveRequestPushNotificationSendType;
+import com.asaas.apisdk.models.WebhookConfigGetResponseDto;
+import com.asaas.apisdk.models.WebhookConfigSaveRequestDto;
+import com.asaas.apisdk.models.WebhookConfigSaveRequestWebhookEvent;
+import com.asaas.apisdk.models.WebhookConfigSaveRequestWebhookSendType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -91,24 +92,23 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    List<String> eventsList = Arrays.asList("events");
-
-    ApiPushNotificationConfigSaveRequestDto apiPushNotificationConfigSaveRequestDto =
-      ApiPushNotificationConfigSaveRequestDto.builder()
-        .name("Name Example")
-        .url("https://www.example.com/webhook/asaas")
-        .email("john.doe@asaas.com.br")
-        .enabled(true)
-        .interrupted(true)
-        .apiVersion(3L)
-        .authToken("5tLxsL6uoN")
-        .sendType(ApiPushNotificationConfigSaveRequestPushNotificationSendType.NON_SEQUENTIALLY)
-        .events(eventsList)
-        .build();
-
-    ApiPushNotificationConfigGetResponseDto response = asaasSdk.webhook.createNewWebhook(
-      apiPushNotificationConfigSaveRequestDto
+    List<WebhookConfigSaveRequestWebhookEvent> eventsList = Arrays.asList(
+      WebhookConfigSaveRequestWebhookEvent.PAYMENT_AUTHORIZED
     );
+
+    WebhookConfigSaveRequestDto webhookConfigSaveRequestDto = WebhookConfigSaveRequestDto.builder()
+      .name("Name Example")
+      .url("https://www.example.com/webhook/asaas")
+      .email("john.doe@asaas.com.br")
+      .enabled(true)
+      .interrupted(true)
+      .apiVersion(3L)
+      .authToken("5tLxsL6uoN")
+      .sendType(WebhookConfigSaveRequestWebhookSendType.NON_SEQUENTIALLY)
+      .events(eventsList)
+      .build();
+
+    WebhookConfigGetResponseDto response = asaasSdk.webhook.createNewWebhook(webhookConfigSaveRequestDto);
 
     System.out.println(response);
   }
@@ -131,7 +131,7 @@ This endpoint retrieves a single webhook according to the provided ID.
 
 **Return Type**
 
-`ApiPushNotificationConfigGetResponseDto`
+`WebhookConfigGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -139,7 +139,7 @@ This endpoint retrieves a single webhook according to the provided ID.
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPushNotificationConfigGetResponseDto;
+import com.asaas.apisdk.models.WebhookConfigGetResponseDto;
 
 public class Main {
 
@@ -150,7 +150,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPushNotificationConfigGetResponseDto response = asaasSdk.webhook.retrieveASingleWebhook(
+    WebhookConfigGetResponseDto response = asaasSdk.webhook.retrieveASingleWebhook(
       "bbf67496-1379-4b6d-a348-fd5fa229f1c"
     );
 
@@ -169,14 +169,14 @@ Use this endpoint to update information about an already registered webhook.
 
 **Parameters**
 
-| Name                                      | Type                                                                                                | Required | Description               |
-| :---------------------------------------- | :-------------------------------------------------------------------------------------------------- | :------- | :------------------------ |
-| id                                        | String                                                                                              | ✅       | Unique Webhook Identifier |
-| apiPushNotificationConfigUpdateRequestDto | [ApiPushNotificationConfigUpdateRequestDto](../models/ApiPushNotificationConfigUpdateRequestDto.md) | ❌       | Request Body              |
+| Name                          | Type                                                                        | Required | Description               |
+| :---------------------------- | :-------------------------------------------------------------------------- | :------- | :------------------------ |
+| id                            | String                                                                      | ✅       | Unique Webhook Identifier |
+| webhookConfigUpdateRequestDto | [WebhookConfigUpdateRequestDto](../models/WebhookConfigUpdateRequestDto.md) | ❌       | Request Body              |
 
 **Return Type**
 
-`ApiPushNotificationConfigGetResponseDto`
+`WebhookConfigGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -184,9 +184,10 @@ Use this endpoint to update information about an already registered webhook.
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPushNotificationConfigGetResponseDto;
-import com.asaas.apisdk.models.ApiPushNotificationConfigUpdateRequestDto;
-import com.asaas.apisdk.models.ApiPushNotificationConfigUpdateRequestPushNotificationSendType;
+import com.asaas.apisdk.models.WebhookConfigGetResponseDto;
+import com.asaas.apisdk.models.WebhookConfigUpdateRequestDto;
+import com.asaas.apisdk.models.WebhookConfigUpdateRequestWebhookEvent;
+import com.asaas.apisdk.models.WebhookConfigUpdateRequestWebhookSendType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -199,22 +200,23 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    List<String> eventsList = Arrays.asList("events");
+    List<WebhookConfigUpdateRequestWebhookEvent> eventsList = Arrays.asList(
+      WebhookConfigUpdateRequestWebhookEvent.PAYMENT_AUTHORIZED
+    );
 
-    ApiPushNotificationConfigUpdateRequestDto apiPushNotificationConfigUpdateRequestDto =
-      ApiPushNotificationConfigUpdateRequestDto.builder()
-        .name("Name Example")
-        .url("https://www.example.com/webhook/asaas")
-        .sendType(ApiPushNotificationConfigUpdateRequestPushNotificationSendType.NON_SEQUENTIALLY)
-        .enabled(true)
-        .interrupted(true)
-        .authToken("5tLxsL6uoN")
-        .events(eventsList)
-        .build();
+    WebhookConfigUpdateRequestDto webhookConfigUpdateRequestDto = WebhookConfigUpdateRequestDto.builder()
+      .name("Name Example")
+      .url("https://www.example.com/webhook/asaas")
+      .sendType(WebhookConfigUpdateRequestWebhookSendType.NON_SEQUENTIALLY)
+      .enabled(true)
+      .interrupted(true)
+      .authToken("5tLxsL6uoN")
+      .events(eventsList)
+      .build();
 
-    ApiPushNotificationConfigGetResponseDto response = asaasSdk.webhook.updateExistingWebhook(
+    WebhookConfigGetResponseDto response = asaasSdk.webhook.updateExistingWebhook(
       "bbf67496-1379-4b6d-a348-fd5fa229f1c",
-      apiPushNotificationConfigUpdateRequestDto
+      webhookConfigUpdateRequestDto
     );
 
     System.out.println(response);
@@ -238,7 +240,7 @@ This endpoint removes a webhook.
 
 **Return Type**
 
-`ApiPushNotificationConfigDeleteResponseDto`
+`WebhookConfigDeleteResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -246,7 +248,7 @@ This endpoint removes a webhook.
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPushNotificationConfigDeleteResponseDto;
+import com.asaas.apisdk.models.WebhookConfigDeleteResponseDto;
 
 public class Main {
 
@@ -257,9 +259,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPushNotificationConfigDeleteResponseDto response = asaasSdk.webhook.removeWebhook(
-      "bbf67496-1379-4b6d-a348-fd5fa229f1c"
-    );
+    WebhookConfigDeleteResponseDto response = asaasSdk.webhook.removeWebhook("bbf67496-1379-4b6d-a348-fd5fa229f1c");
 
     System.out.println(response);
   }

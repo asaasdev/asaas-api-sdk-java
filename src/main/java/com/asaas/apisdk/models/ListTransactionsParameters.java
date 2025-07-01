@@ -36,13 +36,13 @@ public class ListTransactionsParameters {
    * Filter by transaction status
    */
   @JsonProperty("status")
-  private JsonNullable<ApiPixTransactionListRequestPixTransactionStatus> status;
+  private JsonNullable<PixTransactionListRequestPixTransactionStatus> status;
 
   /**
    * Filter by transaction type
    */
   @JsonProperty("type")
-  private JsonNullable<ApiPixTransactionListRequestPixTransactionType> type;
+  private JsonNullable<PixTransactionListRequestPixTransactionType> type;
 
   /**
    * Filter by Pix transaction identifier at the Central Bank
@@ -61,12 +61,12 @@ public class ListTransactionsParameters {
   }
 
   @JsonIgnore
-  public ApiPixTransactionListRequestPixTransactionStatus getStatus() {
+  public PixTransactionListRequestPixTransactionStatus getStatus() {
     return status.orElse(null);
   }
 
   @JsonIgnore
-  public ApiPixTransactionListRequestPixTransactionType getType() {
+  public PixTransactionListRequestPixTransactionType getType() {
     return type.orElse(null);
   }
 
@@ -100,10 +100,10 @@ public class ListTransactionsParameters {
       return this;
     }
 
-    private JsonNullable<ApiPixTransactionListRequestPixTransactionStatus> status = JsonNullable.undefined();
+    private JsonNullable<PixTransactionListRequestPixTransactionStatus> status = JsonNullable.undefined();
 
     @JsonProperty("status")
-    public ListTransactionsParametersBuilder status(ApiPixTransactionListRequestPixTransactionStatus value) {
+    public ListTransactionsParametersBuilder status(PixTransactionListRequestPixTransactionStatus value) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");
       }
@@ -111,10 +111,10 @@ public class ListTransactionsParameters {
       return this;
     }
 
-    private JsonNullable<ApiPixTransactionListRequestPixTransactionType> type = JsonNullable.undefined();
+    private JsonNullable<PixTransactionListRequestPixTransactionType> type = JsonNullable.undefined();
 
     @JsonProperty("type")
-    public ListTransactionsParametersBuilder type(ApiPixTransactionListRequestPixTransactionType value) {
+    public ListTransactionsParametersBuilder type(PixTransactionListRequestPixTransactionType value) {
       if (value == null) {
         throw new IllegalStateException("type cannot be null");
       }

@@ -4,16 +4,16 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiPaymentSplitGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentSplitListResponseDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.ListPaidSplitsParameters;
 import com.asaas.apisdk.models.ListReceivedSplitsParameters;
+import com.asaas.apisdk.models.PaymentSplitGetResponseDto;
+import com.asaas.apisdk.models.PaymentSplitListResponseDto;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
 import com.asaas.apisdk.validation.validators.modelValidators.ListPaidSplitsParametersValidator;
@@ -39,28 +39,28 @@ public class PaymentSplitService extends BaseService {
    * Retrieve a single paid split
    *
    * @param id String Unique split identifier in Asaas
-   * @return response of {@code ApiPaymentSplitGetResponseDto}
+   * @return response of {@code PaymentSplitGetResponseDto}
    */
-  public ApiPaymentSplitGetResponseDto retrieveASinglePaidSplit(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PaymentSplitGetResponseDto retrieveASinglePaidSplit(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASinglePaidSplitRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentSplitGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentSplitGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single paid split
    *
    * @param id String Unique split identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiPaymentSplitGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentSplitGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentSplitGetResponseDto> retrieveASinglePaidSplitAsync(@NonNull String id)
+  public CompletableFuture<PaymentSplitGetResponseDto> retrieveASinglePaidSplitAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASinglePaidSplitRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentSplitGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentSplitGetResponseDto>() {})
     );
   }
 
@@ -78,9 +78,9 @@ public class PaymentSplitService extends BaseService {
   /**
    * List paid splits
    *
-   * @return response of {@code ApiPaymentSplitListResponseDto}
+   * @return response of {@code PaymentSplitListResponseDto}
    */
-  public ApiPaymentSplitListResponseDto listPaidSplits() throws ApiError, ValidationException {
+  public PaymentSplitListResponseDto listPaidSplits() throws ApiError, ValidationException {
     return this.listPaidSplits(ListPaidSplitsParameters.builder().build());
   }
 
@@ -88,22 +88,22 @@ public class PaymentSplitService extends BaseService {
    * List paid splits
    *
    * @param requestParameters {@link ListPaidSplitsParameters} Request Parameters Object
-   * @return response of {@code ApiPaymentSplitListResponseDto}
+   * @return response of {@code PaymentSplitListResponseDto}
    */
-  public ApiPaymentSplitListResponseDto listPaidSplits(@NonNull ListPaidSplitsParameters requestParameters)
+  public PaymentSplitListResponseDto listPaidSplits(@NonNull ListPaidSplitsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaidSplitsRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentSplitListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentSplitListResponseDto>() {});
   }
 
   /**
    * List paid splits
    *
-   * @return response of {@code CompletableFuture<ApiPaymentSplitListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentSplitListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentSplitListResponseDto> listPaidSplitsAsync() throws ApiError, ValidationException {
+  public CompletableFuture<PaymentSplitListResponseDto> listPaidSplitsAsync() throws ApiError, ValidationException {
     return this.listPaidSplitsAsync(ListPaidSplitsParameters.builder().build());
   }
 
@@ -111,16 +111,16 @@ public class PaymentSplitService extends BaseService {
    * List paid splits
    *
    * @param requestParameters {@link ListPaidSplitsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPaymentSplitListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentSplitListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentSplitListResponseDto> listPaidSplitsAsync(
+  public CompletableFuture<PaymentSplitListResponseDto> listPaidSplitsAsync(
     @NonNull ListPaidSplitsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaidSplitsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentSplitListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentSplitListResponseDto>() {})
     );
   }
 
@@ -152,28 +152,28 @@ public class PaymentSplitService extends BaseService {
    * Retrieve a single received split
    *
    * @param id String Unique split identifier in Asaas
-   * @return response of {@code ApiPaymentSplitGetResponseDto}
+   * @return response of {@code PaymentSplitGetResponseDto}
    */
-  public ApiPaymentSplitGetResponseDto retrieveASingleReceivedSplit(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public PaymentSplitGetResponseDto retrieveASingleReceivedSplit(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleReceivedSplitRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentSplitGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentSplitGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single received split
    *
    * @param id String Unique split identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiPaymentSplitGetResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentSplitGetResponseDto>}
    */
-  public CompletableFuture<ApiPaymentSplitGetResponseDto> retrieveASingleReceivedSplitAsync(@NonNull String id)
+  public CompletableFuture<PaymentSplitGetResponseDto> retrieveASingleReceivedSplitAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleReceivedSplitRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentSplitGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentSplitGetResponseDto>() {})
     );
   }
 
@@ -191,9 +191,9 @@ public class PaymentSplitService extends BaseService {
   /**
    * List received splits
    *
-   * @return response of {@code ApiPaymentSplitListResponseDto}
+   * @return response of {@code PaymentSplitListResponseDto}
    */
-  public ApiPaymentSplitListResponseDto listReceivedSplits() throws ApiError, ValidationException {
+  public PaymentSplitListResponseDto listReceivedSplits() throws ApiError, ValidationException {
     return this.listReceivedSplits(ListReceivedSplitsParameters.builder().build());
   }
 
@@ -201,23 +201,22 @@ public class PaymentSplitService extends BaseService {
    * List received splits
    *
    * @param requestParameters {@link ListReceivedSplitsParameters} Request Parameters Object
-   * @return response of {@code ApiPaymentSplitListResponseDto}
+   * @return response of {@code PaymentSplitListResponseDto}
    */
-  public ApiPaymentSplitListResponseDto listReceivedSplits(@NonNull ListReceivedSplitsParameters requestParameters)
+  public PaymentSplitListResponseDto listReceivedSplits(@NonNull ListReceivedSplitsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListReceivedSplitsRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentSplitListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentSplitListResponseDto>() {});
   }
 
   /**
    * List received splits
    *
-   * @return response of {@code CompletableFuture<ApiPaymentSplitListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentSplitListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentSplitListResponseDto> listReceivedSplitsAsync()
-    throws ApiError, ValidationException {
+  public CompletableFuture<PaymentSplitListResponseDto> listReceivedSplitsAsync() throws ApiError, ValidationException {
     return this.listReceivedSplitsAsync(ListReceivedSplitsParameters.builder().build());
   }
 
@@ -225,16 +224,16 @@ public class PaymentSplitService extends BaseService {
    * List received splits
    *
    * @param requestParameters {@link ListReceivedSplitsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPaymentSplitListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentSplitListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentSplitListResponseDto> listReceivedSplitsAsync(
+  public CompletableFuture<PaymentSplitListResponseDto> listReceivedSplitsAsync(
     @NonNull ListReceivedSplitsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListReceivedSplitsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentSplitListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentSplitListResponseDto>() {})
     );
   }
 

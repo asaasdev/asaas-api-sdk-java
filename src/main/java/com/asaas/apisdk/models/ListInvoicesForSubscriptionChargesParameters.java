@@ -54,7 +54,7 @@ public class ListInvoicesForSubscriptionChargesParameters {
    * Filter by invoice status
    */
   @JsonProperty("status")
-  private JsonNullable<ApiSubscriptionGetInvoicesRequestInvoiceStatus> status;
+  private JsonNullable<SubscriptionGetInvoicesRequestInvoiceStatus> status;
 
   /**
    * Filter by unique customer identifier
@@ -88,7 +88,7 @@ public class ListInvoicesForSubscriptionChargesParameters {
   }
 
   @JsonIgnore
-  public ApiSubscriptionGetInvoicesRequestInvoiceStatus getStatus() {
+  public SubscriptionGetInvoicesRequestInvoiceStatus getStatus() {
     return status.orElse(null);
   }
 
@@ -155,11 +155,11 @@ public class ListInvoicesForSubscriptionChargesParameters {
       return this;
     }
 
-    private JsonNullable<ApiSubscriptionGetInvoicesRequestInvoiceStatus> status = JsonNullable.undefined();
+    private JsonNullable<SubscriptionGetInvoicesRequestInvoiceStatus> status = JsonNullable.undefined();
 
     @JsonProperty("status")
     public ListInvoicesForSubscriptionChargesParametersBuilder status(
-      ApiSubscriptionGetInvoicesRequestInvoiceStatus value
+      SubscriptionGetInvoicesRequestInvoiceStatus value
     ) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");

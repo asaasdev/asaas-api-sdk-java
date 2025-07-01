@@ -29,7 +29,7 @@ A list of all methods in the `PaymentLinkService` service. Click on the method n
 
 **Return Type**
 
-`ApiPaymentCampaignListResponseDto`
+`PaymentLinkListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -37,8 +37,8 @@ A list of all methods in the `PaymentLinkService` service. Click on the method n
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCampaignListResponseDto;
 import com.asaas.apisdk.models.ListPaymentsLinksParameters;
+import com.asaas.apisdk.models.PaymentLinkListResponseDto;
 
 public class Main {
 
@@ -50,15 +50,15 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentsLinksParameters requestParameters = ListPaymentsLinksParameters.builder()
-      .offset(2L)
+      .offset(9L)
       .limit(10L)
       .active(true)
-      .includeDeleted(false)
+      .includeDeleted(true)
       .name("name")
       .externalReference("externalReference")
       .build();
 
-    ApiPaymentCampaignListResponseDto response = asaasSdk.paymentLink.listPaymentsLinks(requestParameters);
+    PaymentLinkListResponseDto response = asaasSdk.paymentLink.listPaymentsLinks(requestParameters);
 
     System.out.println(response);
   }
@@ -73,13 +73,13 @@ public class Main {
 
 **Parameters**
 
-| Name                             | Type                                                                              | Required | Description  |
-| :------------------------------- | :-------------------------------------------------------------------------------- | :------- | :----------- |
-| apiPaymentCampaignSaveRequestDto | [ApiPaymentCampaignSaveRequestDto](../models/ApiPaymentCampaignSaveRequestDto.md) | ❌       | Request Body |
+| Name                      | Type                                                                | Required | Description  |
+| :------------------------ | :------------------------------------------------------------------ | :------- | :----------- |
+| paymentLinkSaveRequestDto | [PaymentLinkSaveRequestDto](../models/PaymentLinkSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiPaymentCampaignGetResponseDto`
+`PaymentLinkGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -87,12 +87,12 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignSaveRequestBillingType;
-import com.asaas.apisdk.models.ApiPaymentCampaignSaveRequestChargeType;
-import com.asaas.apisdk.models.ApiPaymentCampaignSaveRequestCycle;
-import com.asaas.apisdk.models.ApiPaymentCampaignSaveRequestDto;
+import com.asaas.apisdk.models.PaymentCallbackRequestDto;
+import com.asaas.apisdk.models.PaymentLinkGetResponseDto;
+import com.asaas.apisdk.models.PaymentLinkSaveRequestBillingType;
+import com.asaas.apisdk.models.PaymentLinkSaveRequestChargeType;
+import com.asaas.apisdk.models.PaymentLinkSaveRequestCycle;
+import com.asaas.apisdk.models.PaymentLinkSaveRequestDto;
 
 public class Main {
 
@@ -103,30 +103,28 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCallbackRequestDto apiPaymentCallbackRequestDto = ApiPaymentCallbackRequestDto.builder()
+    PaymentCallbackRequestDto paymentCallbackRequestDto = PaymentCallbackRequestDto.builder()
       .successUrl("successUrl")
       .autoRedirect(true)
       .build();
 
-    ApiPaymentCampaignSaveRequestDto apiPaymentCampaignSaveRequestDto = ApiPaymentCampaignSaveRequestDto.builder()
+    PaymentLinkSaveRequestDto paymentLinkSaveRequestDto = PaymentLinkSaveRequestDto.builder()
       .name("Book sales")
       .description("Any book for just R$: 50.00")
       .endDate("2024-09-05")
       .value(50D)
-      .billingType(ApiPaymentCampaignSaveRequestBillingType.UNDEFINED)
-      .chargeType(ApiPaymentCampaignSaveRequestChargeType.DETACHED)
+      .billingType(PaymentLinkSaveRequestBillingType.UNDEFINED)
+      .chargeType(PaymentLinkSaveRequestChargeType.DETACHED)
       .dueDateLimitDays(10L)
-      .subscriptionCycle(ApiPaymentCampaignSaveRequestCycle.WEEKLY)
+      .subscriptionCycle(PaymentLinkSaveRequestCycle.WEEKLY)
       .maxInstallmentCount(1L)
       .externalReference("1287")
-      .notificationEnabled(false)
-      .callback(apiPaymentCallbackRequestDto)
+      .notificationEnabled(true)
+      .callback(paymentCallbackRequestDto)
       .isAddressRequired(true)
       .build();
 
-    ApiPaymentCampaignGetResponseDto response = asaasSdk.paymentLink.createAPaymentsLink(
-      apiPaymentCampaignSaveRequestDto
-    );
+    PaymentLinkGetResponseDto response = asaasSdk.paymentLink.createAPaymentsLink(paymentLinkSaveRequestDto);
 
     System.out.println(response);
   }
@@ -147,7 +145,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentCampaignGetResponseDto`
+`PaymentLinkGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -155,7 +153,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCampaignGetResponseDto;
+import com.asaas.apisdk.models.PaymentLinkGetResponseDto;
 
 public class Main {
 
@@ -166,7 +164,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCampaignGetResponseDto response = asaasSdk.paymentLink.retrieveASinglePaymentsLink("725104409743");
+    PaymentLinkGetResponseDto response = asaasSdk.paymentLink.retrieveASinglePaymentsLink("725104409743");
 
     System.out.println(response);
   }
@@ -181,14 +179,14 @@ public class Main {
 
 **Parameters**
 
-| Name                               | Type                                                                                  | Required | Description                                       |
-| :--------------------------------- | :------------------------------------------------------------------------------------ | :------- | :------------------------------------------------ |
-| id                                 | String                                                                                | ✅       | Unique identifier for your payments link in Asaas |
-| apiPaymentCampaignUpdateRequestDto | [ApiPaymentCampaignUpdateRequestDto](../models/ApiPaymentCampaignUpdateRequestDto.md) | ❌       | Request Body                                      |
+| Name                        | Type                                                                    | Required | Description                                       |
+| :-------------------------- | :---------------------------------------------------------------------- | :------- | :------------------------------------------------ |
+| id                          | String                                                                  | ✅       | Unique identifier for your payments link in Asaas |
+| paymentLinkUpdateRequestDto | [PaymentLinkUpdateRequestDto](../models/PaymentLinkUpdateRequestDto.md) | ❌       | Request Body                                      |
 
 **Return Type**
 
-`ApiPaymentCampaignGetResponseDto`
+`PaymentLinkGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -196,12 +194,12 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCallbackRequestDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignUpdateRequestBillingType;
-import com.asaas.apisdk.models.ApiPaymentCampaignUpdateRequestChargeType;
-import com.asaas.apisdk.models.ApiPaymentCampaignUpdateRequestCycle;
-import com.asaas.apisdk.models.ApiPaymentCampaignUpdateRequestDto;
+import com.asaas.apisdk.models.PaymentCallbackRequestDto;
+import com.asaas.apisdk.models.PaymentLinkGetResponseDto;
+import com.asaas.apisdk.models.PaymentLinkUpdateRequestBillingType;
+import com.asaas.apisdk.models.PaymentLinkUpdateRequestChargeType;
+import com.asaas.apisdk.models.PaymentLinkUpdateRequestCycle;
+import com.asaas.apisdk.models.PaymentLinkUpdateRequestDto;
 
 public class Main {
 
@@ -212,30 +210,30 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCallbackRequestDto apiPaymentCallbackRequestDto = ApiPaymentCallbackRequestDto.builder()
+    PaymentCallbackRequestDto paymentCallbackRequestDto = PaymentCallbackRequestDto.builder()
       .successUrl("successUrl")
       .autoRedirect(true)
       .build();
 
-    ApiPaymentCampaignUpdateRequestDto apiPaymentCampaignUpdateRequestDto = ApiPaymentCampaignUpdateRequestDto.builder()
+    PaymentLinkUpdateRequestDto paymentLinkUpdateRequestDto = PaymentLinkUpdateRequestDto.builder()
       .name("Book sales")
       .description("Any book for just R$: 50.00")
       .endDate("2024-09-05")
       .value(50D)
       .active(true)
-      .billingType(ApiPaymentCampaignUpdateRequestBillingType.UNDEFINED)
-      .chargeType(ApiPaymentCampaignUpdateRequestChargeType.DETACHED)
+      .billingType(PaymentLinkUpdateRequestBillingType.UNDEFINED)
+      .chargeType(PaymentLinkUpdateRequestChargeType.DETACHED)
       .dueDateLimitDays(10L)
-      .subscriptionCycle(ApiPaymentCampaignUpdateRequestCycle.WEEKLY)
+      .subscriptionCycle(PaymentLinkUpdateRequestCycle.WEEKLY)
       .maxInstallmentCount(1L)
       .externalReference("2323")
-      .notificationEnabled(false)
-      .callback(apiPaymentCallbackRequestDto)
+      .notificationEnabled(true)
+      .callback(paymentCallbackRequestDto)
       .build();
 
-    ApiPaymentCampaignGetResponseDto response = asaasSdk.paymentLink.updateAPaymentsLink(
+    PaymentLinkGetResponseDto response = asaasSdk.paymentLink.updateAPaymentsLink(
       "725104409743",
-      apiPaymentCampaignUpdateRequestDto
+      paymentLinkUpdateRequestDto
     );
 
     System.out.println(response);
@@ -257,7 +255,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentCampaignDeleteResponseDto`
+`PaymentLinkDeleteResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -265,7 +263,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCampaignDeleteResponseDto;
+import com.asaas.apisdk.models.PaymentLinkDeleteResponseDto;
 
 public class Main {
 
@@ -276,7 +274,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCampaignDeleteResponseDto response = asaasSdk.paymentLink.removeAPaymentsLink("725104409743");
+    PaymentLinkDeleteResponseDto response = asaasSdk.paymentLink.removeAPaymentsLink("725104409743");
 
     System.out.println(response);
   }
@@ -298,7 +296,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentCampaignGetResponseDto`
+`PaymentLinkGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -306,7 +304,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCampaignGetResponseDto;
+import com.asaas.apisdk.models.PaymentLinkGetResponseDto;
 
 public class Main {
 
@@ -317,7 +315,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCampaignGetResponseDto response = asaasSdk.paymentLink.restoreAPaymentsLink("725104409743", new Object());
+    PaymentLinkGetResponseDto response = asaasSdk.paymentLink.restoreAPaymentsLink("725104409743", new Object());
 
     System.out.println(response);
   }
@@ -338,7 +336,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentCampaignFileListResponseDto`
+`PaymentLinkFileListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -346,7 +344,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCampaignFileListResponseDto;
+import com.asaas.apisdk.models.PaymentLinkFileListResponseDto;
 
 public class Main {
 
@@ -357,7 +355,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCampaignFileListResponseDto response = asaasSdk.paymentLink.listImagesFromAPaymentsLink("725104409743");
+    PaymentLinkFileListResponseDto response = asaasSdk.paymentLink.listImagesFromAPaymentsLink("725104409743");
 
     System.out.println(response);
   }
@@ -372,15 +370,15 @@ public class Main {
 
 **Parameters**
 
-| Name                                 | Type                                                                                      | Required | Description                                       |
-| :----------------------------------- | :---------------------------------------------------------------------------------------- | :------- | :------------------------------------------------ |
-| id                                   | String                                                                                    | ✅       | Unique identifier for your payments link in Asaas |
-| apiPaymentCampaignFileSaveRequestDto | [ApiPaymentCampaignFileSaveRequestDto](../models/ApiPaymentCampaignFileSaveRequestDto.md) | ❌       | Request Body                                      |
-| \_filename                           | [String](../models/String.md)                                                             | ✅       | Filename for the uploaded file                    |
+| Name                          | Type                                                                        | Required | Description                                       |
+| :---------------------------- | :-------------------------------------------------------------------------- | :------- | :------------------------------------------------ |
+| id                            | String                                                                      | ✅       | Unique identifier for your payments link in Asaas |
+| paymentLinkFileSaveRequestDto | [PaymentLinkFileSaveRequestDto](../models/PaymentLinkFileSaveRequestDto.md) | ❌       | Request Body                                      |
+| \_filename                    | [String](../models/String.md)                                               | ✅       | Filename for the uploaded file                    |
 
 **Return Type**
 
-`ApiPaymentCampaignFileGetResponseDto`
+`PaymentLinkFileGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -388,8 +386,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCampaignFileGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentCampaignFileSaveRequestDto;
+import com.asaas.apisdk.models.PaymentLinkFileGetResponseDto;
+import com.asaas.apisdk.models.PaymentLinkFileSaveRequestDto;
 
 public class Main {
     public static void main(String[] args) {
@@ -403,16 +401,16 @@ public class Main {
 
 		AsaasSdk asaasSdk = new AsaasSdk(config);
 
-		ApiPaymentCampaignFileSaveRequestDto apiPaymentCampaignFileSaveRequestDto = ApiPaymentCampaignFileSaveRequestDto.builder()
+		PaymentLinkFileSaveRequestDto paymentLinkFileSaveRequestDto = PaymentLinkFileSaveRequestDto.builder()
 			.main(true)
-			.image(ipsum nulla m)
+			.image(dolor laborum)
 			.build();
-		ApiPaymentCampaignFileSaveRequestDto apiPaymentCampaignFileSaveRequestDto = ApiPaymentCampaignFileSaveRequestDto.builder()
+		PaymentLinkFileSaveRequestDto paymentLinkFileSaveRequestDto = PaymentLinkFileSaveRequestDto.builder()
 			.main(true)
-			.image(ipsum nulla m)
+			.image(dolor laborum)
 			.build();
 
-		ApiPaymentCampaignFileGetResponseDto response = asaasSdk.paymentLink.addAnImageToAPaymentsLink("725104409743", apiPaymentCampaignFileSaveRequestDto, apiPaymentCampaignFileSaveRequestDto);
+		PaymentLinkFileGetResponseDto response = asaasSdk.paymentLink.addAnImageToAPaymentsLink("725104409743", paymentLinkFileSaveRequestDto, paymentLinkFileSaveRequestDto);
 
 		System.out.println(response);
     }
@@ -433,7 +431,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentCampaignFileGetResponseDto`
+`PaymentLinkFileGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -441,7 +439,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCampaignFileGetResponseDto;
+import com.asaas.apisdk.models.PaymentLinkFileGetResponseDto;
 
 public class Main {
 
@@ -452,7 +450,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCampaignFileGetResponseDto response = asaasSdk.paymentLink.retrieveASinglePaymentsLinkImage(
+    PaymentLinkFileGetResponseDto response = asaasSdk.paymentLink.retrieveASinglePaymentsLinkImage(
       "725104409743",
       "417d1fe7-f530-4368-935f-699045f2bf5d"
     );
@@ -477,7 +475,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentCampaignFileDeleteResponseDto`
+`PaymentLinkFileDeleteResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -485,7 +483,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCampaignFileDeleteResponseDto;
+import com.asaas.apisdk.models.PaymentLinkFileDeleteResponseDto;
 
 public class Main {
 
@@ -496,7 +494,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCampaignFileDeleteResponseDto response = asaasSdk.paymentLink.removeAnImageFromPaymentsLink(
+    PaymentLinkFileDeleteResponseDto response = asaasSdk.paymentLink.removeAnImageFromPaymentsLink(
       "725104409743",
       "417d1fe7-f530-4368-935f-699045f2bf5d"
     );
@@ -522,7 +520,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentCampaignFileGetResponseDto`
+`PaymentLinkFileGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -530,7 +528,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCampaignFileGetResponseDto;
+import com.asaas.apisdk.models.PaymentLinkFileGetResponseDto;
 
 public class Main {
 
@@ -541,7 +539,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCampaignFileGetResponseDto response = asaasSdk.paymentLink.setPaymentsLinkMainImage(
+    PaymentLinkFileGetResponseDto response = asaasSdk.paymentLink.setPaymentsLinkMainImage(
       "725104409743",
       "417d1fe7-f530-4368-935f-699045f2bf5d",
       new Object()

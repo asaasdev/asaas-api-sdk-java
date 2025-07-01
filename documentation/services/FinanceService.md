@@ -15,7 +15,7 @@ A list of all methods in the `FinanceService` service. Click on the method name 
 
 **Return Type**
 
-`ApiFinanceBalanceResponseDto`
+`FinanceBalanceResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -23,7 +23,7 @@ A list of all methods in the `FinanceService` service. Click on the method name 
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiFinanceBalanceResponseDto;
+import com.asaas.apisdk.models.FinanceBalanceResponseDto;
 
 public class Main {
 
@@ -34,7 +34,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiFinanceBalanceResponseDto response = asaasSdk.finance.retrieveAccountBalance();
+    FinanceBalanceResponseDto response = asaasSdk.finance.retrieveAccountBalance();
 
     System.out.println(response);
   }
@@ -57,7 +57,7 @@ Return total values of charges from your Asaas account according to the provided
 
 **Return Type**
 
-`ApiFinanceGetPaymentStatisticsResponseDto`
+`FinanceGetPaymentStatisticsResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -65,10 +65,10 @@ Return total values of charges from your Asaas account according to the provided
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiFinanceGetPaymentStatisticsRequestBillingType;
-import com.asaas.apisdk.models.ApiFinanceGetPaymentStatisticsRequestPaymentStatus;
-import com.asaas.apisdk.models.ApiFinanceGetPaymentStatisticsResponseDto;
 import com.asaas.apisdk.models.BillingStatisticsParameters;
+import com.asaas.apisdk.models.FinanceGetPaymentStatisticsRequestBillingType;
+import com.asaas.apisdk.models.FinanceGetPaymentStatisticsRequestPaymentStatus;
+import com.asaas.apisdk.models.FinanceGetPaymentStatisticsResponseDto;
 
 public class Main {
 
@@ -81,9 +81,9 @@ public class Main {
 
     BillingStatisticsParameters requestParameters = BillingStatisticsParameters.builder()
       .customer("cus_3EZfkUThUMAt")
-      .billingType(ApiFinanceGetPaymentStatisticsRequestBillingType.BOLETO)
-      .status(ApiFinanceGetPaymentStatisticsRequestPaymentStatus.PENDING)
-      .anticipated(false)
+      .billingType(FinanceGetPaymentStatisticsRequestBillingType.BOLETO)
+      .status(FinanceGetPaymentStatisticsRequestPaymentStatus.PENDING)
+      .anticipated(true)
       .dateCreatedGe("2023-01-01")
       .dateCreatedLe("2023-01-01")
       .dueDateGe("2023-01-01")
@@ -93,7 +93,7 @@ public class Main {
       .externalReference("056984")
       .build();
 
-    ApiFinanceGetPaymentStatisticsResponseDto response = asaasSdk.finance.billingStatistics(requestParameters);
+    FinanceGetPaymentStatisticsResponseDto response = asaasSdk.finance.billingStatistics(requestParameters);
 
     System.out.println(response);
   }
@@ -108,7 +108,7 @@ public class Main {
 
 **Return Type**
 
-`ApiFinanceGetSplitStatisticsResponseDto`
+`FinanceGetSplitStatisticsResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -116,7 +116,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiFinanceGetSplitStatisticsResponseDto;
+import com.asaas.apisdk.models.FinanceGetSplitStatisticsResponseDto;
 
 public class Main {
 
@@ -127,7 +127,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiFinanceGetSplitStatisticsResponseDto response = asaasSdk.finance.retrieveSplitValues();
+    FinanceGetSplitStatisticsResponseDto response = asaasSdk.finance.retrieveSplitValues();
 
     System.out.println(response);
   }

@@ -23,7 +23,7 @@ A list of all methods in the `BillService` service. Click on the method name to 
 
 **Return Type**
 
-`ApiBillListResponseDto`
+`BillListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -31,7 +31,7 @@ A list of all methods in the `BillService` service. Click on the method name to 
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiBillListResponseDto;
+import com.asaas.apisdk.models.BillListResponseDto;
 import com.asaas.apisdk.models.ListBillPaymentsParameters;
 
 public class Main {
@@ -45,7 +45,7 @@ public class Main {
 
     ListBillPaymentsParameters requestParameters = ListBillPaymentsParameters.builder().offset(4L).limit(10L).build();
 
-    ApiBillListResponseDto response = asaasSdk.bill.listBillPayments(requestParameters);
+    BillListResponseDto response = asaasSdk.bill.listBillPayments(requestParameters);
 
     System.out.println(response);
   }
@@ -60,13 +60,13 @@ public class Main {
 
 **Parameters**
 
-| Name                  | Type                                                        | Required | Description  |
-| :-------------------- | :---------------------------------------------------------- | :------- | :----------- |
-| apiBillSaveRequestDto | [ApiBillSaveRequestDto](../models/ApiBillSaveRequestDto.md) | ❌       | Request Body |
+| Name               | Type                                                  | Required | Description  |
+| :----------------- | :---------------------------------------------------- | :------- | :----------- |
+| billSaveRequestDto | [BillSaveRequestDto](../models/BillSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiBillGetResponseDto`
+`BillGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -74,8 +74,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiBillGetResponseDto;
-import com.asaas.apisdk.models.ApiBillSaveRequestDto;
+import com.asaas.apisdk.models.BillGetResponseDto;
+import com.asaas.apisdk.models.BillSaveRequestDto;
 
 public class Main {
 
@@ -86,19 +86,19 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiBillSaveRequestDto apiBillSaveRequestDto = ApiBillSaveRequestDto.builder()
+    BillSaveRequestDto billSaveRequestDto = BillSaveRequestDto.builder()
       .identificationField("03399.77779 29900.000000 04751.101017 1 81510000002990")
       .scheduleDate("2020-03-15")
       .description("Celular 03/12")
-      .discount(2.88D)
-      .interest(4.04D)
-      .fine(0.74D)
+      .discount(4.52D)
+      .interest(3.73D)
+      .fine(0.02D)
       .dueDate("2020-03-30")
       .value(29D)
       .externalReference("056984")
       .build();
 
-    ApiBillGetResponseDto response = asaasSdk.bill.createABillPayment(apiBillSaveRequestDto);
+    BillGetResponseDto response = asaasSdk.bill.createABillPayment(billSaveRequestDto);
 
     System.out.println(response);
   }
@@ -113,13 +113,13 @@ public class Main {
 
 **Parameters**
 
-| Name                      | Type                                                                | Required | Description  |
-| :------------------------ | :------------------------------------------------------------------ | :------- | :----------- |
-| apiBillSimulateRequestDto | [ApiBillSimulateRequestDto](../models/ApiBillSimulateRequestDto.md) | ❌       | Request Body |
+| Name                   | Type                                                          | Required | Description  |
+| :--------------------- | :------------------------------------------------------------ | :------- | :----------- |
+| billSimulateRequestDto | [BillSimulateRequestDto](../models/BillSimulateRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiBillSimulateResponseDto`
+`BillSimulateResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -127,8 +127,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiBillSimulateRequestDto;
-import com.asaas.apisdk.models.ApiBillSimulateResponseDto;
+import com.asaas.apisdk.models.BillSimulateRequestDto;
+import com.asaas.apisdk.models.BillSimulateResponseDto;
 
 public class Main {
 
@@ -139,12 +139,12 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiBillSimulateRequestDto apiBillSimulateRequestDto = ApiBillSimulateRequestDto.builder()
+    BillSimulateRequestDto billSimulateRequestDto = BillSimulateRequestDto.builder()
       .identificationField("03399.77779 29900.000000 04751.101017 1 81510000002990")
       .barCode("barCode")
       .build();
 
-    ApiBillSimulateResponseDto response = asaasSdk.bill.simulateABillPayment(apiBillSimulateRequestDto);
+    BillSimulateResponseDto response = asaasSdk.bill.simulateABillPayment(billSimulateRequestDto);
 
     System.out.println(response);
   }
@@ -165,7 +165,7 @@ public class Main {
 
 **Return Type**
 
-`ApiBillGetResponseDto`
+`BillGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -173,7 +173,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiBillGetResponseDto;
+import com.asaas.apisdk.models.BillGetResponseDto;
 
 public class Main {
 
@@ -184,7 +184,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiBillGetResponseDto response = asaasSdk.bill.retrieveASingleBillPayment("f1bce822-6f37-4905-8de8-f1af9f2f4bab");
+    BillGetResponseDto response = asaasSdk.bill.retrieveASingleBillPayment("f1bce822-6f37-4905-8de8-f1af9f2f4bab");
 
     System.out.println(response);
   }
@@ -208,7 +208,7 @@ Allows canceling the bill payment. Use the `canBeCancelled` property of the `bil
 
 **Return Type**
 
-`ApiBillGetResponseDto`
+`BillGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -216,7 +216,7 @@ Allows canceling the bill payment. Use the `canBeCancelled` property of the `bil
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiBillGetResponseDto;
+import com.asaas.apisdk.models.BillGetResponseDto;
 
 public class Main {
 
@@ -227,10 +227,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiBillGetResponseDto response = asaasSdk.bill.cancelBillPayment(
-      "1bce822-6f37-4905-8de8-f1af9f2f4bab",
-      new Object()
-    );
+    BillGetResponseDto response = asaasSdk.bill.cancelBillPayment("1bce822-6f37-4905-8de8-f1af9f2f4bab", new Object());
 
     System.out.println(response);
   }

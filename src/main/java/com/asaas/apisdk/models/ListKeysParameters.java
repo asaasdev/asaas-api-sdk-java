@@ -36,7 +36,7 @@ public class ListKeysParameters {
    * Filter by current key status
    */
   @JsonProperty("status")
-  private JsonNullable<ApiPixAddressKeyListRequestPixAddressKeyStatus> status;
+  private JsonNullable<PixAddressKeyListRequestPixAddressKeyStatus> status;
 
   /**
    * Filter by one or more key statuses
@@ -55,7 +55,7 @@ public class ListKeysParameters {
   }
 
   @JsonIgnore
-  public ApiPixAddressKeyListRequestPixAddressKeyStatus getStatus() {
+  public PixAddressKeyListRequestPixAddressKeyStatus getStatus() {
     return status.orElse(null);
   }
 
@@ -89,10 +89,10 @@ public class ListKeysParameters {
       return this;
     }
 
-    private JsonNullable<ApiPixAddressKeyListRequestPixAddressKeyStatus> status = JsonNullable.undefined();
+    private JsonNullable<PixAddressKeyListRequestPixAddressKeyStatus> status = JsonNullable.undefined();
 
     @JsonProperty("status")
-    public ListKeysParametersBuilder status(ApiPixAddressKeyListRequestPixAddressKeyStatus value) {
+    public ListKeysParametersBuilder status(PixAddressKeyListRequestPixAddressKeyStatus value) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");
       }

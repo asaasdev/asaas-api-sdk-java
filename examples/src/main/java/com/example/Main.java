@@ -6,11 +6,11 @@ import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.models.ApiPaymentListRequestBillingType;
-import com.asaas.apisdk.models.ApiPaymentListRequestInvoiceStatus;
-import com.asaas.apisdk.models.ApiPaymentListRequestPaymentStatus;
-import com.asaas.apisdk.models.ApiPaymentListResponseDto;
 import com.asaas.apisdk.models.ListPaymentsParameters;
+import com.asaas.apisdk.models.PaymentListRequestBillingType;
+import com.asaas.apisdk.models.PaymentListRequestInvoiceStatus;
+import com.asaas.apisdk.models.PaymentListRequestPaymentStatus;
+import com.asaas.apisdk.models.PaymentListResponseDto;
 
 public class Main {
 
@@ -27,12 +27,12 @@ public class Main {
       .limit(10L)
       .customer("customer")
       .customerGroupName("customerGroupName")
-      .billingType(ApiPaymentListRequestBillingType.UNDEFINED)
-      .status(ApiPaymentListRequestPaymentStatus.PENDING)
+      .billingType(PaymentListRequestBillingType.UNDEFINED)
+      .status(PaymentListRequestPaymentStatus.PENDING)
       .subscription("subscription")
       .externalReference("externalReference")
       .paymentDate("paymentDate")
-      .invoiceStatus(ApiPaymentListRequestInvoiceStatus.SCHEDULED)
+      .invoiceStatus(PaymentListRequestInvoiceStatus.SCHEDULED)
       .estimatedCreditDate("estimatedCreditDate")
       .pixQrCodeId("pixQrCodeId")
       .anticipated(false)
@@ -49,7 +49,7 @@ public class Main {
       .build();
 
     try {
-      ApiPaymentListResponseDto response = asaasSdk.payment.listPayments(requestParameters);
+      PaymentListResponseDto response = asaasSdk.payment.listPayments(requestParameters);
 
       System.out.println(response);
     } catch (ApiError e) {

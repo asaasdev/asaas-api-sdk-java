@@ -23,7 +23,7 @@ A list of all methods in the `SubaccountService` service. Click on the method na
 
 **Return Type**
 
-`ApiCustomerListResponseDto`
+`AccountListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -31,7 +31,7 @@ A list of all methods in the `SubaccountService` service. Click on the method na
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerListResponseDto;
+import com.asaas.apisdk.models.AccountListResponseDto;
 import com.asaas.apisdk.models.ListSubaccountsParameters;
 
 public class Main {
@@ -44,7 +44,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListSubaccountsParameters requestParameters = ListSubaccountsParameters.builder()
-      .offset(0L)
+      .offset(6L)
       .limit(10L)
       .cpfCnpj("cpfCnpj")
       .email("email")
@@ -52,7 +52,7 @@ public class Main {
       .walletId("walletId")
       .build();
 
-    ApiCustomerListResponseDto response = asaasSdk.subaccount.listSubaccounts(requestParameters);
+    AccountListResponseDto response = asaasSdk.subaccount.listSubaccounts(requestParameters);
 
     System.out.println(response);
   }
@@ -67,13 +67,13 @@ public class Main {
 
 **Parameters**
 
-| Name                      | Type                                                                | Required | Description  |
-| :------------------------ | :------------------------------------------------------------------ | :------- | :----------- |
-| apiCustomerSaveRequestDto | [ApiCustomerSaveRequestDto](../models/ApiCustomerSaveRequestDto.md) | ❌       | Request Body |
+| Name                  | Type                                                        | Required | Description  |
+| :-------------------- | :---------------------------------------------------------- | :------- | :----------- |
+| accountSaveRequestDto | [AccountSaveRequestDto](../models/AccountSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiCustomerSaveResponseDto`
+`AccountSaveResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -81,11 +81,12 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerSaveRequestCompanyType;
-import com.asaas.apisdk.models.ApiCustomerSaveRequestDto;
-import com.asaas.apisdk.models.ApiCustomerSaveResponseDto;
-import com.asaas.apisdk.models.ApiPushNotificationConfigSaveRequestDto;
-import com.asaas.apisdk.models.ApiPushNotificationConfigSaveRequestPushNotificationSendType;
+import com.asaas.apisdk.models.AccountSaveRequestCompanyType;
+import com.asaas.apisdk.models.AccountSaveRequestDto;
+import com.asaas.apisdk.models.AccountSaveResponseDto;
+import com.asaas.apisdk.models.WebhookConfigSaveRequestDto;
+import com.asaas.apisdk.models.WebhookConfigSaveRequestWebhookEvent;
+import com.asaas.apisdk.models.WebhookConfigSaveRequestWebhookSendType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -98,30 +99,31 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    List<String> eventsList = Arrays.asList("events");
+    List<WebhookConfigSaveRequestWebhookEvent> eventsList = Arrays.asList(
+      WebhookConfigSaveRequestWebhookEvent.PAYMENT_AUTHORIZED
+    );
 
-    ApiPushNotificationConfigSaveRequestDto apiPushNotificationConfigSaveRequestDto =
-      ApiPushNotificationConfigSaveRequestDto.builder()
-        .name("Name Example")
-        .url("https://www.example.com/webhook/asaas")
-        .email("john.doe@asaas.com.br")
-        .enabled(true)
-        .interrupted(true)
-        .apiVersion(3L)
-        .authToken("5tLxsL6uoN")
-        .sendType(ApiPushNotificationConfigSaveRequestPushNotificationSendType.NON_SEQUENTIALLY)
-        .events(eventsList)
-        .build();
+    WebhookConfigSaveRequestDto webhookConfigSaveRequestDto = WebhookConfigSaveRequestDto.builder()
+      .name("Name Example")
+      .url("https://www.example.com/webhook/asaas")
+      .email("john.doe@asaas.com.br")
+      .enabled(true)
+      .interrupted(true)
+      .apiVersion(3L)
+      .authToken("5tLxsL6uoN")
+      .sendType(WebhookConfigSaveRequestWebhookSendType.NON_SEQUENTIALLY)
+      .events(eventsList)
+      .build();
 
-    List<ApiPushNotificationConfigSaveRequestDto> webhooksList = Arrays.asList(apiPushNotificationConfigSaveRequestDto);
+    List<WebhookConfigSaveRequestDto> webhooksList = Arrays.asList(webhookConfigSaveRequestDto);
 
-    ApiCustomerSaveRequestDto apiCustomerSaveRequestDto = ApiCustomerSaveRequestDto.builder()
+    AccountSaveRequestDto accountSaveRequestDto = AccountSaveRequestDto.builder()
       .name("John Doe")
       .email("john.doe@asaas.com.br")
       .loginEmail("johndoe@asaas.com.br")
       .cpfCnpj("35381637000150")
       .birthDate("1995-04-12")
-      .companyType(ApiCustomerSaveRequestCompanyType.MEI)
+      .companyType(AccountSaveRequestCompanyType.MEI)
       .phone("phone")
       .mobilePhone("mobilePhone")
       .site("https://www.example.com")
@@ -134,7 +136,7 @@ public class Main {
       .webhooks(webhooksList)
       .build();
 
-    ApiCustomerSaveResponseDto response = asaasSdk.subaccount.createSubaccount(apiCustomerSaveRequestDto);
+    AccountSaveResponseDto response = asaasSdk.subaccount.createSubaccount(accountSaveRequestDto);
 
     System.out.println(response);
   }
@@ -155,7 +157,7 @@ public class Main {
 
 **Return Type**
 
-`ApiCustomerGetResponseDto`
+`AccountGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -163,7 +165,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerGetResponseDto;
+import com.asaas.apisdk.models.AccountGetResponseDto;
 
 public class Main {
 
@@ -174,7 +176,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerGetResponseDto response = asaasSdk.subaccount.retrieveASingleSubaccount(
+    AccountGetResponseDto response = asaasSdk.subaccount.retrieveASingleSubaccount(
       "4f468235-cec3-482f-b3d0-348af4c7194"
     );
 
@@ -197,7 +199,7 @@ public class Main {
 
 **Return Type**
 
-`ApiCustomerPaymentCustodyConfigDto`
+`AccountPaymentEscrowConfigDto`
 
 **Example Usage Code Snippet**
 
@@ -205,7 +207,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerPaymentCustodyConfigDto;
+import com.asaas.apisdk.models.AccountPaymentEscrowConfigDto;
 
 public class Main {
 
@@ -216,7 +218,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerPaymentCustodyConfigDto response = asaasSdk.subaccount.reteriveEscrowAccountConfigurationForSubaccount(
+    AccountPaymentEscrowConfigDto response = asaasSdk.subaccount.reteriveEscrowAccountConfigurationForSubaccount(
       "4f468235-cec3-482f-b3d0-348af4c7194"
     );
 
@@ -233,14 +235,14 @@ public class Main {
 
 **Parameters**
 
-| Name                                                  | Type                                                                                                                        | Required | Description                           |
-| :---------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :------- | :------------------------------------ |
-| id                                                    | String                                                                                                                      | ✅       | Unique subaccount identifier in Asaas |
-| apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto | [ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto](../models/ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto.md) | ❌       | Request Body                          |
+| Name                                             | Type                                                                                                              | Required | Description                           |
+| :----------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- | :------- | :------------------------------------ |
+| id                                               | String                                                                                                            | ✅       | Unique subaccount identifier in Asaas |
+| accountSaveOrUpdatePaymentEscrowConfigRequestDto | [AccountSaveOrUpdatePaymentEscrowConfigRequestDto](../models/AccountSaveOrUpdatePaymentEscrowConfigRequestDto.md) | ❌       | Request Body                          |
 
 **Return Type**
 
-`ApiCustomerPaymentCustodyConfigDto`
+`AccountPaymentEscrowConfigDto`
 
 **Example Usage Code Snippet**
 
@@ -248,8 +250,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerPaymentCustodyConfigDto;
-import com.asaas.apisdk.models.ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto;
+import com.asaas.apisdk.models.AccountPaymentEscrowConfigDto;
+import com.asaas.apisdk.models.AccountSaveOrUpdatePaymentEscrowConfigRequestDto;
 
 public class Main {
 
@@ -260,18 +262,17 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto =
-      ApiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto.builder()
+    AccountSaveOrUpdatePaymentEscrowConfigRequestDto accountSaveOrUpdatePaymentEscrowConfigRequestDto =
+      AccountSaveOrUpdatePaymentEscrowConfigRequestDto.builder()
         .daysToExpire(30L)
         .enabled(true)
         .isFeePayer(false)
         .build();
 
-    ApiCustomerPaymentCustodyConfigDto response =
-      asaasSdk.subaccount.saveOrUpdateEscrowAccountConfigurationForSubaccount(
-        "4f468235-cec3-482f-b3d0-348af4c7194",
-        apiCustomerSaveOrUpdatePaymentCustodyConfigRequestDto
-      );
+    AccountPaymentEscrowConfigDto response = asaasSdk.subaccount.saveOrUpdateEscrowAccountConfigurationForSubaccount(
+      "4f468235-cec3-482f-b3d0-348af4c7194",
+      accountSaveOrUpdatePaymentEscrowConfigRequestDto
+    );
 
     System.out.println(response);
   }

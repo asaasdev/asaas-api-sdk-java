@@ -21,7 +21,7 @@ A list of all methods in the `AccountInfoService` service. Click on the method n
 
 **Return Type**
 
-`ApiCustomerUpdateRequestGetResponseDto`
+`AccountInfoGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -29,7 +29,7 @@ A list of all methods in the `AccountInfoService` service. Click on the method n
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerUpdateRequestGetResponseDto;
+import com.asaas.apisdk.models.AccountInfoGetResponseDto;
 
 public class Main {
 
@@ -40,7 +40,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerUpdateRequestGetResponseDto response = asaasSdk.accountInfo.retrieveBusinessData();
+    AccountInfoGetResponseDto response = asaasSdk.accountInfo.retrieveBusinessData();
 
     System.out.println(response);
   }
@@ -55,13 +55,13 @@ public class Main {
 
 **Parameters**
 
-| Name                                   | Type                                                                                          | Required | Description  |
-| :------------------------------------- | :-------------------------------------------------------------------------------------------- | :------- | :----------- |
-| apiCustomerUpdateRequestSaveRequestDto | [ApiCustomerUpdateRequestSaveRequestDto](../models/ApiCustomerUpdateRequestSaveRequestDto.md) | ❌       | Request Body |
+| Name                      | Type                                                                | Required | Description  |
+| :------------------------ | :------------------------------------------------------------------ | :------- | :----------- |
+| accountInfoSaveRequestDto | [AccountInfoSaveRequestDto](../models/AccountInfoSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiCustomerUpdateRequestGetResponseDto`
+`AccountInfoGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -69,10 +69,10 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerUpdateRequestGetResponseDto;
-import com.asaas.apisdk.models.ApiCustomerUpdateRequestSaveRequestCompanyType;
-import com.asaas.apisdk.models.ApiCustomerUpdateRequestSaveRequestDto;
-import com.asaas.apisdk.models.ApiCustomerUpdateRequestSaveRequestPersonType;
+import com.asaas.apisdk.models.AccountInfoGetResponseDto;
+import com.asaas.apisdk.models.AccountInfoSaveRequestCompanyType;
+import com.asaas.apisdk.models.AccountInfoSaveRequestDto;
+import com.asaas.apisdk.models.AccountInfoSaveRequestPersonType;
 
 public class Main {
 
@@ -83,27 +83,25 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerUpdateRequestSaveRequestDto apiCustomerUpdateRequestSaveRequestDto =
-      ApiCustomerUpdateRequestSaveRequestDto.builder()
-        .personType(ApiCustomerUpdateRequestSaveRequestPersonType.JURIDICA)
-        .cpfCnpj("66625514000140")
-        .birthDate("1995-04-12")
-        .companyType(ApiCustomerUpdateRequestSaveRequestCompanyType.MEI)
-        .incomeValue(25000D)
-        .email("john.doe@asaas.com.br")
-        .phone("phone")
-        .mobilePhone("mobilePhone")
-        .site("site")
-        .postalCode("89223005")
-        .address("Av. Rolf Wiest")
-        .addressNumber("659")
-        .complement("complement")
-        .province("Bom Retiro")
-        .build();
+    AccountInfoSaveRequestDto accountInfoSaveRequestDto = AccountInfoSaveRequestDto.builder()
+      .personType(AccountInfoSaveRequestPersonType.JURIDICA)
+      .cpfCnpj("66625514000140")
+      .birthDate("1995-04-12")
+      .companyType(AccountInfoSaveRequestCompanyType.MEI)
+      .companyName("ASAAS")
+      .incomeValue(25000D)
+      .email("john.doe@asaas.com.br")
+      .phone("phone")
+      .mobilePhone("mobilePhone")
+      .site("site")
+      .postalCode("89223005")
+      .address("Av. Rolf Wiest")
+      .addressNumber("659")
+      .complement("complement")
+      .province("Bom Retiro")
+      .build();
 
-    ApiCustomerUpdateRequestGetResponseDto response = asaasSdk.accountInfo.updateBusinessData(
-      apiCustomerUpdateRequestSaveRequestDto
-    );
+    AccountInfoGetResponseDto response = asaasSdk.accountInfo.updateBusinessData(accountInfoSaveRequestDto);
 
     System.out.println(response);
   }
@@ -118,7 +116,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPaymentCheckoutConfigGetResponseDto`
+`PaymentCheckoutConfigGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -126,7 +124,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCheckoutConfigGetResponseDto;
+import com.asaas.apisdk.models.PaymentCheckoutConfigGetResponseDto;
 
 public class Main {
 
@@ -137,7 +135,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCheckoutConfigGetResponseDto response = asaasSdk.accountInfo.retrievePersonalizationSettings();
+    PaymentCheckoutConfigGetResponseDto response = asaasSdk.accountInfo.retrievePersonalizationSettings();
 
     System.out.println(response);
   }
@@ -152,14 +150,14 @@ public class Main {
 
 **Parameters**
 
-| Name                                   | Type                                                                                          | Required | Description                    |
-| :------------------------------------- | :-------------------------------------------------------------------------------------------- | :------- | :----------------------------- |
-| apiPaymentCheckoutConfigSaveRequestDto | [ApiPaymentCheckoutConfigSaveRequestDto](../models/ApiPaymentCheckoutConfigSaveRequestDto.md) | ❌       | Request Body                   |
-| \_filename                             | [String](../models/String.md)                                                                 | ✅       | Filename for the uploaded file |
+| Name                                | Type                                                                                    | Required | Description                    |
+| :---------------------------------- | :-------------------------------------------------------------------------------------- | :------- | :----------------------------- |
+| paymentCheckoutConfigSaveRequestDto | [PaymentCheckoutConfigSaveRequestDto](../models/PaymentCheckoutConfigSaveRequestDto.md) | ❌       | Request Body                   |
+| \_filename                          | [String](../models/String.md)                                                           | ✅       | Filename for the uploaded file |
 
 **Return Type**
 
-`ApiPaymentCheckoutConfigGetResponseDto`
+`PaymentCheckoutConfigGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -167,8 +165,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPaymentCheckoutConfigGetResponseDto;
-import com.asaas.apisdk.models.ApiPaymentCheckoutConfigSaveRequestDto;
+import com.asaas.apisdk.models.PaymentCheckoutConfigGetResponseDto;
+import com.asaas.apisdk.models.PaymentCheckoutConfigSaveRequestDto;
 
 public class Main {
 
@@ -179,26 +177,26 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPaymentCheckoutConfigSaveRequestDto apiPaymentCheckoutConfigSaveRequestDto =
-      ApiPaymentCheckoutConfigSaveRequestDto.builder()
+    PaymentCheckoutConfigSaveRequestDto paymentCheckoutConfigSaveRequestDto =
+      PaymentCheckoutConfigSaveRequestDto.builder()
         .logoBackgroundColor("#00ff00")
         .infoBackgroundColor("#000fff")
         .fontColor("#00ff0")
         .enabled(true)
-        .logoFile(repre)
+        .logoFile(adipisicing)
         .build();
-    ApiPaymentCheckoutConfigSaveRequestDto apiPaymentCheckoutConfigSaveRequestDto =
-      ApiPaymentCheckoutConfigSaveRequestDto.builder()
+    PaymentCheckoutConfigSaveRequestDto paymentCheckoutConfigSaveRequestDto =
+      PaymentCheckoutConfigSaveRequestDto.builder()
         .logoBackgroundColor("#00ff00")
         .infoBackgroundColor("#000fff")
         .fontColor("#00ff0")
         .enabled(true)
-        .logoFile(repre)
+        .logoFile(adipisicing)
         .build();
 
-    ApiPaymentCheckoutConfigGetResponseDto response = asaasSdk.accountInfo.savePaymentCheckoutPersonalization(
-      apiPaymentCheckoutConfigSaveRequestDto,
-      apiPaymentCheckoutConfigSaveRequestDto
+    PaymentCheckoutConfigGetResponseDto response = asaasSdk.accountInfo.savePaymentCheckoutPersonalization(
+      paymentCheckoutConfigSaveRequestDto,
+      paymentCheckoutConfigSaveRequestDto
     );
 
     System.out.println(response);
@@ -214,7 +212,7 @@ public class Main {
 
 **Return Type**
 
-`ApiMyAccountGetAccountNumberResponseDto`
+`MyAccountGetAccountNumberResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -222,7 +220,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiMyAccountGetAccountNumberResponseDto;
+import com.asaas.apisdk.models.MyAccountGetAccountNumberResponseDto;
 
 public class Main {
 
@@ -233,7 +231,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiMyAccountGetAccountNumberResponseDto response = asaasSdk.accountInfo.retrieveAsaasAccountNumber();
+    MyAccountGetAccountNumberResponseDto response = asaasSdk.accountInfo.retrieveAsaasAccountNumber();
 
     System.out.println(response);
   }
@@ -248,7 +246,7 @@ public class Main {
 
 **Return Type**
 
-`ApiMyAccountGetAccountFeesResponseDto`
+`MyAccountGetAccountFeesResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -256,7 +254,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiMyAccountGetAccountFeesResponseDto;
+import com.asaas.apisdk.models.MyAccountGetAccountFeesResponseDto;
 
 public class Main {
 
@@ -267,7 +265,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiMyAccountGetAccountFeesResponseDto response = asaasSdk.accountInfo.retrieveAccountFees();
+    MyAccountGetAccountFeesResponseDto response = asaasSdk.accountInfo.retrieveAccountFees();
 
     System.out.println(response);
   }
@@ -282,7 +280,7 @@ public class Main {
 
 **Return Type**
 
-`ApiMyAccountGetStatusResponseDto`
+`MyAccountGetStatusResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -290,7 +288,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiMyAccountGetStatusResponseDto;
+import com.asaas.apisdk.models.MyAccountGetStatusResponseDto;
 
 public class Main {
 
@@ -301,7 +299,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiMyAccountGetStatusResponseDto response = asaasSdk.accountInfo.checkAccountRegistrationStatus();
+    MyAccountGetStatusResponseDto response = asaasSdk.accountInfo.checkAccountRegistrationStatus();
 
     System.out.println(response);
   }
@@ -316,7 +314,7 @@ public class Main {
 
 **Return Type**
 
-`ApiWalletShowResponseDto`
+`WalletShowResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -324,7 +322,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiWalletShowResponseDto;
+import com.asaas.apisdk.models.WalletShowResponseDto;
 
 public class Main {
 
@@ -335,7 +333,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiWalletShowResponseDto response = asaasSdk.accountInfo.retrieveWalletid();
+    WalletShowResponseDto response = asaasSdk.accountInfo.retrieveWalletid();
 
     System.out.println(response);
   }
@@ -356,7 +354,7 @@ public class Main {
 
 **Return Type**
 
-`ApiMyAccountDisableAccountResponseDto`
+`MyAccountDisableAccountResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -364,8 +362,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiMyAccountDisableAccountResponseDto;
 import com.asaas.apisdk.models.DeleteWhiteLabelSubaccountParameters;
+import com.asaas.apisdk.models.MyAccountDisableAccountResponseDto;
 
 public class Main {
 
@@ -380,7 +378,7 @@ public class Main {
       .removeReason("Release data")
       .build();
 
-    ApiMyAccountDisableAccountResponseDto response = asaasSdk.accountInfo.deleteWhiteLabelSubaccount(requestParameters);
+    MyAccountDisableAccountResponseDto response = asaasSdk.accountInfo.deleteWhiteLabelSubaccount(requestParameters);
 
     System.out.println(response);
   }

@@ -25,7 +25,7 @@ A list of all methods in the `PixService` service. Click on the method name to v
 
 **Return Type**
 
-`ApiPixAddressKeyListResponseDto`
+`PixAddressKeyListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -33,9 +33,9 @@ A list of all methods in the `PixService` service. Click on the method name to v
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixAddressKeyListRequestPixAddressKeyStatus;
-import com.asaas.apisdk.models.ApiPixAddressKeyListResponseDto;
 import com.asaas.apisdk.models.ListKeysParameters;
+import com.asaas.apisdk.models.PixAddressKeyListRequestPixAddressKeyStatus;
+import com.asaas.apisdk.models.PixAddressKeyListResponseDto;
 
 public class Main {
 
@@ -47,13 +47,13 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListKeysParameters requestParameters = ListKeysParameters.builder()
-      .offset(7L)
+      .offset(8L)
       .limit(10L)
-      .status(ApiPixAddressKeyListRequestPixAddressKeyStatus.AWAITING_ACTIVATION)
+      .status(PixAddressKeyListRequestPixAddressKeyStatus.AWAITING_ACTIVATION)
       .statusList("statusList")
       .build();
 
-    ApiPixAddressKeyListResponseDto response = asaasSdk.pix.listKeys(requestParameters);
+    PixAddressKeyListResponseDto response = asaasSdk.pix.listKeys(requestParameters);
 
     System.out.println(response);
   }
@@ -68,13 +68,13 @@ public class Main {
 
 **Parameters**
 
-| Name                           | Type                                                                          | Required | Description  |
-| :----------------------------- | :---------------------------------------------------------------------------- | :------- | :----------- |
-| apiPixAddressKeySaveRequestDto | [ApiPixAddressKeySaveRequestDto](../models/ApiPixAddressKeySaveRequestDto.md) | ❌       | Request Body |
+| Name                        | Type                                                                    | Required | Description  |
+| :-------------------------- | :---------------------------------------------------------------------- | :------- | :----------- |
+| pixAddressKeySaveRequestDto | [PixAddressKeySaveRequestDto](../models/PixAddressKeySaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiPixAddressKeyGetResponseDto`
+`PixAddressKeyGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -82,9 +82,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixAddressKeyGetResponseDto;
-import com.asaas.apisdk.models.ApiPixAddressKeySaveRequestDto;
-import com.asaas.apisdk.models.ApiPixAddressKeySaveRequestPixAddressKeyType;
+import com.asaas.apisdk.models.PixAddressKeyGetResponseDto;
+import com.asaas.apisdk.models.PixAddressKeySaveRequestDto;
+import com.asaas.apisdk.models.PixAddressKeySaveRequestPixAddressKeyType;
 
 public class Main {
 
@@ -95,11 +95,11 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixAddressKeySaveRequestDto apiPixAddressKeySaveRequestDto = ApiPixAddressKeySaveRequestDto.builder()
-      .type(ApiPixAddressKeySaveRequestPixAddressKeyType.EVP)
+    PixAddressKeySaveRequestDto pixAddressKeySaveRequestDto = PixAddressKeySaveRequestDto.builder()
+      .type(PixAddressKeySaveRequestPixAddressKeyType.EVP)
       .build();
 
-    ApiPixAddressKeyGetResponseDto response = asaasSdk.pix.createAKey(apiPixAddressKeySaveRequestDto);
+    PixAddressKeyGetResponseDto response = asaasSdk.pix.createAKey(pixAddressKeySaveRequestDto);
 
     System.out.println(response);
   }
@@ -120,7 +120,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPixAddressKeyGetResponseDto`
+`PixAddressKeyGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -128,7 +128,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixAddressKeyGetResponseDto;
+import com.asaas.apisdk.models.PixAddressKeyGetResponseDto;
 
 public class Main {
 
@@ -139,7 +139,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixAddressKeyGetResponseDto response = asaasSdk.pix.retrieveASingleKey("a33047b1-fb19-4b68-9373-a7ba8a8162aa");
+    PixAddressKeyGetResponseDto response = asaasSdk.pix.retrieveASingleKey("a33047b1-fb19-4b68-9373-a7ba8a8162aa");
 
     System.out.println(response);
   }
@@ -160,7 +160,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPixAddressKeyGetResponseDto`
+`PixAddressKeyGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -168,7 +168,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixAddressKeyGetResponseDto;
+import com.asaas.apisdk.models.PixAddressKeyGetResponseDto;
 
 public class Main {
 
@@ -179,7 +179,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixAddressKeyGetResponseDto response = asaasSdk.pix.removeKey("a33047b1-fb19-4b68-9373-a7ba8a8162aa");
+    PixAddressKeyGetResponseDto response = asaasSdk.pix.removeKey("a33047b1-fb19-4b68-9373-a7ba8a8162aa");
 
     System.out.println(response);
   }
@@ -194,13 +194,13 @@ public class Main {
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description  |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :----------- |
-| apiPixQrCodeSaveRequestDto | [ApiPixQrCodeSaveRequestDto](../models/ApiPixQrCodeSaveRequestDto.md) | ❌       | Request Body |
+| Name                    | Type                                                            | Required | Description  |
+| :---------------------- | :-------------------------------------------------------------- | :------- | :----------- |
+| pixQrCodeSaveRequestDto | [PixQrCodeSaveRequestDto](../models/PixQrCodeSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiPixQrCodeSaveResponseDto`
+`PixQrCodeSaveResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -208,9 +208,9 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixQrCodeSaveRequestDto;
-import com.asaas.apisdk.models.ApiPixQrCodeSaveResponseDto;
 import com.asaas.apisdk.models.Format;
+import com.asaas.apisdk.models.PixQrCodeSaveRequestDto;
+import com.asaas.apisdk.models.PixQrCodeSaveResponseDto;
 
 public class Main {
 
@@ -221,18 +221,18 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixQrCodeSaveRequestDto apiPixQrCodeSaveRequestDto = ApiPixQrCodeSaveRequestDto.builder()
+    PixQrCodeSaveRequestDto pixQrCodeSaveRequestDto = PixQrCodeSaveRequestDto.builder()
       .addressKey("b6295ee1-f054-47d1-9e90-ee57b74f60d9")
       .description("Barbecue")
       .value(50D)
       .format(Format.ALL)
       .expirationDate("2023-05-05 14:20:50")
-      .expirationSeconds(6L)
+      .expirationSeconds(2L)
       .allowsMultiplePayments(true)
       .externalReference("externalReference")
       .build();
 
-    ApiPixQrCodeSaveResponseDto response = asaasSdk.pix.createStaticQrcode(apiPixQrCodeSaveRequestDto);
+    PixQrCodeSaveResponseDto response = asaasSdk.pix.createStaticQrcode(pixQrCodeSaveRequestDto);
 
     System.out.println(response);
   }
@@ -253,7 +253,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPixQrCodeDeleteResponseDto`
+`PixQrCodeDeleteResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -261,7 +261,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixQrCodeDeleteResponseDto;
+import com.asaas.apisdk.models.PixQrCodeDeleteResponseDto;
 
 public class Main {
 
@@ -272,7 +272,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixQrCodeDeleteResponseDto response = asaasSdk.pix.deleteStaticQrcode("ASAAS00000000000000383ASA");
+    PixQrCodeDeleteResponseDto response = asaasSdk.pix.deleteStaticQrcode("ASAAS00000000000000383ASA");
 
     System.out.println(response);
   }
@@ -287,7 +287,7 @@ public class Main {
 
 **Return Type**
 
-`ApiPixTokenBucketGetAddressKeyResponseDto`
+`PixTokenBucketGetAddressKeyResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -295,7 +295,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiPixTokenBucketGetAddressKeyResponseDto;
+import com.asaas.apisdk.models.PixTokenBucketGetAddressKeyResponseDto;
 
 public class Main {
 
@@ -306,7 +306,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiPixTokenBucketGetAddressKeyResponseDto response = asaasSdk.pix.availableTokenBucketCheck();
+    PixTokenBucketGetAddressKeyResponseDto response = asaasSdk.pix.availableTokenBucketCheck();
 
     System.out.println(response);
   }

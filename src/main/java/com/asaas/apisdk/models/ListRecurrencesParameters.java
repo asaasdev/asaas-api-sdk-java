@@ -36,7 +36,7 @@ public class ListRecurrencesParameters {
    * Filter by recurrence status
    */
   @JsonProperty("status")
-  private JsonNullable<ApiPixTransactionRecurringCheckoutScheduleListRequestRecurringCheckoutScheduleStatus> status;
+  private JsonNullable<RecurringPixTransactionListRequestPixRecurringTransactionStatus> status;
 
   /**
    * Filter by recurrence value
@@ -61,7 +61,7 @@ public class ListRecurrencesParameters {
   }
 
   @JsonIgnore
-  public ApiPixTransactionRecurringCheckoutScheduleListRequestRecurringCheckoutScheduleStatus getStatus() {
+  public RecurringPixTransactionListRequestPixRecurringTransactionStatus getStatus() {
     return status.orElse(null);
   }
 
@@ -100,12 +100,12 @@ public class ListRecurrencesParameters {
       return this;
     }
 
-    private JsonNullable<ApiPixTransactionRecurringCheckoutScheduleListRequestRecurringCheckoutScheduleStatus> status =
+    private JsonNullable<RecurringPixTransactionListRequestPixRecurringTransactionStatus> status =
       JsonNullable.undefined();
 
     @JsonProperty("status")
     public ListRecurrencesParametersBuilder status(
-      ApiPixTransactionRecurringCheckoutScheduleListRequestRecurringCheckoutScheduleStatus value
+      RecurringPixTransactionListRequestPixRecurringTransactionStatus value
     ) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");

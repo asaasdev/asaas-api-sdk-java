@@ -30,13 +30,13 @@ public class BillingStatisticsParameters {
    * Filter by payment method
    */
   @JsonProperty("billingType")
-  private JsonNullable<ApiFinanceGetPaymentStatisticsRequestBillingType> billingType;
+  private JsonNullable<FinanceGetPaymentStatisticsRequestBillingType> billingType;
 
   /**
    * Filter by status
    */
   @JsonProperty("status")
-  private JsonNullable<ApiFinanceGetPaymentStatisticsRequestPaymentStatus> status;
+  private JsonNullable<FinanceGetPaymentStatisticsRequestPaymentStatus> status;
 
   /**
    * Filter early registrations or not
@@ -92,12 +92,12 @@ public class BillingStatisticsParameters {
   }
 
   @JsonIgnore
-  public ApiFinanceGetPaymentStatisticsRequestBillingType getBillingType() {
+  public FinanceGetPaymentStatisticsRequestBillingType getBillingType() {
     return billingType.orElse(null);
   }
 
   @JsonIgnore
-  public ApiFinanceGetPaymentStatisticsRequestPaymentStatus getStatus() {
+  public FinanceGetPaymentStatisticsRequestPaymentStatus getStatus() {
     return status.orElse(null);
   }
 
@@ -155,10 +155,10 @@ public class BillingStatisticsParameters {
       return this;
     }
 
-    private JsonNullable<ApiFinanceGetPaymentStatisticsRequestBillingType> billingType = JsonNullable.undefined();
+    private JsonNullable<FinanceGetPaymentStatisticsRequestBillingType> billingType = JsonNullable.undefined();
 
     @JsonProperty("billingType")
-    public BillingStatisticsParametersBuilder billingType(ApiFinanceGetPaymentStatisticsRequestBillingType value) {
+    public BillingStatisticsParametersBuilder billingType(FinanceGetPaymentStatisticsRequestBillingType value) {
       if (value == null) {
         throw new IllegalStateException("billingType cannot be null");
       }
@@ -166,10 +166,10 @@ public class BillingStatisticsParameters {
       return this;
     }
 
-    private JsonNullable<ApiFinanceGetPaymentStatisticsRequestPaymentStatus> status = JsonNullable.undefined();
+    private JsonNullable<FinanceGetPaymentStatisticsRequestPaymentStatus> status = JsonNullable.undefined();
 
     @JsonProperty("status")
-    public BillingStatisticsParametersBuilder status(ApiFinanceGetPaymentStatisticsRequestPaymentStatus value) {
+    public BillingStatisticsParametersBuilder status(FinanceGetPaymentStatisticsRequestPaymentStatus value) {
       if (value == null) {
         throw new IllegalStateException("status cannot be null");
       }

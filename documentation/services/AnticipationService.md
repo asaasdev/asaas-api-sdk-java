@@ -26,7 +26,7 @@ A list of all methods in the `AnticipationService` service. Click on the method 
 
 **Return Type**
 
-`ApiReceivableAnticipationGetResponseDto`
+`AnticipationGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -34,7 +34,7 @@ A list of all methods in the `AnticipationService` service. Click on the method 
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiReceivableAnticipationGetResponseDto;
+import com.asaas.apisdk.models.AnticipationGetResponseDto;
 
 public class Main {
 
@@ -45,7 +45,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiReceivableAnticipationGetResponseDto response = asaasSdk.anticipation.retrieveASingleAnticipation("id");
+    AnticipationGetResponseDto response = asaasSdk.anticipation.retrieveASingleAnticipation("id");
 
     System.out.println(response);
   }
@@ -66,7 +66,7 @@ public class Main {
 
 **Return Type**
 
-`ApiReceivableAnticipationListResponseDto`
+`AnticipationListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -74,8 +74,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiReceivableAnticipationListRequestReceivableAnticipationStatus;
-import com.asaas.apisdk.models.ApiReceivableAnticipationListResponseDto;
+import com.asaas.apisdk.models.AnticipationListRequestAnticipationStatus;
+import com.asaas.apisdk.models.AnticipationListResponseDto;
 import com.asaas.apisdk.models.ListAnticipationsParameters;
 
 public class Main {
@@ -88,14 +88,14 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListAnticipationsParameters requestParameters = ListAnticipationsParameters.builder()
-      .offset(1L)
+      .offset(0L)
       .limit(10L)
       .payment("payment")
       .installment("installment")
-      .status(ApiReceivableAnticipationListRequestReceivableAnticipationStatus.PENDING)
+      .status(AnticipationListRequestAnticipationStatus.PENDING)
       .build();
 
-    ApiReceivableAnticipationListResponseDto response = asaasSdk.anticipation.listAnticipations(requestParameters);
+    AnticipationListResponseDto response = asaasSdk.anticipation.listAnticipations(requestParameters);
 
     System.out.println(response);
   }
@@ -110,14 +110,14 @@ public class Main {
 
 **Parameters**
 
-| Name                                    | Type                                                                                            | Required | Description                    |
-| :-------------------------------------- | :---------------------------------------------------------------------------------------------- | :------- | :----------------------------- |
-| apiReceivableAnticipationSaveRequestDto | [ApiReceivableAnticipationSaveRequestDto](../models/ApiReceivableAnticipationSaveRequestDto.md) | ❌       | Request Body                   |
-| \_filename                              | [String](../models/String.md)                                                                   | ✅       | Filename for the uploaded file |
+| Name                       | Type                                                                  | Required | Description                    |
+| :------------------------- | :-------------------------------------------------------------------- | :------- | :----------------------------- |
+| anticipationSaveRequestDto | [AnticipationSaveRequestDto](../models/AnticipationSaveRequestDto.md) | ❌       | Request Body                   |
+| \_filename                 | [String](../models/String.md)                                         | ✅       | Filename for the uploaded file |
 
 **Return Type**
 
-`ApiReceivableAnticipationGetResponseDto`
+`AnticipationGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -125,8 +125,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiReceivableAnticipationGetResponseDto;
-import com.asaas.apisdk.models.ApiReceivableAnticipationSaveRequestDto;
+import com.asaas.apisdk.models.AnticipationGetResponseDto;
+import com.asaas.apisdk.models.AnticipationSaveRequestDto;
 
 public class Main {
 
@@ -137,22 +137,20 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiReceivableAnticipationSaveRequestDto apiReceivableAnticipationSaveRequestDto =
-      ApiReceivableAnticipationSaveRequestDto.builder()
-        .installment("installment")
-        .payment("pay_626366773834")
-        .documents(occaec)
-        .build();
-    ApiReceivableAnticipationSaveRequestDto apiReceivableAnticipationSaveRequestDto =
-      ApiReceivableAnticipationSaveRequestDto.builder()
-        .installment("installment")
-        .payment("pay_626366773834")
-        .documents(occaec)
-        .build();
+    AnticipationSaveRequestDto anticipationSaveRequestDto = AnticipationSaveRequestDto.builder()
+      .installment("installment")
+      .payment("pay_626366773834")
+      .documents(offic)
+      .build();
+    AnticipationSaveRequestDto anticipationSaveRequestDto = AnticipationSaveRequestDto.builder()
+      .installment("installment")
+      .payment("pay_626366773834")
+      .documents(offic)
+      .build();
 
-    ApiReceivableAnticipationGetResponseDto response = asaasSdk.anticipation.requestAnticipation(
-      apiReceivableAnticipationSaveRequestDto,
-      apiReceivableAnticipationSaveRequestDto
+    AnticipationGetResponseDto response = asaasSdk.anticipation.requestAnticipation(
+      anticipationSaveRequestDto,
+      anticipationSaveRequestDto
     );
 
     System.out.println(response);
@@ -168,13 +166,13 @@ public class Main {
 
 **Parameters**
 
-| Name                                        | Type                                                                                                    | Required | Description  |
-| :------------------------------------------ | :------------------------------------------------------------------------------------------------------ | :------- | :----------- |
-| apiReceivableAnticipationSimulateRequestDto | [ApiReceivableAnticipationSimulateRequestDto](../models/ApiReceivableAnticipationSimulateRequestDto.md) | ❌       | Request Body |
+| Name                           | Type                                                                          | Required | Description  |
+| :----------------------------- | :---------------------------------------------------------------------------- | :------- | :----------- |
+| anticipationSimulateRequestDto | [AnticipationSimulateRequestDto](../models/AnticipationSimulateRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiReceivableAnticipationSimulateResponseDto`
+`AnticipationSimulateResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -182,8 +180,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiReceivableAnticipationSimulateRequestDto;
-import com.asaas.apisdk.models.ApiReceivableAnticipationSimulateResponseDto;
+import com.asaas.apisdk.models.AnticipationSimulateRequestDto;
+import com.asaas.apisdk.models.AnticipationSimulateResponseDto;
 
 public class Main {
 
@@ -194,14 +192,13 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiReceivableAnticipationSimulateRequestDto apiReceivableAnticipationSimulateRequestDto =
-      ApiReceivableAnticipationSimulateRequestDto.builder()
-        .installment("installment")
-        .payment("pay_626366773834")
-        .build();
+    AnticipationSimulateRequestDto anticipationSimulateRequestDto = AnticipationSimulateRequestDto.builder()
+      .installment("installment")
+      .payment("pay_626366773834")
+      .build();
 
-    ApiReceivableAnticipationSimulateResponseDto response = asaasSdk.anticipation.simulateAnticipation(
-      apiReceivableAnticipationSimulateRequestDto
+    AnticipationSimulateResponseDto response = asaasSdk.anticipation.simulateAnticipation(
+      anticipationSimulateRequestDto
     );
 
     System.out.println(response);
@@ -217,7 +214,7 @@ public class Main {
 
 **Return Type**
 
-`ApiReceivableAnticipationConfigurationGetResponseDto`
+`AnticipationConfigurationGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -225,7 +222,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiReceivableAnticipationConfigurationGetResponseDto;
+import com.asaas.apisdk.models.AnticipationConfigurationGetResponseDto;
 
 public class Main {
 
@@ -236,8 +233,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiReceivableAnticipationConfigurationGetResponseDto response =
-      asaasSdk.anticipation.retrieveStatusOfAutomaticAnticipation();
+    AnticipationConfigurationGetResponseDto response = asaasSdk.anticipation.retrieveStatusOfAutomaticAnticipation();
 
     System.out.println(response);
   }
@@ -252,13 +248,13 @@ public class Main {
 
 **Parameters**
 
-| Name                                                   | Type                                                                                                                          | Required | Description  |
-| :----------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :------- | :----------- |
-| apiReceivableAnticipationConfigurationUpdateRequestDto | [ApiReceivableAnticipationConfigurationUpdateRequestDto](../models/ApiReceivableAnticipationConfigurationUpdateRequestDto.md) | ❌       | Request Body |
+| Name                                      | Type                                                                                                | Required | Description  |
+| :---------------------------------------- | :-------------------------------------------------------------------------------------------------- | :------- | :----------- |
+| anticipationConfigurationUpdateRequestDto | [AnticipationConfigurationUpdateRequestDto](../models/AnticipationConfigurationUpdateRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiReceivableAnticipationConfigurationGetResponseDto`
+`AnticipationConfigurationGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -266,8 +262,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiReceivableAnticipationConfigurationGetResponseDto;
-import com.asaas.apisdk.models.ApiReceivableAnticipationConfigurationUpdateRequestDto;
+import com.asaas.apisdk.models.AnticipationConfigurationGetResponseDto;
+import com.asaas.apisdk.models.AnticipationConfigurationUpdateRequestDto;
 
 public class Main {
 
@@ -278,11 +274,12 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiReceivableAnticipationConfigurationUpdateRequestDto apiReceivableAnticipationConfigurationUpdateRequestDto =
-      ApiReceivableAnticipationConfigurationUpdateRequestDto.builder().creditCardAutomaticEnabled(true).build();
+    AnticipationConfigurationUpdateRequestDto anticipationConfigurationUpdateRequestDto =
+      AnticipationConfigurationUpdateRequestDto.builder().creditCardAutomaticEnabled(true).build();
 
-    ApiReceivableAnticipationConfigurationGetResponseDto response =
-      asaasSdk.anticipation.updateStatusOfAutomaticAnticipation(apiReceivableAnticipationConfigurationUpdateRequestDto);
+    AnticipationConfigurationGetResponseDto response = asaasSdk.anticipation.updateStatusOfAutomaticAnticipation(
+      anticipationConfigurationUpdateRequestDto
+    );
 
     System.out.println(response);
   }
@@ -297,7 +294,7 @@ public class Main {
 
 **Return Type**
 
-`ApiReceivableAnticipationLimitsResponseDto`
+`AnticipationLimitsResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -305,7 +302,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiReceivableAnticipationLimitsResponseDto;
+import com.asaas.apisdk.models.AnticipationLimitsResponseDto;
 
 public class Main {
 
@@ -316,7 +313,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiReceivableAnticipationLimitsResponseDto response = asaasSdk.anticipation.retrieveAnticipationLimits();
+    AnticipationLimitsResponseDto response = asaasSdk.anticipation.retrieveAnticipationLimits();
 
     System.out.println(response);
   }
@@ -338,7 +335,7 @@ public class Main {
 
 **Return Type**
 
-`ApiReceivableAnticipationGetResponseDto`
+`AnticipationGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -346,7 +343,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiReceivableAnticipationGetResponseDto;
+import com.asaas.apisdk.models.AnticipationGetResponseDto;
 
 public class Main {
 
@@ -357,7 +354,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiReceivableAnticipationGetResponseDto response = asaasSdk.anticipation.cancelAnticipation("id", new Object());
+    AnticipationGetResponseDto response = asaasSdk.anticipation.cancelAnticipation("id", new Object());
 
     System.out.println(response);
   }

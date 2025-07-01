@@ -4,30 +4,30 @@ package com.asaas.apisdk.services;
 
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.exceptions.ApiError;
-import com.asaas.apisdk.exceptions.ApiErrorResponseDtoException;
+import com.asaas.apisdk.exceptions.ErrorResponseDtoException;
 import com.asaas.apisdk.http.Environment;
 import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
-import com.asaas.apisdk.models.ApiCustomerInvoiceListResponseDto;
-import com.asaas.apisdk.models.ApiErrorResponseDto;
-import com.asaas.apisdk.models.ApiPaymentListResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionConfigureInvoiceRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionDeleteInvoiceConfigResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionDeleteResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionGetResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigGetResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionInvoiceConfigUpdateRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionListResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionSaveRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionSaveWithCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionSaveWithCreditCardResponseDto;
-import com.asaas.apisdk.models.ApiSubscriptionUpdateCreditCardRequestDto;
-import com.asaas.apisdk.models.ApiSubscriptionUpdateRequestDto;
+import com.asaas.apisdk.models.ErrorResponseDto;
 import com.asaas.apisdk.models.GenerateSignatureBookletParameters;
+import com.asaas.apisdk.models.InvoiceListResponseDto;
 import com.asaas.apisdk.models.ListInvoicesForSubscriptionChargesParameters;
 import com.asaas.apisdk.models.ListPaymentsOfASubscriptionParameters;
 import com.asaas.apisdk.models.ListSubscriptionsParameters;
+import com.asaas.apisdk.models.PaymentListResponseDto;
+import com.asaas.apisdk.models.SubscriptionConfigureInvoiceRequestDto;
+import com.asaas.apisdk.models.SubscriptionDeleteInvoiceConfigResponseDto;
+import com.asaas.apisdk.models.SubscriptionDeleteResponseDto;
+import com.asaas.apisdk.models.SubscriptionGetResponseDto;
+import com.asaas.apisdk.models.SubscriptionInvoiceConfigGetResponseDto;
+import com.asaas.apisdk.models.SubscriptionInvoiceConfigUpdateRequestDto;
+import com.asaas.apisdk.models.SubscriptionListResponseDto;
+import com.asaas.apisdk.models.SubscriptionSaveRequestDto;
+import com.asaas.apisdk.models.SubscriptionSaveWithCreditCardRequestDto;
+import com.asaas.apisdk.models.SubscriptionSaveWithCreditCardResponseDto;
+import com.asaas.apisdk.models.SubscriptionUpdateCreditCardRequestDto;
+import com.asaas.apisdk.models.SubscriptionUpdateRequestDto;
 import com.asaas.apisdk.validation.ViolationAggregator;
 import com.asaas.apisdk.validation.exceptions.ValidationException;
 import com.asaas.apisdk.validation.validators.modelValidators.ListInvoicesForSubscriptionChargesParametersValidator;
@@ -52,9 +52,9 @@ public class SubscriptionService extends BaseService {
   /**
    * List subscriptions
    *
-   * @return response of {@code ApiSubscriptionListResponseDto}
+   * @return response of {@code SubscriptionListResponseDto}
    */
-  public ApiSubscriptionListResponseDto listSubscriptions() throws ApiError, ValidationException {
+  public SubscriptionListResponseDto listSubscriptions() throws ApiError, ValidationException {
     return this.listSubscriptions(ListSubscriptionsParameters.builder().build());
   }
 
@@ -62,23 +62,22 @@ public class SubscriptionService extends BaseService {
    * List subscriptions
    *
    * @param requestParameters {@link ListSubscriptionsParameters} Request Parameters Object
-   * @return response of {@code ApiSubscriptionListResponseDto}
+   * @return response of {@code SubscriptionListResponseDto}
    */
-  public ApiSubscriptionListResponseDto listSubscriptions(@NonNull ListSubscriptionsParameters requestParameters)
+  public SubscriptionListResponseDto listSubscriptions(@NonNull ListSubscriptionsParameters requestParameters)
     throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListSubscriptionsRequest(requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiSubscriptionListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<SubscriptionListResponseDto>() {});
   }
 
   /**
    * List subscriptions
    *
-   * @return response of {@code CompletableFuture<ApiSubscriptionListResponseDto>}
+   * @return response of {@code CompletableFuture<SubscriptionListResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionListResponseDto> listSubscriptionsAsync()
-    throws ApiError, ValidationException {
+  public CompletableFuture<SubscriptionListResponseDto> listSubscriptionsAsync() throws ApiError, ValidationException {
     return this.listSubscriptionsAsync(ListSubscriptionsParameters.builder().build());
   }
 
@@ -86,16 +85,16 @@ public class SubscriptionService extends BaseService {
    * List subscriptions
    *
    * @param requestParameters {@link ListSubscriptionsParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiSubscriptionListResponseDto>}
+   * @return response of {@code CompletableFuture<SubscriptionListResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionListResponseDto> listSubscriptionsAsync(
+  public CompletableFuture<SubscriptionListResponseDto> listSubscriptionsAsync(
     @NonNull ListSubscriptionsParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListSubscriptionsRequest(requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiSubscriptionListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<SubscriptionListResponseDto>() {})
     );
   }
 
@@ -131,119 +130,117 @@ public class SubscriptionService extends BaseService {
   /**
    * Create new subscription
    *
-   * @return response of {@code ApiSubscriptionGetResponseDto}
+   * @return response of {@code SubscriptionGetResponseDto}
    */
-  public ApiSubscriptionGetResponseDto createNewSubscription() throws ApiError {
-    return this.createNewSubscription(ApiSubscriptionSaveRequestDto.builder().build());
+  public SubscriptionGetResponseDto createNewSubscription() throws ApiError {
+    return this.createNewSubscription(SubscriptionSaveRequestDto.builder().build());
   }
 
   /**
    * Create new subscription
    *
-   * @param apiSubscriptionSaveRequestDto {@link ApiSubscriptionSaveRequestDto} Request Body
-   * @return response of {@code ApiSubscriptionGetResponseDto}
+   * @param subscriptionSaveRequestDto {@link SubscriptionSaveRequestDto} Request Body
+   * @return response of {@code SubscriptionGetResponseDto}
    */
-  public ApiSubscriptionGetResponseDto createNewSubscription(
-    @NonNull ApiSubscriptionSaveRequestDto apiSubscriptionSaveRequestDto
+  public SubscriptionGetResponseDto createNewSubscription(
+    @NonNull SubscriptionSaveRequestDto subscriptionSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateNewSubscriptionRequest(apiSubscriptionSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateNewSubscriptionRequest(subscriptionSaveRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<SubscriptionGetResponseDto>() {});
   }
 
   /**
    * Create new subscription
    *
-   * @return response of {@code CompletableFuture<ApiSubscriptionGetResponseDto>}
+   * @return response of {@code CompletableFuture<SubscriptionGetResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionGetResponseDto> createNewSubscriptionAsync() throws ApiError {
-    return this.createNewSubscriptionAsync(ApiSubscriptionSaveRequestDto.builder().build());
+  public CompletableFuture<SubscriptionGetResponseDto> createNewSubscriptionAsync() throws ApiError {
+    return this.createNewSubscriptionAsync(SubscriptionSaveRequestDto.builder().build());
   }
 
   /**
    * Create new subscription
    *
-   * @param apiSubscriptionSaveRequestDto {@link ApiSubscriptionSaveRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiSubscriptionGetResponseDto>}
+   * @param subscriptionSaveRequestDto {@link SubscriptionSaveRequestDto} Request Body
+   * @return response of {@code CompletableFuture<SubscriptionGetResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionGetResponseDto> createNewSubscriptionAsync(
-    @NonNull ApiSubscriptionSaveRequestDto apiSubscriptionSaveRequestDto
+  public CompletableFuture<SubscriptionGetResponseDto> createNewSubscriptionAsync(
+    @NonNull SubscriptionSaveRequestDto subscriptionSaveRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateNewSubscriptionRequest(apiSubscriptionSaveRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateNewSubscriptionRequest(subscriptionSaveRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<SubscriptionGetResponseDto>() {})
     );
   }
 
-  private Request buildCreateNewSubscriptionRequest(
-    @NonNull ApiSubscriptionSaveRequestDto apiSubscriptionSaveRequestDto
-  ) {
+  private Request buildCreateNewSubscriptionRequest(@NonNull SubscriptionSaveRequestDto subscriptionSaveRequestDto) {
     return new RequestBuilder(
       HttpMethod.POST,
       Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
       "v3/subscriptions"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiSubscriptionSaveRequestDto)
+      .setJsonContent(subscriptionSaveRequestDto)
       .build();
   }
 
   /**
    * Create subscription with credit card
    *
-   * @return response of {@code ApiSubscriptionSaveWithCreditCardResponseDto}
+   * @return response of {@code SubscriptionSaveWithCreditCardResponseDto}
    */
-  public ApiSubscriptionSaveWithCreditCardResponseDto createSubscriptionWithCreditCard() throws ApiError {
-    return this.createSubscriptionWithCreditCard(ApiSubscriptionSaveWithCreditCardRequestDto.builder().build());
+  public SubscriptionSaveWithCreditCardResponseDto createSubscriptionWithCreditCard() throws ApiError {
+    return this.createSubscriptionWithCreditCard(SubscriptionSaveWithCreditCardRequestDto.builder().build());
   }
 
   /**
    * Create subscription with credit card
    *
-   * @param apiSubscriptionSaveWithCreditCardRequestDto {@link ApiSubscriptionSaveWithCreditCardRequestDto} Request Body
-   * @return response of {@code ApiSubscriptionSaveWithCreditCardResponseDto}
+   * @param subscriptionSaveWithCreditCardRequestDto {@link SubscriptionSaveWithCreditCardRequestDto} Request Body
+   * @return response of {@code SubscriptionSaveWithCreditCardResponseDto}
    */
-  public ApiSubscriptionSaveWithCreditCardResponseDto createSubscriptionWithCreditCard(
-    @NonNull ApiSubscriptionSaveWithCreditCardRequestDto apiSubscriptionSaveWithCreditCardRequestDto
+  public SubscriptionSaveWithCreditCardResponseDto createSubscriptionWithCreditCard(
+    @NonNull SubscriptionSaveWithCreditCardRequestDto subscriptionSaveWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateSubscriptionWithCreditCardRequest(apiSubscriptionSaveWithCreditCardRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateSubscriptionWithCreditCardRequest(subscriptionSaveWithCreditCardRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiSubscriptionSaveWithCreditCardResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<SubscriptionSaveWithCreditCardResponseDto>() {});
   }
 
   /**
    * Create subscription with credit card
    *
-   * @return response of {@code CompletableFuture<ApiSubscriptionSaveWithCreditCardResponseDto>}
+   * @return response of {@code CompletableFuture<SubscriptionSaveWithCreditCardResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionSaveWithCreditCardResponseDto> createSubscriptionWithCreditCardAsync()
+  public CompletableFuture<SubscriptionSaveWithCreditCardResponseDto> createSubscriptionWithCreditCardAsync()
     throws ApiError {
-    return this.createSubscriptionWithCreditCardAsync(ApiSubscriptionSaveWithCreditCardRequestDto.builder().build());
+    return this.createSubscriptionWithCreditCardAsync(SubscriptionSaveWithCreditCardRequestDto.builder().build());
   }
 
   /**
    * Create subscription with credit card
    *
-   * @param apiSubscriptionSaveWithCreditCardRequestDto {@link ApiSubscriptionSaveWithCreditCardRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiSubscriptionSaveWithCreditCardResponseDto>}
+   * @param subscriptionSaveWithCreditCardRequestDto {@link SubscriptionSaveWithCreditCardRequestDto} Request Body
+   * @return response of {@code CompletableFuture<SubscriptionSaveWithCreditCardResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionSaveWithCreditCardResponseDto> createSubscriptionWithCreditCardAsync(
-    @NonNull ApiSubscriptionSaveWithCreditCardRequestDto apiSubscriptionSaveWithCreditCardRequestDto
+  public CompletableFuture<SubscriptionSaveWithCreditCardResponseDto> createSubscriptionWithCreditCardAsync(
+    @NonNull SubscriptionSaveWithCreditCardRequestDto subscriptionSaveWithCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildCreateSubscriptionWithCreditCardRequest(apiSubscriptionSaveWithCreditCardRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildCreateSubscriptionWithCreditCardRequest(subscriptionSaveWithCreditCardRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiSubscriptionSaveWithCreditCardResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<SubscriptionSaveWithCreditCardResponseDto>() {})
     );
   }
 
   private Request buildCreateSubscriptionWithCreditCardRequest(
-    @NonNull ApiSubscriptionSaveWithCreditCardRequestDto apiSubscriptionSaveWithCreditCardRequestDto
+    @NonNull SubscriptionSaveWithCreditCardRequestDto subscriptionSaveWithCreditCardRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -251,7 +248,7 @@ public class SubscriptionService extends BaseService {
       "v3/subscriptions/"
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
-      .setJsonContent(apiSubscriptionSaveWithCreditCardRequestDto)
+      .setJsonContent(subscriptionSaveWithCreditCardRequestDto)
       .build();
   }
 
@@ -259,28 +256,28 @@ public class SubscriptionService extends BaseService {
    * Retrieve a single subscription
    *
    * @param id String Unique subscription identifier in Asaas
-   * @return response of {@code ApiSubscriptionGetResponseDto}
+   * @return response of {@code SubscriptionGetResponseDto}
    */
-  public ApiSubscriptionGetResponseDto retrieveASingleSubscription(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public SubscriptionGetResponseDto retrieveASingleSubscription(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleSubscriptionRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<SubscriptionGetResponseDto>() {});
   }
 
   /**
    * Retrieve a single subscription
    *
    * @param id String Unique subscription identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiSubscriptionGetResponseDto>}
+   * @return response of {@code CompletableFuture<SubscriptionGetResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionGetResponseDto> retrieveASingleSubscriptionAsync(@NonNull String id)
+  public CompletableFuture<SubscriptionGetResponseDto> retrieveASingleSubscriptionAsync(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveASingleSubscriptionRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<SubscriptionGetResponseDto>() {})
     );
   }
 
@@ -299,41 +296,41 @@ public class SubscriptionService extends BaseService {
    * Update existing subscription
    *
    * @param id String Unique subscription identifier in Asaas
-   * @param apiSubscriptionUpdateRequestDto {@link ApiSubscriptionUpdateRequestDto} Request Body
-   * @return response of {@code ApiSubscriptionGetResponseDto}
+   * @param subscriptionUpdateRequestDto {@link SubscriptionUpdateRequestDto} Request Body
+   * @return response of {@code SubscriptionGetResponseDto}
    */
-  public ApiSubscriptionGetResponseDto updateExistingSubscription(
+  public SubscriptionGetResponseDto updateExistingSubscription(
     @NonNull String id,
-    @NonNull ApiSubscriptionUpdateRequestDto apiSubscriptionUpdateRequestDto
+    @NonNull SubscriptionUpdateRequestDto subscriptionUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateExistingSubscriptionRequest(id, apiSubscriptionUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateExistingSubscriptionRequest(id, subscriptionUpdateRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<SubscriptionGetResponseDto>() {});
   }
 
   /**
    * Update existing subscription
    *
    * @param id String Unique subscription identifier in Asaas
-   * @param apiSubscriptionUpdateRequestDto {@link ApiSubscriptionUpdateRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiSubscriptionGetResponseDto>}
+   * @param subscriptionUpdateRequestDto {@link SubscriptionUpdateRequestDto} Request Body
+   * @return response of {@code CompletableFuture<SubscriptionGetResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionGetResponseDto> updateExistingSubscriptionAsync(
+  public CompletableFuture<SubscriptionGetResponseDto> updateExistingSubscriptionAsync(
     @NonNull String id,
-    @NonNull ApiSubscriptionUpdateRequestDto apiSubscriptionUpdateRequestDto
+    @NonNull SubscriptionUpdateRequestDto subscriptionUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateExistingSubscriptionRequest(id, apiSubscriptionUpdateRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateExistingSubscriptionRequest(id, subscriptionUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<SubscriptionGetResponseDto>() {})
     );
   }
 
   private Request buildUpdateExistingSubscriptionRequest(
     @NonNull String id,
-    @NonNull ApiSubscriptionUpdateRequestDto apiSubscriptionUpdateRequestDto
+    @NonNull SubscriptionUpdateRequestDto subscriptionUpdateRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.PUT,
@@ -342,7 +339,7 @@ public class SubscriptionService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiSubscriptionUpdateRequestDto)
+      .setJsonContent(subscriptionUpdateRequestDto)
       .build();
   }
 
@@ -350,28 +347,27 @@ public class SubscriptionService extends BaseService {
    * Remove subscription
    *
    * @param id String Unique subscription identifier in Asaas
-   * @return response of {@code ApiSubscriptionDeleteResponseDto}
+   * @return response of {@code SubscriptionDeleteResponseDto}
    */
-  public ApiSubscriptionDeleteResponseDto removeSubscription(@NonNull String id) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public SubscriptionDeleteResponseDto removeSubscription(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveSubscriptionRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiSubscriptionDeleteResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<SubscriptionDeleteResponseDto>() {});
   }
 
   /**
    * Remove subscription
    *
    * @param id String Unique subscription identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiSubscriptionDeleteResponseDto>}
+   * @return response of {@code CompletableFuture<SubscriptionDeleteResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionDeleteResponseDto> removeSubscriptionAsync(@NonNull String id)
-    throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+  public CompletableFuture<SubscriptionDeleteResponseDto> removeSubscriptionAsync(@NonNull String id) throws ApiError {
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveSubscriptionRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiSubscriptionDeleteResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<SubscriptionDeleteResponseDto>() {})
     );
   }
 
@@ -390,41 +386,41 @@ public class SubscriptionService extends BaseService {
    * Update credit card without charging the subscription
    *
    * @param id String Unique subscription identifier in Asaas
-   * @param apiSubscriptionUpdateCreditCardRequestDto {@link ApiSubscriptionUpdateCreditCardRequestDto} Request Body
-   * @return response of {@code ApiSubscriptionGetResponseDto}
+   * @param subscriptionUpdateCreditCardRequestDto {@link SubscriptionUpdateCreditCardRequestDto} Request Body
+   * @return response of {@code SubscriptionGetResponseDto}
    */
-  public ApiSubscriptionGetResponseDto updateSubscriptionCreditCard(
+  public SubscriptionGetResponseDto updateSubscriptionCreditCard(
     @NonNull String id,
-    @NonNull ApiSubscriptionUpdateCreditCardRequestDto apiSubscriptionUpdateCreditCardRequestDto
+    @NonNull SubscriptionUpdateCreditCardRequestDto subscriptionUpdateCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateSubscriptionCreditCardRequest(id, apiSubscriptionUpdateCreditCardRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateSubscriptionCreditCardRequest(id, subscriptionUpdateCreditCardRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<SubscriptionGetResponseDto>() {});
   }
 
   /**
    * Update credit card without charging the subscription
    *
    * @param id String Unique subscription identifier in Asaas
-   * @param apiSubscriptionUpdateCreditCardRequestDto {@link ApiSubscriptionUpdateCreditCardRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiSubscriptionGetResponseDto>}
+   * @param subscriptionUpdateCreditCardRequestDto {@link SubscriptionUpdateCreditCardRequestDto} Request Body
+   * @return response of {@code CompletableFuture<SubscriptionGetResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionGetResponseDto> updateSubscriptionCreditCardAsync(
+  public CompletableFuture<SubscriptionGetResponseDto> updateSubscriptionCreditCardAsync(
     @NonNull String id,
-    @NonNull ApiSubscriptionUpdateCreditCardRequestDto apiSubscriptionUpdateCreditCardRequestDto
+    @NonNull SubscriptionUpdateCreditCardRequestDto subscriptionUpdateCreditCardRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
-    Request request = this.buildUpdateSubscriptionCreditCardRequest(id, apiSubscriptionUpdateCreditCardRequestDto);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
+    Request request = this.buildUpdateSubscriptionCreditCardRequest(id, subscriptionUpdateCreditCardRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiSubscriptionGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<SubscriptionGetResponseDto>() {})
     );
   }
 
   private Request buildUpdateSubscriptionCreditCardRequest(
     @NonNull String id,
-    @NonNull ApiSubscriptionUpdateCreditCardRequestDto apiSubscriptionUpdateCreditCardRequestDto
+    @NonNull SubscriptionUpdateCreditCardRequestDto subscriptionUpdateCreditCardRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.PUT,
@@ -433,7 +429,7 @@ public class SubscriptionService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiSubscriptionUpdateCreditCardRequestDto)
+      .setJsonContent(subscriptionUpdateCreditCardRequestDto)
       .build();
   }
 
@@ -442,16 +438,16 @@ public class SubscriptionService extends BaseService {
    *
    * @param id String Unique subscription identifier in Asaas
    * @param requestParameters {@link ListPaymentsOfASubscriptionParameters} Request Parameters Object
-   * @return response of {@code ApiPaymentListResponseDto}
+   * @return response of {@code PaymentListResponseDto}
    */
-  public ApiPaymentListResponseDto listPaymentsOfASubscription(
+  public PaymentListResponseDto listPaymentsOfASubscription(
     @NonNull String id,
     @NonNull ListPaymentsOfASubscriptionParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsOfASubscriptionRequest(id, requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiPaymentListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<PaymentListResponseDto>() {});
   }
 
   /**
@@ -459,17 +455,17 @@ public class SubscriptionService extends BaseService {
    *
    * @param id String Unique subscription identifier in Asaas
    * @param requestParameters {@link ListPaymentsOfASubscriptionParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiPaymentListResponseDto>}
+   * @return response of {@code CompletableFuture<PaymentListResponseDto>}
    */
-  public CompletableFuture<ApiPaymentListResponseDto> listPaymentsOfASubscriptionAsync(
+  public CompletableFuture<PaymentListResponseDto> listPaymentsOfASubscriptionAsync(
     @NonNull String id,
     @NonNull ListPaymentsOfASubscriptionParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListPaymentsOfASubscriptionRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiPaymentListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<PaymentListResponseDto>() {})
     );
   }
 
@@ -501,7 +497,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull GenerateSignatureBookletParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildGenerateSignatureBookletRequest(id, requestParameters);
     Response response = this.execute(request);
     return ModelConverter.convert(response, new TypeReference<Object>() {});
@@ -518,7 +514,7 @@ public class SubscriptionService extends BaseService {
     @NonNull String id,
     @NonNull GenerateSignatureBookletParameters requestParameters
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildGenerateSignatureBookletRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Object>() {}));
@@ -546,30 +542,30 @@ public class SubscriptionService extends BaseService {
    * Retrieve configuration for issuing invoices
    *
    * @param id String Unique subscription identifier in Asaas
-   * @return response of {@code ApiSubscriptionInvoiceConfigGetResponseDto}
+   * @return response of {@code SubscriptionInvoiceConfigGetResponseDto}
    */
-  public ApiSubscriptionInvoiceConfigGetResponseDto retrieveConfigurationForIssuanceOfInvoices(@NonNull String id)
+  public SubscriptionInvoiceConfigGetResponseDto retrieveConfigurationForIssuanceOfInvoices(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveConfigurationForIssuanceOfInvoicesRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiSubscriptionInvoiceConfigGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<SubscriptionInvoiceConfigGetResponseDto>() {});
   }
 
   /**
    * Retrieve configuration for issuing invoices
    *
    * @param id String Unique subscription identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiSubscriptionInvoiceConfigGetResponseDto>}
+   * @return response of {@code CompletableFuture<SubscriptionInvoiceConfigGetResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionInvoiceConfigGetResponseDto> retrieveConfigurationForIssuanceOfInvoicesAsync(
+  public CompletableFuture<SubscriptionInvoiceConfigGetResponseDto> retrieveConfigurationForIssuanceOfInvoicesAsync(
     @NonNull String id
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRetrieveConfigurationForIssuanceOfInvoicesRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiSubscriptionInvoiceConfigGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<SubscriptionInvoiceConfigGetResponseDto>() {})
     );
   }
 
@@ -588,43 +584,43 @@ public class SubscriptionService extends BaseService {
    * Create configuration for issuing invoices
    *
    * @param id String Unique subscription identifier in Asaas
-   * @param apiSubscriptionConfigureInvoiceRequestDto {@link ApiSubscriptionConfigureInvoiceRequestDto} Request Body
-   * @return response of {@code ApiSubscriptionInvoiceConfigGetResponseDto}
+   * @param subscriptionConfigureInvoiceRequestDto {@link SubscriptionConfigureInvoiceRequestDto} Request Body
+   * @return response of {@code SubscriptionInvoiceConfigGetResponseDto}
    */
-  public ApiSubscriptionInvoiceConfigGetResponseDto createConfigurationForIssuanceOfInvoices(
+  public SubscriptionInvoiceConfigGetResponseDto createConfigurationForIssuanceOfInvoices(
     @NonNull String id,
-    @NonNull ApiSubscriptionConfigureInvoiceRequestDto apiSubscriptionConfigureInvoiceRequestDto
+    @NonNull SubscriptionConfigureInvoiceRequestDto subscriptionConfigureInvoiceRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request =
-      this.buildCreateConfigurationForIssuanceOfInvoicesRequest(id, apiSubscriptionConfigureInvoiceRequestDto);
+      this.buildCreateConfigurationForIssuanceOfInvoicesRequest(id, subscriptionConfigureInvoiceRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiSubscriptionInvoiceConfigGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<SubscriptionInvoiceConfigGetResponseDto>() {});
   }
 
   /**
    * Create configuration for issuing invoices
    *
    * @param id String Unique subscription identifier in Asaas
-   * @param apiSubscriptionConfigureInvoiceRequestDto {@link ApiSubscriptionConfigureInvoiceRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiSubscriptionInvoiceConfigGetResponseDto>}
+   * @param subscriptionConfigureInvoiceRequestDto {@link SubscriptionConfigureInvoiceRequestDto} Request Body
+   * @return response of {@code CompletableFuture<SubscriptionInvoiceConfigGetResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionInvoiceConfigGetResponseDto> createConfigurationForIssuanceOfInvoicesAsync(
+  public CompletableFuture<SubscriptionInvoiceConfigGetResponseDto> createConfigurationForIssuanceOfInvoicesAsync(
     @NonNull String id,
-    @NonNull ApiSubscriptionConfigureInvoiceRequestDto apiSubscriptionConfigureInvoiceRequestDto
+    @NonNull SubscriptionConfigureInvoiceRequestDto subscriptionConfigureInvoiceRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request =
-      this.buildCreateConfigurationForIssuanceOfInvoicesRequest(id, apiSubscriptionConfigureInvoiceRequestDto);
+      this.buildCreateConfigurationForIssuanceOfInvoicesRequest(id, subscriptionConfigureInvoiceRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiSubscriptionInvoiceConfigGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<SubscriptionInvoiceConfigGetResponseDto>() {})
     );
   }
 
   private Request buildCreateConfigurationForIssuanceOfInvoicesRequest(
     @NonNull String id,
-    @NonNull ApiSubscriptionConfigureInvoiceRequestDto apiSubscriptionConfigureInvoiceRequestDto
+    @NonNull SubscriptionConfigureInvoiceRequestDto subscriptionConfigureInvoiceRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.POST,
@@ -633,7 +629,7 @@ public class SubscriptionService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiSubscriptionConfigureInvoiceRequestDto)
+      .setJsonContent(subscriptionConfigureInvoiceRequestDto)
       .build();
   }
 
@@ -641,43 +637,43 @@ public class SubscriptionService extends BaseService {
    * Update configuration for issuing invoices
    *
    * @param id String Unique subscription identifier in Asaas
-   * @param apiSubscriptionInvoiceConfigUpdateRequestDto {@link ApiSubscriptionInvoiceConfigUpdateRequestDto} Request Body
-   * @return response of {@code ApiSubscriptionInvoiceConfigGetResponseDto}
+   * @param subscriptionInvoiceConfigUpdateRequestDto {@link SubscriptionInvoiceConfigUpdateRequestDto} Request Body
+   * @return response of {@code SubscriptionInvoiceConfigGetResponseDto}
    */
-  public ApiSubscriptionInvoiceConfigGetResponseDto updateConfigurationForIssuanceOfInvoices(
+  public SubscriptionInvoiceConfigGetResponseDto updateConfigurationForIssuanceOfInvoices(
     @NonNull String id,
-    @NonNull ApiSubscriptionInvoiceConfigUpdateRequestDto apiSubscriptionInvoiceConfigUpdateRequestDto
+    @NonNull SubscriptionInvoiceConfigUpdateRequestDto subscriptionInvoiceConfigUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request =
-      this.buildUpdateConfigurationForIssuanceOfInvoicesRequest(id, apiSubscriptionInvoiceConfigUpdateRequestDto);
+      this.buildUpdateConfigurationForIssuanceOfInvoicesRequest(id, subscriptionInvoiceConfigUpdateRequestDto);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiSubscriptionInvoiceConfigGetResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<SubscriptionInvoiceConfigGetResponseDto>() {});
   }
 
   /**
    * Update configuration for issuing invoices
    *
    * @param id String Unique subscription identifier in Asaas
-   * @param apiSubscriptionInvoiceConfigUpdateRequestDto {@link ApiSubscriptionInvoiceConfigUpdateRequestDto} Request Body
-   * @return response of {@code CompletableFuture<ApiSubscriptionInvoiceConfigGetResponseDto>}
+   * @param subscriptionInvoiceConfigUpdateRequestDto {@link SubscriptionInvoiceConfigUpdateRequestDto} Request Body
+   * @return response of {@code CompletableFuture<SubscriptionInvoiceConfigGetResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionInvoiceConfigGetResponseDto> updateConfigurationForIssuanceOfInvoicesAsync(
+  public CompletableFuture<SubscriptionInvoiceConfigGetResponseDto> updateConfigurationForIssuanceOfInvoicesAsync(
     @NonNull String id,
-    @NonNull ApiSubscriptionInvoiceConfigUpdateRequestDto apiSubscriptionInvoiceConfigUpdateRequestDto
+    @NonNull SubscriptionInvoiceConfigUpdateRequestDto subscriptionInvoiceConfigUpdateRequestDto
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request =
-      this.buildUpdateConfigurationForIssuanceOfInvoicesRequest(id, apiSubscriptionInvoiceConfigUpdateRequestDto);
+      this.buildUpdateConfigurationForIssuanceOfInvoicesRequest(id, subscriptionInvoiceConfigUpdateRequestDto);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiSubscriptionInvoiceConfigGetResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<SubscriptionInvoiceConfigGetResponseDto>() {})
     );
   }
 
   private Request buildUpdateConfigurationForIssuanceOfInvoicesRequest(
     @NonNull String id,
-    @NonNull ApiSubscriptionInvoiceConfigUpdateRequestDto apiSubscriptionInvoiceConfigUpdateRequestDto
+    @NonNull SubscriptionInvoiceConfigUpdateRequestDto subscriptionInvoiceConfigUpdateRequestDto
   ) {
     return new RequestBuilder(
       HttpMethod.PUT,
@@ -686,7 +682,7 @@ public class SubscriptionService extends BaseService {
     )
       .setApiKeyAuth(this.config.getApiKeyAuthConfig())
       .setPathParameter("id", id)
-      .setJsonContent(apiSubscriptionInvoiceConfigUpdateRequestDto)
+      .setJsonContent(subscriptionInvoiceConfigUpdateRequestDto)
       .build();
   }
 
@@ -694,30 +690,30 @@ public class SubscriptionService extends BaseService {
    * Remove configuration for issuing invoices
    *
    * @param id String Unique subscription identifier in Asaas
-   * @return response of {@code ApiSubscriptionDeleteInvoiceConfigResponseDto}
+   * @return response of {@code SubscriptionDeleteInvoiceConfigResponseDto}
    */
-  public ApiSubscriptionDeleteInvoiceConfigResponseDto removeConfigurationForIssuanceOfInvoices(@NonNull String id)
+  public SubscriptionDeleteInvoiceConfigResponseDto removeConfigurationForIssuanceOfInvoices(@NonNull String id)
     throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveConfigurationForIssuanceOfInvoicesRequest(id);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiSubscriptionDeleteInvoiceConfigResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<SubscriptionDeleteInvoiceConfigResponseDto>() {});
   }
 
   /**
    * Remove configuration for issuing invoices
    *
    * @param id String Unique subscription identifier in Asaas
-   * @return response of {@code CompletableFuture<ApiSubscriptionDeleteInvoiceConfigResponseDto>}
+   * @return response of {@code CompletableFuture<SubscriptionDeleteInvoiceConfigResponseDto>}
    */
-  public CompletableFuture<ApiSubscriptionDeleteInvoiceConfigResponseDto> removeConfigurationForIssuanceOfInvoicesAsync(
+  public CompletableFuture<SubscriptionDeleteInvoiceConfigResponseDto> removeConfigurationForIssuanceOfInvoicesAsync(
     @NonNull String id
   ) throws ApiError {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildRemoveConfigurationForIssuanceOfInvoicesRequest(id);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiSubscriptionDeleteInvoiceConfigResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<SubscriptionDeleteInvoiceConfigResponseDto>() {})
     );
   }
 
@@ -737,16 +733,16 @@ public class SubscriptionService extends BaseService {
    *
    * @param id String Unique subscription identifier in Asaas
    * @param requestParameters {@link ListInvoicesForSubscriptionChargesParameters} Request Parameters Object
-   * @return response of {@code ApiCustomerInvoiceListResponseDto}
+   * @return response of {@code InvoiceListResponseDto}
    */
-  public ApiCustomerInvoiceListResponseDto listInvoicesForSubscriptionCharges(
+  public InvoiceListResponseDto listInvoicesForSubscriptionCharges(
     @NonNull String id,
     @NonNull ListInvoicesForSubscriptionChargesParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListInvoicesForSubscriptionChargesRequest(id, requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<ApiCustomerInvoiceListResponseDto>() {});
+    return ModelConverter.convert(response, new TypeReference<InvoiceListResponseDto>() {});
   }
 
   /**
@@ -754,17 +750,17 @@ public class SubscriptionService extends BaseService {
    *
    * @param id String Unique subscription identifier in Asaas
    * @param requestParameters {@link ListInvoicesForSubscriptionChargesParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<ApiCustomerInvoiceListResponseDto>}
+   * @return response of {@code CompletableFuture<InvoiceListResponseDto>}
    */
-  public CompletableFuture<ApiCustomerInvoiceListResponseDto> listInvoicesForSubscriptionChargesAsync(
+  public CompletableFuture<InvoiceListResponseDto> listInvoicesForSubscriptionChargesAsync(
     @NonNull String id,
     @NonNull ListInvoicesForSubscriptionChargesParameters requestParameters
   ) throws ApiError, ValidationException {
-    this.addErrorMapping(400, ApiErrorResponseDto.class, ApiErrorResponseDtoException.class);
+    this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildListInvoicesForSubscriptionChargesRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
     return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<ApiCustomerInvoiceListResponseDto>() {})
+      ModelConverter.convert(response, new TypeReference<InvoiceListResponseDto>() {})
     );
   }
 

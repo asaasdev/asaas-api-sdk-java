@@ -25,7 +25,7 @@ A list of all methods in the `CustomerService` service. Click on the method name
 
 **Return Type**
 
-`ApiCustomerAccountListResponseDto`
+`CustomerListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -33,7 +33,7 @@ A list of all methods in the `CustomerService` service. Click on the method name
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerAccountListResponseDto;
+import com.asaas.apisdk.models.CustomerListResponseDto;
 import com.asaas.apisdk.models.ListCustomersParameters;
 
 public class Main {
@@ -55,7 +55,7 @@ public class Main {
       .externalReference("externalReference")
       .build();
 
-    ApiCustomerAccountListResponseDto response = asaasSdk.customer.listCustomers(requestParameters);
+    CustomerListResponseDto response = asaasSdk.customer.listCustomers(requestParameters);
 
     System.out.println(response);
   }
@@ -70,13 +70,13 @@ public class Main {
 
 **Parameters**
 
-| Name                             | Type                                                                              | Required | Description  |
-| :------------------------------- | :-------------------------------------------------------------------------------- | :------- | :----------- |
-| apiCustomerAccountSaveRequestDto | [ApiCustomerAccountSaveRequestDto](../models/ApiCustomerAccountSaveRequestDto.md) | ❌       | Request Body |
+| Name                   | Type                                                          | Required | Description  |
+| :--------------------- | :------------------------------------------------------------ | :------- | :----------- |
+| customerSaveRequestDto | [CustomerSaveRequestDto](../models/CustomerSaveRequestDto.md) | ❌       | Request Body |
 
 **Return Type**
 
-`ApiCustomerAccountGetResponseDto`
+`CustomerGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -84,8 +84,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerAccountGetResponseDto;
-import com.asaas.apisdk.models.ApiCustomerAccountSaveRequestDto;
+import com.asaas.apisdk.models.CustomerGetResponseDto;
+import com.asaas.apisdk.models.CustomerSaveRequestDto;
 
 public class Main {
 
@@ -96,7 +96,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerAccountSaveRequestDto apiCustomerAccountSaveRequestDto = ApiCustomerAccountSaveRequestDto.builder()
+    CustomerSaveRequestDto customerSaveRequestDto = CustomerSaveRequestDto.builder()
       .name("John Doe")
       .cpfCnpj("24971563792")
       .email("john.doe@asaas.com.br")
@@ -118,7 +118,7 @@ public class Main {
       .foreignCustomer(false)
       .build();
 
-    ApiCustomerAccountGetResponseDto response = asaasSdk.customer.createNewCustomer(apiCustomerAccountSaveRequestDto);
+    CustomerGetResponseDto response = asaasSdk.customer.createNewCustomer(customerSaveRequestDto);
 
     System.out.println(response);
   }
@@ -139,7 +139,7 @@ public class Main {
 
 **Return Type**
 
-`ApiCustomerAccountGetResponseDto`
+`CustomerGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -147,7 +147,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerAccountGetResponseDto;
+import com.asaas.apisdk.models.CustomerGetResponseDto;
 
 public class Main {
 
@@ -158,7 +158,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerAccountGetResponseDto response = asaasSdk.customer.retrieveASingleCustomer("cus_000005401844");
+    CustomerGetResponseDto response = asaasSdk.customer.retrieveASingleCustomer("cus_000005401844");
 
     System.out.println(response);
   }
@@ -173,14 +173,14 @@ public class Main {
 
 **Parameters**
 
-| Name                               | Type                                                                                  | Required | Description                                      |
-| :--------------------------------- | :------------------------------------------------------------------------------------ | :------- | :----------------------------------------------- |
-| id                                 | String                                                                                | ✅       | Unique identifier of the customer to be updated. |
-| apiCustomerAccountUpdateRequestDto | [ApiCustomerAccountUpdateRequestDto](../models/ApiCustomerAccountUpdateRequestDto.md) | ❌       | Request Body                                     |
+| Name                     | Type                                                              | Required | Description                                      |
+| :----------------------- | :---------------------------------------------------------------- | :------- | :----------------------------------------------- |
+| id                       | String                                                            | ✅       | Unique identifier of the customer to be updated. |
+| customerUpdateRequestDto | [CustomerUpdateRequestDto](../models/CustomerUpdateRequestDto.md) | ❌       | Request Body                                     |
 
 **Return Type**
 
-`ApiCustomerAccountGetResponseDto`
+`CustomerGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -188,8 +188,8 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerAccountGetResponseDto;
-import com.asaas.apisdk.models.ApiCustomerAccountUpdateRequestDto;
+import com.asaas.apisdk.models.CustomerGetResponseDto;
+import com.asaas.apisdk.models.CustomerUpdateRequestDto;
 
 public class Main {
 
@@ -200,7 +200,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerAccountUpdateRequestDto apiCustomerAccountUpdateRequestDto = ApiCustomerAccountUpdateRequestDto.builder()
+    CustomerUpdateRequestDto customerUpdateRequestDto = CustomerUpdateRequestDto.builder()
       .name("John Doe")
       .cpfCnpj("24971563792")
       .email("john.doe@asaas.com.br")
@@ -222,9 +222,9 @@ public class Main {
       .foreignCustomer(true)
       .build();
 
-    ApiCustomerAccountGetResponseDto response = asaasSdk.customer.updateExistingCustomer(
+    CustomerGetResponseDto response = asaasSdk.customer.updateExistingCustomer(
       "cus_000005401844",
-      apiCustomerAccountUpdateRequestDto
+      customerUpdateRequestDto
     );
 
     System.out.println(response);
@@ -246,7 +246,7 @@ public class Main {
 
 **Return Type**
 
-`ApiCustomerAccountDeleteResponseDto`
+`CustomerDeleteResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -254,7 +254,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerAccountDeleteResponseDto;
+import com.asaas.apisdk.models.CustomerDeleteResponseDto;
 
 public class Main {
 
@@ -265,7 +265,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerAccountDeleteResponseDto response = asaasSdk.customer.removeCustomer("cus_000005401844");
+    CustomerDeleteResponseDto response = asaasSdk.customer.removeCustomer("cus_000005401844");
 
     System.out.println(response);
   }
@@ -287,7 +287,7 @@ public class Main {
 
 **Return Type**
 
-`ApiCustomerAccountGetResponseDto`
+`CustomerGetResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -295,7 +295,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiCustomerAccountGetResponseDto;
+import com.asaas.apisdk.models.CustomerGetResponseDto;
 
 public class Main {
 
@@ -306,10 +306,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiCustomerAccountGetResponseDto response = asaasSdk.customer.restoreRemovedCustomer(
-      "cus_000005401844",
-      new Object()
-    );
+    CustomerGetResponseDto response = asaasSdk.customer.restoreRemovedCustomer("cus_000005401844", new Object());
 
     System.out.println(response);
   }
@@ -330,7 +327,7 @@ public class Main {
 
 **Return Type**
 
-`ApiNotificationListResponseDto`
+`NotificationListResponseDto`
 
 **Example Usage Code Snippet**
 
@@ -338,7 +335,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.ApiNotificationListResponseDto;
+import com.asaas.apisdk.models.NotificationListResponseDto;
 
 public class Main {
 
@@ -349,7 +346,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ApiNotificationListResponseDto response = asaasSdk.customer.retrieveNotificationsFromACustomer("cus_000005401844");
+    NotificationListResponseDto response = asaasSdk.customer.retrieveNotificationsFromACustomer("cus_000005401844");
 
     System.out.println(response);
   }
