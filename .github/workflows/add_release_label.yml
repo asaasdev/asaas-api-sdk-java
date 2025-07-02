@@ -1,0 +1,58 @@
+name: Adicionar label de release quando versão for alterada
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  verificar-versao:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Fazer checkout do código do PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Instalar xmllint
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
+
+      - name: Obter versão base (branch de destino)
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          git checkout origin/${{ github.event.pull_request.base.ref }}
+          VERSION_BASE=$(xmllint --xpath "/*[local-name()='project']/*[local-name()='version']/text()" pom.xml)
+          echo "VERSION_BASE=$VERSION_BASE" >> $GITHUB_ENV
+
+      - name: Obter versão do head (branch do PR)
+        run: |
+          git checkout ${{ github.event.pull_request.head.ref }}
+          VERSION_HEAD=$(xmllint --xpath "/*[local-name()='project']/*[local-name()='version']/text()" pom.xml)
+          echo "VERSION_HEAD=$VERSION_HEAD" >> $GITHUB_ENV
+
+      - name: Comparar versões
+        id: compare
+        run: |
+          echo "Versão base: $VERSION_BASE"
+          echo "Versão do PR: $VERSION_HEAD"
+          if [ "$VERSION_BASE" != "$VERSION_HEAD" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Adicionar label 'release' se versão mudou
+        if: steps.compare.outputs.changed == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['release']
+            })
