@@ -8,7 +8,7 @@
 
     <groupId>com.asaas</groupId>
     <artifactId>api-sdk</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 
     <!-- See https://central.sonatype.org/publish/requirements/#project-name-description-and-url -->
     <name>${project.groupId}:${project.artifactId}</name>
