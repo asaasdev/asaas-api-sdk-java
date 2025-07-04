@@ -120,7 +120,7 @@ public class Main {
 			.email("john.doe@asaas.com.br")
 			.municipalInscription("21779501")
 			.simplesNacional(false)
-			.culturalProjectsPromoter(true)
+			.culturalProjectsPromoter(false)
 			.cnae("6209100")
 			.specialTaxRegime("1")
 			.serviceListItem("serviceListItem")
@@ -131,7 +131,7 @@ public class Main {
 			.username("johndoe")
 			.password("password")
 			.accessToken("accessToken")
-			.certificateFile(enim ut cupid)
+			.certificateFile(nostrud sit in)
 			.certificatePassword("certificatePassword")
 			.nationalPortalTaxCalculationRegime("nationalPortalTaxCalculationRegime")
 			.build();
@@ -139,7 +139,7 @@ public class Main {
 			.email("john.doe@asaas.com.br")
 			.municipalInscription("21779501")
 			.simplesNacional(false)
-			.culturalProjectsPromoter(true)
+			.culturalProjectsPromoter(false)
 			.cnae("6209100")
 			.specialTaxRegime("1")
 			.serviceListItem("serviceListItem")
@@ -150,7 +150,7 @@ public class Main {
 			.username("johndoe")
 			.password("password")
 			.accessToken("accessToken")
-			.certificateFile(enim ut cupid)
+			.certificateFile(nostrud sit in)
 			.certificatePassword("certificatePassword")
 			.nationalPortalTaxCalculationRegime("nationalPortalTaxCalculationRegime")
 			.build();
@@ -245,7 +245,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListNbsCodesParameters requestParameters = ListNbsCodesParameters.builder()
-      .offset(5L)
+      .offset(6L)
       .limit(10L)
       .codeDescription("1.0101")
       .build();

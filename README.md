@@ -1,4 +1,4 @@
-# AsaasSdk Java SDK 1.0.2
+# AsaasSdk Java SDK 1.0.3
 
 Welcome to the AsaasSdk SDK documentation. This guide will help you get started with integrating and using the AsaasSdk SDK in your project.
 
@@ -7,7 +7,7 @@ Welcome to the AsaasSdk SDK documentation. This guide will help you get started 
 ## Versions
 
 - API version: `3.0.0`
-- SDK version: `1.0.2`
+- SDK version: `1.0.3`
 
 ## About the API
 
@@ -42,14 +42,14 @@ If you use Maven, place the following within the _dependency_ tag in your `pom.x
 <dependency>
     <groupId>com.asaas</groupId>
     <artifactId>api-sdk</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 
 If you use Gradle, paste the next line inside the _dependencies_ block of your `build.gradle` file:
 
 ```Gradle
-implementation group: com.asaas, name: api-sdk, version: 1.0.2
+implementation group: com.asaas, name: api-sdk, version: 1.0.3
 ```
 
 If you use JAR files, package the SDK by running the following command:
@@ -320,7 +320,6 @@ The SDK includes several models that represent the data structures used in API r
 | [InstallmentSaveWithCreditCardRequestDto](documentation/models/InstallmentSaveWithCreditCardRequestDto.md)                                                                                                     |                                                                                                                                    |
 | [InstallmentDeleteResponseDto](documentation/models/InstallmentDeleteResponseDto.md)                                                                                                                           |                                                                                                                                    |
 | [InstallmentListPaymentsRequestPaymentStatus](documentation/models/InstallmentListPaymentsRequestPaymentStatus.md)                                                                                             | Filter by payment status                                                                                                           |
-| [InstallmentPaymentBookResponseDto](documentation/models/InstallmentPaymentBookResponseDto.md)                                                                                                                 |                                                                                                                                    |
 | [InstallmentUpdateSplitRequestDto](documentation/models/InstallmentUpdateSplitRequestDto.md)                                                                                                                   |                                                                                                                                    |
 | [InstallmentUpdateSplitResponseDto](documentation/models/InstallmentUpdateSplitResponseDto.md)                                                                                                                 |                                                                                                                                    |
 | [SubscriptionListResponseDto](documentation/models/SubscriptionListResponseDto.md)                                                                                                                             |                                                                                                                                    |
@@ -682,7 +681,7 @@ The SDK includes several models that represent the data structures used in API r
 | [GenerateInstallmentBookletParameters](documentation/models/GenerateInstallmentBookletParameters.md)                                                                                                           |                                                                                                                                    |
 | [ListSubscriptionsParameters](documentation/models/ListSubscriptionsParameters.md)                                                                                                                             |                                                                                                                                    |
 | [ListPaymentsOfASubscriptionParameters](documentation/models/ListPaymentsOfASubscriptionParameters.md)                                                                                                         |                                                                                                                                    |
-| [GenerateSignatureBookletParameters](documentation/models/GenerateSignatureBookletParameters.md)                                                                                                               |                                                                                                                                    |
+| [GenerateSubscriptionBookletParameters](documentation/models/GenerateSubscriptionBookletParameters.md)                                                                                                         |                                                                                                                                    |
 | [ListInvoicesForSubscriptionChargesParameters](documentation/models/ListInvoicesForSubscriptionChargesParameters.md)                                                                                           |                                                                                                                                    |
 | [ListKeysParameters](documentation/models/ListKeysParameters.md)                                                                                                                                               |                                                                                                                                    |
 | [ListTransactionsParameters](documentation/models/ListTransactionsParameters.md)                                                                                                                               |                                                                                                                                    |

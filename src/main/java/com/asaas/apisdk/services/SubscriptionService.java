@@ -10,7 +10,7 @@ import com.asaas.apisdk.http.HttpMethod;
 import com.asaas.apisdk.http.ModelConverter;
 import com.asaas.apisdk.http.util.RequestBuilder;
 import com.asaas.apisdk.models.ErrorResponseDto;
-import com.asaas.apisdk.models.GenerateSignatureBookletParameters;
+import com.asaas.apisdk.models.GenerateSubscriptionBookletParameters;
 import com.asaas.apisdk.models.InvoiceListResponseDto;
 import com.asaas.apisdk.models.ListInvoicesForSubscriptionChargesParameters;
 import com.asaas.apisdk.models.ListPaymentsOfASubscriptionParameters;
@@ -490,39 +490,39 @@ public class SubscriptionService extends BaseService {
    * Generate subscription booklet
    *
    * @param id String Unique subscription identifier in Asaas
-   * @param requestParameters {@link GenerateSignatureBookletParameters} Request Parameters Object
-   * @return response of {@code Object}
+   * @param requestParameters {@link GenerateSubscriptionBookletParameters} Request Parameters Object
+   * @return response of {@code byte[]}
    */
-  public Object generateSignatureBooklet(
+  public byte[] generateSubscriptionBooklet(
     @NonNull String id,
-    @NonNull GenerateSignatureBookletParameters requestParameters
+    @NonNull GenerateSubscriptionBookletParameters requestParameters
   ) throws ApiError {
     this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
-    Request request = this.buildGenerateSignatureBookletRequest(id, requestParameters);
+    Request request = this.buildGenerateSubscriptionBookletRequest(id, requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<Object>() {});
+    return ModelConverter.readBytes(response);
   }
 
   /**
    * Generate subscription booklet
    *
    * @param id String Unique subscription identifier in Asaas
-   * @param requestParameters {@link GenerateSignatureBookletParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<Object>}
+   * @param requestParameters {@link GenerateSubscriptionBookletParameters} Request Parameters Object
+   * @return response of {@code CompletableFuture<byte[]>}
    */
-  public CompletableFuture<Object> generateSignatureBookletAsync(
+  public CompletableFuture<byte[]> generateSubscriptionBookletAsync(
     @NonNull String id,
-    @NonNull GenerateSignatureBookletParameters requestParameters
+    @NonNull GenerateSubscriptionBookletParameters requestParameters
   ) throws ApiError {
     this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
-    Request request = this.buildGenerateSignatureBookletRequest(id, requestParameters);
+    Request request = this.buildGenerateSubscriptionBookletRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
-    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Object>() {}));
+    return futureResponse.thenApplyAsync(response -> ModelConverter.readBytes(response));
   }
 
-  private Request buildGenerateSignatureBookletRequest(
+  private Request buildGenerateSubscriptionBookletRequest(
     @NonNull String id,
-    @NonNull GenerateSignatureBookletParameters requestParameters
+    @NonNull GenerateSubscriptionBookletParameters requestParameters
   ) {
     return new RequestBuilder(
       HttpMethod.GET,

@@ -72,33 +72,31 @@ import com.asaas.apisdk.models.AccountDocumentSaveRequestAccountDocumentType;
 import com.asaas.apisdk.models.AccountDocumentSaveRequestDto;
 
 public class Main {
+    public static void main(String[] args) {
+		AsaasSdkConfig config = AsaasSdkConfig.builder()
+			.apiKeyAuthConfig(
+				ApiKeyAuthConfig.builder()
+					.apiKey("YOUR_API_KEY")
+					.build()
+			)
+			.build();
 
-  public static void main(String[] args) {
-    AsaasSdkConfig config = AsaasSdkConfig.builder()
-      .apiKeyAuthConfig(ApiKeyAuthConfig.builder().apiKey("YOUR_API_KEY").build())
-      .build();
+		AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    AsaasSdk asaasSdk = new AsaasSdk(config);
+		AccountDocumentSaveRequestDto accountDocumentSaveRequestDto = AccountDocumentSaveRequestDto.builder()
+			.documentFile(ut Ut )
+			.type(AccountDocumentSaveRequestAccountDocumentType.IDENTIFICATION)
+			.build();
+		AccountDocumentSaveRequestDto accountDocumentSaveRequestDto = AccountDocumentSaveRequestDto.builder()
+			.documentFile(ut Ut )
+			.type(AccountDocumentSaveRequestAccountDocumentType.IDENTIFICATION)
+			.build();
 
-    AccountDocumentSaveRequestDto accountDocumentSaveRequestDto = AccountDocumentSaveRequestDto.builder()
-      .documentFile(sintl)
-      .type(AccountDocumentSaveRequestAccountDocumentType.IDENTIFICATION)
-      .build();
-    AccountDocumentSaveRequestDto accountDocumentSaveRequestDto = AccountDocumentSaveRequestDto.builder()
-      .documentFile(sintl)
-      .type(AccountDocumentSaveRequestAccountDocumentType.IDENTIFICATION)
-      .build();
+		AccountDocumentGetResponseDto response = asaasSdk.accountDocument.sendDocuments("8d257732-2220-11ec-b695-b6af4a64184d", accountDocumentSaveRequestDto, accountDocumentSaveRequestDto);
 
-    AccountDocumentGetResponseDto response = asaasSdk.accountDocument.sendDocuments(
-      "8d257732-2220-11ec-b695-b6af4a64184d",
-      accountDocumentSaveRequestDto,
-      accountDocumentSaveRequestDto
-    );
-
-    System.out.println(response);
-  }
+		System.out.println(response);
+    }
 }
-
 ```
 
 ## viewDocumentSent
@@ -170,29 +168,31 @@ import com.asaas.apisdk.models.AccountDocumentGetResponseDto;
 import com.asaas.apisdk.models.AccountDocumentUpdateRequestDto;
 
 public class Main {
-    public static void main(String[] args) {
-		AsaasSdkConfig config = AsaasSdkConfig.builder()
-			.apiKeyAuthConfig(
-				ApiKeyAuthConfig.builder()
-					.apiKey("YOUR_API_KEY")
-					.build()
-			)
-			.build();
 
-		AsaasSdk asaasSdk = new AsaasSdk(config);
+  public static void main(String[] args) {
+    AsaasSdkConfig config = AsaasSdkConfig.builder()
+      .apiKeyAuthConfig(ApiKeyAuthConfig.builder().apiKey("YOUR_API_KEY").build())
+      .build();
 
-		AccountDocumentUpdateRequestDto accountDocumentUpdateRequestDto = AccountDocumentUpdateRequestDto.builder()
-			.documentFile(dolor cul)
-			.build();
-		AccountDocumentUpdateRequestDto accountDocumentUpdateRequestDto = AccountDocumentUpdateRequestDto.builder()
-			.documentFile(dolor cul)
-			.build();
+    AsaasSdk asaasSdk = new AsaasSdk(config);
 
-		AccountDocumentGetResponseDto response = asaasSdk.accountDocument.updateSentDocument("8d257732-2220-11ec-b695-b6af4a64184d", accountDocumentUpdateRequestDto, accountDocumentUpdateRequestDto);
+    AccountDocumentUpdateRequestDto accountDocumentUpdateRequestDto = AccountDocumentUpdateRequestDto.builder()
+      .documentFile(sintl)
+      .build();
+    AccountDocumentUpdateRequestDto accountDocumentUpdateRequestDto = AccountDocumentUpdateRequestDto.builder()
+      .documentFile(sintl)
+      .build();
 
-		System.out.println(response);
-    }
+    AccountDocumentGetResponseDto response = asaasSdk.accountDocument.updateSentDocument(
+      "8d257732-2220-11ec-b695-b6af4a64184d",
+      accountDocumentUpdateRequestDto,
+      accountDocumentUpdateRequestDto
+    );
+
+    System.out.println(response);
+  }
 }
+
 ```
 
 ## removeSentDocument

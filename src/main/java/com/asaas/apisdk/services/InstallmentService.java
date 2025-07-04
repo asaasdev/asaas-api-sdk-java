@@ -14,7 +14,6 @@ import com.asaas.apisdk.models.GenerateInstallmentBookletParameters;
 import com.asaas.apisdk.models.InstallmentDeleteResponseDto;
 import com.asaas.apisdk.models.InstallmentGetResponseDto;
 import com.asaas.apisdk.models.InstallmentListResponseDto;
-import com.asaas.apisdk.models.InstallmentPaymentBookResponseDto;
 import com.asaas.apisdk.models.InstallmentSaveRequestDto;
 import com.asaas.apisdk.models.InstallmentSaveWithCreditCardRequestDto;
 import com.asaas.apisdk.models.InstallmentUpdateSplitRequestDto;
@@ -367,16 +366,16 @@ public class InstallmentService extends BaseService {
    *
    * @param id String Unique installment identifier in Asaas
    * @param requestParameters {@link GenerateInstallmentBookletParameters} Request Parameters Object
-   * @return response of {@code InstallmentPaymentBookResponseDto}
+   * @return response of {@code byte[]}
    */
-  public InstallmentPaymentBookResponseDto generateInstallmentBooklet(
+  public byte[] generateInstallmentBooklet(
     @NonNull String id,
     @NonNull GenerateInstallmentBookletParameters requestParameters
   ) throws ApiError {
     this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildGenerateInstallmentBookletRequest(id, requestParameters);
     Response response = this.execute(request);
-    return ModelConverter.convert(response, new TypeReference<InstallmentPaymentBookResponseDto>() {});
+    return ModelConverter.readBytes(response);
   }
 
   /**
@@ -384,18 +383,16 @@ public class InstallmentService extends BaseService {
    *
    * @param id String Unique installment identifier in Asaas
    * @param requestParameters {@link GenerateInstallmentBookletParameters} Request Parameters Object
-   * @return response of {@code CompletableFuture<InstallmentPaymentBookResponseDto>}
+   * @return response of {@code CompletableFuture<byte[]>}
    */
-  public CompletableFuture<InstallmentPaymentBookResponseDto> generateInstallmentBookletAsync(
+  public CompletableFuture<byte[]> generateInstallmentBookletAsync(
     @NonNull String id,
     @NonNull GenerateInstallmentBookletParameters requestParameters
   ) throws ApiError {
     this.addErrorMapping(400, ErrorResponseDto.class, ErrorResponseDtoException.class);
     Request request = this.buildGenerateInstallmentBookletRequest(id, requestParameters);
     CompletableFuture<Response> futureResponse = this.executeAsync(request);
-    return futureResponse.thenApplyAsync(response ->
-      ModelConverter.convert(response, new TypeReference<InstallmentPaymentBookResponseDto>() {})
-    );
+    return futureResponse.thenApplyAsync(response -> ModelConverter.readBytes(response));
   }
 
   private Request buildGenerateInstallmentBookletRequest(

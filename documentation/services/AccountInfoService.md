@@ -183,7 +183,7 @@ public class Main {
         .infoBackgroundColor("#000fff")
         .fontColor("#00ff0")
         .enabled(true)
-        .logoFile(adipisicing)
+        .logoFile(repre)
         .build();
     PaymentCheckoutConfigSaveRequestDto paymentCheckoutConfigSaveRequestDto =
       PaymentCheckoutConfigSaveRequestDto.builder()
@@ -191,7 +191,7 @@ public class Main {
         .infoBackgroundColor("#000fff")
         .fontColor("#00ff0")
         .enabled(true)
-        .logoFile(adipisicing)
+        .logoFile(repre)
         .build();
 
     PaymentCheckoutConfigGetResponseDto response = asaasSdk.accountInfo.savePaymentCheckoutPersonalization(

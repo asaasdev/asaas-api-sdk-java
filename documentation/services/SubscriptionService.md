@@ -12,7 +12,7 @@ A list of all methods in the `SubscriptionService` service. Click on the method 
 | [removeSubscription](#removesubscription)                                                 |                                                                                                                                                                             |
 | [updateSubscriptionCreditCard](#updatesubscriptioncreditcard)                             | This endpoint updates the subscription's credit card without triggering an immediate charge. Additionally, all pending charges linked to the subscription are also updated. |
 | [listPaymentsOfASubscription](#listpaymentsofasubscription)                               |                                                                                                                                                                             |
-| [generateSignatureBooklet](#generatesignaturebooklet)                                     |                                                                                                                                                                             |
+| [generateSubscriptionBooklet](#generatesubscriptionbooklet)                               |                                                                                                                                                                             |
 | [retrieveConfigurationForIssuanceOfInvoices](#retrieveconfigurationforissuanceofinvoices) |                                                                                                                                                                             |
 | [createConfigurationForIssuanceOfInvoices](#createconfigurationforissuanceofinvoices)     |                                                                                                                                                                             |
 | [updateConfigurationForIssuanceOfInvoices](#updateconfigurationforissuanceofinvoices)     |                                                                                                                                                                             |
@@ -55,7 +55,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListSubscriptionsParameters requestParameters = ListSubscriptionsParameters.builder()
-      .offset(10L)
+      .offset(1L)
       .limit(10L)
       .customer("customer")
       .customerGroupName("customerGroupName")
@@ -135,8 +135,8 @@ public class Main {
 
     SubscriptionSplitRequestDto subscriptionSplitRequestDto = SubscriptionSplitRequestDto.builder()
       .walletId("walletId")
-      .fixedValue(8.29D)
-      .percentualValue(7.44D)
+      .fixedValue(3.49D)
+      .percentualValue(7.56D)
       .externalReference("externalReference")
       .description("description")
       .build();
@@ -159,7 +159,7 @@ public class Main {
       .cycle(SubscriptionSaveRequestCycle.WEEKLY)
       .description("Pro Plan Subscription")
       .endDate("endDate")
-      .maxPayments(10L)
+      .maxPayments(6L)
       .externalReference("externalReference")
       .split(splitList)
       .callback(paymentCallbackRequestDto)
@@ -234,8 +234,8 @@ public class Main {
 
     SubscriptionSplitRequestDto subscriptionSplitRequestDto = SubscriptionSplitRequestDto.builder()
       .walletId("walletId")
-      .fixedValue(8.29D)
-      .percentualValue(7.44D)
+      .fixedValue(3.49D)
+      .percentualValue(7.56D)
       .externalReference("externalReference")
       .description("description")
       .build();
@@ -278,7 +278,7 @@ public class Main {
         .cycle(SubscriptionSaveWithCreditCardRequestCycle.WEEKLY)
         .description("Pro Plan Subscription")
         .endDate("endDate")
-        .maxPayments(0L)
+        .maxPayments(7L)
         .externalReference("externalReference")
         .split(splitList)
         .callback(paymentCallbackRequestDto)
@@ -399,8 +399,8 @@ public class Main {
 
     SubscriptionSplitRequestDto subscriptionSplitRequestDto = SubscriptionSplitRequestDto.builder()
       .walletId("walletId")
-      .fixedValue(8.29D)
-      .percentualValue(7.44D)
+      .fixedValue(3.49D)
+      .percentualValue(7.56D)
       .externalReference("externalReference")
       .description("description")
       .build();
@@ -605,21 +605,21 @@ public class Main {
 
 ```
 
-## generateSignatureBooklet
+## generateSubscriptionBooklet
 
 - HTTP Method: `GET`
 - Endpoint: `/v3/subscriptions/{id}/paymentBook`
 
 **Parameters**
 
-| Name              | Type                                                                                  | Required | Description                             |
-| :---------------- | :------------------------------------------------------------------------------------ | :------- | :-------------------------------------- |
-| id                | String                                                                                | ✅       | Unique subscription identifier in Asaas |
-| requestParameters | [GenerateSignatureBookletParameters](../models/GenerateSignatureBookletParameters.md) | ❌       | Request Parameters Object               |
+| Name              | Type                                                                                        | Required | Description                             |
+| :---------------- | :------------------------------------------------------------------------------------------ | :------- | :-------------------------------------- |
+| id                | String                                                                                      | ✅       | Unique subscription identifier in Asaas |
+| requestParameters | [GenerateSubscriptionBookletParameters](../models/GenerateSubscriptionBookletParameters.md) | ❌       | Request Parameters Object               |
 
 **Return Type**
 
-`Object`
+`byte[]`
 
 **Example Usage Code Snippet**
 
@@ -627,7 +627,7 @@ public class Main {
 import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
-import com.asaas.apisdk.models.GenerateSignatureBookletParameters;
+import com.asaas.apisdk.models.GenerateSubscriptionBookletParameters;
 
 public class Main {
 
@@ -638,14 +638,14 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    GenerateSignatureBookletParameters requestParameters = GenerateSignatureBookletParameters.builder()
-      .month(2L)
-      .year(5L)
+    GenerateSubscriptionBookletParameters requestParameters = GenerateSubscriptionBookletParameters.builder()
+      .month(10L)
+      .year(10L)
       .sort("sort")
       .order("asc")
       .build();
 
-    Object response = asaasSdk.subscription.generateSignatureBooklet("sub_VXJBYgP2u0eO", requestParameters);
+    byte[] response = asaasSdk.subscription.generateSubscriptionBooklet("sub_VXJBYgP2u0eO", requestParameters);
 
     System.out.println(response);
   }
@@ -749,8 +749,8 @@ public class Main {
         .updatePayment(true)
         .deductions(55D)
         .effectiveDatePeriod(SubscriptionConfigureInvoiceRequestDtoEffectiveDatePeriod.ON_PAYMENT_CONFIRMATION)
-        .receivedOnly(true)
-        .daysBeforeDueDate(9L)
+        .receivedOnly(false)
+        .daysBeforeDueDate(2L)
         .observations("Regarding March work")
         .taxes(invoiceTaxesDto)
         .build();
@@ -817,7 +817,7 @@ public class Main {
         .deductions(55D)
         .effectiveDatePeriod(SubscriptionInvoiceConfigUpdateRequestDtoEffectiveDatePeriod.ON_PAYMENT_CONFIRMATION)
         .receivedOnly(true)
-        .daysBeforeDueDate(10L)
+        .daysBeforeDueDate(2L)
         .observations("Regarding March work")
         .taxes(invoiceTaxesDto)
         .build();
@@ -911,7 +911,7 @@ public class Main {
 
     ListInvoicesForSubscriptionChargesParameters requestParameters =
       ListInvoicesForSubscriptionChargesParameters.builder()
-        .offset(0L)
+        .offset(5L)
         .limit(10L)
         .effectiveDateGe("2024-08-20")
         .effectiveDateLe("2024-08-20")

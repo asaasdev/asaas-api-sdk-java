@@ -18,7 +18,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @ToString
 @EqualsAndHashCode
 @Jacksonized
-public class GenerateSignatureBookletParameters {
+public class GenerateSubscriptionBookletParameters {
 
   /**
    * Final month for generating the booklet
@@ -65,12 +65,12 @@ public class GenerateSignatureBookletParameters {
   }
 
   // Overwrite lombok builder methods
-  public static class GenerateSignatureBookletParametersBuilder {
+  public static class GenerateSubscriptionBookletParametersBuilder {
 
     private JsonNullable<Long> month = JsonNullable.undefined();
 
     @JsonProperty("month")
-    public GenerateSignatureBookletParametersBuilder month(Long value) {
+    public GenerateSubscriptionBookletParametersBuilder month(Long value) {
       if (value == null) {
         throw new IllegalStateException("month cannot be null");
       }
@@ -81,7 +81,7 @@ public class GenerateSignatureBookletParameters {
     private JsonNullable<Long> year = JsonNullable.undefined();
 
     @JsonProperty("year")
-    public GenerateSignatureBookletParametersBuilder year(Long value) {
+    public GenerateSubscriptionBookletParametersBuilder year(Long value) {
       if (value == null) {
         throw new IllegalStateException("year cannot be null");
       }
@@ -92,7 +92,7 @@ public class GenerateSignatureBookletParameters {
     private JsonNullable<String> sort = JsonNullable.undefined();
 
     @JsonProperty("sort")
-    public GenerateSignatureBookletParametersBuilder sort(String value) {
+    public GenerateSubscriptionBookletParametersBuilder sort(String value) {
       if (value == null) {
         throw new IllegalStateException("sort cannot be null");
       }
@@ -103,7 +103,7 @@ public class GenerateSignatureBookletParameters {
     private JsonNullable<String> order = JsonNullable.undefined();
 
     @JsonProperty("order")
-    public GenerateSignatureBookletParametersBuilder order(String value) {
+    public GenerateSubscriptionBookletParametersBuilder order(String value) {
       if (value == null) {
         throw new IllegalStateException("order cannot be null");
       }

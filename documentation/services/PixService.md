@@ -47,7 +47,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListKeysParameters requestParameters = ListKeysParameters.builder()
-      .offset(8L)
+      .offset(7L)
       .limit(10L)
       .status(PixAddressKeyListRequestPixAddressKeyStatus.AWAITING_ACTIVATION)
       .statusList("statusList")
@@ -227,7 +227,7 @@ public class Main {
       .value(50D)
       .format(Format.ALL)
       .expirationDate("2023-05-05 14:20:50")
-      .expirationSeconds(2L)
+      .expirationSeconds(6L)
       .allowsMultiplePayments(true)
       .externalReference("externalReference")
       .build();

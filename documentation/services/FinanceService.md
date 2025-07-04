@@ -83,7 +83,7 @@ public class Main {
       .customer("cus_3EZfkUThUMAt")
       .billingType(FinanceGetPaymentStatisticsRequestBillingType.BOLETO)
       .status(FinanceGetPaymentStatisticsRequestPaymentStatus.PENDING)
-      .anticipated(true)
+      .anticipated(false)
       .dateCreatedGe("2023-01-01")
       .dateCreatedLe("2023-01-01")
       .dueDateGe("2023-01-01")

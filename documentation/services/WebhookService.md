@@ -45,7 +45,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    ListWebhooksParameters requestParameters = ListWebhooksParameters.builder().offset(10L).limit(10L).build();
+    ListWebhooksParameters requestParameters = ListWebhooksParameters.builder().offset(5L).limit(10L).build();
 
     WebhookConfigListResponseDto response = asaasSdk.webhook.listWebhooks(requestParameters);
 

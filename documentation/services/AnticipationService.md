@@ -88,7 +88,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListAnticipationsParameters requestParameters = ListAnticipationsParameters.builder()
-      .offset(0L)
+      .offset(1L)
       .limit(10L)
       .payment("payment")
       .installment("installment")
@@ -140,12 +140,12 @@ public class Main {
     AnticipationSaveRequestDto anticipationSaveRequestDto = AnticipationSaveRequestDto.builder()
       .installment("installment")
       .payment("pay_626366773834")
-      .documents(offic)
+      .documents(occaec)
       .build();
     AnticipationSaveRequestDto anticipationSaveRequestDto = AnticipationSaveRequestDto.builder()
       .installment("installment")
       .payment("pay_626366773834")
-      .documents(offic)
+      .documents(occaec)
       .build();
 
     AnticipationGetResponseDto response = asaasSdk.anticipation.requestAnticipation(

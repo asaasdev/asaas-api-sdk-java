@@ -46,7 +46,7 @@ public class Main {
 
     PixTransactionQrCodeSaveRequestDto pixTransactionQrCodeSaveRequestDto = PixTransactionQrCodeSaveRequestDto.builder()
       .payload("payload")
-      .changeValue(4.89D)
+      .changeValue(8.23D)
       .build();
 
     PixTransactionSaveRequestDto pixTransactionSaveRequestDto = PixTransactionSaveRequestDto.builder()
@@ -101,7 +101,7 @@ public class Main {
       .payload(
         "00020101021226730014br.gov.bcb.pix2551pix-h.asaas.com/pixqrcode/cobv/pay_76575613967995145204000053039865802BR5905ASAAS6009Joinville61088922827162070503***63045E7A"
       )
-      .changeValue(7.29D)
+      .changeValue(7.59D)
       .build();
 
     PixQrCodeDecodeResponseDto response = asaasSdk.pixTransaction.decodeAQrcodeForPayment(pixQrCodeDecodeRequestDto);
@@ -190,7 +190,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListTransactionsParameters requestParameters = ListTransactionsParameters.builder()
-      .offset(4L)
+      .offset(1L)
       .limit(10L)
       .status(PixTransactionListRequestPixTransactionStatus.AWAITING_BALANCE_VALIDATION)
       .type(PixTransactionListRequestPixTransactionType.DEBIT)
