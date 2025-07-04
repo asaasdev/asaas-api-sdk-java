@@ -40,7 +40,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     RetrieveExtractParameters requestParameters = RetrieveExtractParameters.builder()
-      .offset(1L)
+      .offset(10L)
       .limit(10L)
       .startDate("2023-03-01")
       .finishDate("2023-03-31")

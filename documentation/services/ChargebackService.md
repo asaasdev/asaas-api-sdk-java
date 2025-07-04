@@ -100,7 +100,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListChargebacksParameters requestParameters = ListChargebacksParameters.builder()
-      .offset(9L)
+      .offset(4L)
       .limit(10L)
       .creditCardBrand(ChargebackListRequestCreditCardBrand.VISA)
       .originDisputeDateLe("2024-12-05")

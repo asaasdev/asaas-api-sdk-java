@@ -46,7 +46,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListInvoicesParameters requestParameters = ListInvoicesParameters.builder()
-      .offset(7L)
+      .offset(10L)
       .limit(10L)
       .effectiveDateGe("2024-08-03")
       .effectiveDateLe("2024-09-03")
@@ -122,7 +122,7 @@ public class Main {
       .municipalServiceId("municipalServiceId")
       .municipalServiceCode("1.01")
       .municipalServiceName("Systems analysis and development")
-      .updatePayment(true)
+      .updatePayment(false)
       .taxes(invoiceTaxesDto)
       .build();
 
@@ -226,7 +226,7 @@ public class Main {
       .value(300D)
       .deductions(10D)
       .effectiveDate("2024-08-20")
-      .updatePayment(false)
+      .updatePayment(true)
       .taxes(invoiceTaxesDto)
       .build();
 

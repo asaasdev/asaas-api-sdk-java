@@ -418,7 +418,7 @@ public class Main {
 
 **Return Type**
 
-`InstallmentPaymentBookResponseDto`
+`byte[]`
 
 **Example Usage Code Snippet**
 
@@ -427,7 +427,6 @@ import com.asaas.apisdk.AsaasSdk;
 import com.asaas.apisdk.config.ApiKeyAuthConfig;
 import com.asaas.apisdk.config.AsaasSdkConfig;
 import com.asaas.apisdk.models.GenerateInstallmentBookletParameters;
-import com.asaas.apisdk.models.InstallmentPaymentBookResponseDto;
 
 public class Main {
 
@@ -443,7 +442,7 @@ public class Main {
       .order("asc")
       .build();
 
-    InstallmentPaymentBookResponseDto response = asaasSdk.installment.generateInstallmentBooklet(
+    byte[] response = asaasSdk.installment.generateInstallmentBooklet(
       "2765d086-c7c5-5cca-898a-4262d212587c",
       requestParameters
     );

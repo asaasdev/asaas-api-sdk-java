@@ -44,7 +44,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListSubaccountsParameters requestParameters = ListSubaccountsParameters.builder()
-      .offset(6L)
+      .offset(0L)
       .limit(10L)
       .cpfCnpj("cpfCnpj")
       .email("email")

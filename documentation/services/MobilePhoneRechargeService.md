@@ -44,7 +44,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListMobileRechargesParameters requestParameters = ListMobileRechargesParameters.builder()
-      .offset(8L)
+      .offset(2L)
       .limit(10L)
       .build();
 

@@ -50,7 +50,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentDunningsParameters requestParameters = ListPaymentDunningsParameters.builder()
-      .offset(4L)
+      .offset(6L)
       .limit(10L)
       .status(PaymentDunningListRequestPaymentDunningStatus.PENDING)
       .type(PaymentDunningListRequestPaymentDunningType.CREDIT_BUREAU)
@@ -268,7 +268,7 @@ public class Main {
 
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
-    EventHistoryListsParameters requestParameters = EventHistoryListsParameters.builder().offset(2L).limit(10L).build();
+    EventHistoryListsParameters requestParameters = EventHistoryListsParameters.builder().offset(8L).limit(10L).build();
 
     PaymentDunningListHistoryResponseDto response = asaasSdk.paymentDunning.eventHistoryLists(
       "ce35702d-0d9f-475a-ba46-e251ad265c91",
@@ -318,7 +318,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentsReceivedParameters requestParameters = ListPaymentsReceivedParameters.builder()
-      .offset(1L)
+      .offset(5L)
       .limit(10L)
       .build();
 
@@ -369,7 +369,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListPaymentsAvailableForPaymentDunningParameters requestParameters =
-      ListPaymentsAvailableForPaymentDunningParameters.builder().offset(4L).limit(10L).build();
+      ListPaymentsAvailableForPaymentDunningParameters.builder().offset(0L).limit(10L).build();
 
     PaymentDunningPaymentsAvailableForDunningResponseDto response =
       asaasSdk.paymentDunning.listPaymentsAvailableForPaymentDunning(requestParameters);

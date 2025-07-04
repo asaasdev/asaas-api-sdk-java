@@ -45,7 +45,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListRecurrencesParameters requestParameters = ListRecurrencesParameters.builder()
-      .offset(6L)
+      .offset(7L)
       .limit(10L)
       .status(RecurringPixTransactionListRequestPixRecurringTransactionStatus.AWAITING_CRITICAL_ACTION_AUTHORIZATION)
       .value(100D)
@@ -181,7 +181,7 @@ public class Main {
     AsaasSdk asaasSdk = new AsaasSdk(config);
 
     ListRecurrenceItemsParameters requestParameters = ListRecurrenceItemsParameters.builder()
-      .offset(3L)
+      .offset(6L)
       .limit(10L)
       .build();
 
