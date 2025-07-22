@@ -1,6 +1,6 @@
-# AsaasSdk Java SDK 1.0.3
+# Asaas Java SDK 1.0.3
 
-Welcome to the AsaasSdk documentation.
+Welcome to the official Asaas API Sdk documentation.
 
 This guide will help you get started with integrating and using the Asaas SDK in your project.
 
