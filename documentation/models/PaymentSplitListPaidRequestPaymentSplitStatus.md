@@ -7,6 +7,7 @@ Filter by status
 | Name                        | Type   | Required | Description                   |
 | :-------------------------- | :----- | :------- | :---------------------------- |
 | PENDING                     | String | ✅       | "PENDING"                     |
+| PROCESSING                  | String | ✅       | "PROCESSING"                  |
 | AWAITING_CREDIT             | String | ✅       | "AWAITING_CREDIT"             |
 | CANCELLED                   | String | ✅       | "CANCELLED"                   |
 | DONE                        | String | ✅       | "DONE"                        |

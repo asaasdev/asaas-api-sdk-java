@@ -15,6 +15,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum PaymentSplitGetResponsePaymentSplitStatus {
   PENDING("PENDING"),
+  PROCESSING("PROCESSING"),
   AWAITING_CREDIT("AWAITING_CREDIT"),
   CANCELLED("CANCELLED"),
   DONE("DONE"),

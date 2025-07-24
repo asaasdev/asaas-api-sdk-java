@@ -1,11 +1,11 @@
 {
-  "liblabVersion": "2.25.34",
-  "date": "2025-07-04T18:29:44.624Z",
+  "liblabVersion": "2.25.37",
+  "date": "2025-07-24T13:16:18.329Z",
   "config": {
     "apiId": 2190,
     "baseUrl": "https://api.asaas.com/",
     "sdkName": "asaas-sdk",
-    "sdkVersion": "1.0.3",
+    "sdkVersion": "1.0.4",
     "languages": ["java"],
     "auth": ["apikey"],
     "docs": [],
@@ -17,7 +17,7 @@
       "sdkName": "asaas-sdk",
       "apiVersion": "3.0.0",
       "apiName": "Asaas",
-      "languages": ["java"],
+      "languages": ["java", "typescript", "php"],
       "auth": ["apikey"],
       "customizations": {
         "environments": [
@@ -57,15 +57,22 @@
       },
       "languageOptions": {
         "typescript": {
-          "bundle": true,
-          "exportClassDefault": false,
-          "httpClient": "axios",
-          "npmName": "",
-          "npmOrg": "",
-          "githubRepoName": "",
-          "ignoreFiles": [],
+          "liblabVersion": "2",
+          "githubRepoName": "asaas-api-sdk-typescript",
+          "targetBranch": "master",
           "sdkVersion": "1.0.0",
-          "liblabVersion": "2"
+          "homepage": "https://asaas.com",
+          "authors": [
+            {
+              "name": "Integrações Asaas",
+              "email": "integracoes@asaas.com.br"
+            }
+          ],
+          "httpClient": "axios",
+          "bundle": true,
+          "exportClassDefault": true,
+          "npmOrg": "asaas",
+          "npmName": "api_sdk"
         },
         "java": {
           "liblabVersion": "2",
@@ -73,7 +80,7 @@
           "artifactId": "api-sdk",
           "githubRepoName": "asaas-api-sdk-java",
           "targetBranch": "master",
-          "sdkVersion": "1.0.3",
+          "sdkVersion": "1.0.4",
           "homepage": "https://asaas.com",
           "developers": [
             {
@@ -83,6 +90,13 @@
               "organizationUrl": "https://github.com/asaasdev/"
             }
           ]
+        },
+        "php": {
+          "liblabVersion": "2",
+          "githubRepoName": "asaas-api-sdk-php",
+          "targetBranch": "master",
+          "sdkVersion": "1.0.0",
+          "packageName": "asaas/api-sdk"
         }
       },
       "publishing": {
@@ -101,7 +115,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "1.0.3",
+        "sdkVersion": "1.0.4",
         "targetBranch": "master",
         "groupId": "com.asaas",
         "artifactId": "api-sdk",
@@ -115,19 +129,36 @@
           }
         ]
       },
-      "typescript": {
-        "githubRepoName": "",
+      "php": {
+        "githubRepoName": "asaas-api-sdk-php",
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
         "sdkVersion": "1.0.0",
+        "targetBranch": "master",
+        "packageName": "asaas/api-sdk"
+      },
+      "typescript": {
+        "authors": [
+          {
+            "email": "integracoes@asaas.com.br",
+            "name": "Integrações Asaas"
+          }
+        ],
+        "githubRepoName": "asaas-api-sdk-typescript",
+        "homepage": "https://asaas.com",
+        "ignoreFiles": [],
+        "liblabVersion": "2",
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "1.0.0",
+        "targetBranch": "master",
         "bundle": true,
         "denoteCommon": false,
-        "exportClassDefault": false,
+        "exportClassDefault": true,
         "generateEnumAs": "enum",
         "httpClient": "axios",
-        "npmName": "",
-        "npmOrg": ""
+        "npmName": "api_sdk",
+        "npmOrg": "asaas"
       }
     },
     "validationsToIgnore": [],
@@ -177,7 +208,7 @@
     },
     "multiTenant": true,
     "hooksLocation": {
-      "bucketKey": "12419/hooks.zip",
+      "bucketKey": "12924/hooks.zip",
       "bucketName": "prod-liblab-api-stack-hooks"
     },
     "includeWatermark": true,
@@ -1088,7 +1119,6 @@
     "src/main/java/com/asaas/apisdk/models/BankSlipBillingInfoResponseDto.java",
     "src/main/java/com/asaas/apisdk/models/SubscriptionSplitRequestDto.java",
     "src/main/java/com/asaas/apisdk/models/PaymentLinkFileImageResponseDto.java",
-    "src/main/java/com/asaas/apisdk/models/CheckoutSessionItemsDto.java",
     "src/main/java/com/asaas/apisdk/models/TransferSaveInternalTransferAccountDto.java",
     "src/main/java/com/asaas/apisdk/models/MobilePhoneRechargeFindProviderResponseValuesDto.java",
     "src/main/java/com/asaas/apisdk/models/ListTransactionsParameters.java",
@@ -1139,6 +1169,7 @@
     "src/main/java/com/asaas/apisdk/models/PaymentDocumentFileResponseDto.java",
     "src/main/java/com/asaas/apisdk/models/InvoiceTaxesDto.java",
     "src/main/java/com/asaas/apisdk/models/PixTransactionExternalAccountResponseDto.java",
+    "src/main/java/com/asaas/apisdk/models/CheckoutSessionItemsDto.java",
     "src/main/java/com/asaas/apisdk/models/PaymentDunningSimulateResponseTypeSimulationItemDto.java",
     "src/main/java/com/asaas/apisdk/models/PaymentDunningPaymentsAvailableForDunningResponseDataTypeSimulationItemDto.java",
     "src/main/java/com/asaas/apisdk/models/ListPaymentsLinksParameters.java",

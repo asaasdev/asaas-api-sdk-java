@@ -65,6 +65,7 @@ public class Main {
 			.build();
 
 		CheckoutSessionItemsDto checkoutSessionItemsDto = CheckoutSessionItemsDto.builder()
+			.externalReference("ea28b0ba-4980-44f6-9f44-def89880dca5")
 			.description("Camisetas")
 			.imageBase64("IMAGE IN BASE64")
 			.name("Roupas")
