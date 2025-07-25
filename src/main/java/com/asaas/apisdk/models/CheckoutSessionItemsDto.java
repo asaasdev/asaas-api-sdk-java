@@ -49,10 +49,21 @@ public class CheckoutSessionItemsDto {
   private Double value;
 
   /**
+   * Item unique identifier in your system
+   */
+  @JsonProperty("externalReference")
+  private JsonNullable<String> externalReference;
+
+  /**
    * Item Description
    */
   @JsonProperty("description")
   private JsonNullable<String> description;
+
+  @JsonIgnore
+  public String getExternalReference() {
+    return externalReference.orElse(null);
+  }
 
   @JsonIgnore
   public String getDescription() {
@@ -61,6 +72,14 @@ public class CheckoutSessionItemsDto {
 
   // Overwrite lombok builder methods
   public static class CheckoutSessionItemsDtoBuilder {
+
+    private JsonNullable<String> externalReference = JsonNullable.undefined();
+
+    @JsonProperty("externalReference")
+    public CheckoutSessionItemsDtoBuilder externalReference(String value) {
+      this.externalReference = JsonNullable.of(value);
+      return this;
+    }
 
     private JsonNullable<String> description = JsonNullable.undefined();
 
