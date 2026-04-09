@@ -28,15 +28,16 @@ public class RetryInterceptor implements Interceptor {
 
       try {
         response = chain.proceed(request);
-        if (!isRetryable(response)) {
+        if (!isRetryable(response) || tryCount == config.getMaxRetries()) {
           return response;
         }
-        tryCount++;
       } catch (IOException e) {
         if (!config.getExceptionsToRetry().contains(e.getClass()) || tryCount == config.getMaxRetries()) {
           throw e;
         }
       }
+
+      tryCount++;
 
       final int delay = calculateDelay(tryCount);
       try {
@@ -49,7 +50,6 @@ public class RetryInterceptor implements Interceptor {
 
     return response;
   }
-
   private int calculateDelay(int tryCount) {
     final int delay = (int) (config.getInitialDelay() * Math.pow(config.getBackoffFactor(), tryCount - 1));
     return Math.min(delay, config.getMaxDelay());
